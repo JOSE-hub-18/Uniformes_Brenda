@@ -21,9 +21,7 @@ class LoginUseCase {
 
     try {
       // Buscar usuario por nombre de usuario
-      final user = usuarios.firstWhere((u) => u.usuario == usernamegit restore .
-git clean -fd);
-
+      final user = usuarios.firstWhere((u) => u.usuario == username);
       // Verificar si el usuario está activo
       if (!user.activo) {
         throw Exception("Usuario inactivo");
