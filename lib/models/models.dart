@@ -4,9 +4,8 @@
 // ui SOLO PROPIEDADES
 enum RolUsuario { admin, vendedor }
 
-enum EstadoVenta { completada, cancelada }
+enum EstadoVenta { completada, cancelada, pendiente }
 
-enum TipoMovimiento { entrada, salida }
 
 // Extension enums
 
@@ -33,18 +32,6 @@ extension EstadoVentaParse on String {
       EstadoVenta.values.firstWhere(
         (e) => e.name == this,
         orElse: () => EstadoVenta.completada,
-      );
-}
-
-extension TipoMovimientoExt on TipoMovimiento {
-  String toDb() => name;
-}
-
-extension TipoMovimientoParse on String {
-  TipoMovimiento toTipoMovimiento() =>
-      TipoMovimiento.values.firstWhere(
-        (e) => e.name == this,
-        orElse: () => TipoMovimiento.entrada,
       );
 }
 
@@ -169,13 +156,12 @@ class Talla {
 }
 
 // inventario
-
+// Importnte: eliinada fila de stock, para hacer conteo segun la tabla UNIDADES
 class Inventario {
   int? id;
   int idEscuela;
   int idPrenda;
   int idTalla;
-  int stock;
   double precio;
 
   Inventario({
@@ -183,7 +169,6 @@ class Inventario {
     required this.idEscuela,
     required this.idPrenda,
     required this.idTalla,
-    required this.stock,
     required this.precio,
   });
 
@@ -193,7 +178,6 @@ class Inventario {
       'id_escuela': idEscuela,
       'id_prenda': idPrenda,
       'id_talla': idTalla,
-      'stock': stock,
       'precio': precio,
     };
   }
@@ -204,7 +188,6 @@ class Inventario {
       idEscuela: map['id_escuela'],
       idPrenda: map['id_prenda'],
       idTalla: map['id_talla'],
-      stock: map['stock'],
       precio: (map['precio'] as num).toDouble(),
     );
   }
@@ -215,6 +198,7 @@ class Inventario {
 class Venta {
   int? id;
   int idUsuario;
+  String? nombreCliente;
   DateTime fecha;
   double total;
   EstadoVenta estado;
@@ -222,6 +206,7 @@ class Venta {
   Venta({
     this.id,
     required this.idUsuario,
+    this.nombreCliente,
     required this.fecha,
     required this.total,
     this.estado = EstadoVenta.completada,
@@ -231,6 +216,7 @@ class Venta {
     return {
       'id': id,
       'id_usuario': idUsuario,
+      'nombre_cliente': nombreCliente,
       'fecha': fecha.toIso8601String(),
       'total': total,
       'estado': estado.toDb(),
@@ -241,6 +227,7 @@ class Venta {
     return Venta(
       id: map['id'],
       idUsuario: map['id_usuario'],
+      nombreCliente: map['nombre_cliente'],
       fecha: DateTime.parse(map['fecha']),
       total: (map['total'] as num).toDouble(),
       estado: (map['estado'] as String).toEstadoVenta(),
@@ -253,14 +240,14 @@ class Venta {
 class DetalleVenta {
   int? id;
   int idVenta;
-  int idInventario;
+  int idUnidad;
   int cantidad;
   double precioUnitario;
 
   DetalleVenta({
     this.id,
     required this.idVenta,
-    required this.idInventario,
+    required this.idUnidad,
     required this.cantidad,
     required this.precioUnitario,
   });
@@ -269,7 +256,7 @@ class DetalleVenta {
     return {
       'id': id,
       'id_venta': idVenta,
-      'id_inventario': idInventario,
+      'id_unidad': idUnidad,
       'cantidad': cantidad,
       'precio_unitario': precioUnitario,
     };
@@ -279,55 +266,40 @@ class DetalleVenta {
     return DetalleVenta(
       id: map['id'],
       idVenta: map['id_venta'],
-      idInventario: map['id_inventario'],
+      idUnidad: map['id_unidad'],
       cantidad: map['cantidad'],
       precioUnitario: (map['precio_unitario'] as num).toDouble(),
     );
   }
 }
 
-// movimeinto
+// movimeinto ELIMINADO
 
-class Movimiento {
+/////////UNIDAD, nuevo modelo para la distribucion de IDs
+class Unidad {
   int? id;
   int idInventario;
-  int? idVenta;
-  TipoMovimiento tipo;
-  int cantidad;
-  String? motivo;
-  DateTime fecha;
+  bool activo;
 
-  Movimiento({
+  Unidad({
     this.id,
     required this.idInventario,
-    this.idVenta,
-    required this.tipo,
-    required this.cantidad,
-    this.motivo,
-    required this.fecha,
+    this.activo = true,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'id_inventario': idInventario,
-      'id_venta': idVenta,
-      'tipo': tipo.toDb(),
-      'cantidad': cantidad,
-      'motivo': motivo,
-      'fecha': fecha.toIso8601String(),
+      'activo': activo ? 1 : 0,
     };
   }
 
-  factory Movimiento.fromMap(Map<String, dynamic> map) {
-    return Movimiento(
+  factory Unidad.fromMap(Map<String, dynamic> map) {
+    return Unidad(
       id: map['id'],
       idInventario: map['id_inventario'],
-      idVenta: map['id_venta'],
-      tipo: (map['tipo'] as String).toTipoMovimiento(),
-      cantidad: map['cantidad'],
-      motivo: map['motivo'],
-      fecha: DateTime.parse(map['fecha']),
+      activo: map['activo'] == 1,
     );
   }
 }
