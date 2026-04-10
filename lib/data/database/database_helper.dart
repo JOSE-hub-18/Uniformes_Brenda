@@ -92,7 +92,6 @@ await db.execute('''
     id_escuela INTEGER NOT NULL,
     id_prenda INTEGER NOT NULL,
     id_talla INTEGER NOT NULL,
-    stock INTEGER NOT NULL DEFAULT 0,
     precio REAL NOT NULL,
     FOREIGN KEY (id_escuela) REFERENCES escuelas(id_escuela),
     FOREIGN KEY (id_prenda) REFERENCES prendas(id_prenda),
@@ -101,11 +100,23 @@ await db.execute('''
   )
 ''');
 
+
+//////Unidades, reparticion de ID
+ await db.execute('''
+    CREATE TABLE unidades (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id_inventario INTEGER NOT NULL,
+      activo INTEGER NOT NULL DEFAULT 1,
+      FOREIGN KEY (id_inventario) REFERENCES inventario(id)
+    )
+  ''');
+
     // Ventas
     await db.execute('''
       CREATE TABLE ventas (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_usuario INTEGER NOT NULL,
+        nombre_cliente TEXT,
         fecha TEXT NOT NULL,
         total REAL NOT NULL,
         estado TEXT NOT NULL DEFAULT 'completada',
@@ -114,31 +125,16 @@ await db.execute('''
     ''');
 
     // Detalle de ventas
-    await db.execute('''
-      CREATE TABLE detalle_venta (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_venta INTEGER NOT NULL,
-        id_inventario INTEGER NOT NULL,
-        cantidad INTEGER NOT NULL,
-        precio_unitario REAL NOT NULL,
-        FOREIGN KEY (id_venta) REFERENCES ventas(id),
-        FOREIGN KEY (id_inventario) REFERENCES inventario(id)
-      )
-    ''');
-
-    // Movimientos
-    await db.execute('''
-      CREATE TABLE movimientos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_inventario INTEGER NOT NULL,
-        id_venta INTEGER,
-        tipo TEXT NOT NULL,
-        cantidad INTEGER NOT NULL,
-        motivo TEXT,
-        fecha TEXT NOT NULL,
-        FOREIGN KEY (id_inventario) REFERENCES inventario(id),
-        FOREIGN KEY (id_venta) REFERENCES ventas(id)
-      )
-    ''');
+   await db.execute('''
+  CREATE TABLE detalle_venta (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_venta INTEGER NOT NULL,
+    id_unidad INTEGER NOT NULL,
+    cantidad INTEGER NOT NULL,
+    precio_unitario REAL NOT NULL,
+    FOREIGN KEY (id_venta) REFERENCES ventas(id),
+    FOREIGN KEY (id_unidad) REFERENCES unidades(id)
+  )
+''');
   }
 }

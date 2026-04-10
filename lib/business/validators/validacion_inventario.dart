@@ -24,9 +24,9 @@ class ValidacionInventario {
     }
   }
 
-  // valida que el inventario no tenga números negativos, ni 0, ni más de 9999
-  static void validarStock(Inventario inventario) {
-    if (inventario.stock < 1 || inventario.stock > 9999) {
+  // valida cantidad de unidades a insertar
+  static void validarCantidadUnidades(int cantidad) {
+    if (cantidad < 1 || cantidad > 9999) {
       throw Exception("Cantidad no permitida");
     }
   }
