@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'data/database/database_helper.dart';
 import 'presentation/screens/login_screen.dart';
+import 'business/providers/auth_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,7 +10,9 @@ void main() async {
 
   runApp(
     MultiProvider(
-      providers: [],
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ],
       child: const MyApp(),
     ),
   );
