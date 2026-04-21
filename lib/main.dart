@@ -9,13 +9,16 @@ void main() async {
   await DatabaseHelper.instance.database;
 
   runApp(
+    // MultiProvider envuelve la app para proporcionar acceso global a los providers
     MultiProvider(
       providers: [
+        // Provider de autenticación - maneja login, logout y estado del usuario
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ],
       child: const MyApp(),
     ),
   );
+
 }
 
 class MyApp extends StatelessWidget {
