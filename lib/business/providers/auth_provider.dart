@@ -25,6 +25,7 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       final usuarios = await _usuarioRepo.obtenerTodos();
+
       final user = await _loginUseCase.execute(
         usuarios,
         usuario,
