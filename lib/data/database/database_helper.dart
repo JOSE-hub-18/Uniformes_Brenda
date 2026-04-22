@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+
 
 class DatabaseHelper {
 
@@ -136,5 +139,16 @@ await db.execute('''
     FOREIGN KEY (id_unidad) REFERENCES unidades(id)
   )
 ''');
+
+    const password = '1234';
+    const salt = 'uniformes_brenda_salt';
+    final bytes = utf8.encode(password + salt);
+    final passwordHash = sha256.convert(bytes).toString();
+
+    await db.rawInsert('''
+      INSERT INTO usuarios (nombre, usuario, password_hash, activo, rol)
+      VALUES (?, ?, ?, ?, ?)
+    ''', ['Administrador Principal', 'admin', passwordHash, 1, 'admin']);
+
   }
 }
