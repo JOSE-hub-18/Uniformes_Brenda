@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../business/providers/inventario_provider.dart';
 import 'bottom_nav_bar.dart';
+import 'registrar_prenda_screen.dart'; // Ajusta la ruta según tu estructura de carpetas
+import '../../business/usecases/registrar_inventario_usecase.dart';
+import '../../data/repositories/inventario_repository.dart';
+import '../../data/repositories/prenda_repository.dart';
+import '../../data/repositories/talla_repository.dart';
+import '../../data/repositories/escuela_repository.dart';
+
 class InventarioScreen extends StatelessWidget {
   const InventarioScreen({super.key});
 
@@ -26,7 +33,22 @@ class InventarioScreen extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.add, color: Color(0xFF1452BD), size: 32),
             onPressed: () {
-              // Lógica para agregar nueva prenda
+              final tuUseCase = RegistrarInventarioUseCase(
+                inventarioRepository: InventarioRepository(),
+                prendaRepository: PrendaRepository(),
+                tallaRepository: TallaRepository(),
+                escuelaRepository: EscuelaRepository(),
+              );
+
+              // 2. Ejecutamos la navegación que proporcionaste
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RegistrarPrendaScreen(
+                    registrarInventarioUseCase: tuUseCase,
+                  ),
+                ),
+              );
             },
           ),
         ],
