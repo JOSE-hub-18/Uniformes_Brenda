@@ -93,6 +93,83 @@ class AdministrarPrendaScreen extends StatelessWidget {
     );
   }
 
+  void _mostrarDialogoEliminar(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          elevation: 8,
+          insetPadding: const EdgeInsets.symmetric(horizontal: 40), 
+          child: Padding(
+            padding: const EdgeInsets.only(top: 32, bottom: 24, left: 24, right: 24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Icono decorativo en rojo
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFFFEBEE),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(Icons.delete_outline, color: Color(0xFFC62828), size: 40),
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  '¿Eliminar prenda?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF333333)),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  'Esta acción quitará la prenda del catálogo permanentemente.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 15, color: Color(0xFF666666), height: 1.4),
+                ),
+                const SizedBox(height: 32),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () => Navigator.pop(context),
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          side: const BorderSide(color: Color(0xFFE0E0E0), width: 1.5),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        ),
+                        child: const Text('No', style: TextStyle(color: Color(0xFF666666), fontSize: 16, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context); 
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ExitoScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFC62828),
+                          elevation: 0,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        ),
+                        child: const Text('Sí, eliminar', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -222,7 +299,7 @@ class AdministrarPrendaScreen extends StatelessWidget {
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // Lógica futura para eliminar
+                  _mostrarDialogoEliminar(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFC62828), // Rojo

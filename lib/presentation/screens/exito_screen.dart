@@ -13,13 +13,11 @@ class _ExitoScreenState extends State<ExitoScreen> {
   void initState() {
     super.initState();
     
-    // Iniciamos el temporizador de 1100 ms
+    // Temporizador de 1100 ms
     Future.delayed(const Duration(milliseconds: 1100), () {
       if (mounted) {
-        // Esta instrucción cierra la pantalla actual y regresa a la anterior.
-        // Si quieres regresar directamente al Inventario saltando la de Administrar,
-        // usamos popUntil.
-        Navigator.of(context).popUntil((route) => route.isFirst);
+        // Regresa a la pantalla anterior (AdministrarPrendaScreen)
+        Navigator.of(context).pop();
       }
     });
   }
@@ -34,7 +32,7 @@ class _ExitoScreenState extends State<ExitoScreen> {
           children: [
             Container(
               decoration: const BoxDecoration(
-                color: Color(0xFF4CAF50), // Verde de tu diseño
+                color: Color(0xFF4CAF50),
                 shape: BoxShape.circle,
               ),
               padding: const EdgeInsets.all(24),
