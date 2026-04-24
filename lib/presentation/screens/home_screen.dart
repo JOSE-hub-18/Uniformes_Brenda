@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/home_provider.dart';
+import 'bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,6 +37,7 @@ class HomeView extends StatelessWidget {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center, //centrar botones
           children: [
             // Saludo
             const Text(
@@ -73,7 +75,7 @@ class HomeView extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const _BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
@@ -115,74 +117,3 @@ class _HomeButton extends StatelessWidget {
   }
 }
 
-// Bottom Navigation Bar
-class _BottomNavBar extends StatefulWidget {
-  const _BottomNavBar();
-
-  @override
-  State<_BottomNavBar> createState() => _BottomNavBarState();
-}
-
-class _BottomNavBarState extends State<_BottomNavBar> {
-  int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFCFE8FC), // Footer
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          
-          switch (index) {
-            case 0:
-              // Ya estamos en Home
-              break;
-            case 1:
-              // Navegar a Cámara/QR Scanner
-              break;
-            case 2:
-              // Navegar a la tercera opción
-              break;
-          }
-        },
-        backgroundColor: const Color(0xFFCFE8FC), // Footer
-        selectedItemColor: const Color(0xFF226DAA),
-        unselectedItemColor: const Color(0xFF9E9E9E),
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.qr_code_scanner_outlined),
-            activeIcon: Icon(Icons.qr_code_scanner),
-            label: 'Scanner',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_outlined),
-            activeIcon: Icon(Icons.assignment),
-            label: 'Pedidos',
-          ),
-        ],
-      ),
-    );
-  }
-}
