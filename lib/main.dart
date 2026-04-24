@@ -7,6 +7,7 @@ import 'business/providers/auth_provider.dart';
 import 'business/providers/inventario_provider.dart';
 import 'presentation/screens/inventario_screen.dart';
 import 'presentation/providers/home_provider.dart';
+import 'presentation/screens/administrar_prenda_screen.dart'; // Ajusta tu ruta
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Uniformes Brenda',
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: const AdministrarPrendaScreen(),
 
       routes: {
         '/home': (context) => const HomeScreen(),
