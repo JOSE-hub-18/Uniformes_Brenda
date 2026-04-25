@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../business/providers/inventario_provider.dart';
 import 'bottom_nav_bar.dart';
-import 'registrar_prenda_screen.dart';
-import '../../business/usecases/registrar_inventario_usecase.dart';
-import '../../data/repositories/inventario_repository.dart';
-import '../../data/repositories/prenda_repository.dart';
-import '../../data/repositories/talla_repository.dart';
-import '../../data/repositories/escuela_repository.dart';
+import 'administrar_prenda_screen.dart';
 
 class InventarioScreen extends StatelessWidget {
   const InventarioScreen({super.key});
@@ -27,36 +22,11 @@ class InventarioScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add, color: Color(0xFF1452BD), size: 30),
-            onPressed: () {
-              final useCase = RegistrarInventarioUseCase(
-                inventarioRepository: InventarioRepository(),
-                prendaRepository: PrendaRepository(),
-                tallaRepository: TallaRepository(),
-                escuelaRepository: EscuelaRepository(),
-              );
-
-             Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => RegistrarPrendaScreen(
-      registrarInventarioUseCase: useCase,
-    ),
-  ),
-).then((_) {
-  context.read<InventarioProvider>().recargarEscuelas();
-});
-            },
-          ),
-        ],
       ),
       body: Consumer<InventarioProvider>(
         builder: (context, provider, child) {
           return Column(
             children: [
-
               // ESCUELA
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -78,7 +48,7 @@ class InventarioScreen extends StatelessWidget {
                 ),
               ),
 
-              // PRENDA DB
+              // FILTRO PRENDA
               if (provider.escuelaSeleccionada != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -130,8 +100,7 @@ class _ListaInventario extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       itemCount: items.length,
       itemBuilder: (context, index) {
-
-        final item = items[index];
+        final Map<String, dynamic> item = items[index];
 
         final mostrarHeader = item['prenda'] != ultimaPrenda;
         ultimaPrenda = item['prenda'];
@@ -139,7 +108,6 @@ class _ListaInventario extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             if (mostrarHeader)
               Padding(
                 padding: const EdgeInsets.only(top: 16),
@@ -181,7 +149,6 @@ class _ItemInventario extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Text('Talla: ${item['talla']}'),
           const SizedBox(height: 6),
 
@@ -195,7 +162,24 @@ class _ItemInventario extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 final idInventario = item['id'];
-                print('ID Inventario: $idInventario');
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AdministrarPrendaScreen(
+                      idInventario: idInventario,
+                    ),
+                  ),
+                ).then((_) {
+                  final prov = context.read<InventarioProvider>();
+
+                  if (prov.escuelaSeleccionada != null &&
+                      prov.escuelaSeleccionada!.idEscuela != null) {
+                    prov.cargarInventario(
+                      prov.escuelaSeleccionada!.idEscuela!,
+                    );
+                  }
+                });
               },
               child: const Text(
                 'Administrar',

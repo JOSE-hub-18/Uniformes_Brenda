@@ -15,15 +15,21 @@ import 'business/providers/auth_provider.dart';
 import 'business/providers/inventario_provider.dart';
 import 'presentation/providers/home_provider.dart';
 import 'presentation/providers/registrar_inventario_provider.dart';
+import 'presentation/providers/print_provider.dart';
+
+// Services
+import 'business/services/print_service.dart';
 
 // Repositories
 import 'data/repositories/inventario_repository.dart';
 import 'data/repositories/prenda_repository.dart';
 import 'data/repositories/talla_repository.dart';
 import 'data/repositories/escuela_repository.dart';
+import 'data/repositories/unidad_repository.dart';
 
-// UseCase
+// UseCases
 import 'business/usecases/registrar_inventario_usecase.dart';
+import 'business/usecases/print_usecase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +43,22 @@ void main() async {
         ChangeNotifierProvider(create: (_) => InventarioProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
 
-        // Provider necesario para dropdowns y escuela
+        // 🔹 Registrar inventario
         ChangeNotifierProvider(
           create: (_) => RegistrarInventarioProvider(
             prendaRepository: PrendaRepository(),
             tallaRepository: TallaRepository(),
             escuelaRepository: EscuelaRepository(),
+          ),
+        ),
+
+        // PRINT PROVIDER 
+        ChangeNotifierProvider(
+          create: (_) => PrintProvider(
+            PrintUseCase(
+              printer: BlePrintService(),
+              repo: UnidadRepository(),
+            ),
           ),
         ),
       ],

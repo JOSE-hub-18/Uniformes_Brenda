@@ -5,7 +5,10 @@ class PrintUseCase {
   final PrintService printer;
   final UnidadRepository repo;
 
-  PrintUseCase(this.printer, this.repo);
+  PrintUseCase({
+    required this.printer,
+    required this.repo,
+  });
 
   Future<String> ejecutar(int idInventario, int cantidad) async {
     if (cantidad <= 0) {
@@ -15,7 +18,7 @@ class PrintUseCase {
     int impresas = 0;
 
     try {
-      //  Conectar UNA vez
+      // Conectar UNA vez
       await printer.conectar();
 
       for (int i = 0; i < cantidad; i++) {
@@ -28,18 +31,17 @@ class PrintUseCase {
           await printer.imprimirQR(id.toString());
           impresas++;
         } catch (e) {
-          //  Las etiquetas se registra-imprime una por una, si falla una, se elimina y se cancela la orden
+          //  rollback si falla
           await repo.eliminar(id);
 
           final noImpresas = cantidad - impresas;
-
           return "Se imprimieron $impresas, fallaron $noImpresas";
         }
       }
 
       return "Se imprimieron $impresas correctamente";
     } finally {
-      // Desconectar
+      // 🔹 Desconectar siempre
       await printer.desconectar();
     }
   }
