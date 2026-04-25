@@ -3,6 +3,12 @@ import 'package:provider/provider.dart';
 import '../../business/providers/inventario_provider.dart';
 import 'bottom_nav_bar.dart';
 import 'administrar_prenda_screen.dart';
+import 'registrar_prenda_screen.dart';
+import '../../business/usecases/registrar_inventario_usecase.dart';
+import '../../data/repositories/inventario_repository.dart';
+import '../../data/repositories/prenda_repository.dart';
+import '../../data/repositories/talla_repository.dart';
+import '../../data/repositories/escuela_repository.dart';
 
 class InventarioScreen extends StatelessWidget {
   const InventarioScreen({super.key});
@@ -22,12 +28,35 @@ class InventarioScreen extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add, color: Color(0xFF1452BD), size: 30),
+            onPressed: () {
+              final useCase = RegistrarInventarioUseCase(
+                inventarioRepository: InventarioRepository(),
+                prendaRepository: PrendaRepository(),
+                tallaRepository: TallaRepository(),
+                escuelaRepository: EscuelaRepository(),
+              );
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => RegistrarPrendaScreen(
+                    registrarInventarioUseCase: useCase,
+                  ),
+                ),
+              ).then((_) {
+                context.read<InventarioProvider>().recargarEscuelas();
+              });
+            },
+          ),
+        ],
       ),
       body: Consumer<InventarioProvider>(
         builder: (context, provider, child) {
           return Column(
             children: [
-              // ESCUELA
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: DropdownButton<int>(
@@ -48,7 +77,6 @@ class InventarioScreen extends StatelessWidget {
                 ),
               ),
 
-              // FILTRO PRENDA
               if (provider.escuelaSeleccionada != null)
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -70,13 +98,15 @@ class InventarioScreen extends StatelessWidget {
 
               const SizedBox(height: 10),
 
-              // LISTA
               Expanded(
                 child: provider.escuelaSeleccionada == null
                     ? const Center(child: Text('Selecciona una escuela'))
                     : provider.itemsInventario.isEmpty
                         ? const Center(child: Text('No hay registros'))
-                        : _ListaInventario(items: provider.itemsInventario),
+                        : _ListaInventario(
+                            items: provider.itemsInventario
+                                .cast<Map<String, dynamic>>(),
+                          ),
               ),
             ],
           );
@@ -100,7 +130,7 @@ class _ListaInventario extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       itemCount: items.length,
       itemBuilder: (context, index) {
-        final Map<String, dynamic> item = items[index];
+        final item = items[index];
 
         final mostrarHeader = item['prenda'] != ultimaPrenda;
         ultimaPrenda = item['prenda'];
@@ -120,7 +150,6 @@ class _ListaInventario extends StatelessWidget {
                   ),
                 ),
               ),
-
             _ItemInventario(item: item),
           ],
         );
@@ -151,12 +180,9 @@ class _ItemInventario extends StatelessWidget {
         children: [
           Text('Talla: ${item['talla']}'),
           const SizedBox(height: 6),
-
           Text('Precio: \$${item['precio']}'),
           const SizedBox(height: 6),
-
           Text('Cantidad: ${item['stock']}'),
-
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
@@ -171,14 +197,7 @@ class _ItemInventario extends StatelessWidget {
                     ),
                   ),
                 ).then((_) {
-                  final prov = context.read<InventarioProvider>();
-
-                  if (prov.escuelaSeleccionada != null &&
-                      prov.escuelaSeleccionada!.idEscuela != null) {
-                    prov.cargarInventario(
-                      prov.escuelaSeleccionada!.idEscuela!,
-                    );
-                  }
+                  context.read<InventarioProvider>().recargarEscuelas();
                 });
               },
               child: const Text(
