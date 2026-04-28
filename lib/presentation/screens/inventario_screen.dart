@@ -2,100 +2,161 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../business/providers/inventario_provider.dart';
 import 'bottom_nav_bar.dart';
+import 'administrar_prenda_screen.dart';
+import 'registrar_prenda_screen.dart';
+import '../../business/usecases/registrar_inventario_usecase.dart';
+import '../../data/repositories/inventario_repository.dart';
+import '../../data/repositories/prenda_repository.dart';
+import '../../data/repositories/talla_repository.dart';
+import '../../data/repositories/escuela_repository.dart';
+
 class InventarioScreen extends StatelessWidget {
   const InventarioScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5FAFF), // Fondo claro
+      backgroundColor: const Color(0xFFF5FAFF),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // Icono de retroceso con doble flecha
-        leading: IconButton(
-          icon: const Icon(Icons.keyboard_double_arrow_left, color: Color(0xFF1452BD), size: 32),
-          onPressed: () => Navigator.pop(context),
-        ),
         title: const Text(
           'Inventario',
-          style: TextStyle(color: Color(0xFF1452BD), fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Color(0xFF1452BD),
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.add, color: Color(0xFF1452BD), size: 32),
+            icon: const Icon(Icons.add, color: Color(0xFF1452BD), size: 30),
             onPressed: () {
-              // Lógica para agregar nueva prenda
+              final useCase = RegistrarInventarioUseCase(
+                inventarioRepository: InventarioRepository(),
+                prendaRepository: PrendaRepository(),
+                tallaRepository: TallaRepository(),
+                escuelaRepository: EscuelaRepository(),
+              );
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => RegistrarPrendaScreen(
+                    registrarInventarioUseCase: useCase,
+                  ),
+                ),
+              ).then((_) {
+                context.read<InventarioProvider>().recargarEscuelas();
+              });
             },
           ),
         ],
       ),
-      // El Consumer redibuja la pantalla cuando el Provider lo notifica
       body: Consumer<InventarioProvider>(
         builder: (context, provider, child) {
-          if (provider.cargando && provider.escuelas.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
           return Column(
             children: [
-              // 1. Selector de Escuelas (Dropdown)
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                child: Container(
-                  // Línea azul inferior del Dropdown
-                  decoration: const BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Color(0xFF1452BD), width: 1.5))
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<int>(
-                      isExpanded: true,
-                      value: provider.escuelaSeleccionada?.idEscuela,
-                      hint: const Text('(Nombre de la escuela)', style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
-                      icon: const Icon(Icons.arrow_drop_down, color: Color(0xFF333333)),
-                      onChanged: (int? newValue) {
-                        if (newValue != null) {
-                          provider.cargarInventario(newValue); // Petición de filtrado
-                        }
-                      },
-                      items: provider.escuelas.map((escuela) {
-                        return DropdownMenuItem<int>(
-                          value: escuela.idEscuela,
-                          child: Text(escuela.nombre, style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF333333))),
-                        );
-                      }).toList(),
-                    ),
-                  ),
+                padding: const EdgeInsets.all(16),
+                child: DropdownButton<int>(
+                  value: provider.escuelaSeleccionada?.idEscuela,
+                  hint: const Text('Selecciona escuela'),
+                  isExpanded: true,
+                  onChanged: (value) {
+                    if (value != null) {
+                      provider.cargarInventario(value);
+                    }
+                  },
+                  items: provider.escuelas.map((e) {
+                    return DropdownMenuItem<int>(
+                      value: e.idEscuela,
+                      child: Text(e.nombre),
+                    );
+                  }).toList(),
                 ),
               ),
 
-              // 2. Lista de Inventario Filtrada
+              if (provider.escuelaSeleccionada != null)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: DropdownButton<int>(
+                    value: provider.idPrendaSeleccionada,
+                    hint: const Text('Filtrar por prenda'),
+                    isExpanded: true,
+                    onChanged: (value) {
+                      provider.seleccionarPrenda(value);
+                    },
+                    items: provider.prendas.map((p) {
+                      return DropdownMenuItem<int>(
+                        value: p.idPrenda,
+                        child: Text(p.nombre),
+                      );
+                    }).toList(),
+                  ),
+                ),
+
+              const SizedBox(height: 10),
+
               Expanded(
-                child: provider.cargando
-                    ? const Center(child: CircularProgressIndicator())
+                child: provider.escuelaSeleccionada == null
+                    ? const Center(child: Text('Selecciona una escuela'))
                     : provider.itemsInventario.isEmpty
-                        ? const Center(child: Text('No hay prendas registradas para esta escuela.'))
-                        : ListView.builder(
-                            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                            itemCount: provider.itemsInventario.length,
-                            itemBuilder: (context, index) {
-                              final item = provider.itemsInventario[index];
-                              return _ItemInventario(item: item);
-                            },
+                        ? const Center(child: Text('No hay registros'))
+                        : _ListaInventario(
+                            items: provider.itemsInventario
+                                .cast<Map<String, dynamic>>(),
                           ),
               ),
             ],
           );
         },
       ),
-      // 3. Barra de navegación inferior
       bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
 
-// --- Componentes Privados para mantener el código limpio ---
+class _ListaInventario extends StatelessWidget {
+  final List<Map<String, dynamic>> items;
+
+  const _ListaInventario({required this.items});
+
+  @override
+  Widget build(BuildContext context) {
+    String? ultimaPrenda;
+
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        final item = items[index];
+
+        final mostrarHeader = item['prenda'] != ultimaPrenda;
+        ultimaPrenda = item['prenda'];
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (mostrarHeader)
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(
+                  item['prenda'],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xFF1452BD),
+                  ),
+                ),
+              ),
+            _ItemInventario(item: item),
+          ],
+        );
+      },
+    );
+  }
+}
 
 class _ItemInventario extends StatelessWidget {
   final Map<String, dynamic> item;
@@ -105,29 +166,47 @@ class _ItemInventario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20.0),
-      // Línea separadora azul gruesa
+      padding: const EdgeInsets.only(top: 12, bottom: 12),
       decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: Color(0xFF1452BD), width: 2.0)),
+        border: Border(
+          bottom: BorderSide(
+            color: Color(0xFF1452BD),
+            width: 1.5,
+          ),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(item['prenda'] ?? '(Tipo de prenda)', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-          const SizedBox(height: 12),
-          Text('Talla: ${item['talla'] ?? '(Talla)'}', style: const TextStyle(fontSize: 14, color: Color(0xFF333333))),
-          const SizedBox(height: 12),
-          Text('Precio: \$${item['precio']?.toString() ?? '(Precio)'}', style: const TextStyle(fontSize: 14, color: Color(0xFF333333))),
-          const SizedBox(height: 12),
-          Text('Cantidad: ${item['stock']?.toString() ?? '(Cantidad)'}', style: const TextStyle(fontSize: 14, color: Color(0xFF333333))),
-          
+          Text('Talla: ${item['talla']}'),
+          const SizedBox(height: 6),
+          Text('Precio: \$${item['precio']}'),
+          const SizedBox(height: 6),
+          Text('Cantidad: ${item['stock']}'),
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
-                // Navegar a edición o detalle
+                final idInventario = item['id'];
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => AdministrarPrendaScreen(
+                      idInventario: idInventario,
+                    ),
+                  ),
+                ).then((_) {
+                  context.read<InventarioProvider>().recargarEscuelas();
+                });
               },
-              child: const Text('Administrar', style: TextStyle(color: Color(0xFF1452BD), fontWeight: FontWeight.bold, fontSize: 15)),
+              child: const Text(
+                'Administrar',
+                style: TextStyle(
+                  color: Color(0xFF1452BD),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ],
@@ -135,4 +214,3 @@ class _ItemInventario extends StatelessWidget {
     );
   }
 }
-
