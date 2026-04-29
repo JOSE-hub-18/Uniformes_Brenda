@@ -269,9 +269,31 @@ class _RegistrarPrendaScreenState extends State<RegistrarPrendaScreen> {
                         ),
                         child: _cargando
                             ? const CircularProgressIndicator(color: Colors.white)
-                            : const Text('Guardar Cambios'),
+                            : const Text('Guardar Cambios' , style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
                       ),
                     ),
+                    
+                    const SizedBox(height: 16),
+
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        // Si está cargando, deshabilita el botón; si no, cierra la pantalla
+                        onPressed: _cargando ? null : () => Navigator.pop(context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFC62828), // Rojo oscuro
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25), // Misma curvatura que el verde
+                          ),
+                        ),
+                        child: const Text(
+                          'Cancelar', 
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)
+                        ),
+                      ),
+                    ),
+
                   ],
                 ),
               ),

@@ -36,31 +36,76 @@ class _AdministrarCantidadScreenState
 
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        content: const Text(
-          "¿Para sumar a la cantidad es necesario imprimir los QR a continuación\n\n¿Desea continuar?",
-          textAlign: TextAlign.center,
+      builder: (_) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        elevation: 8,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 40), 
+        child: Padding(
+          padding: const EdgeInsets.only(top: 32, bottom: 24, left: 24, right: 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icono decorativo para sumar/imprimir
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFF5FAFF), // Azul muy claro
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(Icons.qr_code_scanner, color: Color(0xFF1452BD), size: 40),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                '¿Imprimir y sumar?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF333333)),
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                'Para sumar a la cantidad es necesario imprimir los QR a continuación.\n\n¿Desea continuar?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 15, color: Color(0xFF666666), height: 1.4),
+              ),
+              const SizedBox(height: 32),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        side: const BorderSide(color: Color(0xFFE0E0E0), width: 1.5),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      child: const Text('No', style: TextStyle(color: Color(0xFF666666), fontSize: 16, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        
+                        // Tu lógica original intacta
+                        await context.read<PrintProvider>().agregarUnidades(
+                              widget.idInventario,
+                              cantidad,
+                            );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4CAF50), // Verde
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      child: const Text('Sí', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-        actionsAlignment: MainAxisAlignment.spaceEvenly,
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("No",
-                style: TextStyle(color: Colors.red)),
-          ),
-          TextButton(
-            onPressed: () async {
-              Navigator.pop(context);
-
-              await context.read<PrintProvider>().agregarUnidades(
-                    widget.idInventario,
-                    cantidad,
-                  );
-            },
-            child: const Text("Si",
-                style: TextStyle(color: Colors.green)),
-          ),
-        ],
       ),
     );
   }
@@ -68,32 +113,77 @@ class _AdministrarCantidadScreenState
   void _confirmarRestar() {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        content: const Text(
-          "¿Está seguro que quiere restar esta cantidad a la actual disponible?",
-          textAlign: TextAlign.center,
-        ),
-        actionsAlignment: MainAxisAlignment.spaceEvenly,
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text("No",
-                style: TextStyle(color: Colors.red)),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Usar escaneo de QR para restar"),
+      builder: (_) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        elevation: 8,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 40), 
+        child: Padding(
+          padding: const EdgeInsets.only(top: 32, bottom: 24, left: 24, right: 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Icono decorativo de advertencia
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFFFEBEE), // Rojo muy claro
+                  shape: BoxShape.circle,
                 ),
-              );
-            },
-            child: const Text("Si",
-                style: TextStyle(color: Colors.green)),
+                child: const Icon(Icons.remove_circle_outline, color: Color(0xFFC62828), size: 40),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                '¿Restar cantidad?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF333333)),
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                '¿Está seguro que quiere restar esta cantidad a la actual disponible?',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 15, color: Color(0xFF666666), height: 1.4),
+              ),
+              const SizedBox(height: 32),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        side: const BorderSide(color: Color(0xFFE0E0E0), width: 1.5),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      child: const Text('No', style: TextStyle(color: Color(0xFF666666), fontSize: 16, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        
+                        // Tu lógica original intacta
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text("Usar escaneo de QR para restar"),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFC62828), // Rojo
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      ),
+                      child: const Text('Sí, restar', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -103,7 +193,7 @@ class _AdministrarCantidadScreenState
     final provider = context.watch<PrintProvider>();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFEAF3FF),
+      backgroundColor: const Color(0xFFF5FAFF),
       appBar: AppBar(
         title: const Text(
           "Administrar Cantidad",
@@ -118,86 +208,123 @@ class _AdministrarCantidadScreenState
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 40),
-
-          // CUADRO CANTIDAD
-          Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 30, vertical: 15),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue),
-              ),
-              child: SizedBox(
-                width: 100,
-                child: TextField(
-                  controller: _controller,
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 22),
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 40),
-
-          //  BOTONES
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      
+      body: Center( // Mantiene todo el grupo centrado verticalmente
+        child: SingleChildScrollView( // Previene errores de desbordamiento con el teclado
+          child: Column(
+            mainAxisSize: MainAxisSize.min, // Hace que la columna solo ocupe el espacio necesario
             children: [
-              // RESTAR
-              GestureDetector(
-                onTap: _confirmarRestar,
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF2F6FAB),
-                    shape: BoxShape.circle,
+              // 1. CUADRO DE CANTIDAD (Ahora en la parte superior)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                decoration: BoxDecoration(
+                  border: Border.all(color: const Color(0xFF1452BD), width: 2),
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white,
+                ),
+                child: SizedBox(
+                  width: 100,
+                  child: TextField(
+                    controller: _controller,
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Color(0xFF333333)),
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      isDense: true,
+                    ),
                   ),
-                  child: const Icon(Icons.remove,
-                      color: Colors.white, size: 30),
                 ),
               ),
 
-              const SizedBox(width: 40),
+              const SizedBox(height: 40),
 
-              // SUMAR
-              GestureDetector(
-                onTap:
-                    provider.loading ? null : _confirmarAgregar,
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFF2F6FAB),
-                    shape: BoxShape.circle,
+              // 2. BOTONES DE ACCIÓN (+ y -)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GestureDetector(
+                    onTap: _confirmarRestar,
+                    child: Container(
+                      width: 65,
+                      height: 65,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: const Color(0xFFC62828), width: 2),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(Icons.remove, color: Color(0xFFC62828), size: 36),
+                    ),
                   ),
-                  child: const Icon(Icons.add,
-                      color: Colors.white, size: 30),
+
+                  const SizedBox(width: 48),
+
+                  GestureDetector(
+                    onTap: provider.loading ? null : _confirmarAgregar,
+                    child: Container(
+                      width: 65,
+                      height: 65,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF4CAF50),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: provider.loading 
+                          ? const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: CircularProgressIndicator(color: Colors.white, strokeWidth: 3),
+                            )
+                          : const Icon(Icons.add, color: Colors.white, size: 36),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 50),
+
+              // 3. BLOQUE DE INSTRUCCIONES (Ahora debajo del cuadro y botones)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: Text(
+                  'Escriba la cantidad en el cuadro y utilice los botones para sumar (+) o restar (-) esas unidades del inventario.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF666666),
+                    height: 1.5,
+                  ),
                 ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // 4. MENSAJE DE RESULTADO
+              SizedBox(
+                height: 60,
+                child: provider.mensaje.isNotEmpty
+                    ? Text(
+                        provider.mensaje,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16, color: Color(0xFF666666)),
+                      )
+                    : const SizedBox.shrink(),
               ),
             ],
           ),
-
-          const SizedBox(height: 60),
-
-          //  MENSAJE RESULTADO
-          if (provider.mensaje.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                provider.mensaje,
-                textAlign: TextAlign.center,
-              ),
-            ),
-        ],
+        ),
       ),
     );
   }
