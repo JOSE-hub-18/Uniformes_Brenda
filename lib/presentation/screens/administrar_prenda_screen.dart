@@ -3,6 +3,7 @@ import '../../data/repositories/inventario_repository.dart';
 import '../../models/models.dart';
 import 'bottom_nav_bar.dart';
 import 'administrar_cantidad_screen.dart'; // crearás esta después
+import 'qr_screen.dart';
 
 class AdministrarPrendaScreen extends StatefulWidget {
 
@@ -91,11 +92,21 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     );
   }
 
-  void _dialogoEliminar() {
+  Future<void> _dialogoEliminar() async {
+  // Abre el escáner QR
+  final codigoQR = await Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const QRScannerScreen()),
+  );
+
+  // Si escaneó algo
+  if (codigoQR != null && mounted) {
+    // Muestra confirmación
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
         title: const Text('¿Eliminar prenda?'),
+        content: Text('Código QR: $codigoQR'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -112,6 +123,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
       ),
     );
   }
+}
 
   @override
   Widget build(BuildContext context) {

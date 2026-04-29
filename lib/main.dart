@@ -52,13 +52,10 @@ void main() async {
           ),
         ),
 
-        // PRINT PROVIDER 
+        // PRINT PROVIDER
         ChangeNotifierProvider(
           create: (_) => PrintProvider(
-            PrintUseCase(
-              printer: BlePrintService(),
-              repo: UnidadRepository(),
-            ),
+            PrintUseCase(printer: BlePrintService(), repo: UnidadRepository()),
           ),
         ),
       ],
@@ -77,7 +74,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // Pantalla inicial
-      home: const InventarioScreen(),
+      home: const HomeScreen(),
 
       routes: {
         '/home': (context) => const HomeScreen(),
