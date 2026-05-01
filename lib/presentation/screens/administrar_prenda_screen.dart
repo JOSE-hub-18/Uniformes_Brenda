@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import '../../data/repositories/inventario_repository.dart';
 import '../../models/models.dart';
 import 'bottom_nav_bar.dart';
-import 'administrar_cantidad_screen.dart'; // crearás esta después
-import 'qr_screen.dart';
+import 'administrar_cantidad_screen.dart';
 
 class AdministrarPrendaScreen extends StatefulWidget {
-
   final int idInventario;
 
   const AdministrarPrendaScreen({
@@ -19,7 +17,6 @@ class AdministrarPrendaScreen extends StatefulWidget {
 }
 
 class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
-
   final _inventarioRepo = InventarioRepository();
 
   Inventario? inventario;
@@ -33,6 +30,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     _cargarDatos();
   }
 
+  // Cargar datos del inventario desde la BD
   Future<void> _cargarDatos() async {
     final data = await _inventarioRepo.obtenerPorId(widget.idInventario);
 
@@ -46,6 +44,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     });
   }
 
+  // Guardar cambios de precio en la BD
   Future<void> _guardarCambios() async {
     if (inventario == null) return;
 
@@ -59,17 +58,21 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
 
     if (!mounted) return;
 
-    Navigator.pop(context);
+    // Regresa true para indicar que hubo cambios
+    Navigator.pop(context, true);
   }
 
+  // Eliminar todo el registro de inventario
   Future<void> _eliminar() async {
     await _inventarioRepo.eliminar(widget.idInventario);
 
     if (!mounted) return;
 
-    Navigator.pop(context);
+    // Regresa true para recargar la lista en pantalla anterior
+    Navigator.pop(context, true);
   }
 
+  // Diálogo de confirmación para guardar cambios
   void _dialogoGuardar() {
     showDialog(
       context: context,
@@ -82,7 +85,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context); // Cierra el diálogo
               _guardarCambios();
             },
             child: const Text('Sí'),
@@ -92,21 +95,13 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     );
   }
 
-  Future<void> _dialogoEliminar() async {
-  // Abre el escáner QR
-  final codigoQR = await Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const QRScannerScreen()),
-  );
-
-  // Si escaneó algo
-  if (codigoQR != null && mounted) {
-    // Muestra confirmación
+  // Diálogo simple de confirmación para eliminar
+  // NO usa QR, solo confirmación directa
+  void _dialogoEliminar() {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
         title: const Text('¿Eliminar prenda?'),
-        content: Text('Código QR: $codigoQR'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -114,7 +109,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context); // Cierra el diálogo
               _eliminar();
             },
             child: const Text('Sí'),
@@ -123,17 +118,17 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
       ),
     );
   }
-}
 
   @override
   Widget build(BuildContext context) {
-
+    // Mostrar loading mientras carga datos
     if (cargando) {
       return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
+    // Si no encontró el inventario
     if (inventario == null) {
       return const Scaffold(
         body: Center(child: Text('No se encontró el registro')),
@@ -164,17 +159,17 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 20),
-
             
+            // Mostrar ID del inventario (solo lectura)
             Text('ID Inventario: ${inventario!.id}'),
             const SizedBox(height: 20),
 
+            // Mostrar talla (solo lectura)
             Text('Talla: ${inventario!.idTalla}'),
             const SizedBox(height: 20),
 
-            // PRECIO EDITABLE
+            // Campo editable para cambiar precio
             TextFormField(
               controller: _precioController,
               keyboardType: TextInputType.number,
@@ -185,7 +180,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
 
             const SizedBox(height: 30),
 
-            // BOTÓN ADMINISTRAR CANTIDAD
+            // Botón para ir a administrar cantidad (sumar/restar unidades)
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -211,7 +206,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
 
             const Spacer(),
 
-            // GUARDAR
+            // Botón verde para guardar cambios de precio
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -225,7 +220,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
 
             const SizedBox(height: 10),
 
-            // ELIMINAR
+            // Botón rojo para eliminar toda la prenda del inventario
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
