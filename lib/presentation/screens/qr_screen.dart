@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import '../../business/usecases/restar_unidades_usecase.dart';
+
+/// Resultado genérico para cualquier pantalla
+enum ResultadoScan {
+  ok,
+  error,
+  duplicado,
+}
+
+/// Modelo de feedback configurable
+class ScanFeedback {
+  final ResultadoScan resultado;
+  final String mensaje;
+
+  ScanFeedback({
+    required this.resultado,
+    required this.mensaje,
+  });
+}
 
 class QRScannerScreen extends StatefulWidget {
-  final Future<ResultadoRestarUnidad> Function(String qr) onScan;
+  /// Callback que cada pantalla define
+  final Future<ScanFeedback> Function(String qr) onScan;
+
+  /// Mostrar o no mensaje
+  final bool mostrarMensaje;
 
   const QRScannerScreen({
     super.key,
     required this.onScan,
+    this.mostrarMensaje = true,
   });
 
   @override
@@ -18,46 +40,38 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   final MobileScannerController controller = MobileScannerController();
 
   bool _procesando = false;
-  Color _feedbackColor = Colors.transparent;
   String _mensaje = "";
+  Color _colorMensaje = Colors.transparent;
 
   Future<void> _handleScan(String qr) async {
     if (_procesando) return;
 
     _procesando = true;
 
-    final resultado = await widget.onScan(qr);
+    final feedback = await widget.onScan(qr);
 
-    setState(() {
-      switch (resultado) {
-        case ResultadoRestarUnidad.ok:
-          _feedbackColor = Colors.green;
-          _mensaje = "Eliminado";
-          break;
-        case ResultadoRestarUnidad.yaDesactivada:
-          _feedbackColor = Colors.red;
-          _mensaje = "Ya eliminado";
-          break;
-        case ResultadoRestarUnidad.noPertenece:
-          _feedbackColor = Colors.red;
-          _mensaje = "No pertenece";
-          break;
-        case ResultadoRestarUnidad.noExiste:
-          _feedbackColor = Colors.red;
-          _mensaje = "No existe";
-          break;
-        default:
-          _feedbackColor = Colors.red;
-          _mensaje = "Error";
-      }
-    });
+    if (widget.mostrarMensaje) {
+      setState(() {
+        _mensaje = feedback.mensaje;
+
+        switch (feedback.resultado) {
+          case ResultadoScan.ok:
+            _colorMensaje = Colors.green;
+            break;
+          case ResultadoScan.duplicado:
+          case ResultadoScan.error:
+            _colorMensaje = Colors.red;
+            break;
+        }
+      });
+    }
 
     await Future.delayed(const Duration(milliseconds: 800));
 
-    if (mounted) {
+    if (widget.mostrarMensaje && mounted) {
       setState(() {
-        _feedbackColor = Colors.transparent;
         _mensaje = "";
+        _colorMensaje = Colors.transparent;
       });
     }
 
@@ -76,6 +90,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
       backgroundColor: Colors.black,
       body: Stack(
         children: [
+          // Cámara
           MobileScanner(
             controller: controller,
             onDetect: (capture) {
@@ -86,8 +101,9 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
             },
           ),
 
+          // Overlay
           CustomPaint(
-            painter: QRScannerOverlay(_feedbackColor),
+            painter: QRScannerOverlay(),
             child: Container(),
           ),
 
@@ -99,8 +115,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               right: 0,
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.all(12),
-                  color: _feedbackColor,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: _colorMensaje,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   child: Text(
                     _mensaje,
                     style: const TextStyle(
@@ -112,7 +132,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               ),
             ),
 
-          // panel inferior
+          // Panel inferior
           Positioned(
             bottom: 0,
             left: 0,
@@ -150,11 +170,8 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   }
 }
 
+/// Overlay sin bug negro
 class QRScannerOverlay extends CustomPainter {
-  final Color feedbackColor;
-
-  QRScannerOverlay(this.feedbackColor);
-
   @override
   void paint(Canvas canvas, Size size) {
     final scanArea = Rect.fromCenter(
@@ -172,16 +189,12 @@ class QRScannerOverlay extends CustomPainter {
         Path.combine(PathOperation.difference, background, hole);
 
     final overlayPaint = Paint()
-      ..color = feedbackColor == Colors.transparent
-          ? const Color(0x80000000)
-          : feedbackColor.withOpacity(0.3);
+      ..color = const Color(0x80000000);
 
     canvas.drawPath(finalPath, overlayPaint);
 
     final cornerPaint = Paint()
-      ..color = feedbackColor == Colors.transparent
-          ? const Color(0xFFFFC107)
-          : feedbackColor
+      ..color = const Color(0xFFFFC107)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4;
 
@@ -209,7 +222,5 @@ class QRScannerOverlay extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant QRScannerOverlay oldDelegate) {
-    return oldDelegate.feedbackColor != feedbackColor;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

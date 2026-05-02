@@ -33,7 +33,8 @@ class _AdministrarCantidadScreenState extends State<AdministrarCantidadScreen> {
     });
   }
 
-  // SUMAR (sin cambios)
+
+  // SUMAR
   void _confirmarAgregar() {
     final cantidad = int.tryParse(_controller.text) ?? 0;
 
@@ -67,22 +68,55 @@ class _AdministrarCantidadScreenState extends State<AdministrarCantidadScreen> {
     );
   }
 
-  // RESTAR (modo continuo con scanner)
+  // RESTAR 
   Future<void> _confirmarRestar() async {
-  await Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => QRScannerScreen(
-        onScan: (qr) {
-          return _restarUseCase.ejecutar(
-            qr,
-            widget.idInventario,
-          );
-        },
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => QRScannerScreen(
+          onScan: (qr) async {
+            final r = await _restarUseCase.ejecutar(
+              qr,
+              widget.idInventario,
+            );
+
+            switch (r) {
+              case ResultadoRestarUnidad.ok:
+                return ScanFeedback(
+                  resultado: ResultadoScan.ok,
+                  mensaje: "Unidad eliminada",
+                );
+
+              case ResultadoRestarUnidad.yaDesactivada:
+                return ScanFeedback(
+                  resultado: ResultadoScan.duplicado,
+                  mensaje: "Ya estaba eliminada",
+                );
+
+              case ResultadoRestarUnidad.noPertenece:
+                return ScanFeedback(
+                  resultado: ResultadoScan.error,
+                  mensaje: "No pertenece a esta prenda",
+                );
+
+              case ResultadoRestarUnidad.noExiste:
+                return ScanFeedback(
+                  resultado: ResultadoScan.error,
+                  mensaje: "No existe",
+                );
+
+              case ResultadoRestarUnidad.qrInvalido:
+              default:
+                return ScanFeedback(
+                  resultado: ResultadoScan.error,
+                  mensaje: "QR inválido",
+                );
+            }
+          },
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +147,8 @@ class _AdministrarCantidadScreenState extends State<AdministrarCantidadScreen> {
         children: [
           const SizedBox(height: 40),
 
-          // CUADRO CANTIDAD
+          // INPUT CANTIDAD
+        
           Center(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
@@ -134,6 +169,7 @@ class _AdministrarCantidadScreenState extends State<AdministrarCantidadScreen> {
           ),
 
           const SizedBox(height: 40),
+
 
           // BOTONES
           Row(
@@ -181,7 +217,7 @@ class _AdministrarCantidadScreenState extends State<AdministrarCantidadScreen> {
 
           const SizedBox(height: 60),
 
-          // MENSAJE RESULTADO
+          // MENSAJE DEL PROVIDER
           if (provider.mensaje.isNotEmpty)
             Padding(
               padding: const EdgeInsets.all(16),

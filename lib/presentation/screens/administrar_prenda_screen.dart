@@ -96,7 +96,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
   }
 
   // Diálogo simple de confirmación para eliminar
-  // NO usa QR, solo confirmación directa
+
   void _dialogoEliminar() {
     showDialog(
       context: context,

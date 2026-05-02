@@ -15,7 +15,7 @@ class QrProvider extends ChangeNotifier {
   bool get procesando => _procesando;
   String? get error => _error;
 
-  //Procesa un QR escaneado
+  //Procesar un QR escaneado
   Future<void> procesarQr(String qr) async {
     if (_procesando) return;
 
