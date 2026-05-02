@@ -26,6 +26,11 @@ class PrintUseCase {
         final ids = await repo.insertarUnidades(idInventario, 1);
         final id = ids.first;
 
+        print("ID insertado: $id");
+
+final test = await repo.obtenerPorId(id);
+print("Verificación inmediata: $test");
+
         try {
           // Imprimir
           await printer.imprimirQR(id.toString());
