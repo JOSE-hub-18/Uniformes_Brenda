@@ -4,6 +4,7 @@ import '../providers/home_provider.dart';
 import 'bottom_nav_bar.dart';
 import 'agregar_orden_screen.dart';
 import 'pedidos_pendientes_screen.dart';
+import 'administrar_ventas_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -76,7 +77,7 @@ class HomeView extends StatelessWidget {
             
             const SizedBox(height: 20),
             
-            // Botón Nuevo Pedido
+            // Botón Nueva Orden
             _HomeButton(
               label: 'Nueva Orden',
               onPressed: () {
@@ -87,6 +88,21 @@ class HomeView extends StatelessWidget {
                   ),
                 );
               }
+            ),
+
+            const SizedBox(height: 20),
+
+            // Boton: Administrar Ventas
+            _HomeButton(
+              label: 'Administrar Ventas',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AdministrarVentasScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -132,4 +148,3 @@ class _HomeButton extends StatelessWidget {
     );
   }
 }
-
