@@ -18,11 +18,10 @@ class BottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: const Icon(Icons.home_outlined, size: 32, color: Color(0xFF1452BD)), 
-                onPressed: () {}
-              ),
-              IconButton(
-                icon: const Icon(Icons.camera_alt_outlined, size: 32, color: Color(0xFF1452BD)), 
-                onPressed: () {}
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true)
+                    .pushNamedAndRemoveUntil('/home', (route) => false);
+                }
               ),
               IconButton(
                 icon: const Icon(Icons.logout, size: 32, color: Color(0xFF1452BD)), 
