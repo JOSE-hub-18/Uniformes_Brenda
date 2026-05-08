@@ -194,6 +194,10 @@ class _ItemInventario extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (_) => AdministrarPrendaScreen(
                       idInventario: idInventario,
+                      nombreEscuela: item['escuela'] ?? 'Sin Escuela',
+                      nombrePrenda: item['prenda'] ?? 'Prenda',
+                      talla: item['talla'] ?? 'Talla',
+                      cantidad: item['stock'] ?? 0,
                     ),
                   ),
                 ).then((_) {
