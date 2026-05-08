@@ -297,7 +297,7 @@ class _AdministrarCantidadScreenState
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
-                  'Escriba la cantidad en el cuadro y utilice los botones para sumar (+) o restar (-) esas unidades del inventario.',
+                  'Escriba la cantidad en el recuadro y presione sumar (+) para agregar unidades al inventario, o presione menos (-) para comenzar a restar unidades.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
