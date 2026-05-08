@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/home_provider.dart';
 import 'bottom_nav_bar.dart';
+import 'agregar_orden_screen.dart';
+import 'pedidos_pendientes_screen.dart';
+import 'administrar_ventas_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,15 +65,44 @@ class HomeView extends StatelessWidget {
             // Botón Ver Pedidos
             _HomeButton(
               label: 'Ver Pedidos',
-              onPressed: () => provider.navigateToOrders(context),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PedidosPendientesScreen(),
+                  ),
+                );
+              },
             ),
             
             const SizedBox(height: 20),
             
-            // Botón Nuevo Pedido
+            // Botón Nueva Orden
             _HomeButton(
-              label: 'Nuevo Pedido',
-              onPressed: () => provider.navigateToNewOrder(context),
+              label: 'Nueva Orden',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AgregarPedidoScreen(),
+                  ),
+                );
+              }
+            ),
+
+            const SizedBox(height: 20),
+
+            // Boton: Administrar Ventas
+            _HomeButton(
+              label: 'Administrar Ventas',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AdministrarVentasScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -116,4 +148,3 @@ class _HomeButton extends StatelessWidget {
     );
   }
 }
-
