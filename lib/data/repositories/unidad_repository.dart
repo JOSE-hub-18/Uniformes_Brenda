@@ -44,6 +44,20 @@ class UnidadRepository {
     return Unidad.fromMap(maps.first);
   }
 
+  // Verificar si una unidad pertenece a un inventario especifico
+  Future<bool> pertenece(int idUnidad, int idInventario) async {
+    final db = await _db;
+    
+    final resultado = await db.query(
+      'unidades',
+      where: 'id = ? AND id_inventario = ?',
+      whereArgs: [idUnidad, idInventario],
+    );
+    
+    return resultado.isNotEmpty;
+  }
+
+
   // Obtener unidades activas por inventario
   Future<List<Unidad>> obtenerPorInventario(int idInventario) async {
     final db = await _db;
