@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'bottom_nav_bar.dart';
+import 'revisar_venta_screen.dart';
 
 class AdministrarVentasScreen extends StatelessWidget {
   const AdministrarVentasScreen({super.key});
@@ -106,7 +107,12 @@ class AdministrarVentasScreen extends StatelessWidget {
               // Texto clickeable "Ver"
               TextButton(
                 onPressed: () {
-                  // Futura navegación para ver el detalle de la venta
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RevisarVentaScreen(),
+                    ),
+                  );
                 },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
