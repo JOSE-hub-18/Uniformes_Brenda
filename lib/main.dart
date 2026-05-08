@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // Pantalla inicial
-      home: const InventarioScreen(),
+      home: const HomeScreen(),
 
       routes: {
         '/home': (context) => const HomeScreen(),
