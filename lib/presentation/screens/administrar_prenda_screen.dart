@@ -2,24 +2,14 @@ import 'package:flutter/material.dart';
 import '../../data/repositories/inventario_repository.dart';
 import '../../models/models.dart';
 import 'bottom_nav_bar.dart';
-import 'administrar_cantidad_screen.dart'; 
+import 'administrar_cantidad_screen.dart';
 
 class AdministrarPrendaScreen extends StatefulWidget {
-
   final int idInventario;
-  // Agregamos las variables para recibir los datos de la pantalla anterior
-  final String nombreEscuela;
-  final String nombrePrenda;
-  final String talla;
-  final int cantidad;
 
   const AdministrarPrendaScreen({
     super.key,
     required this.idInventario,
-    required this.nombreEscuela,
-    required this.nombrePrenda,
-    required this.talla,
-    required this.cantidad,
   });
 
   @override
@@ -27,7 +17,6 @@ class AdministrarPrendaScreen extends StatefulWidget {
 }
 
 class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
-
   final _inventarioRepo = InventarioRepository();
 
   Inventario? inventario;
@@ -41,7 +30,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     _cargarDatos();
   }
 
-  // Ahora solo cargamos el objeto crudo para poder actualizar el precio en SQLite
+  // Cargar datos del inventario desde la BD
   Future<void> _cargarDatos() async {
     final data = await _inventarioRepo.obtenerPorId(widget.idInventario);
 
@@ -55,6 +44,7 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
     });
   }
 
+  // Guardar cambios de precio en la BD
   Future<void> _guardarCambios() async {
     if (inventario == null) return;
 
@@ -68,144 +58,77 @@ class _AdministrarPrendaScreenState extends State<AdministrarPrendaScreen> {
 
     if (!mounted) return;
 
-    Navigator.pop(context);
+    // Regresa true para indicar que hubo cambios
+    Navigator.pop(context, true);
   }
 
+  // Eliminar todo el registro de inventario
   Future<void> _eliminar() async {
     await _inventarioRepo.eliminar(widget.idInventario);
 
     if (!mounted) return;
 
-    Navigator.pop(context);
+    // Regresa true para recargar la lista en pantalla anterior
+    Navigator.pop(context, true);
   }
 
-void _dialogoGuardar() {
+  // Diálogo de confirmación para guardar cambios
+  void _dialogoGuardar() {
     showDialog(
       context: context,
-      builder: (_) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 40), // Lo hace menos ancho
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.help_outline, color: Color(0xFF1452BD), size: 48),
-              const SizedBox(height: 16),
-              const Text(
-                '¿Guardar cambios?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                '¿Está seguro que desea guardar los cambios?',
-                style: TextStyle(color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => Navigator.pop(context),
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      ),
-                      child: const Text('No', style: TextStyle(color: Colors.grey)),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        _guardarCambios();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF4CAF50),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      ),
-                      child: const Text('Sí', style: TextStyle(color: Colors.white)),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+      builder: (_) => AlertDialog(
+        title: const Text('¿Guardar cambios?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('No'),
           ),
-        ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Cierra el diálogo
+              _guardarCambios();
+            },
+            child: const Text('Sí'),
+          ),
+        ],
       ),
     );
   }
 
-void _dialogoEliminar() {
+  // Diálogo simple de confirmación para eliminar
+
+  void _dialogoEliminar() {
     showDialog(
       context: context,
-      builder: (_) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.warning_amber_rounded, color: Colors.red, size: 48),
-              const SizedBox(height: 16),
-              const Text(
-                '¿Eliminar prenda?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                'Esta acción no se puede deshacer.',
-                style: TextStyle(color: Colors.grey),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () => Navigator.pop(context),
-                      style: OutlinedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      ),
-                      child: const Text('No', style: TextStyle(color: Colors.grey)),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                        _eliminar();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                      ),
-                      child: const Text('Sí', style: TextStyle(color: Colors.white)),
-                    ),
-                  ),
-                ],
-              ),
-            ],
+      builder: (_) => AlertDialog(
+        title: const Text('¿Eliminar prenda?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('No'),
           ),
-        ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Cierra el diálogo
+              _eliminar();
+            },
+            child: const Text('Sí'),
+          ),
+        ],
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-
+    // Mostrar loading mientras carga datos
     if (cargando) {
       return const Scaffold(
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
+    // Si no encontró el inventario
     if (inventario == null) {
       return const Scaffold(
         body: Center(child: Text('No se encontró el registro')),
@@ -218,7 +141,7 @@ void _dialogoEliminar() {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.keyboard_double_arrow_left, color: Color(0xFF1452BD), size: 32),
+          icon: const Icon(Icons.keyboard_double_arrow_left, color: Color(0xFF1452BD)),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text(
@@ -236,63 +159,28 @@ void _dialogoEliminar() {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 23),
-
-            // Inyectamos las variables que recibimos de la vista de inventario
-            Text(
-              'Nombre de la escuela: ${widget.nombreEscuela}',
-              style: const TextStyle(fontSize: 16, color: Color(0xFF666666), fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(height: 24),
-
-            Text(
-              'Tipo de prenda: ${widget.nombrePrenda}',
-              style: const TextStyle(fontSize: 16, color: Color(0xFF666666), fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(height: 24),
-
-            Text(
-              'Talla: ${widget.talla}',
-              style: const TextStyle(fontSize: 16, color: Color(0xFF666666), fontWeight: FontWeight.w500),
-            ),
-            const SizedBox(height: 32),
-
-            // Precio Editable
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: TextFormField(
-                controller: _precioController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  prefixText: 'Precio: ',
-                  prefixStyle: TextStyle(color: Color(0xFF999999), fontSize: 16),
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                ),
-                style: const TextStyle(fontSize: 16, color: Color(0xFF333333)),
-              ),
-            ),
-
-            const SizedBox(height: 40),
-
-            // Inyectamos la cantidad que recibimos de la vista de inventario
-            Text(
-              'Cantidad disponible: ${widget.cantidad}',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF333333)),
-            ),
+            const SizedBox(height: 20),
             
-            const SizedBox(height: 12),
+            // Mostrar ID del inventario (solo lectura)
+            Text('ID Inventario: ${inventario!.id}'),
+            const SizedBox(height: 20),
 
+            // Mostrar talla (solo lectura)
+            Text('Talla: ${inventario!.idTalla}'),
+            const SizedBox(height: 20),
+
+            // Campo editable para cambiar precio
+            TextFormField(
+              controller: _precioController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Precio',
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // Botón para ir a administrar cantidad (sumar/restar unidades)
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -309,7 +197,6 @@ void _dialogoEliminar() {
                 child: const Text(
                   'Administrar Cantidad',
                   style: TextStyle(
-                    fontSize: 16,
                     color: Color(0xFF1452BD),
                     fontWeight: FontWeight.bold,
                   ),
@@ -317,52 +204,37 @@ void _dialogoEliminar() {
               ),
             ),
 
-            const SizedBox(height: 40),
+            const Spacer(),
 
-            // Botones
+            // Botón verde para guardar cambios de precio
             SizedBox(
               width: double.infinity,
-              height: 50,
               child: ElevatedButton(
                 onPressed: _dialogoGuardar,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4CAF50), 
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  elevation: 2,
+                  backgroundColor: Colors.green,
                 ),
-                child: const Text(
-                  'Guardar Cambios',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)
-                ),
+                child: const Text('Guardar Cambios'),
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 10),
 
+            // Botón rojo para eliminar toda la prenda del inventario
             SizedBox(
               width: double.infinity,
-              height: 50,
               child: ElevatedButton(
                 onPressed: _dialogoEliminar,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFC62828), 
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  elevation: 2,
+                  backgroundColor: Colors.red,
                 ),
-                child: const Text(
-                  'Eliminar Prenda',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)
-                ),
+                child: const Text('Eliminar Prenda'),
               ),
             ),
-            const SizedBox(height: 10),
           ],
         ),
       ),
+
       bottomNavigationBar: const BottomNavBar(),
     );
   }

@@ -52,13 +52,10 @@ void main() async {
           ),
         ),
 
-        // PRINT PROVIDER 
+        // PRINT PROVIDER
         ChangeNotifierProvider(
           create: (_) => PrintProvider(
-            PrintUseCase(
-              printer: BlePrintService(),
-              repo: UnidadRepository(),
-            ),
+            PrintUseCase(printer: BlePrintService(), repo: UnidadRepository()),
           ),
         ),
       ],

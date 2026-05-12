@@ -2,14 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 /// Resultado genérico para cualquier pantalla
-enum ResultadoScan { ok, error, duplicado }
+enum ResultadoScan {
+  ok,
+  error,
+  duplicado,
+}
 
 /// Modelo de feedback configurable
 class ScanFeedback {
   final ResultadoScan resultado;
   final String mensaje;
 
-  ScanFeedback({required this.resultado, required this.mensaje});
+  ScanFeedback({
+    required this.resultado,
+    required this.mensaje,
+  });
 }
 
 class QRScannerScreen extends StatefulWidget {
@@ -35,43 +42,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
   bool _procesando = false;
   String _mensaje = "";
   Color _colorMensaje = Colors.transparent;
-
-  // Verifica si el codigo esta dentro del área de escaneo
-  bool _isInScanArea(Barcode barcode, Size screenSize) {
-    if (barcode.corners.isEmpty) {
-      return false;
-    }
-
-    // Define el area de escaneo q
-    final scanAreaCenter = Offset(
-      screenSize.width / 2,
-      screenSize.height * 0.3,
-    );
-    final scanAreaSize = screenSize.width * 0.7;
-
-    final scanArea = Rect.fromCenter(
-      center: scanAreaCenter,
-      width: scanAreaSize,
-      height: scanAreaSize,
-    );
-
-    // Verifica si el centro del QR esta dentro del área
-    final corners = barcode.corners;
-    double centerX = 0;
-    double centerY = 0;
-
-    for (final corner in corners) {
-      centerX += corner.dx;
-      centerY += corner.dy;
-    }
-
-    centerX /= corners.length;
-    centerY /= corners.length;
-
-    final qrCenter = Offset(centerX, centerY);
-
-    return scanArea.contains(qrCenter);
-  }
 
   Future<void> _handleScan(String qr) async {
     if (_procesando) return;
@@ -116,7 +86,6 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -125,20 +94,18 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
           MobileScanner(
             controller: controller,
             onDetect: (capture) {
-              final barcodes = capture.barcodes;
-
-              for (final barcode in barcodes) {
-                if (barcode.rawValue != null &&
-                    _isInScanArea(barcode, screenSize)) {
-                  _handleScan(barcode.rawValue!);
-                  break;
-                }
+              final barcode = capture.barcodes.first.rawValue;
+              if (barcode != null) {
+                _handleScan(barcode);
               }
             },
           ),
 
           // Overlay
-          CustomPaint(painter: QRScannerOverlay(), child: Container()),
+          CustomPaint(
+            painter: QRScannerOverlay(),
+            child: Container(),
+          ),
 
           // MENSAJE
           if (_mensaje.isNotEmpty)
@@ -149,9 +116,7 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
               child: Center(
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 10,
-                  ),
+                      horizontal: 16, vertical: 10),
                   decoration: BoxDecoration(
                     color: _colorMensaje,
                     borderRadius: BorderRadius.circular(8),
@@ -173,10 +138,12 @@ class _QRScannerScreenState extends State<QRScannerScreen> {
             left: 0,
             right: 0,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
               decoration: const BoxDecoration(
                 color: Color(0xFFF5F5F5),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+                borderRadius:
+                    BorderRadius.vertical(top: Radius.circular(24)),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -218,9 +185,11 @@ class QRScannerOverlay extends CustomPainter {
 
     final hole = Path()..addRect(scanArea);
 
-    final finalPath = Path.combine(PathOperation.difference, background, hole);
+    final finalPath =
+        Path.combine(PathOperation.difference, background, hole);
 
-    final overlayPaint = Paint()..color = const Color(0x80000000);
+    final overlayPaint = Paint()
+      ..color = const Color(0x80000000);
 
     canvas.drawPath(finalPath, overlayPaint);
 
@@ -231,52 +200,25 @@ class QRScannerOverlay extends CustomPainter {
 
     const l = 30.0;
 
-   
-    canvas.drawLine(
-      Offset(scanArea.left, scanArea.top),
-      Offset(scanArea.left + l, scanArea.top),
-      cornerPaint,
-    );
-    
-    canvas.drawLine(
-      Offset(scanArea.left, scanArea.top),
-      Offset(scanArea.left, scanArea.top + l),
-      cornerPaint,
-    );
-    
-    canvas.drawLine(
-      Offset(scanArea.right, scanArea.top),
-      Offset(scanArea.right - l, scanArea.top),
-      cornerPaint,
-    );
+    canvas.drawLine(Offset(scanArea.left, scanArea.top),
+        Offset(scanArea.left + l, scanArea.top), cornerPaint);
+    canvas.drawLine(Offset(scanArea.left, scanArea.top),
+        Offset(scanArea.left, scanArea.top + l), cornerPaint);
 
-    canvas.drawLine(
-      Offset(scanArea.right, scanArea.top),
-      Offset(scanArea.right, scanArea.top + l),
-      cornerPaint,
-    );
+    canvas.drawLine(Offset(scanArea.right, scanArea.top),
+        Offset(scanArea.right - l, scanArea.top), cornerPaint);
+    canvas.drawLine(Offset(scanArea.right, scanArea.top),
+        Offset(scanArea.right, scanArea.top + l), cornerPaint);
 
-    canvas.drawLine(
-      Offset(scanArea.left, scanArea.bottom),
-      Offset(scanArea.left + l, scanArea.bottom),
-      cornerPaint,
-    );
-    canvas.drawLine(
-      Offset(scanArea.left, scanArea.bottom),
-      Offset(scanArea.left, scanArea.bottom - l),
-      cornerPaint,
-    );
+    canvas.drawLine(Offset(scanArea.left, scanArea.bottom),
+        Offset(scanArea.left + l, scanArea.bottom), cornerPaint);
+    canvas.drawLine(Offset(scanArea.left, scanArea.bottom),
+        Offset(scanArea.left, scanArea.bottom - l), cornerPaint);
 
-    canvas.drawLine(
-      Offset(scanArea.right, scanArea.bottom),
-      Offset(scanArea.right - l, scanArea.bottom),
-      cornerPaint,
-    );
-    canvas.drawLine(
-      Offset(scanArea.right, scanArea.bottom),
-      Offset(scanArea.right, scanArea.bottom - l),
-      cornerPaint,
-    );
+    canvas.drawLine(Offset(scanArea.right, scanArea.bottom),
+        Offset(scanArea.right - l, scanArea.bottom), cornerPaint);
+    canvas.drawLine(Offset(scanArea.right, scanArea.bottom),
+        Offset(scanArea.right, scanArea.bottom - l), cornerPaint);
   }
 
   @override

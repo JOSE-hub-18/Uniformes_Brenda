@@ -26,6 +26,7 @@ class PrintUseCase {
         final ids = await repo.insertarUnidades(idInventario, 1);
         final id = ids.first;
 
+
         try {
           // Imprimir
           await printer.imprimirQR(id.toString());
