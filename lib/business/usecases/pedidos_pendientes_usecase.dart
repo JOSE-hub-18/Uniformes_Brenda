@@ -8,6 +8,9 @@ import '../../data/repositories/venta_repository.dart';
 
 import '../usecases/qr_usecase.dart';
 
+/// Caso de uso que gestiona el ciclo de vida de los pedidos en estado pendiente.
+/// Cubre la consulta, el registro de unidades físicas por QR,
+/// la validación de completitud y la conversión del pedido a venta al completarse.
 class PedidoPendienteUseCase {
 
   final PedidoRepository
@@ -43,6 +46,7 @@ class PedidoPendienteUseCase {
         _qrUseCase =
             qrUseCase;
 
+  /// Retorna todos los pedidos cuyo estado sea [EstadoPedido.pendiente].
   Future<List<Pedido>>
       obtenerPedidosPendientes()
       async {
@@ -61,6 +65,8 @@ class PedidoPendienteUseCase {
         .toList();
   }
 
+  /// Retorna los detalles del pedido enriquecidos con información
+  /// de inventario, prenda, escuela y talla para su presentación en pantalla.
   Future<List<Map<String, dynamic>>>
       obtenerDetallesConInfo(
     int idPedido,
@@ -72,6 +78,7 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Retorna los detalles del pedido como modelos [DetallePedido].
   Future<List<DetallePedido>>
       obtenerDetalles(
     int idPedido,
@@ -83,6 +90,7 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Asocia una unidad física a un detalle de pedido específico.
   Future<void> registrarUnidad({
     required int idDetallePedido,
     required int idUnidad,
@@ -97,6 +105,14 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Registra una unidad física en un detalle de pedido mediante escaneo QR.
+  /// Valida que la unidad exista, esté activa y corresponda al inventario esperado.
+  /// Si la unidad ya está asignada a otro detalle del mismo u otro pedido,
+  /// retorna un mapa con los datos del conflicto para que la capa de presentación
+  /// solicite confirmación al usuario antes de forzar el movimiento.
+  /// Si [forzarMovimiento] es true, desregistra la asignación anterior y
+  /// registra la unidad en el detalle indicado sin solicitar confirmación adicional.
+  /// Retorna null si la operación se completó sin conflictos.
   Future<Map<String, dynamic>?>
       registrarQrPedido({
 
@@ -132,6 +148,8 @@ class PedidoPendienteUseCase {
       );
     }
 
+    /// Regla de negocio: la unidad escaneada debe pertenecer al mismo
+    /// inventario que el detalle del pedido que se intenta registrar.
     if (unidad.idInventario !=
         idInventarioEsperado) {
 
@@ -152,10 +170,13 @@ class PedidoPendienteUseCase {
           registroExistente['id'] ==
               idDetallePedido;
 
+      /// Si la unidad ya está asignada al mismo detalle, no se realiza ninguna acción.
       if (mismoDetalle) {
         return null;
       }
 
+      /// Si la unidad está asignada a un detalle diferente y no se fuerza el movimiento,
+      /// se retorna la información del conflicto para que el usuario decida.
       if (!forzarMovimiento) {
 
         return {
@@ -193,6 +214,8 @@ class PedidoPendienteUseCase {
     return null;
   }
 
+  /// Elimina la asociación de una unidad física a un detalle de pedido,
+  /// dejando el detalle sin unidad registrada.
   Future<void> desregistrarUnidad(
     int idDetallePedido,
   ) async {
@@ -203,6 +226,7 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Retorna true si todos los detalles del pedido tienen una unidad física registrada.
   Future<bool> pedidoCompleto(
     int idPedido,
   ) async {
@@ -213,6 +237,12 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Completa un pedido pendiente convirtiéndolo en venta.
+  /// Verifica que el pedido exista y que todos sus detalles tengan unidad registrada.
+  /// Desactiva cada unidad entregada para retirarla del stock disponible.
+  /// Si el pedido proviene de una orden con venta existente, agrega los detalles
+  /// a esa venta. Si no tiene venta de origen, crea una nueva venta completada.
+  /// Finalmente actualiza el estado del pedido a [EstadoPedido.completado].
   Future<void> completarPedido(
     int idPedido,
   ) async {
@@ -288,9 +318,8 @@ class PedidoPendienteUseCase {
       );
     }
 
-    // Si NO existe venta origen
-    // crear venta nueva
-
+    /// Si el pedido no tiene una venta de origen, se genera una nueva venta
+    /// completada con los detalles de las unidades entregadas.
     if (pedido.idVentaOrigen ==
         null) {
 
@@ -327,8 +356,8 @@ class PedidoPendienteUseCase {
 
     } else {
 
-      // Reutilizar venta existente
-
+      /// Si ya existe una venta de origen, los detalles se agregan a ella
+      /// para mantener la trazabilidad de la orden completa.
       await _ventaRepository
           .insertarDetallesVenta(
 
@@ -339,8 +368,6 @@ class PedidoPendienteUseCase {
             detallesVenta,
       );
     }
-
-    // Marcar pedido completado
 
     await _pedidoRepository
         .actualizarEstado(
@@ -353,6 +380,9 @@ class PedidoPendienteUseCase {
     );
   }
 
+  /// Elimina un detalle del pedido y, si era el último detalle restante,
+  /// elimina también el pedido completo.
+  /// Retorna true si el pedido fue eliminado por quedar sin detalles, false en caso contrario.
   Future<bool>
       eliminarDetallePedido({
     required int idPedido,
@@ -370,6 +400,8 @@ class PedidoPendienteUseCase {
       idPedido,
     );
 
+    /// Regla de negocio: un pedido sin detalles no tiene razón de existir
+    /// y se elimina automáticamente.
     if (restantes <= 0) {
 
       await _pedidoRepository

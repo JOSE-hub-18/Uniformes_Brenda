@@ -4,11 +4,14 @@ import '../../data/repositories/talla_repository.dart';
 import '../../data/repositories/escuela_repository.dart';
 import '../../models/models.dart';
 
-/// Resultado de intentar registrar una sola combinación (prenda + talla).
+/// Resultado del intento de registro de inventario para una talla específica.
+/// Indica si la operación fue exitosa e incluye el mensaje de error en caso de fallo.
 class RegistroTallaResult {
   final int idTalla;
   final String nombreTalla;
   final bool exitoso;
+
+  /// Mensaje descriptivo del error ocurrido. Null si el registro fue exitoso.
   final String? mensajeError;
 
   const RegistroTallaResult({
@@ -19,7 +22,8 @@ class RegistroTallaResult {
   });
 }
 
-/// Resultado global del usecase al finalizar el registro.
+/// Resultado global del caso de uso al finalizar el registro de todas las tallas.
+/// Agrupa los resultados individuales y expone conteos de éxitos y fallos.
 class RegistrarInventarioResult {
   final List<RegistroTallaResult> resultados;
   final int totalExitosos;
@@ -31,10 +35,17 @@ class RegistrarInventarioResult {
     required this.totalFallidos,
   });
 
+  /// Retorna true si ningún registro falló.
   bool get todosExitosos => totalFallidos == 0;
+
+  /// Retorna true si al menos un registro fue exitoso.
   bool get algunoExitoso => totalExitosos > 0;
 }
 
+/// Caso de uso que gestiona el registro de items de inventario
+/// para una combinación de prenda, escuela y una o más tallas.
+/// Valida la existencia de los catálogos involucrados y aplica
+/// la regla de unicidad por combinación antes de insertar cada registro.
 class RegistrarInventarioUseCase {
   final InventarioRepository _inventarioRepository;
   final PrendaRepository _prendaRepository;
@@ -51,14 +62,19 @@ class RegistrarInventarioUseCase {
         _tallaRepository = tallaRepository,
         _escuelaRepository = escuelaRepository;
 
-  /// Registra un ítem de inventario por cada talla seleccionada
+  /// Registra un item de inventario por cada talla seleccionada
+  /// para la combinación de prenda y escuela indicadas.
+  /// Valida que el precio sea mayor a cero, que se haya seleccionado
+  /// al menos una talla, y que tanto la prenda como la escuela existan en el sistema.
+  /// Por cada talla, verifica que no exista ya una combinación registrada
+  /// antes de intentar la inserción. Los resultados individuales se acumulan
+  /// y se retornan en un [RegistrarInventarioResult] con el resumen de la operación.
   Future<RegistrarInventarioResult> ejecutar({
     required int idPrenda,
     required double precio,
     required List<int> idsTallas,
     required int idEscuela,
   }) async {
-    // ── Validaciones generales ──────────────────────────────────────────────
 
     if (precio <= 0) {
       throw ArgumentError('El precio debe ser mayor a cero.');
@@ -68,19 +84,18 @@ class RegistrarInventarioUseCase {
       throw ArgumentError('Debes seleccionar al menos una talla.');
     }
 
-    // Verificar que la prenda existe
     final prenda = await _prendaRepository.obtenerPorId(idPrenda);
     if (prenda == null) {
       throw StateError('La prenda seleccionada no existe.');
     }
 
-    // Verificar que la escuela existe
     final escuela = await _escuelaRepository.obtenerPorId(idEscuela);
     if (escuela == null) {
       throw StateError('La escuela seleccionada no existe.');
     }
 
-    // Registro por talla
+    /// Carga previa de todas las tallas requeridas para evitar
+    /// consultas repetidas al repositorio dentro del ciclo de registro.
     final tallasMap = <int, Talla>{};
     for (final id in idsTallas) {
       final talla = await _tallaRepository.obtenerPorId(id);
@@ -101,7 +116,8 @@ class RegistrarInventarioUseCase {
         continue;
       }
 
-      // Verificar que la combinación no esté ya registrada
+      /// Regla de negocio: no se permite registrar más de un item de inventario
+      /// para la misma combinación de escuela, prenda y talla.
       final combinacionExistente =
           await _inventarioRepository.obtenerPorCombinacion(
         idEscuela: idEscuela,
@@ -121,7 +137,6 @@ class RegistrarInventarioUseCase {
         continue;
       }
 
-      // Insertar el nuevo registro de inventario
       try {
         final nuevoInventario = Inventario(
           idEscuela: idEscuela,

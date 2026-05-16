@@ -8,7 +8,12 @@ import '../../models/models.dart';
 /// Se encarga de validar credenciales y retornar el usuario autenticado.
 class LoginUseCase {
 
-
+  /// Ejecuta la lógica de autenticación contra la lista de usuarios proporcionada.
+  /// Valida que los campos no estén vacíos, busca el usuario por nombre,
+  /// verifica que esté activo y compara el hash de la contraseña ingresada
+  /// con el hash almacenado en el modelo.
+  /// Lanza una excepción genérica en cualquier caso de fallo para evitar
+  /// revelar si el error es por usuario inexistente o contraseña incorrecta.
   Future<Usuario?> execute(
       List<Usuario> usuarios,
       String username,
@@ -39,12 +44,15 @@ class LoginUseCase {
       return user;
 
     } catch (e) {
-      // Usuario no encontrado 
+      /// Cualquier excepción durante la búsqueda o validación se unifica
+      /// en un error genérico de credenciales para evitar enumeración de usuarios.
       throw Exception("Credenciales inválidas");
     }
   }
 
-  /// Genera un hash SHA-256 con salt 
+  /// Genera un hash SHA-256 de la contraseña concatenada con un salt estático.
+  /// El salt reduce la efectividad de ataques por tablas rainbow
+  /// sobre los hashes almacenados.
   String _hashPassword(String password) {
     const salt = "uniformes_brenda_salt"; 
     final bytes = utf8.encode(password + salt);

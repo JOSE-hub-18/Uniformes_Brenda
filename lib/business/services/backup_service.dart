@@ -10,14 +10,19 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../data/repositories/backup_repository.dart';
 
+/// Modelo que representa la información de un archivo de backup generado.
 class BackupInfo {
 
+  /// Ruta absoluta del archivo de backup en el sistema de archivos.
   final String ruta;
 
+  /// Nombre del archivo de backup.
   final String nombre;
 
+  /// Fecha y hora en que fue creado el archivo de backup.
   final DateTime fechaCreacion;
 
+  /// Tamaño del archivo de backup en bytes.
   final int tamanoBytes;
 
   const BackupInfo({
@@ -31,6 +36,8 @@ class BackupInfo {
     required this.tamanoBytes,
   });
 
+  /// Retorna el tamaño del archivo en formato legible (B, KB o MB)
+  /// según el rango en que se encuentre el valor en bytes.
   String get tamanoLegible {
 
     if (tamanoBytes < 1024) {
@@ -49,12 +56,18 @@ class BackupInfo {
   }
 }
 
+/// Modelo que representa el resultado de una operación de backup.
+/// Indica si la operación fue exitosa, un mensaje descriptivo
+/// y, opcionalmente, la información del backup generado.
 class BackupResult {
 
+  /// Indica si la operación de backup se completó sin errores.
   final bool exitoso;
 
+  /// Mensaje descriptivo del resultado de la operación.
   final String mensaje;
 
+  /// Información del backup generado. Null si la operación falló.
   final BackupInfo? backup;
 
   const BackupResult({
@@ -67,11 +80,17 @@ class BackupResult {
   });
 }
 
+/// Servicio que gestiona las operaciones de backup de la base de datos.
+/// Permite crear, listar, compartir y eliminar backups,
+/// además de mantener un límite máximo de archivos almacenados.
 class BackupService {
 
+  /// Repositorio que ejecuta la creación física del archivo de backup.
   final BackupRepository
       _backupRepository;
 
+  /// Número máximo de backups que se conservan en el directorio.
+  /// Los backups más antiguos se eliminan automáticamente al superar este límite.
   static const int
       _maxBackups = 5;
 
@@ -82,8 +101,10 @@ class BackupService {
   }) : _backupRepository =
             backupRepository;
 
-  // Crear backup
-
+  /// Crea un nuevo archivo de backup de la base de datos.
+  /// Una vez creado, ejecuta la limpieza de backups antiguos
+  /// para mantener el límite definido por [_maxBackups].
+  /// Retorna un [BackupResult] con el resultado de la operación.
   Future<BackupResult>
       crearBackup() async {
 
@@ -137,8 +158,11 @@ class BackupService {
     }
   }
 
-  // Crear y compartir backup
-
+  /// Crea un nuevo backup y lo comparte inmediatamente a través del sistema
+  /// de compartición nativo del dispositivo.
+  /// Si la creación falla, retorna el resultado sin intentar compartir.
+  /// Si el backup se crea pero no se puede compartir, retorna el error
+  /// manteniendo la referencia al backup generado.
   Future<BackupResult>
       crearYCompartirBackup()
       async {
@@ -198,8 +222,10 @@ class BackupService {
     }
   }
 
-  // Listar backups
-
+  /// Obtiene la lista de backups disponibles en el directorio de backups,
+  /// ordenados de más reciente a más antiguo.
+  /// Filtra únicamente archivos con el prefijo 'backup_uniformes_' y extensión '.db'.
+  /// Retorna una lista vacía si el directorio no existe o si ocurre un error.
   Future<List<BackupInfo>>
       listarBackups() async {
 
@@ -265,6 +291,8 @@ class BackupService {
         );
       }
 
+      /// Los backups se ordenan descendentemente por fecha de creación
+      /// para que el más reciente aparezca primero en la lista.
       backups.sort(
         (a, b) {
 
@@ -284,8 +312,8 @@ class BackupService {
     }
   }
 
-  // Compartir backup existente
-
+  /// Comparte un archivo de backup existente mediante el sistema nativo del dispositivo.
+  /// Verifica que el archivo exista en el sistema de archivos antes de intentar compartirlo.
   Future<BackupResult>
       compartirBackup(
     BackupInfo backup,
@@ -345,8 +373,9 @@ class BackupService {
     }
   }
 
-  // Eliminar backup
-
+  /// Elimina el archivo de backup del sistema de archivos.
+  /// Si el archivo no existe, la operación se considera exitosa
+  /// para mantener consistencia con el estado esperado.
   Future<BackupResult>
       eliminarBackup(
     BackupInfo backup,
@@ -386,8 +415,9 @@ class BackupService {
     }
   }
 
-  // Helpers privados
-
+  /// Elimina los backups más antiguos cuando se supera el límite de [_maxBackups].
+  /// La lista ya viene ordenada de más reciente a más antiguo,
+  /// por lo que se eliminan los elementos al final de la lista.
   Future<void>
       _limpiarBackupsAntiguos()
       async {
@@ -415,6 +445,8 @@ class BackupService {
     }
   }
 
+  /// Retorna el directorio donde se almacenan los backups.
+  /// Si el directorio no existe, lo crea de forma recursiva.
   Future<Directory>
       _directorioBackups()
       async {

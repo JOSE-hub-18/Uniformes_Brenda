@@ -4,6 +4,9 @@ import 'dart:convert';
 
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
+/// Contrato base para servicios de impresión.
+/// Define las operaciones mínimas requeridas para gestionar
+/// la conexión con una impresora y ejecutar impresiones.
 abstract class PrintService {
 
   Future<void> conectar();
@@ -15,34 +18,42 @@ abstract class PrintService {
   );
 }
 
+/// Implementación de [PrintService] para impresoras térmicas
+/// que se comunican mediante Bluetooth Low Energy (BLE).
+/// Utiliza el protocolo TSPL para el envío de comandos de impresión.
 class BlePrintService
     implements PrintService {
 
-  // IDs del servicio bluetooth
-  // consultar con nRF Connect
-
+  /// UUID del servicio BLE expuesto por la impresora.
+  /// Obtenido mediante herramienta nRF Connect u similar.
   static const String
       serviceUuid =
       "49535343-fe7d-4ae5-8fa9-9fafd205e455";
 
+  /// UUID de la característica BLE utilizada para el envío de datos a la impresora.
   static const String
       charUuid =
       "49535343-8841-43f4-a8d4-ecbe34729bb3";
 
-  // MAC impresora
-
+  /// Dirección MAC de la impresora térmica objetivo.
   static const String
       printerMac =
       "66:32:DA:6B:86:A7";
 
+  /// Referencia al dispositivo BLE conectado. Null si no hay conexión activa.
   BluetoothDevice?
       _device;
 
+  /// Característica BLE utilizada para escribir los datos de impresión.
+  /// Null si no se ha establecido la conexión o no se encontró la característica.
   BluetoothCharacteristic?
       _char;
 
-  // Conexion
-
+  /// Establece la conexión BLE con la impresora.
+  /// Busca el dispositivo en la lista de dispositivos vinculados por su dirección MAC,
+  /// se conecta a él y descubre los servicios y características disponibles.
+  /// Lanza una excepción si la impresora no está vinculada
+  /// o si no se encuentra el servicio o la característica requerida.
   Future<void>
       _conectar() async {
 
@@ -66,6 +77,8 @@ class BlePrintService
       );
     }
 
+    /// Busca la impresora en los dispositivos vinculados comparando
+    /// la dirección MAC de forma insensible a mayúsculas.
     for (final d
         in bonded) {
 
@@ -108,6 +121,8 @@ class BlePrintService
       autoConnect: false,
     );
 
+    /// Espera breve posterior a la conexión para permitir
+    /// que el stack BLE estabilice el enlace antes de descubrir servicios.
     await Future.delayed(
 
       const Duration(
@@ -123,6 +138,8 @@ class BlePrintService
         await _device!
             .discoverServices();
 
+    /// Itera sobre los servicios descubiertos buscando el UUID de servicio
+    /// y dentro de él la característica de escritura requerida.
     for (final s
         in services) {
 
@@ -167,6 +184,7 @@ class BlePrintService
     );
   }
 
+  /// Desconecta el dispositivo BLE actualmente conectado.
   Future<void>
       _desconectar() async {
 
@@ -194,8 +212,11 @@ class BlePrintService
     await _desconectar();
   }
 
-  // Impresion QR
-
+  /// Genera y envía un comando TSPL a la impresora para imprimir
+  /// una etiqueta con código QR e identificador en texto.
+  /// El comando se fragmenta en paquetes de 20 bytes con un retardo
+  /// de 80ms entre cada uno para respetar los límites de transferencia BLE.
+  /// Lanza una excepción si no hay una conexión activa al momento de imprimir.
   @override
   Future<void>
       imprimirQR(
@@ -214,6 +235,8 @@ class BlePrintService
       "Imprimiendo: $id",
     );
 
+    /// Comando TSPL que define el tamaño de la etiqueta (40x30mm),
+    /// el espaciado entre etiquetas, el código QR y el texto identificador.
     final tspl =
 
         "SIZE 40 mm,30 mm\r\n"
@@ -233,6 +256,9 @@ class BlePrintService
       tspl,
     );
 
+    /// Envía los bytes del comando en fragmentos de 20 bytes usando escritura
+    /// sin respuesta (writeWithoutResponse), con retardo entre fragmentos
+    /// para evitar desbordamiento en el buffer BLE de la impresora.
     for (
       int i = 0;
       i < bytes.length;

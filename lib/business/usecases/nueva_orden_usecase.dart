@@ -10,19 +10,29 @@ import '../../models/models.dart';
 
 import 'qr_usecase.dart';
 
+/// Clasifica el origen de un item dentro de una orden.
+/// [venta] indica que el item tiene una unidad física escaneada o resuelta.
+/// [pedido] indica que el item es un encargo sin unidad física asignada aún.
 enum TipoItemOrden {
   venta,
   pedido,
 }
 
+/// Representa un item individual dentro de una orden en construcción.
+/// Puede tener una unidad física asignada ([idUnidad]) si proviene de un escaneo QR,
+/// o carecer de ella si fue agregado manualmente como pedido.
 class ItemOrden {
 
+  /// Identificador del registro de inventario al que pertenece este item.
   final int idInventario;
 
+  /// Precio unitario tomado del inventario al momento de agregar el item.
   final double precioUnitario;
 
+  /// Identificador de la unidad física asignada. Null si es un pedido sin unidad resuelta.
   final int? idUnidad;
 
+  /// Indica si el item se procesará como venta directa o como pedido.
   final TipoItemOrden tipo;
 
   const ItemOrden({
@@ -32,25 +42,34 @@ class ItemOrden {
     this.idUnidad,
   });
 
+  /// Retorna true si el item tiene una unidad física asignada.
   bool get tieneUnidadResuelta =>
       idUnidad != null;
 }
 
+/// Indica el tipo de transacción que resultó de la confirmación de la orden.
 enum TipoConfirmacion {
   venta,
   pedido,
 }
 
+/// Resultado de la confirmación de una orden o sub-orden.
+/// Contiene los identificadores generados y el resumen de la transacción.
 class NuevaOrdenResult {
 
+  /// Identificador de la venta generada. Null si la confirmación fue de pedido.
   final int? idVenta;
 
+  /// Identificador del pedido generado. Null si la confirmación fue de venta.
   final int? idPedido;
 
+  /// Tipo de transacción que representa este resultado.
   final TipoConfirmacion tipo;
 
+  /// Suma total de los precios unitarios de los items procesados.
   final double total;
 
+  /// Cantidad de prendas incluidas en la transacción.
   final int totalPrendas;
 
   const NuevaOrdenResult({
@@ -62,6 +81,10 @@ class NuevaOrdenResult {
   });
 }
 
+/// Caso de uso que gestiona la creación de órdenes mixtas,
+/// combinando items de venta directa (con unidad física) y pedidos (sin unidad asignada).
+/// Coordina la validación, resolución de unidades, persistencia de ventas,
+/// pedidos y la orden raíz que los agrupa.
 class NuevaOrdenUseCase {
 
   final InventarioRepository
@@ -113,6 +136,9 @@ class NuevaOrdenUseCase {
         _qrUseCase =
             qrUseCase;
 
+  /// Agrega un item a la orden mediante escaneo de código QR.
+  /// Valida que la unidad exista, esté activa y no haya sido agregada previamente.
+  /// Retorna un [ItemOrden] de tipo [TipoItemOrden.venta] con la unidad física asignada.
   Future<ItemOrden> agregarPorQr({
     required String qr,
     required List<ItemOrden>
@@ -139,6 +165,7 @@ class NuevaOrdenUseCase {
       );
     }
 
+    /// Regla de negocio: no se permite agregar la misma unidad física más de una vez en la orden.
     final yaAgregado =
         itemsActuales.any(
       (i) =>
@@ -182,6 +209,9 @@ class NuevaOrdenUseCase {
     );
   }
 
+  /// Agrega un item a la orden de forma manual mediante el identificador de inventario.
+  /// No requiere unidad física; el item se tratará como pedido.
+  /// Retorna un [ItemOrden] de tipo [TipoItemOrden.pedido] sin unidad asignada.
   Future<ItemOrden> agregarManual({
     required int idInventario,
     required List<ItemOrden>
@@ -214,6 +244,10 @@ class NuevaOrdenUseCase {
     );
   }
 
+  /// Confirma una orden mixta que puede contener items de venta y de pedido.
+  /// Crea primero el registro de orden raíz y luego procesa cada grupo por separado.
+  /// Si existen items de venta, se procesan primero y su identificador se vincula
+  /// al pedido resultante para mantener la trazabilidad entre ambas transacciones.
   Future<void> confirmarMixto({
     required List<ItemOrden>
         items,
@@ -311,6 +345,10 @@ class NuevaOrdenUseCase {
     }
   }
 
+  /// Procesa los items de tipo venta dentro de una orden.
+  /// Resuelve las unidades físicas de los items que no las tengan asignadas,
+  /// verifica que cada unidad siga disponible, persiste la venta con sus detalles
+  /// y desactiva las unidades vendidas para retirarlas del stock disponible.
   Future<NuevaOrdenResult>
       _confirmarVenta({
     required List<ItemOrden>
@@ -330,6 +368,9 @@ class NuevaOrdenUseCase {
       items,
     );
 
+    /// Verificación de disponibilidad previa a la escritura:
+    /// garantiza que ninguna unidad haya sido vendida entre el momento
+    /// en que se agregó a la orden y la confirmación.
     for (final item
         in itemsResueltos) {
 
@@ -405,6 +446,8 @@ class NuevaOrdenUseCase {
           detalles,
     );
 
+    /// Desactivación de unidades tras la persistencia exitosa de la venta.
+    /// Una unidad desactivada no puede ser vendida ni asignada a nuevas órdenes.
     for (final item
         in itemsResueltos) {
 
@@ -431,6 +474,9 @@ class NuevaOrdenUseCase {
     );
   }
 
+  /// Procesa los items de tipo pedido dentro de una orden.
+  /// Crea el pedido en estado pendiente con sus detalles sin unidad física asignada.
+  /// Puede vincularse a una venta previa de la misma orden mediante [idVentaOrigen].
   Future<NuevaOrdenResult>
       _confirmarPedido({
 
@@ -489,6 +535,7 @@ class NuevaOrdenUseCase {
             idInventario:
                 item.idInventario,
 
+            /// La unidad física se asigna posteriormente al registrar la entrega del pedido.
             idUnidadRegistrada:
                 null,
 
@@ -528,6 +575,10 @@ class NuevaOrdenUseCase {
     );
   }
 
+  /// Asigna una unidad física a cada item que aún no tenga una.
+  /// Para items sin unidad resuelta, consulta las unidades activas del inventario
+  /// y selecciona la primera que no haya sido asignada ya en esta misma operación.
+  /// Lanza una excepción si no hay unidades disponibles para algún item.
   Future<List<ItemOrden>>
       _resolverUnidades(
     List<ItemOrden> items,
@@ -536,6 +587,8 @@ class NuevaOrdenUseCase {
     final List<ItemOrden>
         resueltos = [];
 
+    /// Conjunto de IDs de unidades ya asignadas, para evitar asignar la misma unidad
+    /// a más de un item dentro del mismo proceso de resolución.
     final Set<int>
         unidadesUsadas = items
             .where(
@@ -606,6 +659,7 @@ class NuevaOrdenUseCase {
     return resueltos;
   }
 
+  /// Calcula el total de la orden sumando el precio unitario de cada item.
   double _calcularTotal(
     List<ItemOrden> items,
   ) {

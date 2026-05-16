@@ -4,6 +4,8 @@ import '../../models/models.dart';
 
 import '../../data/repositories/venta_repository.dart';
 
+/// Caso de uso que expone las operaciones de consulta sobre el historial de ventas.
+/// Actúa como intermediario entre la capa de presentación y el repositorio de ventas.
 class VentasUseCase {
 
   final VentaRepository
@@ -15,6 +17,7 @@ class VentasUseCase {
   }) : _ventaRepository =
             ventaRepository;
 
+  /// Retorna todas las ventas registradas en el sistema.
   Future<List<Venta>>
       obtenerVentas() async {
 
@@ -22,6 +25,8 @@ class VentasUseCase {
         .obtenerTodas();
   }
 
+  /// Retorna la venta correspondiente al identificador indicado.
+  /// Retorna null si no existe ninguna venta con ese identificador.
   Future<Venta?> obtenerVenta(
     int idVenta,
   ) async {
@@ -32,6 +37,8 @@ class VentasUseCase {
     );
   }
 
+  /// Retorna los detalles de una venta enriquecidos con información
+  /// de unidad, prenda, talla y escuela para su presentación en pantalla.
   Future<List<Map<String, dynamic>>>
       obtenerDetallesVenta(
     int idVenta,
