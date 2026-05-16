@@ -9,6 +9,10 @@ import '../providers/ventas_provider.dart';
 import 'bottom_nav_bar.dart';
 import 'revisar_venta_screen.dart';
 
+/// Pantalla que lista las ventas registradas y permite filtrarlas por año y mes.
+/// 
+/// - Usa [VentasProvider] para obtener y observar el listado de ventas.
+/// - Permite navegar a la vista de revisión de una venta individual.
 class VentasScreen
     extends StatefulWidget {
 
@@ -22,11 +26,17 @@ class VentasScreen
           _VentasScreenState();
 }
 
+/// Estado de la pantalla de ventas.
+/// 
+/// - Mantiene filtros locales (_anioSeleccionado, _mesSeleccionado).
+/// - Solicita la carga inicial de ventas en `initState`.
 class _VentasScreenState
     extends State<VentasScreen> {
 
+  // Filtro de año seleccionado por el usuario.
   int? _anioSeleccionado;
 
+  // Filtro de mes seleccionado por el usuario.
   int? _mesSeleccionado;
 
   @override
@@ -34,6 +44,7 @@ class _VentasScreenState
 
     super.initState();
 
+    // Cargar ventas después del primer frame para asegurar que el contexto esté disponible.
     WidgetsBinding.instance
         .addPostFrameCallback(
       (_) {
@@ -51,14 +62,16 @@ class _VentasScreenState
     BuildContext context,
   ) {
 
+    // Observa el provider para reconstruir la UI cuando cambien las ventas o el estado.
     final provider =
         context.watch<
             VentasProvider>();
 
+    // Copia local de las ventas que será filtrada según selección del usuario.
     List ventasFiltradas =
         provider.ventas;
 
-    // Filtrar año
+    // FILTRADO: año
 
     if (_anioSeleccionado !=
         null) {
@@ -74,7 +87,7 @@ class _VentasScreenState
       ).toList();
     }
 
-    // Filtrar mes
+    // FILTRADO: mes
 
     if (_mesSeleccionado !=
         null) {
@@ -90,7 +103,7 @@ class _VentasScreenState
       ).toList();
     }
 
-    // Obtener años únicos
+    // CÁLCULO: obtener años únicos para el dropdown de filtro
 
     final anios =
         provider.ventas
@@ -132,6 +145,7 @@ class _VentasScreenState
             size: 32,
           ),
 
+          // Acción para regresar a la pantalla anterior.
           onPressed: () =>
               Navigator.pop(
             context,
@@ -157,6 +171,7 @@ class _VentasScreenState
         centerTitle: true,
       ),
 
+      // Cuerpo: muestra indicador de carga, estado vacío o lista filtrable de ventas.
       body:
           provider.cargando
 
@@ -169,6 +184,7 @@ class _VentasScreenState
                       .ventas
                       .isEmpty
 
+                  // Estado cuando no existen ventas registradas en el sistema.
                   ? const Center(
                       child: Text(
                         'No hay ventas registradas',
@@ -187,8 +203,7 @@ class _VentasScreenState
 
                         children: [
 
-                          // FILTRO AÑO
-
+                          // ── FILTRO: AÑO ───────────────────────────────────────
                           DropdownButtonFormField<int>(
 
                             value:
@@ -215,6 +230,7 @@ class _VentasScreenState
                               ),
                             ),
 
+                            // Opciones generadas a partir de los años presentes en las ventas.
                             items:
                                 anios.map(
                               (anio) {
@@ -232,6 +248,7 @@ class _VentasScreenState
                               },
                             ).toList(),
 
+                            // Al cambiar el año, actualizar el estado local y reiniciar mes si se limpia año.
                             onChanged:
                                 (value) {
 
@@ -257,8 +274,7 @@ class _VentasScreenState
                             height: 16,
                           ),
 
-                          // FILTRO MES
-
+                          // ── FILTRO: MES ───────────────────────────────────────
                           DropdownButtonFormField<int>(
 
                             value:
@@ -285,6 +301,7 @@ class _VentasScreenState
                               ),
                             ),
 
+                            // Si no hay año seleccionado, no mostrar opciones de mes.
                             items: _anioSeleccionado ==
                                     null
 
@@ -312,6 +329,7 @@ class _VentasScreenState
                                   },
                                   ),
 
+                            // Si no hay año seleccionado, deshabilitar el control.
                             onChanged:
                                 _anioSeleccionado ==
                                         null
@@ -332,6 +350,7 @@ class _VentasScreenState
                             height: 24,
                           ),
 
+                          // Si después de aplicar filtros no hay ventas, mostrar mensaje.
                           if (ventasFiltradas
                               .isEmpty)
 
@@ -344,6 +363,7 @@ class _VentasScreenState
 
                           else
 
+                            // Lista de ventas filtradas.
                             ListView.separated(
 
                               shrinkWrap: true,
@@ -407,6 +427,7 @@ class _VentasScreenState
 
                                     children: [
 
+                                      // Identificador de la venta.
                                       Text(
 
                                         'Venta #${venta.id}',
@@ -431,6 +452,7 @@ class _VentasScreenState
                                         height: 4,
                                       ),
 
+                                      // Nombre del cliente o texto por defecto si no existe.
                                       Text(
 
                                         venta.nombreCliente ??
@@ -453,6 +475,7 @@ class _VentasScreenState
                                         height: 2,
                                       ),
 
+                                      // Fecha de la venta (representación por defecto).
                                       Text(
 
                                         venta.fecha
@@ -483,6 +506,7 @@ class _VentasScreenState
 
                                         children: [
 
+                                          // Badge de estado (confirmada).
                                           Container(
 
                                             padding:
@@ -535,6 +559,7 @@ class _VentasScreenState
 
                                             children: [
 
+                                              // Monto total de la venta.
                                               Text(
 
                                                 '\$${venta.total.toStringAsFixed(2)}',
@@ -559,6 +584,7 @@ class _VentasScreenState
                                                 width: 18,
                                               ),
 
+                                              // Botón para ver detalles de la venta.
                                               TextButton(
 
                                                 onPressed:
@@ -636,11 +662,13 @@ class _VentasScreenState
                       ),
                     ),
 
+      // Barra de navegación inferior reutilizable.
       bottomNavigationBar:
           const BottomNavBar(),
     );
   }
 
+  /// Devuelve el nombre del mes en español para un número de mes (1-12).
   String _nombreMes(
     int mes,
   ) {

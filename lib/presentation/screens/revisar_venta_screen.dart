@@ -12,9 +12,15 @@ import '../providers/print_provider.dart';
 
 import 'bottom_nav_bar.dart';
 
+/// Pantalla para revisar los detalles de una venta.
+/// 
+/// - Muestra los ítems vendidos asociados a una venta específica.
+/// - Permite devolver prendas (reactivar unidad, eliminar detalle de venta),
+///   reimprimir QRs y actualizar el inventario y listados relacionados.
 class RevisarVentaScreen
     extends StatefulWidget {
 
+  /// Identificador de la venta a revisar.
   final int idVenta;
 
   const RevisarVentaScreen({
@@ -29,10 +35,15 @@ class RevisarVentaScreen
           _RevisarVentaScreenState();
 }
 
+/// Estado asociado a [RevisarVentaScreen].
+/// 
+/// - Carga los detalles de la venta en `initState`.
+/// - Proporciona la lógica para devolver prendas y actualizar vistas relacionadas.
 class _RevisarVentaScreenState
     extends State<
         RevisarVentaScreen> {
 
+  // Repositorios utilizados para operaciones de venta y unidad.
   final _ventaRepository =
       VentaRepository();
 
@@ -44,6 +55,7 @@ class _RevisarVentaScreenState
 
     super.initState();
 
+    // Carga los detalles de la venta después del primer frame.
     WidgetsBinding.instance
         .addPostFrameCallback(
       (_) {
@@ -58,6 +70,14 @@ class _RevisarVentaScreenState
     );
   }
 
+  /// Devuelve una prenda asociada a la venta.
+  /// 
+  /// Flujo:
+  /// 1. Reactiva la unidad en el repositorio de unidades.
+  /// 2. Elimina el detalle de venta correspondiente.
+  /// 3. Intenta reimprimir el QR; si falla, marca la unidad como pendiente de impresión.
+  /// 4. Recalcula si la venta quedó vacía y, en ese caso, elimina la venta completa.
+  /// 5. Recarga listados y notifica al usuario mediante SnackBars.
   Future<void>
       _devolverPrenda({
 
@@ -69,77 +89,41 @@ class _RevisarVentaScreenState
   }) async {
 
     // Reactivar unidad
-
     await _unidadRepository
         .reactivar(
       idUnidad,
     );
 
     // Eliminar detalle venta
-
     await _ventaRepository
         .eliminarDetalleVenta(
       idDetalleVenta,
     );
 
     // Reimprimir QR
-
     if (!mounted) {
       return;
     }
 
     try {
 
-  await context
-      .read<PrintProvider>()
-      .imprimirQrExistente(
-    idUnidad,
-  );
+      await context
+          .read<PrintProvider>()
+          .imprimirQrExistente(
+        idUnidad,
+      );
 
-  await _unidadRepository
-      .quitarPendienteImpresion(
-    idUnidad,
-  );
+      await _unidadRepository
+          .quitarPendienteImpresion(
+        idUnidad,
+      );
 
-} catch (_) {
+    } catch (_) {
 
-  await _unidadRepository
-      .marcarPendienteImpresion(
-    idUnidad,
-  );
-
-  if (!mounted) {
-    return;
-  }
-
-  ScaffoldMessenger.of(
-    context,
-  ).showSnackBar(
-
-    const SnackBar(
-      content: Text(
-        'No se pudo imprimir el QR.\nLa prenda quedó pendiente de impresión.',
-      ),
-    ),
-  );
-}
-
-    // Contar detalles restantes
-
-    final restantes =
-        await _ventaRepository
-            .contarDetallesVenta(
-      widget.idVenta,
-    );
-
-    // Si ya no quedan prendas
-    // eliminar venta completa
-
-    if (restantes <= 0) {
-
-      await _ventaRepository
-          .eliminar(
-        widget.idVenta,
+      // Si la impresión falla, marcar la unidad como pendiente y notificar.
+      await _unidadRepository
+          .marcarPendienteImpresion(
+        idUnidad,
       );
 
       if (!mounted) {
@@ -152,41 +136,74 @@ class _RevisarVentaScreenState
 
         const SnackBar(
           content: Text(
+            'No se pudo imprimir el QR.\nLa prenda quedó pendiente de impresión.',
+          ),
+        ),
+      );
+    }
+
+    // Contar detalles restantes
+    final restantes =
+        await _ventaRepository
+            .contarDetallesVenta(
+      widget.idVenta,
+    );
+
+    // Si ya no quedan prendas eliminar venta completa
+    if (restantes <= 0) {
+
+      await _ventaRepository
+          .eliminar(
+        widget.idVenta,
+      );
+
+      if (!mounted) {
+        return;
+      }
+
+      // Notificar eliminación completa de la venta.
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+
+        const SnackBar(
+          content: Text(
             'Venta eliminada completamente',
           ),
         ),
       );
 
+      // Recargar listado de ventas y, si aplica, el inventario de la escuela seleccionada.
       await context
-    .read<VentasProvider>()
-    .cargarVentas();
+          .read<VentasProvider>()
+          .cargarVentas();
 
-if (context
-        .read<InventarioProvider>()
-        .escuelaSeleccionada !=
-    null) {
+      if (context
+              .read<InventarioProvider>()
+              .escuelaSeleccionada !=
+          null) {
 
-  await context
-      .read<InventarioProvider>()
-      .cargarInventario(
+        await context
+            .read<InventarioProvider>()
+            .cargarInventario(
 
-    context
-        .read<InventarioProvider>()
-        .escuelaSeleccionada!
-        .idEscuela!,
-  );
-}
+          context
+              .read<InventarioProvider>()
+              .escuelaSeleccionada!
+              .idEscuela!,
+        );
+      }
 
-Navigator.pop(
-  context,
-  true,
-);
+      // Cerrar pantalla indicando que hubo un cambio.
+      Navigator.pop(
+        context,
+        true,
+      );
 
       return;
     }
 
-    // Recargar detalles
-
+    // Recargar detalles y listados relacionados
     if (!mounted) {
       return;
     }
@@ -198,29 +215,30 @@ Navigator.pop(
     );
 
     await context
-    .read<VentasProvider>()
-    .cargarVentas();
+        .read<VentasProvider>()
+        .cargarVentas();
 
-if (context
-        .read<InventarioProvider>()
-        .escuelaSeleccionada !=
-    null) {
+    if (context
+            .read<InventarioProvider>()
+            .escuelaSeleccionada !=
+        null) {
 
-  await context
-      .read<InventarioProvider>()
-      .cargarInventario(
+      await context
+          .read<InventarioProvider>()
+          .cargarInventario(
 
-    context
-        .read<InventarioProvider>()
-        .escuelaSeleccionada!
-        .idEscuela!,
-  );
-}
+        context
+            .read<InventarioProvider>()
+            .escuelaSeleccionada!
+            .idEscuela!,
+      );
+    }
 
     if (!mounted) {
       return;
     }
 
+    // Notificación de éxito al usuario.
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(
@@ -238,6 +256,7 @@ if (context
     BuildContext context,
   ) {
 
+    // Observa el provider de ventas para obtener detalles y estado de carga.
     final provider =
         context.watch<
             VentasProvider>();
@@ -245,6 +264,7 @@ if (context
     final detalles =
         provider.detalles;
 
+    // Calcula el total sumando los precios unitarios de los detalles.
     final total =
         detalles.fold<double>(
 
@@ -292,6 +312,7 @@ if (context
             size: 32,
           ),
 
+          // Acción para regresar a la pantalla anterior.
           onPressed: () =>
               Navigator.pop(
             context,
@@ -317,6 +338,7 @@ if (context
         centerTitle: true,
       ),
 
+      // Cuerpo: indicador de carga o contenido con detalles de la venta.
       body:
           provider.cargando
 
@@ -342,6 +364,7 @@ if (context
 
                     children: [
 
+                      // Encabezado con número de venta.
                       Text(
 
                         'Venta #${widget.idVenta}',
@@ -365,6 +388,7 @@ if (context
                         height: 24,
                       ),
 
+                      // Lista de detalles de la venta.
                       ListView.separated(
 
                         shrinkWrap: true,
@@ -449,6 +473,7 @@ if (context
 
                                         children: [
 
+                                          // Nombre de la prenda.
                                           Text(
 
                                             item[
@@ -474,6 +499,7 @@ if (context
                                             height: 4,
                                           ),
 
+                                          // Escuela y talla.
                                           Text(
 
                                             '${item['escuela']} • Talla ${item['talla']}',
@@ -495,6 +521,7 @@ if (context
                                             height: 4,
                                           ),
 
+                                          // Identificador de unidad.
                                           Text(
 
                                             'Unidad #${item['id_unidad']}',
@@ -515,6 +542,7 @@ if (context
                                       ),
                                     ),
 
+                                    // Precio unitario mostrado a la derecha.
                                     Text(
 
                                       '\$${(item['precio_unitario'] as num).toStringAsFixed(0)}',
@@ -541,6 +569,7 @@ if (context
                                   height: 14,
                                 ),
 
+                                // Acción de devolución: abre diálogo de confirmación y llama a _devolverPrenda.
                                 Align(
 
                                   alignment:
@@ -619,6 +648,7 @@ if (context
                                         return;
                                       }
 
+                                      // Ejecuta la devolución con los identificadores necesarios.
                                       await _devolverPrenda(
 
                                         idDetalleVenta:
@@ -678,6 +708,7 @@ if (context
                         height: 24,
                       ),
 
+                      // Resumen de prendas y total.
                       Container(
 
                         padding:
@@ -813,6 +844,7 @@ if (context
                   ),
                 ),
 
+      // Barra de navegación inferior reutilizable.
       bottomNavigationBar:
           const BottomNavBar(),
     );

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-/// Resultado genérico para cualquier pantalla
-
+/// Resultado genérico para cualquier pantalla de escaneo.
+/// 
+/// - `ok`: escaneo exitoso.
+/// - `error`: ocurrió un error al procesar el escaneo.
+/// - `duplicado`: el código ya fue procesado previamente.
 enum ResultadoScan {
 
   ok,
@@ -13,16 +16,19 @@ enum ResultadoScan {
   duplicado,
 }
 
-/// Modelo de feedback configurable
-
+/// Modelo de feedback configurable que encapsula el resultado del escaneo
+/// y un mensaje legible para mostrar al usuario.
 class ScanFeedback {
 
+  /// Resultado del escaneo (ok, error, duplicado).
   final ResultadoScan
       resultado;
 
+  /// Mensaje descriptivo asociado al resultado.
   final String
       mensaje;
 
+  /// Constructor que obliga a proporcionar resultado y mensaje.
   ScanFeedback({
 
     required this.resultado,
@@ -31,17 +37,19 @@ class ScanFeedback {
   });
 }
 
+/// Pantalla que implementa un escáner de códigos QR usando `mobile_scanner`.
+/// 
+/// - Recibe un callback `onScan` que procesa el valor del QR y devuelve un `ScanFeedback`.
+/// - `mostrarMensaje` controla si se muestra un mensaje visual tras el escaneo.
 class QRScannerScreen
     extends StatefulWidget {
 
-  /// Callback que cada pantalla define
-
+  /// Callback que cada pantalla define para procesar el QR.
   final Future<ScanFeedback>
       Function(String qr)
           onScan;
 
-  /// Mostrar o no mensaje
-
+  /// Indica si se debe mostrar el mensaje de feedback en pantalla.
   final bool
       mostrarMensaje;
 
@@ -62,18 +70,27 @@ class QRScannerScreen
           _QRScannerScreenState();
 }
 
+/// Estado asociado a [QRScannerScreen].
+/// 
+/// - Controla el `MobileScannerController`.
+/// - Gestiona la lógica de procesamiento para evitar reentradas.
+/// - Muestra mensajes temporales de resultado con color según el tipo.
 class _QRScannerScreenState
     extends State<
         QRScannerScreen> {
 
+  /// Controlador del paquete `mobile_scanner` para manejar la cámara.
   late final MobileScannerController
       controller;
 
+  /// Indicador para evitar procesar múltiples códigos simultáneamente.
   bool _procesando =
       false;
 
+  /// Mensaje temporal que se muestra en pantalla tras el escaneo.
   String _mensaje = "";
 
+  /// Color del contenedor del mensaje (verde/rojo/transparente).
   Color _colorMensaje =
       Colors.transparent;
 
@@ -82,10 +99,16 @@ class _QRScannerScreenState
 
     super.initState();
 
+    // Inicializa el controlador de la cámara.
     controller =
         MobileScannerController();
   }
 
+  /// Maneja el resultado del escaneo.
+  /// 
+  /// - Evita reentradas usando `_procesando`.
+  /// - Llama al callback `widget.onScan` y actualiza el mensaje y color según el feedback.
+  /// - Espera un breve lapso para mostrar el mensaje y luego lo oculta.
   Future<void>
       _handleScan(
     String qr,
@@ -135,6 +158,7 @@ class _QRScannerScreenState
       });
     }
 
+    // Mantiene el mensaje visible un breve tiempo para que el usuario lo perciba.
     await Future.delayed(
 
       const Duration(
@@ -161,6 +185,7 @@ class _QRScannerScreenState
   @override
   void dispose() {
 
+    // Detiene la cámara y libera recursos del controlador.
     controller.stop();
 
     controller.dispose();
@@ -182,8 +207,7 @@ class _QRScannerScreenState
 
         children: [
 
-          // Cámara
-
+          // Cámara: widget que provee la vista previa y detección de códigos.
           MobileScanner(
 
             controller:
@@ -192,6 +216,7 @@ class _QRScannerScreenState
             fit:
                 BoxFit.cover,
 
+            // Callback que se ejecuta cuando se detectan códigos.
             onDetect:
                 (capture) {
 
@@ -215,8 +240,7 @@ class _QRScannerScreenState
             },
           ),
 
-          // Overlay visual
-
+          // Overlay visual que oscurece el área fuera del recuadro de escaneo.
           CustomPaint(
 
             painter:
@@ -226,8 +250,7 @@ class _QRScannerScreenState
                 Container(),
           ),
 
-          // MENSAJE
-
+          // MENSAJE: muestra feedback temporal en la parte superior si existe.
           if (_mensaje
               .isNotEmpty)
 
@@ -285,8 +308,7 @@ class _QRScannerScreenState
               ),
             ),
 
-          // Panel inferior
-
+          // Panel inferior con instrucciones y botón cancelar.
           Positioned(
 
             bottom: 0,
@@ -333,6 +355,7 @@ class _QRScannerScreenState
 
                 children: [
 
+                  // Instrucción para el usuario.
                   const Text(
 
                     'Apunte la cámara hacia el código QR',
@@ -352,6 +375,7 @@ class _QRScannerScreenState
                     child:
                         ElevatedButton(
 
+                      // Acción del botón cancelar: detiene la cámara y cierra la pantalla.
                       onPressed:
                           () async {
 
@@ -383,8 +407,10 @@ class _QRScannerScreenState
   }
 }
 
-/// Overlay visual del scanner
-
+/// Overlay visual del scanner que dibuja:
+/// - una máscara oscura sobre la pantalla,
+/// - un recuadro central transparente donde se espera el QR,
+/// - esquinas resaltadas en color para guiar al usuario.
 class QRScannerOverlay
     extends CustomPainter {
 
@@ -394,6 +420,7 @@ class QRScannerOverlay
     Size size,
   ) {
 
+    // Área de escaneo centrada en la parte superior-media de la pantalla.
     final scanArea =
         Rect.fromCenter(
 
@@ -411,6 +438,7 @@ class QRScannerOverlay
           size.width * 0.7,
     );
 
+    // Path que representa todo el fondo.
     final background =
         Path()
 
@@ -428,12 +456,14 @@ class QRScannerOverlay
             ),
           );
 
+    // Path que representa el "agujero" transparente donde se ve la cámara.
     final hole = Path()
 
       ..addRect(
         scanArea,
       );
 
+    // Combina los paths para obtener la máscara con el hueco central.
     final finalPath =
         Path.combine(
 
@@ -453,11 +483,13 @@ class QRScannerOverlay
             0x80000000,
           );
 
+    // Dibuja la máscara oscura.
     canvas.drawPath(
       finalPath,
       overlayPaint,
     );
 
+    // Color para las esquinas del recuadro de escaneo.
     final cornerPaint =
         Paint()
 
@@ -474,8 +506,7 @@ class QRScannerOverlay
 
     const l = 30.0;
 
-    // Superior izquierda
-
+    // Superior izquierda: dibuja dos líneas formando la esquina.
     canvas.drawLine(
 
       Offset(
@@ -507,7 +538,6 @@ class QRScannerOverlay
     );
 
     // Superior derecha
-
     canvas.drawLine(
 
       Offset(
@@ -539,7 +569,6 @@ class QRScannerOverlay
     );
 
     // Inferior izquierda
-
     canvas.drawLine(
 
       Offset(
@@ -571,7 +600,6 @@ class QRScannerOverlay
     );
 
     // Inferior derecha
-
     canvas.drawLine(
 
       Offset(
@@ -610,6 +638,7 @@ class QRScannerOverlay
         oldDelegate,
   ) {
 
+    // El overlay es estático; no es necesario repintar.
     return false;
   }
 }
