@@ -7,13 +7,22 @@ import '../../data/repositories/unidad_repository.dart';
 import '../providers/qr_pendientes_provider.dart';
 import '../providers/print_provider.dart';
 
+/// Pantalla que muestra las unidades cuyo QR está pendiente de impresión.
+/// 
+/// - Componente de tipo [StatelessWidget] que crea y provee un [QrPendientesProvider].
+/// - El proveedor carga los pendientes al inicializarse mediante `cargarPendientes()`.
 class QrPendientesScreen
     extends StatelessWidget {
 
+  /// Constructor por defecto.
   const QrPendientesScreen({
     super.key,
   });
 
+  /// Construye el árbol de widgets y envuelve la vista en un [ChangeNotifierProvider].
+  /// 
+  /// - Se inyecta una instancia de [QrPendientesProvider] con su repositorio.
+  /// - Se llama a `cargarPendientes()` inmediatamente para iniciar la carga de datos.
   @override
   Widget build(
     BuildContext context,
@@ -35,6 +44,10 @@ class QrPendientesScreen
   }
 }
 
+/// Vista interna que consume [QrPendientesProvider] y renderiza la UI.
+/// 
+/// - Muestra estados: cargando, vacío o lista de pendientes.
+/// - Permite reimprimir QRs y actualizar el estado en el repositorio.
 class _QrPendientesView
     extends StatelessWidget {
 
@@ -45,12 +58,14 @@ class _QrPendientesView
     BuildContext context,
   ) {
 
+    // Observa el proveedor para reconstruir la vista cuando cambian los pendientes.
     final provider =
         context.watch<
             QrPendientesProvider>();
 
     return Scaffold(
 
+      // Color de fondo consistente con el resto de pantallas.
       backgroundColor:
           const Color(
         0xFFF5FAFF,
@@ -58,6 +73,7 @@ class _QrPendientesView
 
       appBar: AppBar(
 
+        // AppBar transparente sin elevación para diseño plano.
         backgroundColor:
             Colors.transparent,
 
@@ -78,6 +94,7 @@ class _QrPendientesView
             size: 32,
           ),
 
+          // Acción para regresar a la pantalla anterior.
           onPressed: () {
 
             Navigator.pop(
@@ -105,6 +122,7 @@ class _QrPendientesView
         centerTitle: true,
       ),
 
+      // Cuerpo: muestra un indicador de carga, mensaje vacío o la lista de pendientes.
       body:
           provider.cargando
 
@@ -189,6 +207,7 @@ class _QrPendientesView
 
                             children: [
 
+                              // Nombre de la escuela asociada al QR pendiente.
                               Text(
 
                                 item[
@@ -209,6 +228,7 @@ class _QrPendientesView
                                 height: 6,
                               ),
 
+                              // Nombre de la prenda.
                               Text(
                                 item['prenda'],
                               ),
@@ -217,6 +237,7 @@ class _QrPendientesView
                                 height: 4,
                               ),
 
+                              // Talla de la unidad.
                               Text(
                                 'Talla ${item['talla']}',
                               ),
@@ -233,11 +254,13 @@ class _QrPendientesView
                                 child:
                                     ElevatedButton.icon(
 
+                                  // Acción principal: reimprimir el QR y actualizar el estado.
                                   onPressed:
                                       () async {
 
                                     try {
 
+                                      // Llama al PrintProvider para imprimir el QR existente.
                                       await context
                                           .read<PrintProvider>()
                                           .imprimirQrExistente(
@@ -245,20 +268,24 @@ class _QrPendientesView
                                         item['id_unidad'],
                                       );
 
+                                      // Marca la unidad como ya impresa en el repositorio.
                                       await UnidadRepository()
                                           .quitarPendienteImpresion(
 
                                         item['id_unidad'],
                                       );
 
+                                      // Recarga la lista de pendientes desde el proveedor.
                                       await provider
                                           .cargarPendientes();
 
+                                      // Verifica que el contexto siga montado antes de mostrar UI.
                                       if (!context
                                           .mounted) {
                                         return;
                                       }
 
+                                      // Notificación de éxito al usuario.
                                       ScaffoldMessenger.of(
                                         context,
                                       ).showSnackBar(
@@ -274,6 +301,7 @@ class _QrPendientesView
 
                                     } catch (_) {
 
+                                      // En caso de error, verificar contexto y notificar.
                                       if (!context
                                           .mounted) {
                                         return;
@@ -294,6 +322,7 @@ class _QrPendientesView
                                     }
                                   },
 
+                                  // Estilos del botón de reimpresión.
                                   style:
                                       ElevatedButton.styleFrom(
 

@@ -7,6 +7,11 @@ import '../../data/repositories/reporte_repository.dart';
 import '../../data/repositories/escuela_repository.dart';
 import '../providers/reportes_provider.dart';
 
+/// Pantalla principal de reportes.
+/// 
+/// - Provee un [ReportesProvider] que encapsula la lógica de obtención y
+///   filtrado de datos para los reportes.
+/// - Inicializa la carga de datos mediante `ReportesProvider.inicializar()`.
 class ReportesScreen extends StatelessWidget {
 
   const ReportesScreen({super.key});
@@ -24,10 +29,12 @@ class ReportesScreen extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // VISTA PRINCIPAL
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Vista que consume [ReportesProvider] y renderiza la UI de reportes.
+/// 
+/// - Muestra filtros (año, mes, escuela), resumen de métricas y rankings.
+/// - Gestiona estados: cargando, vacío o con datos.
 class _ReportesView extends StatelessWidget {
 
   const _ReportesView();
@@ -35,6 +42,7 @@ class _ReportesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // Observa el provider para reconstruir la vista cuando cambian los datos.
     final provider = context.watch<ReportesProvider>();
 
     return Scaffold(
@@ -57,6 +65,7 @@ class _ReportesView extends StatelessWidget {
         ),
       ),
 
+      // Si el provider está cargando, mostrar indicador; en caso contrario renderizar contenido.
       body: provider.cargando
           ? const Center(child: CircularProgressIndicator(color: Color(0xFF1452BD)))
           : SingleChildScrollView(
@@ -96,6 +105,7 @@ class _ReportesView extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // ── Escuelas (solo si no hay escuela filtrada) ───────────
+                  // Si no se ha seleccionado una escuela, mostrar ranking por escuela.
                   if (provider.idEscuelaSeleccionada == null) ...[
                     _SectionTitle(titulo: 'Ventas por escuela'),
                     const SizedBox(height: 10),
@@ -121,6 +131,7 @@ class _ReportesView extends StatelessWidget {
                   ],
 
                   // ── Prendas ──────────────────────────────────────────────
+                  // Muestra ranking de prendas; si hay escuela seleccionada, ajusta el título.
                   _SectionTitle(
                     titulo: provider.idEscuelaSeleccionada == null
                         ? 'Ventas por tipo de prenda'
@@ -154,10 +165,12 @@ class _ReportesView extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // FILTROS
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Sección de filtros que permite seleccionar año, mes y escuela.
+/// 
+/// - Usa valores calculados localmente (últimos 5 años) y listas del provider.
+/// - Al cambiar filtros se delega la acción al provider para recargar datos.
 class _FiltrosSection extends StatelessWidget {
 
   final ReportesProvider provider;
@@ -185,6 +198,7 @@ class _FiltrosSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    // Genera lista de años (año actual y 4 anteriores).
     final anios = List.generate(5, (i) => DateTime.now().year - i);
 
     const meses = [
@@ -216,6 +230,8 @@ class _FiltrosSection extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: DropdownButtonFormField<int?>(
+
+                // Mes: permite seleccionar "Todo el año" (null) o un mes específico.
                 value: provider.month,
                 decoration: _inputDecoration.copyWith(labelText: 'Mes'),
                 items: List.generate(13, (i) => DropdownMenuItem(
@@ -252,10 +268,9 @@ class _FiltrosSection extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // TÍTULO DE SECCIÓN
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Widget simple para mostrar títulos de sección en mayúsculas y estilo pequeño.
 class _SectionTitle extends StatelessWidget {
 
   final String titulo;
@@ -276,10 +291,9 @@ class _SectionTitle extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // STAT CARD (resumen superior)
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Tarjeta que muestra una métrica resumida (label, valor e ícono).
 class _StatCard extends StatelessWidget {
 
   final String label;
@@ -341,10 +355,9 @@ class _StatCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // RANKING CARD + ITEM
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Modelo simple que representa un elemento del ranking.
 class _RankingItem {
   final String nombre;
   final double monto;
@@ -359,6 +372,9 @@ class _RankingItem {
   });
 }
 
+/// Tarjeta que renderiza una lista de [_RankingItem] con barra de progreso y cifras.
+/// 
+/// - `esDinero` controla el formato del valor mostrado (moneda o entero).
 class _RankingCard extends StatelessWidget {
 
   final List<_RankingItem> items;
@@ -483,10 +499,9 @@ class _RankingCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // EMPTY STATE
-// ─────────────────────────────────────────────────────────────────────────────
 
+/// Widget que muestra un estado vacío con icono y mensaje.
 class _EmptyState extends StatelessWidget {
 
   final String mensaje;

@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart'; // Paquete para manejar estados globales
 import '../../business/providers/auth_provider.dart'; // El provider que creamos
 
-
+/// Pantalla de inicio de sesión con animaciones de entrada y validación.
+/// 
+/// - Implementa un formulario simple con campos de usuario y contraseña.
+/// - Usa [AuthProvider] para realizar la autenticación y mostrar estado de carga/errores.
+/// - Incluye animaciones de entrada (fade + slide) controladas por un [AnimationController].
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -10,6 +14,11 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+/// Estado asociado a [LoginScreen].
+/// 
+/// - Mantiene controladores de texto para los campos de entrada.
+/// - Controla la visibilidad de la contraseña y las animaciones de entrada.
+/// - Gestiona la interacción con [AuthProvider] para realizar el login.
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
   // Controladores para obtener el texto de los campos
@@ -55,7 +64,12 @@ class _LoginScreenState extends State<LoginScreen>
     super.dispose();
   }
 
-  // Método que se ejecuta al presionar "Entrar"
+  /// Método que se ejecuta al presionar "Entrar".
+  /// 
+  /// - Obtiene el [AuthProvider] sin suscribirse a cambios.
+  /// - Llama a `login` del proveedor con los valores de los controladores.
+  /// - Si la autenticación es exitosa navega a la ruta '/home' pasando el usuario.
+  /// - Maneja el estado `mounted` antes de realizar navegación para evitar errores.
   Future<void> _handleLogin() async {
     // Obtener el AuthProvider sin escuchar cambios (listen: false)
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
@@ -213,7 +227,11 @@ class _LoginScreenState extends State<LoginScreen>
   }
 }
 
-// Widget reutilizable para campos de texto
+/// Widget reutilizable para campos de texto.
+/// 
+/// - Soporta campos normales y de contraseña con toggle de visibilidad.
+/// - Recibe un [TextEditingController] para exponer el valor al estado padre.
+/// - Aplica estilos y bordes consistentes con el diseño de la aplicación.
 class _Campo extends StatelessWidget {
   final TextEditingController controller; // Controlador del texto
   final String hint; // Texto placeholder
@@ -222,6 +240,7 @@ class _Campo extends StatelessWidget {
   final bool verPassword; // Si la contraseña está visible
   final VoidCallback? onTogglePassword; // Función para mostrar/ocultar contraseña
 
+  /// Constructor del campo reutilizable.
   const _Campo({
     required this.controller,
     required this.hint,

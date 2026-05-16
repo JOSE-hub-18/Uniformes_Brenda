@@ -7,11 +7,17 @@ import '../../business/providers/inventario_provider.dart';
 import '../providers/pedidos_pendientes_provider.dart';
 import 'qr_screen.dart';
 
+/// Pantalla encargada de mostrar el detalle de un pedido pendiente,
+/// permitiendo registrar unidades mediante códigos QR,
+/// eliminar prendas del pedido y completar el pedido cuando
+/// todas las unidades han sido registradas.
 class RevisarPedidoScreen
     extends StatefulWidget {
 
+  /// Identificador único del pedido que será consultado.
   final int idPedido;
 
+  /// Constructor principal de la pantalla de revisión de pedidos.
   const RevisarPedidoScreen({
     super.key,
     required this.idPedido,
@@ -24,6 +30,11 @@ class RevisarPedidoScreen
           _RevisarPedidoScreenState();
 }
 
+/// Estado asociado a la pantalla RevisarPedidoScreen.
+///
+/// Gestiona la carga de detalles del pedido,
+/// el registro de códigos QR y las acciones
+/// relacionadas con el flujo operativo del pedido.
 class _RevisarPedidoScreenState
     extends State<
         RevisarPedidoScreen> {
@@ -33,10 +44,15 @@ class _RevisarPedidoScreenState
 
     super.initState();
 
+    // Ejecuta la carga del detalle del pedido
+    // una vez que el primer frame de la interfaz
+    // ha sido renderizado completamente.
     WidgetsBinding.instance
         .addPostFrameCallback(
       (_) async {
 
+        // Solicita al provider la información
+        // detallada del pedido seleccionado.
         await context
             .read<
                 PedidosPendientesProvider>()
@@ -52,10 +68,13 @@ class _RevisarPedidoScreenState
     BuildContext context,
   ) {
 
+    // Obtiene la instancia observable del provider
+    // para reconstruir la interfaz cuando existan cambios.
     final provider =
         context.watch<
             PedidosPendientesProvider>();
 
+    // Lista de prendas o detalles asociados al pedido.
     final detalles =
         provider.detalles;
 
@@ -85,6 +104,7 @@ class _RevisarPedidoScreenState
             size: 32,
           ),
 
+          // Retorna a la pantalla anterior.
           onPressed: () =>
               Navigator.pop(
             context,
@@ -124,6 +144,8 @@ class _RevisarPedidoScreenState
               itemCount:
                   detalles.length,
 
+              // Separador visual entre elementos
+              // de la lista de detalles.
               separatorBuilder:
                   (_, __) =>
                       const SizedBox(
@@ -133,9 +155,13 @@ class _RevisarPedidoScreenState
               itemBuilder:
                   (context, index) {
 
+                // Información correspondiente
+                // al detalle actual del pedido.
                 final detalle =
                     detalles[index];
 
+                // Determina si la prenda ya cuenta
+                // con una unidad registrada mediante QR.
                 final registrado =
                     detalle[
                             'registrado'] ==
@@ -198,6 +224,7 @@ class _RevisarPedidoScreenState
 
                               children: [
 
+                                // Nombre de la prenda solicitada.
                                 Text(
                                   detalle[
                                       'prenda'],
@@ -217,6 +244,7 @@ class _RevisarPedidoScreenState
                                   height: 4,
                                 ),
 
+                                // Escuela asociada al pedido.
                                 Text(
                                   detalle[
                                       'escuela'],
@@ -233,6 +261,7 @@ class _RevisarPedidoScreenState
                                   height: 2,
                                 ),
 
+                                // Talla solicitada de la prenda.
                                 Text(
                                   'Talla ${detalle['talla']}',
 
@@ -247,6 +276,8 @@ class _RevisarPedidoScreenState
                             ),
                           ),
 
+                          // Bloquea interacciones mientras exista
+                          // una operación de carga en proceso.
                           AbsorbPointer(
 
                             absorbing:
@@ -259,12 +290,16 @@ class _RevisarPedidoScreenState
                               onTap:
                                   () async {
 
+                                // Verifica si la prenda actual
+                                // es el último detalle del pedido.
                                 final ultimo =
                                     detalles.length ==
                                         1;
 
                                 if (ultimo) {
 
+                                  // Solicita confirmación antes de eliminar
+                                  // completamente el pedido.
                                   final confirmar =
                                       await showDialog<bool>(
 
@@ -326,12 +361,15 @@ class _RevisarPedidoScreenState
                                     },
                                   );
 
+                                  // Cancela la operación si el usuario
+                                  // no confirmó la eliminación.
                                   if (confirmar !=
                                       true) {
                                     return;
                                   }
                                 }
 
+                                // Elimina el detalle del pedido seleccionado.
                                 final eliminado =
                                     await provider
                                         .eliminarDetallePedido(
@@ -343,11 +381,16 @@ class _RevisarPedidoScreenState
                                       detalle['id'],
                                 );
 
+                                // Verifica que el contexto
+                                // siga montado antes de interactuar
+                                // con la interfaz.
                                 if (!context
                                     .mounted) {
                                   return;
                                 }
 
+                                // Si el pedido completo fue eliminado,
+                                // se retorna a la pantalla anterior.
                                 if (eliminado) {
 
                                   ScaffoldMessenger
@@ -371,6 +414,8 @@ class _RevisarPedidoScreenState
                                   return;
                                 }
 
+                                // Mensaje mostrado cuando únicamente
+                                // se elimina una prenda específica.
                                 ScaffoldMessenger
                                         .of(
                                   context,
@@ -423,6 +468,8 @@ class _RevisarPedidoScreenState
                         height: 16,
                       ),
 
+                      // Se muestra únicamente si la prenda
+                      // aún no tiene una unidad registrada.
                       if (!registrado)
 
                         SizedBox(
@@ -436,6 +483,8 @@ class _RevisarPedidoScreenState
                             onPressed:
                                 () async {
 
+                              // Navega hacia la pantalla
+                              // encargada del escaneo QR.
                               await Navigator.push(
 
                                 context,
@@ -449,12 +498,16 @@ class _RevisarPedidoScreenState
                                     mostrarMensaje:
                                         false,
 
+                                    // Callback ejecutado al detectar
+                                    // un código QR válido.
                                     onScan:
                                         (String qr)
                                             async {
 
                                       try {
 
+                                        // Intenta registrar el QR
+                                        // para el detalle seleccionado.
                                         final conflicto =
                                             await provider
                                                 .registrarQrPedido(
@@ -473,6 +526,9 @@ class _RevisarPedidoScreenState
                                           qr: qr,
                                         );
 
+                                        // Regla de negocio:
+                                        // un QR únicamente puede pertenecer
+                                        // a un pedido activo a la vez.
                                         if (conflicto !=
                                                 null &&
                                             conflicto[
@@ -491,6 +547,9 @@ class _RevisarPedidoScreenState
                                             );
                                           }
 
+                                          // Solicita confirmación para mover
+                                          // la unidad registrada desde
+                                          // otro pedido al pedido actual.
                                           final mover =
                                               await showDialog<bool>(
 
@@ -552,6 +611,8 @@ class _RevisarPedidoScreenState
                                             },
                                           );
 
+                                          // Cancela el movimiento
+                                          // si el usuario no confirma.
                                           if (mover !=
                                               true) {
 
@@ -564,6 +625,8 @@ class _RevisarPedidoScreenState
                                             );
                                           }
 
+                                          // Fuerza la reasignación del QR
+                                          // al pedido actual.
                                           await provider
                                               .registrarQrPedido(
 
@@ -597,6 +660,9 @@ class _RevisarPedidoScreenState
                                           );
                                         }
 
+                                        // Retorna automáticamente
+                                        // a la pantalla anterior
+                                        // tras un registro exitoso.
                                         Navigator.pop(
                                           context,
                                         );
@@ -612,6 +678,9 @@ class _RevisarPedidoScreenState
 
                                       } catch (e) {
 
+                                        // Retorna información del error
+                                        // ocurrido durante el proceso
+                                        // de registro del QR.
                                         return ScanFeedback(
 
                                           resultado:
@@ -670,6 +739,8 @@ class _RevisarPedidoScreenState
                           ),
                         ),
 
+                      // Sección visible únicamente
+                      // cuando la prenda ya fue registrada.
                       if (registrado)
 
                         Column(
@@ -680,6 +751,7 @@ class _RevisarPedidoScreenState
 
                           children: [
 
+                            // Indicador visual de registro exitoso.
                             Container(
 
                               padding:
@@ -758,6 +830,8 @@ class _RevisarPedidoScreenState
                                 onPressed:
                                     () async {
 
+                                  // Solicita confirmación antes
+                                  // de eliminar el registro QR.
                                   final confirmar =
                                       await showDialog<bool>(
 
@@ -819,11 +893,15 @@ class _RevisarPedidoScreenState
                                     },
                                   );
 
+                                  // Cancela la operación
+                                  // si el usuario no confirma.
                                   if (confirmar !=
                                       true) {
                                     return;
                                   }
 
+                                  // Elimina la relación
+                                  // entre el QR y el detalle del pedido.
                                   await provider
                                       .desregistrarUnidad(
 
@@ -881,6 +959,8 @@ class _RevisarPedidoScreenState
             ),
           ),
 
+          // Contenedor inferior con la acción
+          // principal para completar el pedido.
           Container(
 
             padding:
@@ -903,6 +983,9 @@ class _RevisarPedidoScreenState
 
                 onPressed:
 
+                    // Regla de negocio:
+                    // el pedido únicamente puede completarse
+                    // cuando todos los detalles han sido registrados.
                     detalles.isNotEmpty &&
                             detalles.every(
                               (d) =>
@@ -914,6 +997,7 @@ class _RevisarPedidoScreenState
 
                             try {
 
+                              // Marca el pedido como completado.
                               await provider
                                   .completarPedido(
                                 widget.idPedido,
@@ -924,6 +1008,9 @@ class _RevisarPedidoScreenState
                                 return;
                               }
 
+                              // Recarga el inventario de la escuela
+                              // actualmente seleccionada para reflejar
+                              // los cambios posteriores al completado.
                               if (context
         .read<InventarioProvider>()
         .escuelaSeleccionada !=
@@ -957,6 +1044,8 @@ ScaffoldMessenger
   ),
 );
 
+// Retorna indicando que existieron cambios
+// sobre el pedido actual.
 Navigator.pop(
   context,
   true,
@@ -964,6 +1053,8 @@ Navigator.pop(
 
                             } catch (e) {
 
+                              // Manejo de errores durante
+                              // el proceso de completado.
                               if (!context
                                   .mounted) {
                                 return;

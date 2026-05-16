@@ -11,9 +11,16 @@ import 'nueva_orden_screen.dart';
 import 'revisar_pedido_screen.dart';
 import 'bottom_nav_bar.dart';
 
+/// Pantalla que muestra la lista de pedidos pendientes.
+/// 
+/// - Componente de tipo [StatefulWidget] que consulta al proveedor
+///   [PedidosPendientesProvider] para obtener los pedidos pendientes.
+/// - Permite crear un nuevo pedido y revisar pedidos existentes.
+/// - La recarga de datos se realiza en `initState` mediante el provider.
 class PedidosPendientesScreen
     extends StatefulWidget {
 
+  /// Constructor por defecto de la pantalla de pedidos pendientes.
   const PedidosPendientesScreen({
     super.key,
   });
@@ -25,6 +32,11 @@ class PedidosPendientesScreen
           _PedidosPendientesScreenState();
 }
 
+/// Estado asociado a [PedidosPendientesScreen].
+/// 
+/// - Inicializa la carga de pedidos pendientes una vez que el primer frame
+///   ha sido renderizado.
+/// - Observa cambios en el provider para actualizar la UI.
 class _PedidosPendientesScreenState
     extends State<
         PedidosPendientesScreen> {
@@ -34,6 +46,8 @@ class _PedidosPendientesScreenState
 
     super.initState();
 
+    // Ejecuta la carga de pedidos después del primer frame para evitar
+    // llamadas al provider antes de que el contexto esté completamente disponible.
     WidgetsBinding.instance
         .addPostFrameCallback(
       (_) async {
@@ -51,6 +65,7 @@ class _PedidosPendientesScreenState
     BuildContext context,
   ) {
 
+    // Observa el provider para reconstruir la pantalla cuando cambien los pedidos.
     final provider =
         context.watch<
             PedidosPendientesProvider>();
@@ -84,6 +99,7 @@ class _PedidosPendientesScreenState
             size: 32,
           ),
 
+          // Acción para regresar a la pantalla anterior.
           onPressed: () =>
               Navigator.pop(
             context,
@@ -125,6 +141,7 @@ class _PedidosPendientesScreenState
 
               child: ElevatedButton(
 
+                // Botón para crear un nuevo pedido; navega a la pantalla de agregar pedido.
                 onPressed: () {
 
                   Navigator.push(
@@ -175,6 +192,7 @@ class _PedidosPendientesScreenState
               height: 24,
             ),
 
+            // Lista de tarjetas de pedidos; usa ListView.separated para separación visual.
             ListView.separated(
 
               shrinkWrap: true,
@@ -207,11 +225,18 @@ class _PedidosPendientesScreenState
         ),
       ),
 
+      // Barra de navegación inferior reutilizable.
       bottomNavigationBar:
           const BottomNavBar(),
     );
   }
 
+  /// Construye la tarjeta visual que representa un pedido pendiente.
+  /// 
+  /// - Muestra información básica: id, cliente, fecha y estado.
+  /// - Incluye acción "Ver" que navega a [RevisarPedidoScreen] y espera un
+  ///   resultado booleano que indica si el pedido fue eliminado o modificado.
+  /// - Si el resultado es `true`, se recargan los pedidos desde el provider.
   Widget _buildPedidoCard(
     BuildContext context,
     Pedido pedido,
@@ -248,6 +273,7 @@ class _PedidosPendientesScreenState
 
         children: [
 
+          // Identificador del pedido.
           Text(
             'Pedido #${pedido.id}',
 
@@ -263,6 +289,7 @@ class _PedidosPendientesScreenState
             height: 6,
           ),
 
+          // Nombre del cliente; si no existe, se muestra 'Sin nombre'.
           Text(
             'Cliente: ${pedido.nombreCliente ?? 'Sin nombre'}',
           ),
@@ -271,6 +298,7 @@ class _PedidosPendientesScreenState
             height: 4,
           ),
 
+          // Fecha del pedido formateada manualmente (día/mes/año).
           Text(
             'Fecha: ${pedido.fecha.day}/${pedido.fecha.month}/${pedido.fecha.year}',
           ),
@@ -287,6 +315,7 @@ class _PedidosPendientesScreenState
 
             children: [
 
+              // Badge de estado: en esta pantalla todos los pedidos listados son "Pendiente".
               Container(
 
                 padding:
@@ -319,10 +348,12 @@ class _PedidosPendientesScreenState
                 ),
               ),
 
+              // Botón "Ver" que abre la pantalla de revisión del pedido.
               TextButton(
 
   onPressed: () async {
 
+  // Navega a RevisarPedidoScreen y espera un booleano indicando si el pedido fue eliminado.
   final eliminado =
       await Navigator.push<bool>(
     context,
@@ -337,6 +368,7 @@ class _PedidosPendientesScreenState
     ),
   );
 
+  // Si el pedido fue eliminado (true) y el contexto sigue montado, recargar la lista.
   if (eliminado == true &&
       context.mounted) {
 

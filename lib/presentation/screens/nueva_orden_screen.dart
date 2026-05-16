@@ -10,6 +10,11 @@ import '../../business/usecases/nueva_orden_usecase.dart';
 import 'bottom_nav_bar.dart';
 import 'qr_screen.dart';
 
+/// Pantalla para crear una nueva orden o venta.
+/// 
+/// - Permite seleccionar escuela, prenda y talla desde el inventario.
+/// - Soporta agregar ítems manualmente o mediante escaneo de QR.
+/// - Muestra las prendas agregadas agrupadas por inventario y permite confirmar la orden.
 class AgregarPedidoScreen
     extends StatefulWidget {
   const AgregarPedidoScreen({
@@ -22,6 +27,10 @@ class AgregarPedidoScreen
           _AgregarPedidoScreenState();
 }
 
+/// Estado de la pantalla de agregar pedido.
+/// 
+/// - Mantiene controladores y selección local para filtros (escuela, prenda, talla).
+/// - Inicializa la carga de inventario a través de `NuevaOrdenProvider`.
 class _AgregarPedidoScreenState
     extends State<
         AgregarPedidoScreen> {
@@ -29,6 +38,7 @@ class _AgregarPedidoScreenState
       _clienteController =
       TextEditingController();
 
+  // Selecciones locales para filtrar el inventario.
   String? _escuelaSeleccionada;
   String? _prendaSeleccionada;
   String? _tallaSeleccionada;
@@ -37,6 +47,7 @@ class _AgregarPedidoScreenState
   void initState() {
     super.initState();
 
+    // Después del primer frame, solicita al provider cargar el inventario.
     WidgetsBinding.instance
         .addPostFrameCallback((_) async {
       final provider =
@@ -49,14 +60,16 @@ class _AgregarPedidoScreenState
 
   @override
   void dispose() {
+    // Liberar recursos del controlador de texto.
     _clienteController.dispose();
     super.dispose();
   }
 
-  // ─────────────────────────────────────────────────────────
   // Helpers UI
-  // ─────────────────────────────────────────────────────────
 
+  /// Contenedor estilizado que envuelve campos de entrada.
+  /// 
+  /// - Aplica fondo blanco, radio de borde y sombra ligera.
   Widget _buildInputDecoration({
     required Widget child,
   }) {
@@ -78,6 +91,11 @@ class _AgregarPedidoScreenState
     );
   }
 
+  /// Dropdown reutilizable con estilo consistente.
+  /// 
+  /// - `value`: valor seleccionado.
+  /// - `items`: lista de opciones.
+  /// - `onChanged`: callback al cambiar selección.
   Widget _buildDropdown({
     required String? value,
     required List<String> items,
@@ -123,6 +141,10 @@ class _AgregarPedidoScreenState
     );
   }
 
+  /// Agrupa un `ItemOrden` con otros del mismo inventario y tipo.
+  /// 
+  /// - Busca los metadatos del inventario (escuela, prenda, talla).
+  /// - Calcula la cantidad de ítems iguales en la orden y el precio total.
   Map<String, dynamic> _agruparItem({
     required ItemOrden item,
     required List<ItemOrden> items,
@@ -168,6 +190,7 @@ class _AgregarPedidoScreenState
 
   @override
   Widget build(BuildContext context) {
+    // Observa el provider para reconstruir cuando cambian datos de la orden.
     final nuevaOrdenProvider =
         context.watch<
             NuevaOrdenProvider>();
@@ -178,10 +201,9 @@ class _AgregarPedidoScreenState
     final itemsOrden =
         nuevaOrdenProvider.items;
 
-    // ───────────────────────────────────────────────────────
     // FILTROS
-    // ───────────────────────────────────────────────────────
 
+    // Extrae escuelas únicas del inventario.
     final escuelas = itemsInventario
         .map(
           (e) => e['escuela']
@@ -190,6 +212,7 @@ class _AgregarPedidoScreenState
         .toSet()
         .toList();
 
+    // Extrae prendas filtrando por escuela seleccionada si aplica.
     final prendas = itemsInventario
         .where((item) {
           if (_escuelaSeleccionada ==
@@ -207,6 +230,7 @@ class _AgregarPedidoScreenState
         .toSet()
         .toList();
 
+    // Extrae tallas filtrando por escuela y prenda seleccionadas si aplican.
     final tallas = itemsInventario
         .where((item) {
           final escuelaOk =
@@ -231,10 +255,9 @@ class _AgregarPedidoScreenState
         .toSet()
         .toList();
 
-    // ───────────────────────────────────────────────────────
     // FILTRADO
-    // ───────────────────────────────────────────────────────
 
+    // Si no hay selección completa, no mostrar resultados; en caso contrario filtrar.
     final prendasFiltradas =
         (_escuelaSeleccionada ==
                     null ||
@@ -255,10 +278,9 @@ class _AgregarPedidoScreenState
                         _tallaSeleccionada;
               }).toList();
 
-    // ───────────────────────────────────────────────────────
     // AGRUPAR ITEMS
-    // ───────────────────────────────────────────────────────
 
+    // Construye lista de items agrupados por idInventario y tipo.
     final itemsAgrupados =
         <Map<String, dynamic>>[];
 
@@ -325,6 +347,7 @@ class _AgregarPedidoScreenState
                   Color(0xFF1452BD),
               size: 30,
             ),
+            // Navega al escáner QR y procesa el resultado mediante el provider.
             onPressed: () async {
               await Navigator.push(
                 context,
@@ -394,6 +417,7 @@ class _AgregarPedidoScreenState
 
             const SizedBox(height: 8),
 
+            // Campo para ingresar el nombre del cliente.
             _buildInputDecoration(
               child: TextFormField(
                 controller:
@@ -453,7 +477,7 @@ class _AgregarPedidoScreenState
 
             const SizedBox(height: 8),
 
-            // DROPDOWNS
+            // DROPDOWNS: selección de escuela, prenda y talla.
             Row(
               children: [
                 Expanded(
@@ -515,7 +539,7 @@ class _AgregarPedidoScreenState
 
             const SizedBox(height: 32),
 
-            // LISTA DISPONIBLE
+            // LISTA DISPONIBLE: muestra las prendas filtradas por selección.
             ListView.separated(
               shrinkWrap: true,
               physics:
@@ -620,6 +644,7 @@ class _AgregarPedidoScreenState
   child:
       ElevatedButton(
 
+    // Agrega manualmente el item seleccionado a la orden mediante el provider.
     onPressed:
         () async {
 
@@ -679,7 +704,7 @@ class _AgregarPedidoScreenState
 
             const SizedBox(height: 32),
 
-            // PRENDAS AGREGADAS
+            // PRENDAS AGREGADAS: sección que muestra los ítems agrupados.
             const Text(
               'Prendas Agregadas',
               style: TextStyle(
@@ -777,6 +802,7 @@ class _AgregarPedidoScreenState
 Row(
   children: [
 
+    // Badge que indica si el ítem es venta o pedido.
     Container(
 
       padding:
@@ -819,6 +845,7 @@ Row(
 
     const Spacer(),
 
+    // Acción para eliminar un grupo de ítems (busca el primer item coincidente y lo elimina).
     GestureDetector(
 
       onTap: () {
@@ -871,6 +898,7 @@ Row(
                         width: 12,
                       ),
 
+                      // Precio total del grupo de ítems.
                       Text(
                         '\$${item['precio'].toInt()}',
                         style:
@@ -892,7 +920,7 @@ Row(
 
             const SizedBox(height: 40),
 
-            // CONFIRMAR
+            // CONFIRMAR: botón que confirma la orden y actualiza inventario.
             SizedBox(
               width: double.infinity,
               height: 50,
@@ -915,6 +943,7 @@ Row(
       return;
     }
 
+    // Si hay una escuela seleccionada en InventarioProvider, recargar su inventario.
     if (context
         .read<InventarioProvider>()
         .escuelaSeleccionada !=
@@ -996,6 +1025,7 @@ ScaffoldMessenger.of(
         ),
       ),
 
+      // Barra de navegación inferior reutilizable.
       bottomNavigationBar:
           const BottomNavBar(),
     );

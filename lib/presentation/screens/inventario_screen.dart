@@ -18,13 +18,30 @@ import '../../data/repositories/prenda_repository.dart';
 import '../../data/repositories/talla_repository.dart';
 import '../../data/repositories/escuela_repository.dart';
 
+/// Pantalla de gestión de inventario.
+/// 
+/// Componente de tipo [StatelessWidget] que muestra controles para:
+/// - seleccionar una escuela,
+/// - filtrar por prenda,
+/// - navegar a pantallas de registro y administración de prendas,
+/// - ver QR pendientes.
+/// La lógica de negocio relacionada con la carga y filtrado del inventario se
+/// delega al proveedor [InventarioProvider].
 class InventarioScreen
     extends StatelessWidget {
 
+  /// Constructor por defecto de la pantalla de inventario.
   const InventarioScreen({
     super.key,
   });
 
+  /// Construye la interfaz principal de inventario.
+  /// 
+  /// - Define un [Scaffold] con [AppBar], cuerpo y barra de navegación inferior.
+  /// - El botón de añadir en la AppBar crea un [RegistrarInventarioUseCase]
+  ///   con los repositorios necesarios y navega a [RegistrarPrendaScreen].
+  /// - Tras regresar de la pantalla de registro se solicita recargar las escuelas
+  ///   mediante `InventarioProvider.recargarEscuelas()`.
   @override
   Widget build(
     BuildContext context,
@@ -78,6 +95,10 @@ class InventarioScreen
               size: 30,
             ),
 
+            // Acción del botón "add" en la AppBar:
+            // - Construye el caso de uso `RegistrarInventarioUseCase` con los repositorios.
+            // - Navega a la pantalla de registro de prenda.
+            // - Al volver, solicita al proveedor recargar la lista de escuelas.
             onPressed: () {
 
               final useCase =
@@ -127,6 +148,7 @@ class InventarioScreen
           Consumer<
               InventarioProvider>(
 
+        // Consumer escucha cambios en InventarioProvider y reconstruye el cuerpo.
         builder:
             (
           context,
@@ -145,6 +167,7 @@ class InventarioScreen
                   16,
                 ),
 
+                // Dropdown para seleccionar la escuela.
                 child:
                     DropdownButton<int>(
 
@@ -160,6 +183,7 @@ class InventarioScreen
 
                   isExpanded: true,
 
+                  // Al cambiar la escuela se carga el inventario correspondiente.
                   onChanged:
                       (value) {
 
@@ -173,6 +197,7 @@ class InventarioScreen
                     }
                   },
 
+                  // Genera las opciones del dropdown a partir de provider.escuelas.
                   items:
                       provider
                           .escuelas
@@ -193,6 +218,7 @@ class InventarioScreen
                 ),
               ),
 
+              // Si hay una escuela seleccionada, muestra el filtro por prenda.
               if (provider
                       .escuelaSeleccionada !=
                   null)
@@ -218,6 +244,7 @@ class InventarioScreen
 
                     isExpanded: true,
 
+                    // Al seleccionar una prenda se delega al proveedor la lógica.
                     onChanged:
                         (value) {
 
@@ -264,6 +291,7 @@ class InventarioScreen
                   width:
                       double.infinity,
 
+                  // Botón que navega a la pantalla de QR pendientes.
                   child:
                       ElevatedButton.icon(
 
@@ -332,6 +360,10 @@ class InventarioScreen
 
               Expanded(
 
+                // Estado condicional del contenido principal:
+                // - Si no hay escuela seleccionada: mensaje para seleccionar una escuela.
+                // - Si la escuela está seleccionada pero no hay items: mensaje "No hay registros".
+                // - Si hay items: muestra la lista agrupada por prenda.
                 child:
                     provider
                                 .escuelaSeleccionada ==
@@ -369,22 +401,34 @@ class InventarioScreen
         },
       ),
 
+      // Barra de navegación inferior reutilizable.
       bottomNavigationBar:
           const BottomNavBar(),
     );
   }
 }
 
+/// Lista que renderiza los elementos del inventario agrupados por prenda.
+/// 
+/// - Recibe una lista de mapas con los campos esperados: 'prenda', 'talla',
+///   'precio', 'stock', 'id', 'escuela'.
+/// - Implementa lógica simple para mostrar un header cada vez que cambia la prenda.
 class _ListaInventario
     extends StatelessWidget {
 
+  /// Lista de items de inventario representados como mapas dinámicos.
   final List<Map<String, dynamic>>
       items;
 
+  /// Constructor que recibe la lista de items.
   const _ListaInventario({
     required this.items,
   });
 
+  /// Construye el [ListView] agrupando por el campo 'prenda'.
+  /// 
+  /// - Mantiene una variable local `ultimaPrenda` para detectar cambios de grupo.
+  /// - Cada vez que `item['prenda']` difiere de `ultimaPrenda` se renderiza un header.
   @override
   Widget build(
     BuildContext context,
@@ -411,6 +455,7 @@ class _ListaInventario
         final item =
             items[index];
 
+        // Determina si se debe mostrar el encabezado de prenda para este item.
         final mostrarHeader =
             item['prenda'] !=
                 ultimaPrenda;
@@ -456,6 +501,7 @@ class _ListaInventario
                 ),
               ),
 
+            // Renderiza la fila de detalle del inventario.
             _ItemInventario(
               item: item,
             ),
@@ -466,16 +512,26 @@ class _ListaInventario
   }
 }
 
+/// Widget que representa una fila de inventario con datos básicos y acción.
+/// 
+/// - Muestra talla, precio y cantidad.
+/// - Proporciona un botón "Administrar" que navega a [AdministrarPrendaScreen]
+///   pasando los parámetros necesarios (idInventario, nombreEscuela, nombrePrenda,
+///   talla, cantidad).
+/// - Tras regresar de la pantalla de administración se solicita recargar las escuelas.
 class _ItemInventario
     extends StatelessWidget {
 
+  /// Mapa con los datos del item de inventario.
   final Map<String, dynamic>
       item;
 
+  /// Constructor que recibe el item.
   const _ItemInventario({
     required this.item,
   });
 
+  /// Construye la representación visual del item.
   @override
   Widget build(
     BuildContext context,
@@ -514,6 +570,7 @@ class _ItemInventario
 
         children: [
 
+          // Muestra la talla del item.
           Text(
             'Talla: ${item['talla']}',
           ),
@@ -522,6 +579,7 @@ class _ItemInventario
             height: 6,
           ),
 
+          // Muestra el precio del item.
           Text(
             'Precio: \$${item['precio']}',
           ),
@@ -530,6 +588,7 @@ class _ItemInventario
             height: 6,
           ),
 
+          // Muestra la cantidad en stock.
           Text(
             'Cantidad: ${item['stock']}',
           ),
@@ -541,6 +600,9 @@ class _ItemInventario
 
             child: TextButton(
 
+              // Acción del botón "Administrar":
+              // - Navega a AdministrarPrendaScreen con los datos del item.
+              // - Al volver, solicita recargar las escuelas en el proveedor.
               onPressed: () {
 
                 final idInventario =
