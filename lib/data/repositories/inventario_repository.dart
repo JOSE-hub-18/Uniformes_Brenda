@@ -138,4 +138,170 @@ class InventarioRepository {
       ORDER BY p.nombre ASC, t.talla ASC
     ''', args);
   }
+
+  Future<List<Map<String, dynamic>>>
+    obtenerInventarioCompleto() async {
+  final db = await _db;
+
+  final resultado = await db.rawQuery('''
+    SELECT 
+      e.nombre AS escuela,
+      p.nombre AS prenda,
+      t.talla AS talla,
+
+      i.id AS idInventario,
+
+      i.precio AS precio,
+
+      (
+        SELECT COUNT(*)
+        FROM unidades u
+        WHERE u.id_inventario = i.id
+        AND u.activo = 1
+      ) AS stock
+
+    FROM inventario i
+
+    JOIN escuelas e
+      ON i.id_escuela = e.id_escuela
+
+    JOIN prendas p
+      ON i.id_prenda = p.id_prenda
+
+    JOIN tallas t
+      ON i.id_talla = t.id_talla
+
+    ORDER BY
+      e.nombre ASC,
+      p.nombre ASC,
+      t.talla ASC
+  ''');
+
+  return resultado;
+}
+
+// Stock agotado
+
+Future<List<Map<String, dynamic>>>
+    obtenerStockAgotado()
+    async {
+
+  final db = await _db;
+
+  return await db.rawQuery('''
+
+    SELECT
+
+      i.id,
+
+      e.nombre AS escuela,
+
+      p.nombre AS prenda,
+
+      t.talla AS talla,
+
+      i.precio,
+
+      0 AS stock
+
+    FROM inventario i
+
+    JOIN escuelas e
+      ON e.id_escuela =
+         i.id_escuela
+
+    JOIN prendas p
+      ON p.id_prenda =
+         i.id_prenda
+
+    JOIN tallas t
+      ON t.id_talla =
+         i.id_talla
+
+    WHERE (
+
+      SELECT COUNT(*)
+
+      FROM unidades u
+
+      WHERE
+        u.id_inventario = i.id
+        AND u.activo = 1
+
+    ) = 0
+
+    ORDER BY
+      e.nombre,
+      p.nombre,
+      t.talla
+  ''');
+}
+
+// Stock critico
+
+Future<List<Map<String, dynamic>>>
+    obtenerStockCritico()
+    async {
+
+  final db = await _db;
+
+  return await db.rawQuery('''
+
+    SELECT
+
+      i.id,
+
+      e.nombre AS escuela,
+
+      p.nombre AS prenda,
+
+      t.talla AS talla,
+
+      i.precio,
+
+      (
+
+        SELECT COUNT(*)
+
+        FROM unidades u
+
+        WHERE
+          u.id_inventario = i.id
+          AND u.activo = 1
+
+      ) AS stock
+
+    FROM inventario i
+
+    JOIN escuelas e
+      ON e.id_escuela =
+         i.id_escuela
+
+    JOIN prendas p
+      ON p.id_prenda =
+         i.id_prenda
+
+    JOIN tallas t
+      ON t.id_talla =
+         i.id_talla
+
+    WHERE (
+
+      SELECT COUNT(*)
+
+      FROM unidades u
+
+      WHERE
+        u.id_inventario = i.id
+        AND u.activo = 1
+
+    ) BETWEEN 1 AND 3
+
+    ORDER BY
+      stock ASC,
+      e.nombre,
+      p.nombre,
+      t.talla
+  ''');
+}
 }

@@ -1,13 +1,26 @@
+// models.dart
+
+// ─────────────────────────────────────────────────────────────
 // ENUMS
-// IMPORTANTE: TOMAP Y FORMMAP SOLO LO USA DATOS, CERO VALERO PARA USTEDES
-// NEGOCIO USA LOS ENUMS Y LOS MISMOS MODELOS
-// ui SOLO PROPIEDADES
+// ─────────────────────────────────────────────────────────────
+
 enum RolUsuario { admin, vendedor }
 
-enum EstadoVenta { completada, cancelada, pendiente }
+enum EstadoVenta {
+  completada,
+  cancelada,
+  pendiente,
+}
 
+enum EstadoPedido {
+  pendiente,
+  completado,
+  cancelado,
+}
 
-// Extension enums
+// ─────────────────────────────────────────────────────────────
+// EXTENSIONS
+// ─────────────────────────────────────────────────────────────
 
 extension RolUsuarioExt on RolUsuario {
   String toDb() => name;
@@ -16,7 +29,9 @@ extension RolUsuarioExt on RolUsuario {
 extension RolUsuarioParse on String {
   RolUsuario? toRolUsuario() {
     try {
-      return RolUsuario.values.firstWhere((e) => e.name == this);
+      return RolUsuario.values.firstWhere(
+        (e) => e.name == this,
+      );
     } catch (_) {
       return null;
     }
@@ -28,21 +43,73 @@ extension EstadoVentaExt on EstadoVenta {
 }
 
 extension EstadoVentaParse on String {
-  EstadoVenta toEstadoVenta() =>
-      EstadoVenta.values.firstWhere(
-        (e) => e.name == this,
-        orElse: () => EstadoVenta.completada,
-      );
+  EstadoVenta toEstadoVenta() {
+    return EstadoVenta.values.firstWhere(
+      (e) => e.name == this,
+      orElse: () => EstadoVenta.completada,
+    );
+  }
 }
 
-// Usuario
+// ─────────────────────────────────────────────────────────────
+// ORDEN
+// ─────────────────────────────────────────────────────────────
+
+class Orden {
+  int? id;
+
+  int idUsuario;
+
+  String? nombreCliente;
+
+  DateTime fecha;
+
+  Orden({
+    this.id,
+    required this.idUsuario,
+    this.nombreCliente,
+    required this.fecha,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'id_usuario': idUsuario,
+      'nombre_cliente': nombreCliente,
+      'fecha': fecha.toIso8601String(),
+    };
+  }
+
+  factory Orden.fromMap(
+    Map<String, dynamic> map,
+  ) {
+    return Orden(
+      id: map['id'],
+      idUsuario: map['id_usuario'],
+      nombreCliente:
+          map['nombre_cliente'],
+      fecha: DateTime.parse(
+        map['fecha'],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// USUARIO
+// ─────────────────────────────────────────────────────────────
 
 class Usuario {
   int? id;
+
   String nombre;
+
   String usuario;
+
   String passwordHash;
+
   bool activo;
+
   RolUsuario? rol;
 
   Usuario({
@@ -59,28 +126,38 @@ class Usuario {
       'id': id,
       'nombre': nombre,
       'usuario': usuario,
-      'password_hash': passwordHash,
+      'password_hash':
+          passwordHash,
       'activo': activo ? 1 : 0,
       'rol': rol?.toDb(),
     };
   }
 
-  factory Usuario.fromMap(Map<String, dynamic> map) {
+  factory Usuario.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Usuario(
       id: map['id'],
       nombre: map['nombre'],
       usuario: map['usuario'],
-      passwordHash: map['password_hash'],
+      passwordHash:
+          map['password_hash'],
       activo: map['activo'] == 1,
-      rol: map['rol'] != null ? (map['rol'] as String).toRolUsuario() : null,
+      rol: map['rol'] != null
+          ? (map['rol'] as String)
+              .toRolUsuario()
+          : null,
     );
   }
 }
 
-// escuela
+// ─────────────────────────────────────────────────────────────
+// ESCUELA
+// ─────────────────────────────────────────────────────────────
 
 class Escuela {
   int? idEscuela;
+
   String nombre;
 
   Escuela({
@@ -95,18 +172,24 @@ class Escuela {
     };
   }
 
-  factory Escuela.fromMap(Map<String, dynamic> map) {
+  factory Escuela.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Escuela(
-      idEscuela: map['id_escuela'],
+      idEscuela:
+          map['id_escuela'],
       nombre: map['nombre'],
     );
   }
 }
 
-// ropita
+// ─────────────────────────────────────────────────────────────
+// PRENDA
+// ─────────────────────────────────────────────────────────────
 
 class Prenda {
   int? idPrenda;
+
   String nombre;
 
   Prenda({
@@ -121,18 +204,24 @@ class Prenda {
     };
   }
 
-  factory Prenda.fromMap(Map<String, dynamic> map) {
+  factory Prenda.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Prenda(
-      idPrenda: map['id_prenda'],
+      idPrenda:
+          map['id_prenda'],
       nombre: map['nombre'],
     );
   }
 }
 
-// talla
+// ─────────────────────────────────────────────────────────────
+// TALLA
+// ─────────────────────────────────────────────────────────────
 
 class Talla {
   int? idTalla;
+
   String talla;
 
   Talla({
@@ -147,21 +236,30 @@ class Talla {
     };
   }
 
-  factory Talla.fromMap(Map<String, dynamic> map) {
+  factory Talla.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Talla(
-      idTalla: map['id_talla'],
+      idTalla:
+          map['id_talla'],
       talla: map['talla'],
     );
   }
 }
 
-// inventario
-// Importnte: eliinada fila de stock, para hacer conteo segun la tabla UNIDADES
+// ─────────────────────────────────────────────────────────────
+// INVENTARIO
+// ─────────────────────────────────────────────────────────────
+
 class Inventario {
   int? id;
+
   int idEscuela;
+
   int idPrenda;
+
   int idTalla;
+
   double precio;
 
   Inventario({
@@ -182,66 +280,173 @@ class Inventario {
     };
   }
 
-  factory Inventario.fromMap(Map<String, dynamic> map) {
+  factory Inventario.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Inventario(
       id: map['id'],
-      idEscuela: map['id_escuela'],
-      idPrenda: map['id_prenda'],
-      idTalla: map['id_talla'],
-      precio: (map['precio'] as num).toDouble(),
+      idEscuela:
+          map['id_escuela'],
+      idPrenda:
+          map['id_prenda'],
+      idTalla:
+          map['id_talla'],
+      precio:
+          (map['precio'] as num)
+              .toDouble(),
     );
   }
 }
 
-// venta
+// ─────────────────────────────────────────────────────────────
+// UNIDAD
+// ─────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────
+// UNIDAD
+// ─────────────────────────────────────────────────────────────
+
+class Unidad {
+
+  int? id;
+
+  int idInventario;
+
+  bool activo;
+
+  bool pendienteImpresion;
+
+  Unidad({
+    this.id,
+    required this.idInventario,
+    this.activo = true,
+    this.pendienteImpresion =
+        false,
+  });
+
+  Map<String, dynamic> toMap() {
+
+    return {
+
+      'id': id,
+
+      'id_inventario':
+          idInventario,
+
+      'activo':
+          activo ? 1 : 0,
+
+      'pendiente_impresion':
+          pendienteImpresion
+              ? 1
+              : 0,
+    };
+  }
+
+  factory Unidad.fromMap(
+    Map<String, dynamic> map,
+  ) {
+
+    return Unidad(
+
+      id: map['id'],
+
+      idInventario:
+          map['id_inventario'],
+
+      activo:
+          map['activo'] == 1,
+
+      pendienteImpresion:
+          map['pendiente_impresion'] ==
+              1,
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// VENTA
+// ─────────────────────────────────────────────────────────────
 
 class Venta {
   int? id;
+
   int idUsuario;
+
+  int? idOrdenOrigen;
+
   String? nombreCliente;
+
   DateTime fecha;
+
   double total;
+
   EstadoVenta estado;
 
   Venta({
     this.id,
     required this.idUsuario,
+    this.idOrdenOrigen,
     this.nombreCliente,
     required this.fecha,
     required this.total,
-    this.estado = EstadoVenta.completada,
+    this.estado =
+        EstadoVenta.completada,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'id_usuario': idUsuario,
-      'nombre_cliente': nombreCliente,
-      'fecha': fecha.toIso8601String(),
+      'id_orden_origen':
+          idOrdenOrigen,
+      'nombre_cliente':
+          nombreCliente,
+      'fecha':
+          fecha.toIso8601String(),
       'total': total,
       'estado': estado.toDb(),
     };
   }
 
-  factory Venta.fromMap(Map<String, dynamic> map) {
+  factory Venta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Venta(
       id: map['id'],
-      idUsuario: map['id_usuario'],
-      nombreCliente: map['nombre_cliente'],
-      fecha: DateTime.parse(map['fecha']),
-      total: (map['total'] as num).toDouble(),
-      estado: (map['estado'] as String).toEstadoVenta(),
+      idUsuario:
+          map['id_usuario'],
+      idOrdenOrigen:
+          map['id_orden_origen'],
+      nombreCliente:
+          map['nombre_cliente'],
+      fecha: DateTime.parse(
+        map['fecha'],
+      ),
+      total:
+          (map['total'] as num)
+              .toDouble(),
+      estado:
+          (map['estado']
+                  as String)
+              .toEstadoVenta(),
     );
   }
 }
 
-// detalle venta
+// ─────────────────────────────────────────────────────────────
+// DETALLE VENTA
+// ─────────────────────────────────────────────────────────────
 
 class DetalleVenta {
   int? id;
+
   int idVenta;
+
   int idUnidad;
+
   int cantidad;
+
   double precioUnitario;
 
   DetalleVenta({
@@ -258,48 +463,168 @@ class DetalleVenta {
       'id_venta': idVenta,
       'id_unidad': idUnidad,
       'cantidad': cantidad,
-      'precio_unitario': precioUnitario,
+      'precio_unitario':
+          precioUnitario,
     };
   }
 
-  factory DetalleVenta.fromMap(Map<String, dynamic> map) {
+  factory DetalleVenta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DetalleVenta(
       id: map['id'],
-      idVenta: map['id_venta'],
-      idUnidad: map['id_unidad'],
-      cantidad: map['cantidad'],
-      precioUnitario: (map['precio_unitario'] as num).toDouble(),
+      idVenta:
+          map['id_venta'],
+      idUnidad:
+          map['id_unidad'],
+      cantidad:
+          map['cantidad'],
+      precioUnitario:
+          (map['precio_unitario']
+                  as num)
+              .toDouble(),
     );
   }
 }
 
-// movimeinto ELIMINADO
+// ─────────────────────────────────────────────────────────────
+// PEDIDO
+// ─────────────────────────────────────────────────────────────
 
-/////////UNIDAD, nuevo modelo para la distribucion de IDs
-class Unidad {
+class Pedido {
   int? id;
-  int idInventario;
-  bool activo;
 
-  Unidad({
+  int idUsuario;
+
+  int idOrdenOrigen;
+
+  int? idVentaOrigen;
+
+  String? nombreCliente;
+
+  DateTime fecha;
+
+  double total;
+
+  EstadoPedido estado;
+
+  Pedido({
     this.id,
-    required this.idInventario,
-    this.activo = true,
+    required this.idUsuario,
+    required this.idOrdenOrigen,
+    this.idVentaOrigen,
+    this.nombreCliente,
+    required this.fecha,
+    required this.total,
+    required this.estado,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'id_inventario': idInventario,
-      'activo': activo ? 1 : 0,
+      'id_usuario': idUsuario,
+      'id_orden_origen':
+          idOrdenOrigen,
+      'id_venta_origen':
+          idVentaOrigen,
+      'nombre_cliente':
+          nombreCliente,
+      'fecha':
+          fecha.toIso8601String(),
+      'total': total,
+      'estado': estado.name,
     };
   }
 
-  factory Unidad.fromMap(Map<String, dynamic> map) {
-    return Unidad(
+  factory Pedido.fromMap(
+    Map<String, dynamic> map,
+  ) {
+    return Pedido(
       id: map['id'],
-      idInventario: map['id_inventario'],
-      activo: map['activo'] == 1,
+      idUsuario:
+          map['id_usuario'],
+      idOrdenOrigen:
+          map['id_orden_origen'],
+      idVentaOrigen:
+          map['id_venta_origen'],
+      nombreCliente:
+          map['nombre_cliente'],
+      fecha: DateTime.parse(
+        map['fecha'],
+      ),
+      total:
+          (map['total'] as num)
+              .toDouble(),
+      estado:
+          EstadoPedido.values
+              .firstWhere(
+        (e) =>
+            e.name ==
+            map['estado'],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// DETALLE PEDIDO
+// ─────────────────────────────────────────────────────────────
+
+class DetallePedido {
+  int? id;
+
+  int idPedido;
+
+  int idInventario;
+
+  int? idUnidadRegistrada;
+
+  bool registrado;
+
+  double precioUnitario;
+
+  DetallePedido({
+    this.id,
+    required this.idPedido,
+    required this.idInventario,
+    this.idUnidadRegistrada,
+    this.registrado = false,
+    required this.precioUnitario,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'id_pedido': idPedido,
+      'id_inventario':
+          idInventario,
+      'id_unidad_registrada':
+          idUnidadRegistrada,
+      'registrado':
+          registrado ? 1 : 0,
+      'precio_unitario':
+          precioUnitario,
+    };
+  }
+
+  factory DetallePedido.fromMap(
+    Map<String, dynamic> map,
+  ) {
+    return DetallePedido(
+      id: map['id'],
+      idPedido:
+          map['id_pedido'],
+      idInventario:
+          map['id_inventario'],
+      idUnidadRegistrada:
+          map[
+              'id_unidad_registrada'],
+      registrado:
+          map['registrado'] == 1,
+      precioUnitario:
+          (map['precio_unitario']
+                  as num)
+              .toDouble(),
     );
   }
 }

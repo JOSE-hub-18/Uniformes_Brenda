@@ -1,220 +1,1033 @@
-import 'package:flutter/material.dart';
-import 'bottom_nav_bar.dart';
-import 'agregar_prendas_pedido_screen.dart'; // La siguiente pantalla que crearemos
+// lib/presentation/screens/revisar_pedido_screen.dart
 
-class RevisarPedidoScreen extends StatefulWidget {
-  const RevisarPedidoScreen({super.key});
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../business/providers/inventario_provider.dart';
+
+import '../providers/pedidos_pendientes_provider.dart';
+import 'qr_screen.dart';
+
+class RevisarPedidoScreen
+    extends StatefulWidget {
+
+  final int idPedido;
+
+  const RevisarPedidoScreen({
+    super.key,
+    required this.idPedido,
+  });
 
   @override
-  State<RevisarPedidoScreen> createState() => _RevisarPedidoScreenState();
+  State<
+          RevisarPedidoScreen>
+      createState() =>
+          _RevisarPedidoScreenState();
 }
 
-class _RevisarPedidoScreenState extends State<RevisarPedidoScreen> {
-  // Mock data del pedido
-  final String numPedido = '001';
-  final String cliente = 'John Doe';
-  final String estado = 'Pendiente';
+class _RevisarPedidoScreenState
+    extends State<
+        RevisarPedidoScreen> {
 
-  // Lista de prendas con estado para poder modificarlas
-  List<Map<String, dynamic>> prendas = [
-    {'titulo': 'ESC. PRIMARIA FLOR - Chamarra', 'talla': 'M', 'precio': 350.0, 'cantidad': 1},
-    {'titulo': 'ESC. PRIMARIA FLOR - Falda', 'talla': 'M', 'precio': 180.0, 'cantidad': 1},
-    {'titulo': 'ESC. PRIMARIA FLOR - Playera', 'talla': 'M', 'precio': 120.0, 'cantidad': 1},
-  ];
+  @override
+  void initState() {
 
-  // Cálculos dinámicos
-  int get totalPiezas => prendas.fold(0, (sum, item) => sum + (item['cantidad'] as int));
-  double get totalPrecio => prendas.fold(0, (sum, item) => sum + (item['precio'] * item['cantidad']));
+    super.initState();
 
-  void _actualizarCantidad(int index, int cambio) {
-    setState(() {
-      int nuevaCantidad = prendas[index]['cantidad'] + cambio;
-      if (nuevaCantidad > 0) {
-        prendas[index]['cantidad'] = nuevaCantidad;
-      }
-    });
+    WidgetsBinding.instance
+        .addPostFrameCallback(
+      (_) async {
+
+        await context
+            .read<
+                PedidosPendientesProvider>()
+            .cargarDetalles(
+          widget.idPedido,
+        );
+      },
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(
+    BuildContext context,
+  ) {
+
+    final provider =
+        context.watch<
+            PedidosPendientesProvider>();
+
+    final detalles =
+        provider.detalles;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF5FAFF),
+
+      backgroundColor:
+          const Color(
+        0xFFF5FAFF,
+      ),
+
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+
+        backgroundColor:
+            Colors.transparent,
+
         elevation: 0,
+
         leading: IconButton(
-          icon: const Icon(Icons.keyboard_double_arrow_left, color: Color(0xFF1452BD), size: 32),
-          onPressed: () => Navigator.pop(context),
+
+          icon: const Icon(
+            Icons
+                .keyboard_double_arrow_left,
+            color:
+                Color(
+              0xFF1452BD,
+            ),
+            size: 32,
+          ),
+
+          onPressed: () =>
+              Navigator.pop(
+            context,
+          ),
         ),
-        title: const Text(
-          'Revisar Pedido',
-          style: TextStyle(color: Color(0xFF1452BD), fontWeight: FontWeight.bold),
+
+        title: Text(
+          'Pedido #${widget.idPedido}',
+
+          style: const TextStyle(
+            color:
+                Color(
+              0xFF1452BD,
+            ),
+            fontWeight:
+                FontWeight.bold,
+          ),
         ),
+
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // INFO DEL PEDIDO
-            Text('Pedido #$numPedido', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-            const SizedBox(height: 4),
-            Text(cliente, style: const TextStyle(fontSize: 16, color: Color(0xFF888888))),
-            const SizedBox(height: 2),
-            Text(estado, style: const TextStyle(fontSize: 16, color: Color(0xFF888888))),
-            const SizedBox(height: 24),
 
-            // LISTA DE PRENDAS
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: prendas.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                final item = prendas[index];
+      body: Column(
+
+        children: [
+
+          Expanded(
+
+            child:
+                ListView.separated(
+
+              padding:
+                  const EdgeInsets.all(
+                24,
+              ),
+
+              itemCount:
+                  detalles.length,
+
+              separatorBuilder:
+                  (_, __) =>
+                      const SizedBox(
+                height: 16,
+              ),
+
+              itemBuilder:
+                  (context, index) {
+
+                final detalle =
+                    detalles[index];
+
+                final registrado =
+                    detalle[
+                            'registrado'] ==
+                        1;
+
                 return Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: const Color(0xFFE0E0E0)),
+
+                  key: ValueKey(
+                    detalle['id'],
                   ),
+
+                  padding:
+                      const EdgeInsets.all(
+                    16,
+                  ),
+
+                  decoration:
+                      BoxDecoration(
+
+                    color:
+                        Colors.white,
+
+                    borderRadius:
+                        BorderRadius.circular(
+                      16,
+                    ),
+
+                    border: Border.all(
+                      color:
+                          const Color(
+                        0xFFE0E0E0,
+                      ),
+                    ),
+                  ),
+
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    crossAxisAlignment:
+                        CrossAxisAlignment
+                            .start,
+
                     children: [
+
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        crossAxisAlignment:
+                            CrossAxisAlignment
+                                .start,
+
                         children: [
+
                           Expanded(
-                            child: Text(
-                              item['titulo'],
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF333333)),
+
+                            child:
+                                Column(
+
+                              crossAxisAlignment:
+                                  CrossAxisAlignment
+                                      .start,
+
+                              children: [
+
+                                Text(
+                                  detalle[
+                                      'prenda'],
+
+                                  style:
+                                      const TextStyle(
+                                    fontWeight:
+                                        FontWeight
+                                            .bold,
+
+                                    fontSize:
+                                        18,
+                                  ),
+                                ),
+
+                                const SizedBox(
+                                  height: 4,
+                                ),
+
+                                Text(
+                                  detalle[
+                                      'escuela'],
+
+                                  style:
+                                      const TextStyle(
+                                    color:
+                                        Colors
+                                            .black,
+                                  ),
+                                ),
+
+                                const SizedBox(
+                                  height: 2,
+                                ),
+
+                                Text(
+                                  'Talla ${detalle['talla']}',
+
+                                  style:
+                                      const TextStyle(
+                                    color:
+                                        Colors
+                                            .black,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Text(
-                            '\$${item['precio'].toInt()}',
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1452BD)),
+
+                          AbsorbPointer(
+
+                            absorbing:
+                                provider
+                                    .cargando,
+
+                            child:
+                                GestureDetector(
+
+                              onTap:
+                                  () async {
+
+                                final ultimo =
+                                    detalles.length ==
+                                        1;
+
+                                if (ultimo) {
+
+                                  final confirmar =
+                                      await showDialog<bool>(
+
+                                    context:
+                                        context,
+
+                                    builder:
+                                        (_) {
+
+                                      return AlertDialog(
+
+                                        title:
+                                            const Text(
+                                          'Eliminar pedido',
+                                        ),
+
+                                        content:
+                                            const Text(
+                                          'Esta es la última prenda del pedido.\n\n¿Deseas eliminar completamente el pedido?',
+                                        ),
+
+                                        actions: [
+
+                                          TextButton(
+
+                                            onPressed:
+                                                () {
+
+                                              Navigator.pop(
+                                                context,
+                                                false,
+                                              );
+                                            },
+
+                                            child:
+                                                const Text(
+                                              'Cancelar',
+                                            ),
+                                          ),
+
+                                          TextButton(
+
+                                            onPressed:
+                                                () {
+
+                                              Navigator.pop(
+                                                context,
+                                                true,
+                                              );
+                                            },
+
+                                            child:
+                                                const Text(
+                                              'Eliminar',
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+
+                                  if (confirmar !=
+                                      true) {
+                                    return;
+                                  }
+                                }
+
+                                final eliminado =
+                                    await provider
+                                        .eliminarDetallePedido(
+
+                                  idPedido:
+                                      widget.idPedido,
+
+                                  idDetallePedido:
+                                      detalle['id'],
+                                );
+
+                                if (!context
+                                    .mounted) {
+                                  return;
+                                }
+
+                                if (eliminado) {
+
+                                  ScaffoldMessenger
+                                          .of(
+                                    context,
+                                  ).showSnackBar(
+
+                                    const SnackBar(
+                                      content:
+                                          Text(
+                                        'Pedido eliminado correctamente',
+                                      ),
+                                    ),
+                                  );
+
+                                  Navigator.pop(
+                                    context,
+                                    true,
+                                  );
+
+                                  return;
+                                }
+
+                                ScaffoldMessenger
+                                        .of(
+                                  context,
+                                ).showSnackBar(
+
+                                  const SnackBar(
+                                    content:
+                                        Text(
+                                      'Prenda eliminada correctamente',
+                                    ),
+                                  ),
+                                );
+                              },
+
+                              child: Container(
+
+                                padding:
+                                    const EdgeInsets.all(
+                                  4,
+                                ),
+
+                                decoration:
+                                    const BoxDecoration(
+                                  color:
+                                      Colors
+                                          .red,
+
+                                  shape:
+                                      BoxShape
+                                          .circle,
+                                ),
+
+                                child:
+                                    const Icon(
+                                  Icons.close,
+
+                                  color:
+                                      Colors
+                                          .white,
+
+                                  size: 16,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Talla ${item['talla']}', style: const TextStyle(color: Color(0xFF888888), fontSize: 14)),
-                          
-                          // CONTROLES DE CANTIDAD (+ / -)
-                          Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () => _actualizarCantidad(index, -1),
-                                child: const Icon(Icons.remove_circle_outline, color: Color(0xFF888888), size: 28),
+
+                      const SizedBox(
+                        height: 16,
+                      ),
+
+                      if (!registrado)
+
+                        SizedBox(
+
+                          width:
+                              double.infinity,
+
+                          child:
+                              ElevatedButton.icon(
+
+                            onPressed:
+                                () async {
+
+                              await Navigator.push(
+
+                                context,
+
+                                MaterialPageRoute(
+
+                                  builder:
+                                      (_) =>
+                                          QRScannerScreen(
+
+                                    mostrarMensaje:
+                                        false,
+
+                                    onScan:
+                                        (String qr)
+                                            async {
+
+                                      try {
+
+                                        final conflicto =
+                                            await provider
+                                                .registrarQrPedido(
+
+                                          idPedido:
+                                              widget.idPedido,
+
+                                          idDetallePedido:
+                                              detalle[
+                                                  'id'],
+
+                                          idInventarioEsperado:
+                                              detalle[
+                                                  'id_inventario'],
+
+                                          qr: qr,
+                                        );
+
+                                        if (conflicto !=
+                                                null &&
+                                            conflicto[
+                                                    'conflicto'] ==
+                                                true) {
+
+                                          if (!context
+                                              .mounted) {
+
+                                            return ScanFeedback(
+                                              resultado:
+                                                  ResultadoScan.error,
+
+                                              mensaje:
+                                                  'Operación cancelada',
+                                            );
+                                          }
+
+                                          final mover =
+                                              await showDialog<bool>(
+
+                                            context:
+                                                context,
+
+                                            builder:
+                                                (_) {
+
+                                              return AlertDialog(
+
+                                                title:
+                                                    const Text(
+                                                  'Mover QR',
+                                                ),
+
+                                                content:
+                                                    Text(
+                                                  'Esta unidad ya está registrada en el Pedido #${conflicto['pedido_anterior']}.\n\n¿Deseas moverla a este pedido?',
+                                                ),
+
+                                                actions: [
+
+                                                  TextButton(
+
+                                                    onPressed:
+                                                        () {
+
+                                                      Navigator.pop(
+                                                        context,
+                                                        false,
+                                                      );
+                                                    },
+
+                                                    child:
+                                                        const Text(
+                                                      'Cancelar',
+                                                    ),
+                                                  ),
+
+                                                  TextButton(
+
+                                                    onPressed:
+                                                        () {
+
+                                                      Navigator.pop(
+                                                        context,
+                                                        true,
+                                                      );
+                                                    },
+
+                                                    child:
+                                                        const Text(
+                                                      'Mover',
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          if (mover !=
+                                              true) {
+
+                                            return ScanFeedback(
+                                              resultado:
+                                                  ResultadoScan.error,
+
+                                              mensaje:
+                                                  'Movimiento cancelado',
+                                            );
+                                          }
+
+                                          await provider
+                                              .registrarQrPedido(
+
+                                            idPedido:
+                                                widget.idPedido,
+
+                                            idDetallePedido:
+                                                detalle[
+                                                    'id'],
+
+                                            idInventarioEsperado:
+                                                detalle[
+                                                    'id_inventario'],
+
+                                            qr: qr,
+
+                                            forzarMovimiento:
+                                                true,
+                                          );
+                                        }
+
+                                        if (!context
+                                            .mounted) {
+
+                                          return ScanFeedback(
+                                            resultado:
+                                                ResultadoScan.ok,
+
+                                            mensaje:
+                                                'QR registrado',
+                                          );
+                                        }
+
+                                        Navigator.pop(
+                                          context,
+                                        );
+
+                                        return ScanFeedback(
+
+                                          resultado:
+                                              ResultadoScan.ok,
+
+                                          mensaje:
+                                              'QR registrado',
+                                        );
+
+                                      } catch (e) {
+
+                                        return ScanFeedback(
+
+                                          resultado:
+                                              ResultadoScan.error,
+
+                                          mensaje:
+                                              e.toString(),
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+
+                            style:
+                                ElevatedButton.styleFrom(
+
+                              backgroundColor:
+                                  const Color(
+                                0xFF1452BD,
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                child: Text(
-                                  '${item['cantidad']}',
-                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+
+                              foregroundColor:
+                                  Colors.white,
+
+                              padding:
+                                  const EdgeInsets.symmetric(
+                                vertical: 14,
+                              ),
+                            ),
+
+                            icon: const Icon(
+                              Icons
+                                  .qr_code_scanner,
+
+                              color:
+                                  Colors.white,
+                            ),
+
+                            label:
+                                const Text(
+                              'Escanear QR',
+
+                              style:
+                                  TextStyle(
+                                color:
+                                    Colors
+                                        .white,
+
+                                fontWeight:
+                                    FontWeight
+                                        .bold,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      if (registrado)
+
+                        Column(
+
+                          crossAxisAlignment:
+                              CrossAxisAlignment
+                                  .start,
+
+                          children: [
+
+                            Container(
+
+                              padding:
+                                  const EdgeInsets.symmetric(
+                                horizontal:
+                                    12,
+
+                                vertical:
+                                    10,
+                              ),
+
+                              decoration:
+                                  BoxDecoration(
+
+                                color:
+                                    Colors
+                                        .green,
+
+                                borderRadius:
+                                    BorderRadius.circular(
+                                  12,
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () => _actualizarCantidad(index, 1),
-                                child: const Icon(Icons.add_circle_outline, color: Color(0xFF1452BD), size: 28),
+
+                              child: Row(
+
+                                children: [
+
+                                  const Icon(
+                                    Icons
+                                        .check_circle,
+
+                                    color:
+                                        Colors
+                                            .white,
+                                  ),
+
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+
+                                  Expanded(
+
+                                    child: Text(
+
+                                      'QR #${detalle['id_unidad_registrada']} registrado',
+
+                                      style:
+                                          const TextStyle(
+                                        color:
+                                            Colors
+                                                .white,
+
+                                        fontWeight:
+                                            FontWeight
+                                                .bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          )
-                        ],
-                      ),
+                            ),
+
+                            const SizedBox(
+                              height: 12,
+                            ),
+
+                            SizedBox(
+
+                              width:
+                                  double.infinity,
+
+                              child:
+                                  ElevatedButton(
+
+                                onPressed:
+                                    () async {
+
+                                  final confirmar =
+                                      await showDialog<bool>(
+
+                                    context:
+                                        context,
+
+                                    builder:
+                                        (_) {
+
+                                      return AlertDialog(
+
+                                        title:
+                                            const Text(
+                                          'Quitar registro',
+                                        ),
+
+                                        content:
+                                            const Text(
+                                          '¿Seguro que deseas quitar el registro QR?',
+                                        ),
+
+                                        actions: [
+
+                                          TextButton(
+
+                                            onPressed:
+                                                () {
+
+                                              Navigator.pop(
+                                                context,
+                                                false,
+                                              );
+                                            },
+
+                                            child:
+                                                const Text(
+                                              'Cancelar',
+                                            ),
+                                          ),
+
+                                          TextButton(
+
+                                            onPressed:
+                                                () {
+
+                                              Navigator.pop(
+                                                context,
+                                                true,
+                                              );
+                                            },
+
+                                            child:
+                                                const Text(
+                                              'Quitar',
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+
+                                  if (confirmar !=
+                                      true) {
+                                    return;
+                                  }
+
+                                  await provider
+                                      .desregistrarUnidad(
+
+                                    idPedido:
+                                        widget.idPedido,
+
+                                    idDetallePedido:
+                                        detalle[
+                                            'id'],
+                                  );
+
+                                  if (!context
+                                      .mounted) {
+                                    return;
+                                  }
+
+                                  ScaffoldMessenger
+                                          .of(
+                                    context,
+                                  ).showSnackBar(
+
+                                    const SnackBar(
+                                      content:
+                                          Text(
+                                        'Registro QR eliminado',
+                                      ),
+                                    ),
+                                  );
+                                },
+
+                                style:
+                                    ElevatedButton.styleFrom(
+
+                                  backgroundColor:
+                                      Colors
+                                          .red,
+
+                                  foregroundColor:
+                                      Colors
+                                          .white,
+                                ),
+
+                                child:
+                                    const Text(
+                                  'Desregistrar',
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                     ],
                   ),
                 );
               },
             ),
+          ),
 
-            const SizedBox(height: 24),
+          Container(
 
-            // CAJA DE RESUMEN
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFFE0E0E0)),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Prendas', style: TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                      Text('$totalPiezas piezas', style: const TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Subtotal', style: TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                      Text('\$${totalPrecio.toInt()}', style: const TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12.0),
-                    child: Divider(color: Color(0xFFE0E0E0), thickness: 1.5),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('TOTAL', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-                      Text('\$${totalPrecio.toInt()}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-                    ],
-                  ),
-                ],
-              ),
+            padding:
+                const EdgeInsets.all(
+              20,
             ),
 
-            const SizedBox(height: 32),
+            decoration:
+                const BoxDecoration(
+              color: Colors.white,
+            ),
 
-            // BOTONES FINALES
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4CAF50), // Verde
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-                  elevation: 2,
+            child: SizedBox(
+
+              width:
+                  double.infinity,
+
+              child:
+                  ElevatedButton(
+
+                onPressed:
+
+                    detalles.isNotEmpty &&
+                            detalles.every(
+                              (d) =>
+                                  d['registrado'] ==
+                                  1,
+                            )
+
+                        ? () async {
+
+                            try {
+
+                              await provider
+                                  .completarPedido(
+                                widget.idPedido,
+                              );
+
+                              if (!context
+                                  .mounted) {
+                                return;
+                              }
+
+                              if (context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada !=
+    null) {
+
+  await context
+      .read<InventarioProvider>()
+      .cargarInventario(
+
+    context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada!
+        .idEscuela!,
+  );
+}
+
+if (!context.mounted) {
+  return;
+}
+
+ScaffoldMessenger
+        .of(
+  context,
+).showSnackBar(
+
+  const SnackBar(
+    content:
+        Text(
+      'Pedido completado correctamente',
+    ),
+  ),
+);
+
+Navigator.pop(
+  context,
+  true,
+);
+
+                            } catch (e) {
+
+                              if (!context
+                                  .mounted) {
+                                return;
+                              }
+
+                              ScaffoldMessenger
+                                      .of(
+                                context,
+                              ).showSnackBar(
+
+                                SnackBar(
+                                  content:
+                                      Text(
+                                    e.toString(),
+                                  ),
+                                ),
+                              );
+                            }
+                          }
+
+                        : null,
+
+                style:
+                    ElevatedButton.styleFrom(
+
+                  backgroundColor:
+                      const Color(
+                    0xFF1452BD,
+                  ),
+
+                  foregroundColor:
+                      Colors.white,
+
+                  padding:
+                      const EdgeInsets.symmetric(
+                    vertical: 16,
+                  ),
+
+                  shape:
+                      RoundedRectangleBorder(
+
+                    borderRadius:
+                        BorderRadius.circular(
+                      14,
+                    ),
+                  ),
                 ),
-                child: const Text('Completar pedido', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
-              ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AgregarPrendasPedidoScreen()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF3388D6), // Azul
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-                  elevation: 2,
+
+                child: const Text(
+
+                  'Completar Pedido',
+
+                  style: TextStyle(
+                    fontWeight:
+                        FontWeight.bold,
+
+                    fontSize: 16,
+                  ),
                 ),
-                child: const Text('+ Agregar prendas', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white)),
               ),
             ),
-            const SizedBox(height: 24),
-          ],
-        ),
+          ),
+        ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

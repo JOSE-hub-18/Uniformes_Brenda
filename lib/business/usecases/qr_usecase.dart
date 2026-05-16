@@ -8,13 +8,27 @@ class QrUseCase {
 
   /// Convierte el QR a ID y busca la unidad
   Future<Unidad?> obtenerUnidad(String qr) async {
-    final id = int.tryParse(qr.trim());
+  // EXTRAER SOLO NÚMEROS
+  final match = RegExp(r'\d+').firstMatch(qr);
 
-    // QR inválido
-    if (id == null) return null;
+  final id = int.tryParse(
+    match?.group(0) ?? '',
+  );
 
-    return await unidadRepository.obtenerPorId(id);
+  if (id == null) {
+    return null;
   }
+
+  final unidad =
+      await unidadRepository.obtenerPorId(id);
+
+  // VALIDAR ACTIVA
+  if (unidad == null || !unidad.activo) {
+    return null;
+  }
+
+  return unidad;
+}
 
   /// Verifica si el QR corresponde a una unidad existente
   Future<bool> existeQr(String qr) async {
