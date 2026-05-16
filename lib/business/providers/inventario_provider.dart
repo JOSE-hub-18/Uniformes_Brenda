@@ -24,7 +24,8 @@ class InventarioProvider extends ChangeNotifier {
   List<Prenda> get prendas => _prendas;
   Escuela? get escuelaSeleccionada => _escuelaSeleccionada;
   int? get idPrendaSeleccionada => _idPrendaSeleccionada;
-  List<Map<String, dynamic>> get itemsInventario => _itemsInventario;
+  List<Map<String, dynamic>> get itemsInventario =>
+      _itemsInventario;
 
   InventarioProvider() {
     _inicializarDatos();
@@ -32,11 +33,16 @@ class InventarioProvider extends ChangeNotifier {
 
   Future<void> _inicializarDatos() async {
     _cargando = true;
+
     notifyListeners();
 
     try {
-      _escuelas = await _escuelaRepo.obtenerTodas();
-      _prendas = await _prendaRepo.obtenerTodas();
+      _escuelas =
+          await _escuelaRepo.obtenerTodas();
+
+      _prendas =
+          await _prendaRepo.obtenerTodas();
+
       _escuelaSeleccionada = null;
     } catch (e) {
       _escuelas = [];
@@ -47,15 +53,22 @@ class InventarioProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> cargarInventario(int idEscuela) async {
+  Future<void> cargarInventario(
+    int idEscuela,
+  ) async {
     _cargando = true;
+
     notifyListeners();
 
     try {
       _escuelaSeleccionada =
-          _escuelas.firstWhere((e) => e.idEscuela == idEscuela);
+          _escuelas.firstWhere(
+        (e) => e.idEscuela == idEscuela,
+      );
 
-      _itemsInventario = await _inventarioRepo.obtenerInventarioFiltrado(
+      _itemsInventario =
+          await _inventarioRepo
+              .obtenerInventarioFiltrado(
         idEscuela: idEscuela,
         idPrenda: _idPrendaSeleccionada,
       );
@@ -67,17 +80,31 @@ class InventarioProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> seleccionarPrenda(int? idPrenda) async {
+  Future<void> seleccionarPrenda(
+    int? idPrenda,
+  ) async {
     _idPrendaSeleccionada = idPrenda;
 
     if (_escuelaSeleccionada != null) {
-      await cargarInventario(_escuelaSeleccionada!.idEscuela!);
+      await cargarInventario(
+        _escuelaSeleccionada!.idEscuela!,
+      );
     }
   }
 
-  
+  // RECARGAR TODO EL INVENTARIO
   Future<void> recargarEscuelas() async {
-    _escuelas = await _escuelaRepo.obtenerTodas();
+    _escuelas =
+        await _escuelaRepo.obtenerTodas();
+
+    // IMPORTANTE:
+    // volver a cargar inventario actual
+    if (_escuelaSeleccionada != null) {
+      await cargarInventario(
+        _escuelaSeleccionada!.idEscuela!,
+      );
+    }
+
     notifyListeners();
   }
 }

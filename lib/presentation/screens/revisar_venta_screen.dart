@@ -1,167 +1,820 @@
+// lib/presentation/screens/revisar_venta_screen.dart
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../business/providers/inventario_provider.dart';
+
+import '../../data/repositories/unidad_repository.dart';
+import '../../data/repositories/venta_repository.dart';
+
+import '../providers/ventas_provider.dart';
+import '../providers/print_provider.dart';
+
 import 'bottom_nav_bar.dart';
 
-class RevisarVentaScreen extends StatelessWidget {
-  const RevisarVentaScreen({super.key});
+class RevisarVentaScreen
+    extends StatefulWidget {
+
+  final int idVenta;
+
+  const RevisarVentaScreen({
+    super.key,
+    required this.idVenta,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    // Mock data de la venta
-    final String numVenta = '001';
-    final String cliente = 'John Doe';
+  State<
+          RevisarVentaScreen>
+      createState() =>
+          _RevisarVentaScreenState();
+}
 
-    // Lista de prendas vendidas (asumimos 1 de cada una para el ejemplo)
-    final List<Map<String, dynamic>> prendas = [
-      {'titulo': 'ESC. PRIMARIA FLOR - Chamarra', 'talla': 'M', 'precio': 350.0},
-      {'titulo': 'ESC. PRIMARIA FLOR - Falda', 'talla': 'M', 'precio': 180.0},
-      {'titulo': 'ESC. PRIMARIA FLOR - Playera', 'talla': 'M', 'precio': 120.0},
-    ];
+class _RevisarVentaScreenState
+    extends State<
+        RevisarVentaScreen> {
 
-    // Cálculos dinámicos (Como la cantidad es estática en la venta ya completada, contamos el largo de la lista)
-    final int totalPiezas = prendas.length;
-    final double totalPrecio = prendas.fold(0, (sum, item) => sum + item['precio']);
+  final _ventaRepository =
+      VentaRepository();
+
+  final _unidadRepository =
+      UnidadRepository();
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    WidgetsBinding.instance
+        .addPostFrameCallback(
+      (_) {
+
+        context
+            .read<
+                VentasProvider>()
+            .cargarDetalles(
+          widget.idVenta,
+        );
+      },
+    );
+  }
+
+  Future<void>
+      _devolverPrenda({
+
+    required int idDetalleVenta,
+
+    required int idUnidad,
+
+    required int idInventario,
+  }) async {
+
+    // Reactivar unidad
+
+    await _unidadRepository
+        .reactivar(
+      idUnidad,
+    );
+
+    // Eliminar detalle venta
+
+    await _ventaRepository
+        .eliminarDetalleVenta(
+      idDetalleVenta,
+    );
+
+    // Reimprimir QR
+
+    if (!mounted) {
+      return;
+    }
+
+    try {
+
+  await context
+      .read<PrintProvider>()
+      .imprimirQrExistente(
+    idUnidad,
+  );
+
+  await _unidadRepository
+      .quitarPendienteImpresion(
+    idUnidad,
+  );
+
+} catch (_) {
+
+  await _unidadRepository
+      .marcarPendienteImpresion(
+    idUnidad,
+  );
+
+  if (!mounted) {
+    return;
+  }
+
+  ScaffoldMessenger.of(
+    context,
+  ).showSnackBar(
+
+    const SnackBar(
+      content: Text(
+        'No se pudo imprimir el QR.\nLa prenda quedó pendiente de impresión.',
+      ),
+    ),
+  );
+}
+
+    // Contar detalles restantes
+
+    final restantes =
+        await _ventaRepository
+            .contarDetallesVenta(
+      widget.idVenta,
+    );
+
+    // Si ya no quedan prendas
+    // eliminar venta completa
+
+    if (restantes <= 0) {
+
+      await _ventaRepository
+          .eliminar(
+        widget.idVenta,
+      );
+
+      if (!mounted) {
+        return;
+      }
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(
+
+        const SnackBar(
+          content: Text(
+            'Venta eliminada completamente',
+          ),
+        ),
+      );
+
+      await context
+    .read<VentasProvider>()
+    .cargarVentas();
+
+if (context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada !=
+    null) {
+
+  await context
+      .read<InventarioProvider>()
+      .cargarInventario(
+
+    context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada!
+        .idEscuela!,
+  );
+}
+
+Navigator.pop(
+  context,
+  true,
+);
+
+      return;
+    }
+
+    // Recargar detalles
+
+    if (!mounted) {
+      return;
+    }
+
+    await context
+        .read<VentasProvider>()
+        .cargarDetalles(
+      widget.idVenta,
+    );
+
+    await context
+    .read<VentasProvider>()
+    .cargarVentas();
+
+if (context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada !=
+    null) {
+
+  await context
+      .read<InventarioProvider>()
+      .cargarInventario(
+
+    context
+        .read<InventarioProvider>()
+        .escuelaSeleccionada!
+        .idEscuela!,
+  );
+}
+
+    if (!mounted) {
+      return;
+    }
+
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(
+
+      const SnackBar(
+        content: Text(
+          'Prenda devuelta correctamente',
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(
+    BuildContext context,
+  ) {
+
+    final provider =
+        context.watch<
+            VentasProvider>();
+
+    final detalles =
+        provider.detalles;
+
+    final total =
+        detalles.fold<double>(
+
+      0,
+
+      (
+        suma,
+        item,
+      ) {
+
+        return suma +
+            ((item[
+                        'precio_unitario']
+                    as num)
+                .toDouble());
+      },
+    );
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5FAFF),
+
+      backgroundColor:
+          const Color(
+        0xFFF5FAFF,
+      ),
+
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+
+        backgroundColor:
+            Colors.transparent,
+
         elevation: 0,
+
         leading: IconButton(
-          icon: const Icon(Icons.keyboard_double_arrow_left, color: Color(0xFF1452BD), size: 32),
-          onPressed: () => Navigator.pop(context),
+
+          icon: const Icon(
+
+            Icons
+                .keyboard_double_arrow_left,
+
+            color:
+                Color(
+              0xFF1452BD,
+            ),
+
+            size: 32,
+          ),
+
+          onPressed: () =>
+              Navigator.pop(
+            context,
+          ),
         ),
+
         title: const Text(
+
           'Revisar Venta',
-          style: TextStyle(color: Color(0xFF1452BD), fontWeight: FontWeight.bold),
+
+          style: TextStyle(
+
+            color:
+                Color(
+              0xFF1452BD,
+            ),
+
+            fontWeight:
+                FontWeight.bold,
+          ),
         ),
+
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // INFO DE LA VENTA
-            Text('Venta #$numVenta', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-            const SizedBox(height: 4),
-            Text(cliente, style: const TextStyle(fontSize: 16, color: Color(0xFF888888))),
-            const SizedBox(height: 24),
 
-            // LISTA DE PRENDAS CON BOTÓN DE DEVOLUCIÓN
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: prendas.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 16),
-              itemBuilder: (context, index) {
-                final item = prendas[index];
-                return Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: const Color(0xFFE0E0E0)),
+      body:
+          provider.cargando
+
+              ? const Center(
+                  child:
+                      CircularProgressIndicator(),
+                )
+
+              : SingleChildScrollView(
+
+                  padding:
+                      const EdgeInsets.symmetric(
+
+                    horizontal: 24,
+                    vertical: 16,
                   ),
+
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+
+                    crossAxisAlignment:
+                        CrossAxisAlignment
+                            .start,
+
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              item['titulo'],
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF333333)),
-                            ),
+
+                      Text(
+
+                        'Venta #${widget.idVenta}',
+
+                        style:
+                            const TextStyle(
+
+                          fontSize: 22,
+
+                          fontWeight:
+                              FontWeight.bold,
+
+                          color:
+                              Color(
+                            0xFF333333,
                           ),
-                          Text(
-                            '\$${item['precio'].toInt()}',
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Color(0xFF1452BD)),
-                          ),
-                        ],
+                        ),
                       ),
-                      const SizedBox(height: 8),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('Talla ${item['talla']}', style: const TextStyle(color: Color(0xFF888888), fontSize: 14)),
-                          
-                          // TEXTO CLICKABLE DE DEVOLUCIÓN
-                          GestureDetector(
-                            onTap: () {
-                              // Aquí irá la lógica de devolución en el futuro
-                              // Por ejemplo, abrir un pop-up que pregunte "¿Seguro que desea devolver esta prenda?"
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 22.0, horizontal: 4.0),
-                              child: Text(
-                              'Devolución',
-                              style: TextStyle(
-                                color: Color(0xFFD32F2F), // Rojo
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+
+                      const SizedBox(
+                        height: 24,
+                      ),
+
+                      ListView.separated(
+
+                        shrinkWrap: true,
+
+                        physics:
+                            const NeverScrollableScrollPhysics(),
+
+                        itemCount:
+                            detalles.length,
+
+                        separatorBuilder:
+                            (_, __) =>
+                                const SizedBox(
+                          height: 16,
+                        ),
+
+                        itemBuilder:
+                            (
+                          context,
+                          index,
+                        ) {
+
+                          final item =
+                              detalles[index];
+
+                          return Container(
+
+                            padding:
+                                const EdgeInsets.all(
+                              16,
+                            ),
+
+                            decoration:
+                                BoxDecoration(
+
+                              color:
+                                  Colors.white,
+
+                              borderRadius:
+                                  BorderRadius.circular(
+                                16,
+                              ),
+
+                              border:
+                                  Border.all(
+                                color:
+                                    const Color(
+                                  0xFFE0E0E0,
+                                ),
                               ),
                             ),
+
+                            child:
+                                Column(
+
+                              crossAxisAlignment:
+                                  CrossAxisAlignment
+                                      .start,
+
+                              children: [
+
+                                Row(
+
+                                  mainAxisAlignment:
+                                      MainAxisAlignment
+                                          .spaceBetween,
+
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment
+                                          .start,
+
+                                  children: [
+
+                                    Expanded(
+
+                                      child:
+                                          Column(
+
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment
+                                                .start,
+
+                                        children: [
+
+                                          Text(
+
+                                            item[
+                                                'prenda'],
+
+                                            style:
+                                                const TextStyle(
+
+                                              fontWeight:
+                                                  FontWeight.bold,
+
+                                              fontSize:
+                                                  16,
+
+                                              color:
+                                                  Color(
+                                                0xFF333333,
+                                              ),
+                                            ),
+                                          ),
+
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+
+                                          Text(
+
+                                            '${item['escuela']} • Talla ${item['talla']}',
+
+                                            style:
+                                                const TextStyle(
+
+                                              color:
+                                                  Color(
+                                                0xFF777777,
+                                              ),
+
+                                              fontSize:
+                                                  13,
+                                            ),
+                                          ),
+
+                                          const SizedBox(
+                                            height: 4,
+                                          ),
+
+                                          Text(
+
+                                            'Unidad #${item['id_unidad']}',
+
+                                            style:
+                                                const TextStyle(
+
+                                              color:
+                                                  Color(
+                                                0xFF999999,
+                                              ),
+
+                                              fontSize:
+                                                  12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+
+                                    Text(
+
+                                      '\$${(item['precio_unitario'] as num).toStringAsFixed(0)}',
+
+                                      style:
+                                          const TextStyle(
+
+                                        fontWeight:
+                                            FontWeight.bold,
+
+                                        fontSize:
+                                            16,
+
+                                        color:
+                                            Color(
+                                          0xFF1452BD,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                const SizedBox(
+                                  height: 14,
+                                ),
+
+                                Align(
+
+                                  alignment:
+                                      Alignment
+                                          .centerRight,
+
+                                  child:
+                                      GestureDetector(
+
+                                    onTap:
+                                        () async {
+
+                                      final confirmar =
+                                          await showDialog<bool>(
+
+                                        context:
+                                            context,
+
+                                        builder:
+                                            (_) {
+
+                                          return AlertDialog(
+
+                                            title:
+                                                const Text(
+                                              'Devolver prenda',
+                                            ),
+
+                                            content:
+                                                const Text(
+                                              '¿Seguro que deseas devolver esta prenda?',
+                                            ),
+
+                                            actions: [
+
+                                              TextButton(
+
+                                                onPressed:
+                                                    () {
+
+                                                  Navigator.pop(
+                                                    context,
+                                                    false,
+                                                  );
+                                                },
+
+                                                child:
+                                                    const Text(
+                                                  'Cancelar',
+                                                ),
+                                              ),
+
+                                              TextButton(
+
+                                                onPressed:
+                                                    () {
+
+                                                  Navigator.pop(
+                                                    context,
+                                                    true,
+                                                  );
+                                                },
+
+                                                child:
+                                                    const Text(
+                                                  'Devolver',
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+
+                                      if (confirmar !=
+                                          true) {
+                                        return;
+                                      }
+
+                                      await _devolverPrenda(
+
+                                        idDetalleVenta:
+                                            item['id'],
+
+                                        idUnidad:
+                                            item['id_unidad'],
+
+                                        idInventario:
+                                            item['id_inventario'],
+                                      );
+                                    },
+
+                                    child:
+                                        const Padding(
+
+                                      padding:
+                                          EdgeInsets.symmetric(
+
+                                        vertical:
+                                            8,
+
+                                        horizontal:
+                                            4,
+                                      ),
+
+                                      child:
+                                          Text(
+
+                                        'Devolución',
+
+                                        style:
+                                            TextStyle(
+
+                                          color:
+                                              Color(
+                                            0xFFD32F2F,
+                                          ),
+
+                                          fontWeight:
+                                              FontWeight.bold,
+
+                                          fontSize:
+                                              18,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+
+                      const SizedBox(
+                        height: 24,
+                      ),
+
+                      Container(
+
+                        padding:
+                            const EdgeInsets.all(
+                          20,
+                        ),
+
+                        decoration:
+                            BoxDecoration(
+
+                          color:
+                              Colors.white,
+
+                          borderRadius:
+                              BorderRadius.circular(
+                            16,
+                          ),
+
+                          border:
+                              Border.all(
+                            color:
+                                const Color(
+                              0xFFE0E0E0,
                             ),
                           ),
-                        ],
+                        ),
+
+                        child: Column(
+
+                          children: [
+
+                            Row(
+
+                              mainAxisAlignment:
+                                  MainAxisAlignment
+                                      .spaceBetween,
+
+                              children: [
+
+                                const Text(
+
+                                  'Prendas',
+
+                                  style:
+                                      TextStyle(
+
+                                    fontSize: 16,
+
+                                    color:
+                                        Color(
+                                      0xFF666666,
+                                    ),
+                                  ),
+                                ),
+
+                                Text(
+
+                                  '${detalles.length} piezas',
+
+                                  style:
+                                      const TextStyle(
+
+                                    fontSize: 16,
+
+                                    color:
+                                        Color(
+                                      0xFF666666,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            const SizedBox(
+                              height: 8,
+                            ),
+
+                            Row(
+
+                              mainAxisAlignment:
+                                  MainAxisAlignment
+                                      .spaceBetween,
+
+                              children: [
+
+                                const Text(
+
+                                  'TOTAL',
+
+                                  style:
+                                      TextStyle(
+
+                                    fontSize: 18,
+
+                                    fontWeight:
+                                        FontWeight.bold,
+
+                                    color:
+                                        Color(
+                                      0xFF333333,
+                                    ),
+                                  ),
+                                ),
+
+                                Text(
+
+                                  '\$${total.toStringAsFixed(2)}',
+
+                                  style:
+                                      const TextStyle(
+
+                                    fontSize: 18,
+
+                                    fontWeight:
+                                        FontWeight.bold,
+
+                                    color:
+                                        Color(
+                                      0xFF333333,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(
+                        height: 32,
                       ),
                     ],
                   ),
-                );
-              },
-            ),
+                ),
 
-            const SizedBox(height: 24),
-
-            // CAJA DE RESUMEN
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFFE0E0E0)),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Prendas', style: TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                      Text('$totalPiezas piezas', style: const TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('Subtotal', style: TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                      Text('\$${totalPrecio.toInt()}', style: const TextStyle(fontSize: 16, color: Color(0xFF666666))),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 12.0),
-                    child: Divider(color: Color(0xFFE0E0E0), thickness: 1.5),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text('TOTAL', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-                      Text('\$${totalPrecio.toInt()}', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF333333))),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 32), // Espacio final antes del NavBar
-            // Botones omitidos exitosamente
-          ],
-        ),
-      ),
-      bottomNavigationBar: const BottomNavBar(),
+      bottomNavigationBar:
+          const BottomNavBar(),
     );
   }
 }

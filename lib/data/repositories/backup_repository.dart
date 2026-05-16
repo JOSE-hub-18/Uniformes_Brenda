@@ -1,45 +1,87 @@
 // lib/data/repositories/backup_repository.dart
 
 import 'dart:io';
+
 import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+
+import 'package:path_provider/path_provider.dart';
+
 import '../database/database_helper.dart';
 
 class BackupRepository {
 
-  // Crea una copia del archivo de la base de datos
-  Future<String> crearBackup() async {
-    final db = await DatabaseHelper.instance.database;
+  // Crear copia de la base de datos
 
-    final dbPath = db.path;
+  Future<String>
+      crearBackup() async {
 
-    final folder = await getDatabasesPath();
+    final db =
+        await DatabaseHelper
+            .instance
+            .database;
 
-    final backupPath = join(
-      folder,
-      'backup_uniformes_${DateTime.now().millisecondsSinceEpoch}.db',
+    final dbPath =
+        db.path;
+
+    final backupDir =
+        await _obtenerDirectorioBackups();
+
+    final now =
+        DateTime.now();
+
+    final nombreBackup =
+
+        'backup_uniformes_'
+
+        '${now.year}_'
+
+        '${now.month.toString().padLeft(2, '0')}_'
+
+        '${now.day.toString().padLeft(2, '0')}_'
+
+        '${now.hour.toString().padLeft(2, '0')}_'
+
+        '${now.minute.toString().padLeft(2, '0')}.db';
+
+    final backupPath =
+        join(
+      backupDir.path,
+      nombreBackup,
     );
 
-    await File(dbPath).copy(backupPath);
+    await File(dbPath).copy(
+      backupPath,
+    );
 
     return backupPath;
   }
 
-  // Restaura la base de datos desde un backup existente
-  Future<void> restaurarBackup(String backupPath) async {
-    final db = await DatabaseHelper.instance.database;
+  // Obtener directorio backups
 
-    final dbPath = db.path;
+  Future<Directory>
+      _obtenerDirectorioBackups()
+      async {
 
-    // Cierra la base antes de reemplazarla
-    await db.close();
+    final documentos =
+        await getApplicationDocumentsDirectory();
 
-    final backupFile = File(backupPath);
+    final backupDir =
+        Directory(
 
-    if (!await backupFile.exists()) {
-      throw Exception('El archivo de respaldo no existe');
+      join(
+        documentos.path,
+        'backups',
+      ),
+    );
+
+    if (!await backupDir
+        .exists()) {
+
+      await backupDir.create(
+        recursive: true,
+      );
     }
 
-    await backupFile.copy(dbPath);
+    return backupDir;
   }
 }
