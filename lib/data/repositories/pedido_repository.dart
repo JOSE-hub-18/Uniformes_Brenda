@@ -5,11 +5,19 @@ import 'package:sqflite/sqflite.dart';
 import '../database/database_helper.dart';
 import '../../models/models.dart';
 
+/// Repositorio encargado de gestionar las operaciones
+/// relacionadas con pedidos y detalles de pedido en la base de datos.
 class PedidoRepository {
 
+  /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async =>
       await DatabaseHelper.instance.database;
 
+  /// Inserta un pedido junto con todos sus detalles asociados
+  /// dentro de una transacción atómica.
+  ///
+  /// La operación garantiza consistencia entre la tabla de pedidos
+  /// y la tabla de detalle_pedido.
   Future<int> insertarPedidoYDetalles({
     required Pedido pedido,
     required List<DetallePedido> detalles,
@@ -19,6 +27,7 @@ class PedidoRepository {
 
     return await db.transaction((txn) async {
 
+      // Inserta el registro principal del pedido.
       final idPedido = await txn.insert(
         'pedidos',
         {
@@ -42,6 +51,7 @@ class PedidoRepository {
         },
       );
 
+      // Inserta cada detalle asociado al pedido recién creado.
       for (final detalle in detalles) {
 
         await txn.insert(
@@ -68,6 +78,8 @@ class PedidoRepository {
     });
   }
 
+  /// Obtiene todos los pedidos registrados
+  /// ordenados por fecha descendente.
   Future<List<Pedido>> obtenerTodos() async {
 
     final db = await _db;
@@ -82,6 +94,9 @@ class PedidoRepository {
         .toList();
   }
 
+  /// Obtiene un pedido específico mediante su identificador.
+  ///
+  /// Retorna null si no existe un registro asociado.
   Future<Pedido?> obtenerPorId(
     int idPedido,
   ) async {
@@ -104,6 +119,7 @@ class PedidoRepository {
     );
   }
 
+  /// Obtiene todos los detalles asociados a un pedido.
   Future<List<DetallePedido>>
       obtenerDetalles(
     int idPedido,
@@ -125,6 +141,11 @@ class PedidoRepository {
         .toList();
   }
 
+  /// Obtiene los detalles de un pedido junto con
+  /// información descriptiva proveniente de tablas relacionadas.
+  ///
+  /// La consulta integra información de escuela,
+  /// prenda y talla asociadas al inventario.
   Future<List<Map<String, dynamic>>>
       obtenerDetallesConInfo(
     int idPedido,
@@ -169,6 +190,7 @@ class PedidoRepository {
     ''', [idPedido]);
   }
 
+  /// Actualiza el estado actual de un pedido.
   Future<int> actualizarEstado({
     required int idPedido,
     required EstadoPedido estado,
@@ -186,6 +208,10 @@ class PedidoRepository {
     );
   }
 
+  /// Registra una unidad física dentro de un detalle de pedido.
+  ///
+  /// La operación marca el detalle como registrado
+  /// y asocia la unidad correspondiente.
   Future<int> registrarUnidad({
     required int idDetallePedido,
     required int idUnidad,
@@ -206,6 +232,11 @@ class PedidoRepository {
     );
   }
 
+  /// Elimina el registro de una unidad asociada
+  /// a un detalle de pedido.
+  ///
+  /// La operación restablece el estado de registro
+  /// a pendiente.
   Future<int> desregistrarUnidad(
     int idDetallePedido,
   ) async {
@@ -225,6 +256,10 @@ class PedidoRepository {
     );
   }
 
+/// Obtiene el registro activo asociado a una unidad específica.
+///
+/// Se considera activo cuando el detalle se encuentra
+/// marcado como registrado.
 Future<Map<String, dynamic>?>
     obtenerRegistroActivoPorUnidad(
   int idUnidad,
@@ -260,6 +295,12 @@ Future<Map<String, dynamic>?>
 
   return result.first;
 }
+
+  /// Verifica si todos los detalles de un pedido
+  /// han sido registrados.
+  ///
+  /// Un pedido se considera completo cuando no existen
+  /// registros pendientes.
   Future<bool> pedidoCompleto(
     int idPedido,
   ) async {
@@ -285,6 +326,7 @@ Future<Map<String, dynamic>?>
     return total == 0;
   }
 
+  /// Elimina un detalle específico de pedido.
   Future<int> eliminarDetallePedido(
     int idDetallePedido,
   ) async {
@@ -298,6 +340,8 @@ Future<Map<String, dynamic>?>
     );
   }
 
+  /// Obtiene la cantidad total de detalles
+  /// asociados a un pedido.
   Future<int> contarDetalles(
     int idPedido,
   ) async {
@@ -319,6 +363,11 @@ Future<Map<String, dynamic>?>
         0;
   }
 
+  /// Elimina un pedido y todos sus detalles asociados
+  /// dentro de una transacción.
+  ///
+  /// La eliminación respeta la integridad lógica
+  /// entre tablas relacionadas.
   Future<void> eliminarPedidoCompleto(
     int idPedido,
   ) async {
@@ -327,12 +376,15 @@ Future<Map<String, dynamic>?>
 
     await db.transaction((txn) async {
 
+      // Elimina primero los detalles relacionados
+      // para evitar inconsistencias referenciales.
       await txn.delete(
         'detalle_pedido',
         where: 'id_pedido = ?',
         whereArgs: [idPedido],
       );
 
+      // Elimina el pedido principal.
       await txn.delete(
         'pedidos',
         where: 'id = ?',
@@ -341,6 +393,7 @@ Future<Map<String, dynamic>?>
     });
   }
 
+  /// Elimina un pedido mediante su identificador.
   Future<int> eliminar(
     int idPedido,
   ) async {

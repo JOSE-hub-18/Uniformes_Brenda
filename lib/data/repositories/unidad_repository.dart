@@ -6,15 +6,26 @@ import '../database/database_helper.dart';
 
 import '../../models/models.dart';
 
+/// Repositorio encargado de gestionar las operaciones
+/// relacionadas con unidades de inventario.
+///
+/// Permite administrar activación, impresión,
+/// validaciones y consultas asociadas a unidades físicas.
 class UnidadRepository {
 
+  /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async =>
       await DatabaseHelper
           .instance
           .database;
 
-  // Inserta varias unidades nuevas
-
+  /// Inserta múltiples unidades asociadas a un inventario.
+  ///
+  /// Cada unidad se crea inicialmente como activa
+  /// y sin pendiente de impresión.
+  ///
+  /// La operación se ejecuta dentro de una transacción
+  /// para garantizar consistencia en inserciones masivas.
   Future<List<int>>
       insertarUnidades(
     int idInventario,
@@ -28,6 +39,8 @@ class UnidadRepository {
     await db.transaction(
       (txn) async {
 
+        // Genera la cantidad solicitada de unidades
+        // asociadas al inventario especificado.
         for (
           int i = 0;
           i < cantidad;
@@ -58,8 +71,9 @@ class UnidadRepository {
     return ids;
   }
 
-  // Obtener una unidad por id
-
+  /// Obtiene una unidad mediante su identificador.
+  ///
+  /// Retorna null cuando no existe un registro asociado.
   Future<Unidad?> obtenerPorId(
     int id,
   ) async {
@@ -86,8 +100,11 @@ class UnidadRepository {
     );
   }
 
-  // Verificar pertenencia
-
+  /// Verifica si una unidad pertenece
+  /// a un inventario específico.
+  ///
+  /// Retorna true cuando existe coincidencia
+  /// entre la unidad y el inventario indicado.
   Future<bool> pertenece(
     int idUnidad,
     int idInventario,
@@ -113,8 +130,11 @@ class UnidadRepository {
         .isNotEmpty;
   }
 
-  // Obtener unidades activas
-
+  /// Obtiene todas las unidades activas
+  /// asociadas a un inventario.
+  ///
+  /// Las unidades inactivas o vendidas
+  /// son excluidas del resultado.
   Future<List<Unidad>>
       obtenerPorInventario(
     int idInventario,
@@ -142,8 +162,10 @@ class UnidadRepository {
         .toList();
   }
 
-  // Marcar como vendida
-
+  /// Marca una unidad como inactiva.
+  ///
+  /// Esta operación representa lógicamente
+  /// una unidad vendida o fuera de disponibilidad.
   Future<int> desactivar(
     int id,
   ) async {
@@ -164,8 +186,10 @@ class UnidadRepository {
     );
   }
 
-  // Reactivar unidad
-
+  /// Reactiva una unidad previamente desactivada.
+  ///
+  /// La operación restablece la disponibilidad
+  /// de la unidad dentro del inventario.
   Future<int> reactivar(
     int id,
   ) async {
@@ -186,8 +210,10 @@ class UnidadRepository {
     );
   }
 
-  // Marcar pendiente impresión
-
+  /// Marca una unidad como pendiente de impresión.
+  ///
+  /// Esta bandera puede ser utilizada para procesos
+  /// relacionados con etiquetas, códigos o tickets.
   Future<int>
       marcarPendienteImpresion(
     int idUnidad,
@@ -210,8 +236,8 @@ class UnidadRepository {
     );
   }
 
-  // Quitar pendiente impresión
-
+  /// Elimina el estado pendiente de impresión
+  /// de una unidad.
   Future<int>
       quitarPendienteImpresion(
     int idUnidad,
@@ -234,8 +260,11 @@ class UnidadRepository {
     );
   }
 
-  // Obtener pendientes impresión
-
+  /// Obtiene todas las unidades marcadas
+  /// como pendientes de impresión.
+  ///
+  /// La consulta incluye información descriptiva
+  /// relacionada con escuela, prenda y talla.
   Future<List<Map<String, dynamic>>>
       obtenerPendientesImpresion()
       async {
@@ -275,8 +304,7 @@ class UnidadRepository {
     ''');
   }
 
-  // Eliminar unidad
-
+  /// Elimina una unidad mediante su identificador.
   Future<int> eliminar(
     int id,
   ) async {

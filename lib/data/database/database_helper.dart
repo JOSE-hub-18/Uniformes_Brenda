@@ -6,20 +6,21 @@ import 'package:crypto/crypto.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+/// Helper que gestiona el ciclo de vida de la base de datos SQLite local.
+/// Implementa el patrón Singleton para garantizar una única instancia
+/// de la base de datos durante toda la ejecución de la aplicación.
 class DatabaseHelper {
 
-  // Singleton
+  /// Instancia única del helper accesible globalmente.
   static final DatabaseHelper instance =
       DatabaseHelper._internal();
 
+  /// Referencia a la base de datos abierta. Null hasta la primera inicialización.
   static Database? _database;
 
   DatabaseHelper._internal();
 
-  // ─────────────────────────────────────────────────────────
-  // ACCESS
-  // ─────────────────────────────────────────────────────────
-
+  /// Retorna la instancia de la base de datos, inicializándola si aún no existe.
   Future<Database> get database async {
     if (_database != null) {
       return _database!;
@@ -30,10 +31,10 @@ class DatabaseHelper {
     return _database!;
   }
 
-  // ─────────────────────────────────────────────────────────
-  // INIT DB
-  // ─────────────────────────────────────────────────────────
-
+  /// Obtiene la ruta del sistema de archivos y abre la base de datos.
+  /// Habilita las llaves foráneas mediante PRAGMA en la configuración inicial.
+  /// El manejador de actualizaciones está definido pero vacío,
+  /// pendiente de implementación para futuras migraciones de esquema.
   Future<Database> _initDB() async {
 
     final dbPath =
@@ -63,19 +64,16 @@ class DatabaseHelper {
     );
   }
 
-  // ─────────────────────────────────────────────────────────
-  // CREATE TABLES
-  // ─────────────────────────────────────────────────────────
-
+  /// Crea el esquema completo de la base de datos en la primera ejecución.
+  /// Define todas las tablas, restricciones de llaves foráneas y unicidad,
+  /// e inserta los datos iniciales requeridos para el funcionamiento del sistema.
   Future<void> _onCreate(
     Database db,
     int version,
   ) async {
 
-    // ───────────────────────────────────────────────────────
-    // USUARIOS
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de usuarios del sistema. El campo [usuario] es único
+    /// y [password_hash] almacena el hash SHA-256 con salt de la contraseña.
     await db.execute('''
       CREATE TABLE usuarios (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -92,10 +90,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // ESCUELAS
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de escuelas a las que se asocian los registros de inventario.
     await db.execute('''
       CREATE TABLE escuelas (
         id_escuela INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -104,10 +99,7 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // PRENDAS
-    // ───────────────────────────────────────────────────────
-
+    /// Catálogo de tipos de prenda disponibles en el sistema.
     await db.execute('''
       CREATE TABLE prendas (
         id_prenda INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -116,10 +108,8 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // TALLAS
-    // ───────────────────────────────────────────────────────
-
+    /// Catálogo de tallas disponibles. El campo [talla] es único
+    /// para evitar duplicados en el catálogo.
     await db.execute('''
       CREATE TABLE tallas (
         id_talla INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -128,10 +118,10 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // INVENTARIO
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de inventario que representa cada combinación única de
+    /// escuela, prenda y talla con su precio asignado.
+    /// La restricción UNIQUE sobre (id_escuela, id_prenda, id_talla)
+    /// garantiza que no existan registros duplicados por combinación.
     await db.execute('''
       CREATE TABLE inventario (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -161,10 +151,10 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // UNIDADES
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de unidades físicas asociadas a un registro de inventario.
+    /// Cada unidad representa una prenda física identificable por QR.
+    /// [activo] indica si la unidad está disponible (1) o fue vendida/dada de baja (0).
+    /// [pendiente_impresion] indica si la etiqueta QR aún no ha sido impresa.
     await db.execute('''
   CREATE TABLE unidades (
 
@@ -181,10 +171,8 @@ class DatabaseHelper {
   )
 ''');
 
-    // ───────────────────────────────────────────────────────
-    // ORDENES
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de órdenes que agrupa ventas y pedidos generados en una misma transacción.
+    /// Permite vincular una venta directa con su pedido asociado dentro de una orden mixta.
     await db.execute('''
       CREATE TABLE ordenes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -200,10 +188,9 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // VENTAS
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de ventas completadas. Puede estar vinculada a una orden de origen
+    /// cuando proviene de una transacción mixta con pedido.
+    /// [estado] por defecto es 'completada' al momento de la inserción.
     await db.execute('''
       CREATE TABLE ventas (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -229,10 +216,8 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // DETALLE VENTA
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de detalle de venta. Cada registro representa una unidad física
+    /// incluida en la venta con su precio al momento de la transacción.
     await db.execute('''
       CREATE TABLE detalle_venta (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -253,10 +238,9 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // PEDIDOS
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de pedidos pendientes de entrega. Puede vincularse a una venta de origen
+    /// cuando se generó como parte de una orden mixta.
+    /// [estado] refleja el ciclo de vida del pedido (pendiente/completado).
     await db.execute('''
       CREATE TABLE pedidos (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -286,10 +270,9 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // DETALLE PEDIDO
-    // ───────────────────────────────────────────────────────
-
+    /// Tabla de detalle de pedido. Cada registro representa una prenda encargada
+    /// identificada por su inventario. [id_unidad_registrada] se asigna al momento
+    /// de la entrega y [registrado] cambia a 1 cuando la unidad física es confirmada.
     await db.execute('''
       CREATE TABLE detalle_pedido (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -315,10 +298,9 @@ class DatabaseHelper {
       )
     ''');
 
-    // ───────────────────────────────────────────────────────
-    // USUARIO ADMIN
-    // ───────────────────────────────────────────────────────
-
+    /// Inserción del usuario administrador inicial del sistema.
+    /// La contraseña se hashea con SHA-256 usando el mismo salt
+    /// definido en [LoginUseCase] para mantener consistencia.
     const password = '1234';
 
     const salt =
@@ -350,10 +332,8 @@ class DatabaseHelper {
       'admin',
     ]);
 
-    
-    // PRENDAS FIJAS
-    
-
+    /// Catálogo inicial de prendas disponibles en el sistema.
+    /// Estos valores son fijos y se insertan una única vez al crear la base de datos.
     final prendas = [
       'Jumper',
       'Playera Polo',
@@ -373,10 +353,8 @@ class DatabaseHelper {
       );
     }
 
-    
-    // TALLAS FIJAS
-    // 
-
+    /// Catálogo inicial de tallas disponibles en el sistema.
+    /// Incluye tallas numéricas de niño y tallas estándar de adulto.
     final tallas = [
       '4',
       '6',

@@ -8,10 +8,14 @@ import 'package:path_provider/path_provider.dart';
 
 import '../database/database_helper.dart';
 
+/// Repositorio encargado de gestionar la creación física de archivos de backup
+/// de la base de datos SQLite en el almacenamiento local del dispositivo.
 class BackupRepository {
 
-  // Crear copia de la base de datos
-
+  /// Genera una copia del archivo de base de datos activo en el directorio de backups.
+  /// El nombre del archivo incluye la fecha y hora de creación con formato
+  /// 'backup_uniformes_YYYY_MM_DD_HH_mm.db' para facilitar su identificación.
+  /// Retorna la ruta absoluta del archivo de backup generado.
   Future<String>
       crearBackup() async {
 
@@ -56,8 +60,9 @@ class BackupRepository {
     return backupPath;
   }
 
-  // Obtener directorio backups
-
+  /// Retorna el directorio donde se almacenan los backups dentro del
+  /// directorio de documentos de la aplicación.
+  /// Si el directorio no existe, lo crea de forma recursiva.
   Future<Directory>
       _obtenerDirectorioBackups()
       async {

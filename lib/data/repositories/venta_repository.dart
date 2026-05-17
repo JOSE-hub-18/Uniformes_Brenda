@@ -6,15 +6,26 @@ import '../database/database_helper.dart';
 
 import '../../models/models.dart';
 
+/// Repositorio encargado de gestionar operaciones
+/// relacionadas con ventas y detalles de venta.
+///
+/// Centraliza procesos de registro, consulta,
+/// cancelación y eliminación de ventas.
 class VentaRepository {
 
+  /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async =>
       await DatabaseHelper
           .instance
           .database;
 
-  // Inserta una venta junto con sus detalles
-
+  /// Inserta una venta junto con todos sus detalles asociados.
+  ///
+  /// La operación se ejecuta dentro de una transacción
+  /// para garantizar integridad entre la tabla de ventas
+  /// y detalle_venta.
+  ///
+  /// Retorna el identificador de la venta creada.
   Future<int> insertarVentaYDetalles({
 
     required Venta venta,
@@ -29,6 +40,7 @@ class VentaRepository {
 
       (txn) async {
 
+        // Inserta el registro principal de la venta.
         final idVenta =
             await txn.insert(
 
@@ -42,6 +54,8 @@ class VentaRepository {
                   .abort,
         );
 
+        // Inserta todos los detalles asociados
+        // a la venta recién creada.
         for (final detalle
             in detalles) {
 
@@ -70,8 +84,11 @@ class VentaRepository {
     );
   }
 
-  // Insertar detalles a una venta existente
-
+  /// Inserta detalles adicionales
+  /// a una venta ya existente.
+  ///
+  /// La operación se ejecuta dentro de una transacción
+  /// para mantener consistencia en inserciones múltiples.
   Future<void> insertarDetallesVenta({
 
     required int idVenta,
@@ -86,6 +103,8 @@ class VentaRepository {
 
       (txn) async {
 
+        // Inserta cada detalle utilizando
+        // la venta existente como referencia.
         for (final detalle
             in detalles) {
 
@@ -112,8 +131,7 @@ class VentaRepository {
     );
   }
 
-  // Eliminar detalle de venta
-
+  /// Elimina un detalle específico de venta.
   Future<void>
       eliminarDetalleVenta(
     int idDetalleVenta,
@@ -133,8 +151,11 @@ class VentaRepository {
     );
   }
 
-  // Contar detalles restantes
-
+  /// Obtiene la cantidad de detalles asociados
+  /// a una venta.
+  ///
+  /// Esta operación puede utilizarse para validar
+  /// si una venta conserva productos relacionados.
   Future<int>
       contarDetallesVenta(
     int idVenta,
@@ -162,8 +183,10 @@ class VentaRepository {
     )!;
   }
 
-  // Cambia el estado de la venta a cancelada
-
+  /// Cambia el estado de una venta a cancelada.
+  ///
+  /// La operación realiza una cancelación lógica
+  /// sin eliminar el registro físicamente.
   Future<void>
       actualizarEstadoCancelado(
     int idVenta,
@@ -190,8 +213,9 @@ class VentaRepository {
     );
   }
 
-  // Obtener una venta por id
-
+  /// Obtiene una venta mediante su identificador.
+  ///
+  /// Retorna null cuando el registro no existe.
   Future<Venta?> obtenerPorId(
     int id,
   ) async {
@@ -221,8 +245,8 @@ class VentaRepository {
     );
   }
 
-  // Listar todas las ventas
-
+  /// Obtiene todas las ventas registradas
+  /// ordenadas por fecha descendente.
   Future<List<Venta>>
       obtenerTodas() async {
 
@@ -245,8 +269,10 @@ class VentaRepository {
         .toList();
   }
 
-  // Ventas por usuario
-
+  /// Obtiene todas las ventas realizadas
+  /// por un usuario específico.
+  ///
+  /// El resultado se ordena por fecha descendente.
   Future<List<Venta>>
       obtenerPorUsuario(
     int idUsuario,
@@ -278,8 +304,11 @@ class VentaRepository {
         .toList();
   }
 
-  // Obtener detalles completos de una venta
-
+  /// Obtiene los detalles completos asociados
+  /// a una venta.
+  ///
+  /// La consulta integra información relacionada
+  /// con inventario, escuela, prenda y talla.
   Future<List<Map<String, dynamic>>>
       obtenerDetallesPorVenta(
     int idVenta,
@@ -333,8 +362,7 @@ class VentaRepository {
     return resultado;
   }
 
-  // Eliminar venta
-
+  /// Elimina una venta mediante su identificador.
   Future<int> eliminar(
     int id,
   ) async {

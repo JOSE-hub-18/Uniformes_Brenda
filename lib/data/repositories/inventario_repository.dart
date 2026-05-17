@@ -2,10 +2,15 @@ import 'package:sqflite/sqflite.dart';
 import '../database/database_helper.dart';
 import '../../models/models.dart';
 
+/// Repositorio que gestiona las operaciones de acceso a datos
+/// para la tabla de inventario y sus consultas relacionadas con stock.
 class InventarioRepository {
 
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
+  /// Inserta un nuevo registro de inventario.
+  /// Si ya existe la misma combinación de escuela, prenda y talla,
+  /// la operación se ignora sin lanzar error.
   Future<int> insertar(Inventario inventario) async {
     final db = await _db;
 
@@ -16,6 +21,8 @@ class InventarioRepository {
     );
   }
 
+  /// Retorna el registro de inventario con el identificador indicado.
+  /// Retorna null si no existe.
   Future<Inventario?> obtenerPorId(int id) async {
     final db = await _db;
 
@@ -31,6 +38,7 @@ class InventarioRepository {
     return Inventario.fromMap(maps.first);
   }
 
+  /// Retorna todos los registros de inventario sin filtro aplicado.
   Future<List<Inventario>> obtenerTodos() async {
     final db = await _db;
 
@@ -39,6 +47,7 @@ class InventarioRepository {
     return maps.map((m) => Inventario.fromMap(m)).toList();
   }
 
+  /// Retorna todos los registros de inventario asociados a una escuela específica.
   Future<List<Inventario>> obtenerPorEscuela(int idEscuela) async {
     final db = await _db;
 
@@ -51,6 +60,8 @@ class InventarioRepository {
     return maps.map((m) => Inventario.fromMap(m)).toList();
   }
 
+  /// Busca un registro de inventario por la combinación exacta de escuela, prenda y talla.
+  /// Retorna null si no existe ningún registro con esa combinación.
   Future<Inventario?> obtenerPorCombinacion({
     required int idEscuela,
     required int idPrenda,
@@ -70,6 +81,7 @@ class InventarioRepository {
     return Inventario.fromMap(maps.first);
   }
 
+  /// Actualiza el registro de inventario identificado por su id.
   Future<int> actualizar(Inventario inventario) async {
     final db = await _db;
 
@@ -81,6 +93,7 @@ class InventarioRepository {
     );
   }
 
+  /// Elimina el registro de inventario con el identificador indicado.
   Future<int> eliminar(int id) async {
     final db = await _db;
 
@@ -91,6 +104,8 @@ class InventarioRepository {
     );
   }
 
+  /// Retorna el conteo de unidades activas asociadas a un registro de inventario.
+  /// Utilizado para determinar el stock disponible en tiempo real.
   Future<int> contarStock(int idInventario) async {
     final db = await _db;
 
@@ -106,6 +121,9 @@ class InventarioRepository {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
+  /// Retorna el inventario de una escuela enriquecido con nombre de prenda,
+  /// talla, precio y stock actual. Permite filtrar opcionalmente por prenda.
+  /// Los resultados se ordenan por nombre de prenda y talla de forma ascendente.
   Future<List<Map<String, dynamic>>> obtenerInventarioFiltrado({
     required int idEscuela,
     int? idPrenda,
@@ -139,6 +157,9 @@ class InventarioRepository {
     ''', args);
   }
 
+  /// Retorna el inventario completo de todas las escuelas con nombre de escuela,
+  /// prenda, talla, precio y stock actual calculado por subconsulta.
+  /// Ordenado por escuela, prenda y talla de forma ascendente.
   Future<List<Map<String, dynamic>>>
     obtenerInventarioCompleto() async {
   final db = await _db;
@@ -180,9 +201,9 @@ class InventarioRepository {
   return resultado;
 }
 
-// Stock agotado
-
-Future<List<Map<String, dynamic>>>
+  /// Retorna los registros de inventario cuyo stock activo es igual a cero.
+  /// Utilizado por [AlertasStockUseCase] para generar alertas de agotado.
+  Future<List<Map<String, dynamic>>>
     obtenerStockAgotado()
     async {
 
@@ -237,9 +258,10 @@ Future<List<Map<String, dynamic>>>
   ''');
 }
 
-// Stock critico
-
-Future<List<Map<String, dynamic>>>
+  /// Retorna los registros de inventario con stock activo entre 1 y 3 unidades (inclusive).
+  /// Utilizado por [AlertasStockUseCase] para generar alertas de stock crítico.
+  /// Los resultados se ordenan por stock ascendente para priorizar los más críticos.
+  Future<List<Map<String, dynamic>>>
     obtenerStockCritico()
     async {
 
