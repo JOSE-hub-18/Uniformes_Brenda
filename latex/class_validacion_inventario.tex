@@ -1,0 +1,71 @@
+\doxysection{Referencia de la clase Validacion\+Inventario}
+\hypertarget{class_validacion_inventario}{}\label{class_validacion_inventario}\index{ValidacionInventario@{ValidacionInventario}}
+
+
+Clase utilitaria que centraliza las validaciones de negocio aplicables a los registros de inventario.  
+
+
+\doxysubsubsection*{Métodos privados estáticos}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_validacion_inventario_a1d979e52787881326dfb212c33fdcbb9}{validar\+Campos\+Obligatorios}} (Inventario \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}})
+\begin{DoxyCompactList}\small\item\em Verifica que los identificadores de escuela, prenda y talla sean valores positivos válidos. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_validacion_inventario_a094bf86bf4e58dff04ddff8ec48fb497}{validar\+Precio}} (Inventario \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}})
+\begin{DoxyCompactList}\small\item\em Verifica que el precio del inventario sea mayor a cero. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_validacion_inventario_a2f45b40f9a70e696876d44bd9ab0f912}{validar\+Cantidad\+Unidades}} (int cantidad)
+\begin{DoxyCompactList}\small\item\em Verifica que la cantidad de unidades a insertar esté dentro del rango permitido (1-\/9999). \end{DoxyCompactList}\item 
+static Future$<$ void $>$ \mbox{\hyperlink{class_validacion_inventario_ab0135c5baa5ccce160f94cf4022d52da}{validar\+Eliminacion}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, Future$<$ bool $>$ Function(int) tiene\+Ventas\+Activas,) async
+\begin{DoxyCompactList}\small\item\em Verifica que el registro de inventario no tenga ventas activas asociadas antes de permitir su eliminación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Clase utilitaria que centraliza las validaciones de negocio aplicables a los registros de inventario. 
+
+Todos sus métodos son estáticos y lanzan excepciones ante datos inválidos. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_validacion_inventario_a1d979e52787881326dfb212c33fdcbb9}\index{ValidacionInventario@{ValidacionInventario}!validarCamposObligatorios@{validarCamposObligatorios}}
+\index{validarCamposObligatorios@{validarCamposObligatorios}!ValidacionInventario@{ValidacionInventario}}
+\doxysubsubsection{\texorpdfstring{validarCamposObligatorios()}{validarCamposObligatorios()}}
+{\footnotesize\ttfamily \label{class_validacion_inventario_a1d979e52787881326dfb212c33fdcbb9} 
+static void Validacion\+Inventario\+::validar\+Campos\+Obligatorios (\begin{DoxyParamCaption}\item[{Inventario}]{inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Verifica que los identificadores de escuela, prenda y talla sean valores positivos válidos. 
+
+\Hypertarget{class_validacion_inventario_a2f45b40f9a70e696876d44bd9ab0f912}\index{ValidacionInventario@{ValidacionInventario}!validarCantidadUnidades@{validarCantidadUnidades}}
+\index{validarCantidadUnidades@{validarCantidadUnidades}!ValidacionInventario@{ValidacionInventario}}
+\doxysubsubsection{\texorpdfstring{validarCantidadUnidades()}{validarCantidadUnidades()}}
+{\footnotesize\ttfamily \label{class_validacion_inventario_a2f45b40f9a70e696876d44bd9ab0f912} 
+static void Validacion\+Inventario\+::validar\+Cantidad\+Unidades (\begin{DoxyParamCaption}\item[{int}]{cantidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Verifica que la cantidad de unidades a insertar esté dentro del rango permitido (1-\/9999). 
+
+\Hypertarget{class_validacion_inventario_ab0135c5baa5ccce160f94cf4022d52da}\index{ValidacionInventario@{ValidacionInventario}!validarEliminacion@{validarEliminacion}}
+\index{validarEliminacion@{validarEliminacion}!ValidacionInventario@{ValidacionInventario}}
+\doxysubsubsection{\texorpdfstring{validarEliminacion()}{validarEliminacion()}}
+{\footnotesize\ttfamily \label{class_validacion_inventario_ab0135c5baa5ccce160f94cf4022d52da} 
+static Future$<$ void $>$ Validacion\+Inventario\+::validar\+Eliminacion (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{, }\item[{Future$<$ bool $>$ Function(int)}]{tiene\+Ventas\+Activas}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Verifica que el registro de inventario no tenga ventas activas asociadas antes de permitir su eliminación. 
+
+Recibe una función delegada para consultar las ventas activas, manteniendo esta clase desacoplada de los repositorios. \Hypertarget{class_validacion_inventario_a094bf86bf4e58dff04ddff8ec48fb497}\index{ValidacionInventario@{ValidacionInventario}!validarPrecio@{validarPrecio}}
+\index{validarPrecio@{validarPrecio}!ValidacionInventario@{ValidacionInventario}}
+\doxysubsubsection{\texorpdfstring{validarPrecio()}{validarPrecio()}}
+{\footnotesize\ttfamily \label{class_validacion_inventario_a094bf86bf4e58dff04ddff8ec48fb497} 
+static void Validacion\+Inventario\+::validar\+Precio (\begin{DoxyParamCaption}\item[{Inventario}]{inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Verifica que el precio del inventario sea mayor a cero. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/validators/\mbox{\hyperlink{validacion__inventario_8dart}{validacion\+\_\+inventario.\+dart}}\end{DoxyCompactItemize}

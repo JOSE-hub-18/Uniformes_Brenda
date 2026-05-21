@@ -32,10 +32,7 @@ class RestarUnidadesUseCase {
   /// Valida que la unidad exista, esté activa y pertenezca al inventario recibido
   /// antes de proceder con la desactivación.
   /// Retorna un [ResultadoRestarUnidad] que describe el resultado de la operación.
-  Future<ResultadoRestarUnidad> ejecutar(
-    String qr,
-    int idInventario,
-  ) async {
+  Future<ResultadoRestarUnidad> ejecutar(String qr, int idInventario) async {
     final match = RegExp(r'\d+').firstMatch(qr);
     final id = int.tryParse(match?.group(0) ?? '');
 
@@ -55,8 +52,7 @@ class RestarUnidadesUseCase {
       return ResultadoRestarUnidad.yaDesactivada;
     }
 
-    final pertenece =
-        await unidadRepository.pertenece(id, idInventario);
+    final pertenece = await unidadRepository.pertenece(id, idInventario);
 
     if (!pertenece) {
       return ResultadoRestarUnidad.noPertenece;

@@ -1,0 +1,101 @@
+\doxysection{Referencia de la clase Prenda\+Repository}
+\hypertarget{class_prenda_repository}{}\label{class_prenda_repository}\index{PrendaRepository@{PrendaRepository}}
+
+
+Repositorio encargado de gestionar las operaciones CRUD relacionadas con la entidad Prenda.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_prenda_repository_ad156e2f5c01c3a09c411cf69da70e202}{insertar}} (Prenda \mbox{\hyperlink{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}{prenda}}) \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta una nueva prenda en la base de datos. \end{DoxyCompactList}\item 
+Future$<$ Prenda?$>$ \mbox{\hyperlink{class_prenda_repository_ac4ac1b2f392a6f61a0e0eb51f9f47596}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene una prenda mediante su identificador. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Prenda $>$ $>$ \mbox{\hyperlink{class_prenda_repository_a2f718d00c283d63f4a1f6b8615d0fff3}{obtener\+Todas}} () \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todas las prendas registradas ordenadas alfabéticamente por nombre. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_prenda_repository_a21ded29c891a5834f48d665b5be420bc}{actualizar}} (Prenda \mbox{\hyperlink{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}{prenda}}) \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}}
+\begin{DoxyCompactList}\small\item\em Actualiza la información de una prenda existente. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_prenda_repository_abf090bede8c1aa86e47ad792f97a34fc}{eliminar}} (int id) \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina una prenda mediante su identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar las operaciones CRUD relacionadas con la entidad Prenda. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_prenda_repository_a21ded29c891a5834f48d665b5be420bc}\index{PrendaRepository@{PrendaRepository}!actualizar@{actualizar}}
+\index{actualizar@{actualizar}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{actualizar()}{actualizar()}}
+{\footnotesize\ttfamily \label{class_prenda_repository_a21ded29c891a5834f48d665b5be420bc} 
+Future$<$ int $>$ Prenda\+Repository\+::actualizar (\begin{DoxyParamCaption}\item[{Prenda}]{prenda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza la información de una prenda existente. 
+
+La actualización se realiza utilizando el identificador primario de la entidad. \Hypertarget{class_prenda_repository_abf090bede8c1aa86e47ad792f97a34fc}\index{PrendaRepository@{PrendaRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_prenda_repository_abf090bede8c1aa86e47ad792f97a34fc} 
+Future$<$ int $>$ Prenda\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina una prenda mediante su identificador. 
+
+\Hypertarget{class_prenda_repository_ad156e2f5c01c3a09c411cf69da70e202}\index{PrendaRepository@{PrendaRepository}!insertar@{insertar}}
+\index{insertar@{insertar}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_prenda_repository_ad156e2f5c01c3a09c411cf69da70e202} 
+Future$<$ int $>$ Prenda\+Repository\+::insertar (\begin{DoxyParamCaption}\item[{Prenda}]{prenda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta una nueva prenda en la base de datos. 
+
+El identificador primario es eliminado del mapa antes de la inserción para permitir el autoincremento.
+
+La operación utiliza conflicto tipo abort para evitar inserciones duplicadas o inválidas. \Hypertarget{class_prenda_repository_ac4ac1b2f392a6f61a0e0eb51f9f47596}\index{PrendaRepository@{PrendaRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_prenda_repository_ac4ac1b2f392a6f61a0e0eb51f9f47596} 
+Future$<$ Prenda?$>$ Prenda\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene una prenda mediante su identificador. 
+
+Retorna null cuando no existe un registro asociado. \Hypertarget{class_prenda_repository_a2f718d00c283d63f4a1f6b8615d0fff3}\index{PrendaRepository@{PrendaRepository}!obtenerTodas@{obtenerTodas}}
+\index{obtenerTodas@{obtenerTodas}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodas()}{obtenerTodas()}}
+{\footnotesize\ttfamily \label{class_prenda_repository_a2f718d00c283d63f4a1f6b8615d0fff3} 
+Future$<$ List$<$ Prenda $>$ $>$ Prenda\+Repository\+::obtener\+Todas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todas las prendas registradas ordenadas alfabéticamente por nombre. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4}\index{PrendaRepository@{PrendaRepository}!async@{async}}
+\index{async@{async}!PrendaRepository@{PrendaRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_prenda_repository_a783878d9ea9c5428fb90d89a36a9e2e4} 
+Future$<$Database$>$ get \+\_\+db Prenda\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{prenda__repository_8dart}{prenda\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

@@ -1,0 +1,82 @@
+\doxysection{Referencia del archivo lib/business/usecases/registrar\+\_\+inventario\+\_\+usecase.dart}
+\hypertarget{registrar__inventario__usecase_8dart}{}\label{registrar__inventario__usecase_8dart}\index{lib/business/usecases/registrar\_inventario\_usecase.dart@{lib/business/usecases/registrar\_inventario\_usecase.dart}}
+{\ttfamily import data;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_registro_talla_result}{Registro\+Talla\+Result}}
+\begin{DoxyCompactList}\small\item\em Resultado del intento de registro de inventario para una talla específica. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que gestiona el registro de items de inventario para una combinación de prenda, escuela y una o más tallas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{registrar__inventario__usecase_8dart_a67df1508e28dbffc2ba302daaf60531b}{Registrar\+Inventario\+Result}} (\{ required \mbox{\hyperlink{registrar__inventario__usecase_8dart_a943339c962aad366dccbb47fc0e2decd}{this.\+resultados}}, required \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}{this.\+total\+Exitosos}}, required \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}{this.\+total\+Fallidos}}, \})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_registro_talla_result}{Registro\+Talla\+Result}} \mbox{\hyperlink{registrar__inventario__usecase_8dart_a943339c962aad366dccbb47fc0e2decd}{resultados}}
+\begin{DoxyCompactList}\small\item\em Resultado global del caso de uso al finalizar el registro de todas las tallas. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}{total\+Exitosos}}
+\item 
+final int \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}{total\+Fallidos}}
+\item 
+bool get \mbox{\hyperlink{registrar__inventario__usecase_8dart_a6f430143a669a100a3b2d1ae4a3e1587}{todos\+Exitosos}} =$>$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}{total\+Fallidos}} == 0
+\begin{DoxyCompactList}\small\item\em Retorna true si ningún registro falló. \end{DoxyCompactList}\item 
+bool get \mbox{\hyperlink{registrar__inventario__usecase_8dart_a36ee34b3263abed1d0845fee019b66c3}{alguno\+Exitoso}} =$>$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}{total\+Exitosos}} $>$ 0
+\begin{DoxyCompactList}\small\item\em Retorna true si al menos un registro fue exitoso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{registrar__inventario__usecase_8dart_a67df1508e28dbffc2ba302daaf60531b}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!RegistrarInventarioResult@{RegistrarInventarioResult}}
+\index{RegistrarInventarioResult@{RegistrarInventarioResult}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{RegistrarInventarioResult()}{RegistrarInventarioResult()}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_a67df1508e28dbffc2ba302daaf60531b} 
+const Registrar\+Inventario\+Result (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{registrar__inventario__usecase_8dart_a943339c962aad366dccbb47fc0e2decd}{this.\+resultados}}, required \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}{this.\+total\+Exitosos}}, required \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}{this.\+total\+Fallidos}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{registrar__inventario__usecase_8dart_a36ee34b3263abed1d0845fee019b66c3}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!algunoExitoso@{algunoExitoso}}
+\index{algunoExitoso@{algunoExitoso}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{algunoExitoso}{algunoExitoso}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_a36ee34b3263abed1d0845fee019b66c3} 
+bool get alguno\+Exitoso =$>$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}{total\+Exitosos}} $>$ 0}
+
+
+
+Retorna true si al menos un registro fue exitoso. 
+
+\Hypertarget{registrar__inventario__usecase_8dart_a943339c962aad366dccbb47fc0e2decd}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!resultados@{resultados}}
+\index{resultados@{resultados}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{resultados}{resultados}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_a943339c962aad366dccbb47fc0e2decd} 
+class \mbox{\hyperlink{class_registro_talla_result}{Registro\+Talla\+Result}} resultados}
+
+
+
+Resultado global del caso de uso al finalizar el registro de todas las tallas. 
+
+Agrupa los resultados individuales y expone conteos de éxitos y fallos. \Hypertarget{registrar__inventario__usecase_8dart_a6f430143a669a100a3b2d1ae4a3e1587}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!todosExitosos@{todosExitosos}}
+\index{todosExitosos@{todosExitosos}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{todosExitosos}{todosExitosos}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_a6f430143a669a100a3b2d1ae4a3e1587} 
+bool get todos\+Exitosos =$>$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}{total\+Fallidos}} == 0}
+
+
+
+Retorna true si ningún registro falló. 
+
+\Hypertarget{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!totalExitosos@{totalExitosos}}
+\index{totalExitosos@{totalExitosos}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{totalExitosos}{totalExitosos}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_aa08b70c3e744ee4e8c85faa38920a020} 
+final int total\+Exitosos}
+
+\Hypertarget{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2}\index{registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}!totalFallidos@{totalFallidos}}
+\index{totalFallidos@{totalFallidos}!registrar\_inventario\_usecase.dart@{registrar\_inventario\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{totalFallidos}{totalFallidos}}
+{\footnotesize\ttfamily \label{registrar__inventario__usecase_8dart_aa7d9c5e205ca3c94ab3cb95a923e9bd2} 
+final int total\+Fallidos}
+

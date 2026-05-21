@@ -12,82 +12,45 @@ import '../usecases/qr_usecase.dart';
 /// Cubre la consulta, el registro de unidades físicas por QR,
 /// la validación de completitud y la conversión del pedido a venta al completarse.
 class PedidoPendienteUseCase {
+  final PedidoRepository _pedidoRepository;
 
-  final PedidoRepository
-      _pedidoRepository;
+  final UnidadRepository _unidadRepository;
 
-  final UnidadRepository
-      _unidadRepository;
+  final VentaRepository _ventaRepository;
 
-  final VentaRepository
-      _ventaRepository;
-
-  final QrUseCase
-      _qrUseCase;
+  final QrUseCase _qrUseCase;
 
   PedidoPendienteUseCase({
-    required PedidoRepository
-        pedidoRepository,
+    required PedidoRepository pedidoRepository,
 
-    required UnidadRepository
-        unidadRepository,
+    required UnidadRepository unidadRepository,
 
-    required VentaRepository
-        ventaRepository,
+    required VentaRepository ventaRepository,
 
-    required QrUseCase
-        qrUseCase,
-  })  : _pedidoRepository =
-            pedidoRepository,
-        _unidadRepository =
-            unidadRepository,
-        _ventaRepository =
-            ventaRepository,
-        _qrUseCase =
-            qrUseCase;
+    required QrUseCase qrUseCase,
+  }) : _pedidoRepository = pedidoRepository,
+       _unidadRepository = unidadRepository,
+       _ventaRepository = ventaRepository,
+       _qrUseCase = qrUseCase;
 
   /// Retorna todos los pedidos cuyo estado sea [EstadoPedido.pendiente].
-  Future<List<Pedido>>
-      obtenerPedidosPendientes()
-      async {
+  Future<List<Pedido>> obtenerPedidosPendientes() async {
+    final pedidos = await _pedidoRepository.obtenerTodos();
 
-    final pedidos =
-        await _pedidoRepository
-            .obtenerTodos();
-
-    return pedidos
-        .where(
-          (p) =>
-              p.estado ==
-              EstadoPedido
-                  .pendiente,
-        )
-        .toList();
+    return pedidos.where((p) => p.estado == EstadoPedido.pendiente).toList();
   }
 
   /// Retorna los detalles del pedido enriquecidos con información
   /// de inventario, prenda, escuela y talla para su presentación en pantalla.
-  Future<List<Map<String, dynamic>>>
-      obtenerDetallesConInfo(
+  Future<List<Map<String, dynamic>>> obtenerDetallesConInfo(
     int idPedido,
   ) async {
-
-    return await _pedidoRepository
-        .obtenerDetallesConInfo(
-      idPedido,
-    );
+    return await _pedidoRepository.obtenerDetallesConInfo(idPedido);
   }
 
   /// Retorna los detalles del pedido como modelos [DetallePedido].
-  Future<List<DetallePedido>>
-      obtenerDetalles(
-    int idPedido,
-  ) async {
-
-    return await _pedidoRepository
-        .obtenerDetalles(
-      idPedido,
-    );
+  Future<List<DetallePedido>> obtenerDetalles(int idPedido) async {
+    return await _pedidoRepository.obtenerDetalles(idPedido);
   }
 
   /// Asocia una unidad física a un detalle de pedido específico.
@@ -95,11 +58,8 @@ class PedidoPendienteUseCase {
     required int idDetallePedido,
     required int idUnidad,
   }) async {
-
-    await _pedidoRepository
-        .registrarUnidad(
-      idDetallePedido:
-          idDetallePedido,
+    await _pedidoRepository.registrarUnidad(
+      idDetallePedido: idDetallePedido,
 
       idUnidad: idUnidad,
     );
@@ -113,9 +73,7 @@ class PedidoPendienteUseCase {
   /// Si [forzarMovimiento] es true, desregistra la asignación anterior y
   /// registra la unidad en el detalle indicado sin solicitar confirmación adicional.
   /// Retorna null si la operación se completó sin conflictos.
-  Future<Map<String, dynamic>?>
-      registrarQrPedido({
-
+  Future<Map<String, dynamic>?> registrarQrPedido({
     required int idPedido,
 
     required int idDetallePedido,
@@ -124,51 +82,29 @@ class PedidoPendienteUseCase {
 
     required String qr,
 
-    bool forzarMovimiento =
-        false,
+    bool forzarMovimiento = false,
   }) async {
-
-    final unidad =
-        await _qrUseCase
-            .obtenerUnidad(
-      qr.trim(),
-    );
+    final unidad = await _qrUseCase.obtenerUnidad(qr.trim());
 
     if (unidad == null) {
-
-      throw StateError(
-        'El QR no existe.',
-      );
+      throw StateError('El QR no existe.');
     }
 
     if (!unidad.activo) {
-
-      throw StateError(
-        'La unidad ya fue utilizada.',
-      );
+      throw StateError('La unidad ya fue utilizada.');
     }
 
     /// Regla de negocio: la unidad escaneada debe pertenecer al mismo
     /// inventario que el detalle del pedido que se intenta registrar.
-    if (unidad.idInventario !=
-        idInventarioEsperado) {
-
-      throw StateError(
-        'El QR escaneado no corresponde a esta prenda.',
-      );
+    if (unidad.idInventario != idInventarioEsperado) {
+      throw StateError('El QR escaneado no corresponde a esta prenda.');
     }
 
-    final registroExistente =
-        await _pedidoRepository
-            .obtenerRegistroActivoPorUnidad(
-      unidad.id!,
-    );
+    final registroExistente = await _pedidoRepository
+        .obtenerRegistroActivoPorUnidad(unidad.id!);
 
     if (registroExistente != null) {
-
-      final mismoDetalle =
-          registroExistente['id'] ==
-              idDetallePedido;
+      final mismoDetalle = registroExistente['id'] == idDetallePedido;
 
       /// Si la unidad ya está asignada al mismo detalle, no se realiza ninguna acción.
       if (mismoDetalle) {
@@ -178,37 +114,24 @@ class PedidoPendienteUseCase {
       /// Si la unidad está asignada a un detalle diferente y no se fuerza el movimiento,
       /// se retorna la información del conflicto para que el usuario decida.
       if (!forzarMovimiento) {
-
         return {
           'conflicto': true,
 
-          'detalle_anterior':
-              registroExistente['id'],
+          'detalle_anterior': registroExistente['id'],
 
-          'pedido_anterior':
-              registroExistente[
-                  'id_pedido'],
+          'pedido_anterior': registroExistente['id_pedido'],
 
-          'cliente':
-              registroExistente[
-                  'nombre_cliente'],
+          'cliente': registroExistente['nombre_cliente'],
         };
       }
 
-      await _pedidoRepository
-          .desregistrarUnidad(
-        registroExistente['id'],
-      );
+      await _pedidoRepository.desregistrarUnidad(registroExistente['id']);
     }
 
-    await _pedidoRepository
-        .registrarUnidad(
+    await _pedidoRepository.registrarUnidad(
+      idDetallePedido: idDetallePedido,
 
-      idDetallePedido:
-          idDetallePedido,
-
-      idUnidad:
-          unidad.id!,
+      idUnidad: unidad.id!,
     );
 
     return null;
@@ -216,25 +139,13 @@ class PedidoPendienteUseCase {
 
   /// Elimina la asociación de una unidad física a un detalle de pedido,
   /// dejando el detalle sin unidad registrada.
-  Future<void> desregistrarUnidad(
-    int idDetallePedido,
-  ) async {
-
-    await _pedidoRepository
-        .desregistrarUnidad(
-      idDetallePedido,
-    );
+  Future<void> desregistrarUnidad(int idDetallePedido) async {
+    await _pedidoRepository.desregistrarUnidad(idDetallePedido);
   }
 
   /// Retorna true si todos los detalles del pedido tienen una unidad física registrada.
-  Future<bool> pedidoCompleto(
-    int idPedido,
-  ) async {
-
-    return await _pedidoRepository
-        .pedidoCompleto(
-      idPedido,
-    );
+  Future<bool> pedidoCompleto(int idPedido) async {
+    return await _pedidoRepository.pedidoCompleto(idPedido);
   }
 
   /// Completa un pedido pendiente convirtiéndolo en venta.
@@ -243,171 +154,97 @@ class PedidoPendienteUseCase {
   /// Si el pedido proviene de una orden con venta existente, agrega los detalles
   /// a esa venta. Si no tiene venta de origen, crea una nueva venta completada.
   /// Finalmente actualiza el estado del pedido a [EstadoPedido.completado].
-  Future<void> completarPedido(
-    int idPedido,
-  ) async {
-
-    final pedido =
-        await _pedidoRepository
-            .obtenerPorId(
-      idPedido,
-    );
+  Future<void> completarPedido(int idPedido) async {
+    final pedido = await _pedidoRepository.obtenerPorId(idPedido);
 
     if (pedido == null) {
-
-      throw StateError(
-        'Pedido no encontrado.',
-      );
+      throw StateError('Pedido no encontrado.');
     }
 
-    final completo =
-        await _pedidoRepository
-            .pedidoCompleto(
-      idPedido,
-    );
+    final completo = await _pedidoRepository.pedidoCompleto(idPedido);
 
     if (!completo) {
-
-      throw StateError(
-        'Faltan prendas por registrar.',
-      );
+      throw StateError('Faltan prendas por registrar.');
     }
 
-    final detalles =
-        await _pedidoRepository
-            .obtenerDetalles(
-      idPedido,
-    );
+    final detalles = await _pedidoRepository.obtenerDetalles(idPedido);
 
-    final detallesVenta =
-        <DetalleVenta>[];
+    final detallesVenta = <DetalleVenta>[];
 
-    for (final detalle
-        in detalles) {
-
-      if (detalle
-              .idUnidadRegistrada ==
-          null) {
+    for (final detalle in detalles) {
+      if (detalle.idUnidadRegistrada == null) {
         continue;
       }
 
       detallesVenta.add(
-
         DetalleVenta(
+          idVenta: pedido.idVentaOrigen ?? 0,
 
-          idVenta:
-              pedido.idVentaOrigen ??
-                  0,
-
-          idUnidad:
-              detalle
-                  .idUnidadRegistrada!,
+          idUnidad: detalle.idUnidadRegistrada!,
 
           cantidad: 1,
 
-          precioUnitario:
-              detalle
-                  .precioUnitario,
+          precioUnitario: detalle.precioUnitario,
         ),
       );
 
-      await _unidadRepository
-          .desactivar(
-        detalle
-            .idUnidadRegistrada!,
-      );
+      await _unidadRepository.desactivar(detalle.idUnidadRegistrada!);
     }
 
     /// Si el pedido no tiene una venta de origen, se genera una nueva venta
     /// completada con los detalles de las unidades entregadas.
-    if (pedido.idVentaOrigen ==
-        null) {
-
+    if (pedido.idVentaOrigen == null) {
       final venta = Venta(
+        idUsuario: pedido.idUsuario,
 
-        idUsuario:
-            pedido.idUsuario,
+        idOrdenOrigen: pedido.idOrdenOrigen,
 
-        idOrdenOrigen:
-            pedido.idOrdenOrigen,
+        nombreCliente: pedido.nombreCliente,
 
-        nombreCliente:
-            pedido.nombreCliente,
+        fecha: DateTime.now(),
 
-        fecha:
-            DateTime.now(),
+        total: pedido.total,
 
-        total:
-            pedido.total,
-
-        estado:
-            EstadoVenta
-                .completada,
+        estado: EstadoVenta.completada,
       );
 
-      await _ventaRepository
-          .insertarVentaYDetalles(
-
+      await _ventaRepository.insertarVentaYDetalles(
         venta: venta,
 
-        detalles:
-            detallesVenta,
+        detalles: detallesVenta,
       );
-
     } else {
-
       /// Si ya existe una venta de origen, los detalles se agregan a ella
       /// para mantener la trazabilidad de la orden completa.
-      await _ventaRepository
-          .insertarDetallesVenta(
+      await _ventaRepository.insertarDetallesVenta(
+        idVenta: pedido.idVentaOrigen!,
 
-        idVenta:
-            pedido.idVentaOrigen!,
-
-        detalles:
-            detallesVenta,
+        detalles: detallesVenta,
       );
     }
 
-    await _pedidoRepository
-        .actualizarEstado(
-
+    await _pedidoRepository.actualizarEstado(
       idPedido: idPedido,
 
-      estado:
-          EstadoPedido
-              .completado,
+      estado: EstadoPedido.completado,
     );
   }
 
   /// Elimina un detalle del pedido y, si era el último detalle restante,
   /// elimina también el pedido completo.
   /// Retorna true si el pedido fue eliminado por quedar sin detalles, false en caso contrario.
-  Future<bool>
-      eliminarDetallePedido({
+  Future<bool> eliminarDetallePedido({
     required int idPedido,
     required int idDetallePedido,
   }) async {
+    await _pedidoRepository.eliminarDetallePedido(idDetallePedido);
 
-    await _pedidoRepository
-        .eliminarDetallePedido(
-      idDetallePedido,
-    );
-
-    final restantes =
-        await _pedidoRepository
-            .contarDetalles(
-      idPedido,
-    );
+    final restantes = await _pedidoRepository.contarDetalles(idPedido);
 
     /// Regla de negocio: un pedido sin detalles no tiene razón de existir
     /// y se elimina automáticamente.
     if (restantes <= 0) {
-
-      await _pedidoRepository
-          .eliminarPedidoCompleto(
-        idPedido,
-      );
+      await _pedidoRepository.eliminarPedidoCompleto(idPedido);
 
       return true;
     }

@@ -1,0 +1,521 @@
+\doxysection{Referencia de la clase Stateless\+Widget}
+\hypertarget{class_stateless_widget}{}\label{class_stateless_widget}\index{StatelessWidget@{StatelessWidget}}
+
+
+Widget raíz de la aplicación.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_stateless_widget_a81bc25728e77162e8d26ee23deaf657a}{My\+App}} (\{ super.\+key, \})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye la aplicación con sus rutas y configuración global. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_afb18f9ac7073e19b96ca5a8f68672bcb}{Bottom\+Nav\+Bar}} (\{super.\+key\})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Construye la barra de navegación inferior. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_a75b1cfa47ea30625d18814798e52e973}{Home\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor principal de la clase \mbox{[}Home\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye la jerarquía visual delegando la representación a \mbox{[}Home\+View\mbox{]}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_a743dcc8867a792e8f2ad17bb602cb895}{\+\_\+\+Home\+Button}} (\{ required this.\+label, required this.\+icon, required this.\+on\+Pressed, required this.\+background\+Color, required this.\+text\+Color, required this.\+icon\+Color, \})
+\begin{DoxyCompactList}\small\item\em Constructor que obliga a proporcionar todas las propiedades necesarias. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye el botón con estilo consistente. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_a92abedf7e1a4b2fd0a24adc1e9d54777}{Inventario\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la pantalla de inventario. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye la interfaz principal de inventario. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_a08ddfb3894178e26de525fd5f9fde691}{\+\_\+\+Campo}} (\{ required this.\+controller, required this.\+hint, required this.\+icono, this.\+es\+Password=false, this.\+ver\+Password=false, this.\+on\+Toggle\+Password, \})
+\begin{DoxyCompactList}\small\item\em Constructor del campo reutilizable. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{class_stateless_widget_a92325503f5cee922a5ac4cfd50b2ef2e}{Qr\+Pendientes\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye el árbol de widgets y envuelve la vista en un \mbox{[}Change\+Notifier\+Provider\mbox{]}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateless_widget_a70738cfdf03250762024ffd86502e021}{Reportes\+Screen}} (\{super.\+key\})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{class_stateless_widget_a6a67edacac22adab07586ccb36070823}{\+\_\+\+Filtros\+Section}} (\{required this.\+provider\})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{class_stateless_widget_aee9954c7f69d7e1b66e5dde58e18f50a}{\+\_\+\+Stat\+Card}} (\{ required this.\+label, required this.\+valor, required this.\+icono, required this.\+color, \})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{class_stateless_widget_a46d582d48568f25e53a0aad4881a1fb2}{\+\_\+\+Ranking\+Card}} (\{ required this.\+items, this.\+es\+Dinero=false, \})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{class_stateless_widget_a7aa21c7fd621d1d3bd478cd349dd6c35}{Alertas\+Popup}} (\{ super.\+key, \})
+\item 
+override Widget \mbox{\hyperlink{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}{build}} (Build\+Context context,)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateless_widget_a8faca7b6c3fea8fd07142facec171a5d}{label}}
+\begin{DoxyCompactList}\small\item\em Texto que se muestra en el botón. \end{DoxyCompactList}\item 
+final Icon\+Data \mbox{\hyperlink{class_stateless_widget_a3bff1981cdbde62f0617f10ee22080f5}{icon}}
+\begin{DoxyCompactList}\small\item\em Icono que se muestra a la izquierda del texto. \end{DoxyCompactList}\item 
+final Void\+Callback \mbox{\hyperlink{class_stateless_widget_a3e9acdf648cc66522a2acab9cdeca196}{on\+Pressed}}
+\begin{DoxyCompactList}\small\item\em Callback que se ejecuta al pulsar el botón. \end{DoxyCompactList}\item 
+final Color \mbox{\hyperlink{class_stateless_widget_a10bfafd268bb2b113ad2b4681331b9a5}{background\+Color}}
+\begin{DoxyCompactList}\small\item\em Color de fondo del botón. \end{DoxyCompactList}\item 
+final Color \mbox{\hyperlink{class_stateless_widget_a59555ec61ae7cc6efdba8dab07f82131}{text\+Color}}
+\begin{DoxyCompactList}\small\item\em Color del texto del botón. \end{DoxyCompactList}\item 
+final Color \mbox{\hyperlink{class_stateless_widget_a21607df3d8a344c16eb378fddb25c70f}{icon\+Color}}
+\begin{DoxyCompactList}\small\item\em Color del icono del botón. \end{DoxyCompactList}\item 
+final Text\+Editing\+Controller \mbox{\hyperlink{class_stateless_widget_a512db6e7605363c5bf9db2737ad486d5}{controller}}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateless_widget_aea55a2faf13b70069aebeb3bb96da07c}{hint}}
+\item 
+final Icon\+Data \mbox{\hyperlink{class_stateless_widget_acc2878de55941b1bbc505632d24f03ad}{icono}}
+\item 
+final bool \mbox{\hyperlink{class_stateless_widget_ad1dffa656bd71bbd93a32ce8c06486e6}{es\+Password}}
+\item 
+final bool \mbox{\hyperlink{class_stateless_widget_a071ef56963a11f2370779e0ec6006ebb}{ver\+Password}}
+\item 
+final Void\+Callback \mbox{\hyperlink{class_stateless_widget_a34c807822ee5e8da10c4eaea6cf1c0d9}{on\+Toggle\+Password}}
+\item 
+final Reportes\+Provider \mbox{\hyperlink{class_stateless_widget_a0fcb59e656ccb691f8d9f5889c64ef21}{provider}}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateless_widget_aa21be5e0fd02de61d81e2a3f46eee3c8}{valor}}
+\item 
+final Color \mbox{\hyperlink{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7}{color}}
+\item 
+final List$<$ \mbox{\hyperlink{reportes__screen_8dart_ad3156604d89fa916cfbf9f7b5311849a}{\+\_\+\+Ranking\+Item}} $>$ \mbox{\hyperlink{class_stateless_widget_a93e5e009c2af515d272673a4344f1e09}{items}}
+\item 
+final bool \mbox{\hyperlink{class_stateless_widget_a624af3b5385d4f418e1861a3851e0524}{es\+Dinero}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos estáticos privados}
+\begin{DoxyCompactItemize}
+\item 
+static const \mbox{\hyperlink{class_stateless_widget_ac3ea8be6d3365edcc58214442103b9a8}{\+\_\+input\+Decoration}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Widget raíz de la aplicación. 
+
+Tarjeta que renderiza una lista de \mbox{[}\+\_\+\+Ranking\+Item\mbox{]} con barra de progreso y cifras.
+
+Tarjeta que muestra una métrica resumida (label, valor e ícono).
+
+Sección de filtros que permite seleccionar año, mes y escuela.
+
+Pantalla principal de reportes.
+
+Pantalla que muestra las unidades cuyo QR está pendiente de impresión.
+
+Widget reutilizable para campos de texto.
+
+Pantalla de gestión de inventario.
+
+Widget privado que representa un botón del menú principal.
+
+Pantalla principal de la aplicación.
+
+Barra de navegación inferior persistente de la aplicación.
+
+Configura \mbox{[}Material\+App\mbox{]} con el título, las rutas nombradas y la pantalla inicial del sistema.
+
+Muestra los accesos directos a la pantalla principal y al cierre de sesión. Utiliza \mbox{[}Safe\+Area\mbox{]} para evitar superposición con las barras del sistema operativo.
+
+Componente de tipo \mbox{[}\doxylink{class_stateless_widget}{Stateless\+Widget}\mbox{]} que actúa como punto de entrada a la interfaz principal después de la autenticación. Encamina la construcción de la vista a la clase \mbox{[}Home\+View\mbox{]}.
+
+Este componente encapsula la apariencia y comportamiento de los botones del home (icono, texto, colores y acción). Se usa internamente en este archivo.
+
+Componente de tipo \mbox{[}\doxylink{class_stateless_widget}{Stateless\+Widget}\mbox{]} que muestra controles para\+:
+\begin{DoxyItemize}
+\item seleccionar una escuela,
+\item filtrar por prenda,
+\item navegar a pantallas de registro y administración de prendas,
+\item ver QR pendientes. La lógica de negocio relacionada con la carga y filtrado del inventario se delega al proveedor \mbox{[}Inventario\+Provider\mbox{]}.
+\item Soporta campos normales y de contraseña con toggle de visibilidad.
+\item Recibe un \mbox{[}Text\+Editing\+Controller\mbox{]} para exponer el valor al estado padre.
+\item Aplica estilos y bordes consistentes con el diseño de la aplicación.
+\item Componente de tipo \mbox{[}\doxylink{class_stateless_widget}{Stateless\+Widget}\mbox{]} que crea y provee un \mbox{[}Qr\+Pendientes\+Provider\mbox{]}.
+\item El proveedor carga los pendientes al inicializarse mediante {\ttfamily cargar\+Pendientes()}.
+\item Provee un \mbox{[}Reportes\+Provider\mbox{]} que encapsula la lógica de obtención y filtrado de datos para los reportes.
+\item Inicializa la carga de datos mediante {\ttfamily Reportes\+Provider.\+inicializar()}.
+\item Usa valores calculados localmente (últimos 5 años) y listas del provider.
+\item Al cambiar filtros se delega la acción al provider para recargar datos.
+\item {\ttfamily es\+Dinero} controla el formato del valor mostrado (moneda o entero). 
+\end{DoxyItemize}
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_stateless_widget_a08ddfb3894178e26de525fd5f9fde691}\index{StatelessWidget@{StatelessWidget}!\_Campo@{\_Campo}}
+\index{\_Campo@{\_Campo}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_Campo()}{\_Campo()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a08ddfb3894178e26de525fd5f9fde691} 
+const Stateless\+Widget\+::\+\_\+\+Campo (\begin{DoxyParamCaption}\item[{\{ required this.\+controller, required this.\+hint, required this.\+icono, this.\+es\+Password=false, this.\+ver\+Password=false, this.\+on\+Toggle\+Password, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor del campo reutilizable. 
+
+\Hypertarget{class_stateless_widget_a6a67edacac22adab07586ccb36070823}\index{StatelessWidget@{StatelessWidget}!\_FiltrosSection@{\_FiltrosSection}}
+\index{\_FiltrosSection@{\_FiltrosSection}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_FiltrosSection()}{\_FiltrosSection()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a6a67edacac22adab07586ccb36070823} 
+const Stateless\+Widget\+::\+\_\+\+Filtros\+Section (\begin{DoxyParamCaption}\item[{\{required this.\+provider\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a743dcc8867a792e8f2ad17bb602cb895}\index{StatelessWidget@{StatelessWidget}!\_HomeButton@{\_HomeButton}}
+\index{\_HomeButton@{\_HomeButton}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_HomeButton()}{\_HomeButton()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a743dcc8867a792e8f2ad17bb602cb895} 
+const Stateless\+Widget\+::\+\_\+\+Home\+Button (\begin{DoxyParamCaption}\item[{\{ required this.\+label, required this.\+icon, required this.\+on\+Pressed, required this.\+background\+Color, required this.\+text\+Color, required this.\+icon\+Color, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor que obliga a proporcionar todas las propiedades necesarias. 
+
+\Hypertarget{class_stateless_widget_a46d582d48568f25e53a0aad4881a1fb2}\index{StatelessWidget@{StatelessWidget}!\_RankingCard@{\_RankingCard}}
+\index{\_RankingCard@{\_RankingCard}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_RankingCard()}{\_RankingCard()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a46d582d48568f25e53a0aad4881a1fb2} 
+const Stateless\+Widget\+::\+\_\+\+Ranking\+Card (\begin{DoxyParamCaption}\item[{\{ required this.\+items, this.\+es\+Dinero=false, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_aee9954c7f69d7e1b66e5dde58e18f50a}\index{StatelessWidget@{StatelessWidget}!\_StatCard@{\_StatCard}}
+\index{\_StatCard@{\_StatCard}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_StatCard()}{\_StatCard()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_aee9954c7f69d7e1b66e5dde58e18f50a} 
+const Stateless\+Widget\+::\+\_\+\+Stat\+Card (\begin{DoxyParamCaption}\item[{\{ required this.\+label, required this.\+valor, required this.\+icono, required this.\+color, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a7aa21c7fd621d1d3bd478cd349dd6c35}\index{StatelessWidget@{StatelessWidget}!AlertasPopup@{AlertasPopup}}
+\index{AlertasPopup@{AlertasPopup}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{AlertasPopup()}{AlertasPopup()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a7aa21c7fd621d1d3bd478cd349dd6c35} 
+const Stateless\+Widget\+::\+Alertas\+Popup (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_afb18f9ac7073e19b96ca5a8f68672bcb}\index{StatelessWidget@{StatelessWidget}!BottomNavBar@{BottomNavBar}}
+\index{BottomNavBar@{BottomNavBar}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{BottomNavBar()}{BottomNavBar()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_afb18f9ac7073e19b96ca5a8f68672bcb} 
+const Stateless\+Widget\+::\+Bottom\+Nav\+Bar (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye la barra de navegación inferior. 
+
+Compone un contenedor con color de fondo, protección de área segura y dos botones de navegación\+: inicio y cierre de sesión. \Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a83e664747f18091d3843e55bfa470e5b} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye la aplicación con sus rutas y configuración global. 
+
+\Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye la jerarquía visual delegando la representación a \mbox{[}Home\+View\mbox{]}. 
+
+Este widget actúa como contenedor simple que devuelve la vista real implementada en \mbox{[}Home\+View\mbox{]}. No mantiene estado propio. \Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye el botón con estilo consistente. 
+
+
+\begin{DoxyItemize}
+\item Usa {\ttfamily Elevated\+Button.\+icon} para combinar icono y texto.
+\item Aplica borde cuando el fondo es blanco para mantener contraste. 
+\end{DoxyItemize}\Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye la interfaz principal de inventario. 
+
+
+\begin{DoxyItemize}
+\item Define un \mbox{[}Scaffold\mbox{]} con \mbox{[}App\+Bar\mbox{]}, cuerpo y barra de navegación inferior.
+\item El botón de añadir en la App\+Bar crea un \mbox{[}\doxylink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}\mbox{]} con los repositorios necesarios y navega a \mbox{[}Registrar\+Prenda\+Screen\mbox{]}.
+\item Tras regresar de la pantalla de registro se solicita recargar las escuelas mediante {\ttfamily Inventario\+Provider.\+recargar\+Escuelas()}. 
+\end{DoxyItemize}\Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Construye el árbol de widgets y envuelve la vista en un \mbox{[}Change\+Notifier\+Provider\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Se inyecta una instancia de \mbox{[}Qr\+Pendientes\+Provider\mbox{]} con su repositorio.
+\item Se llama a {\ttfamily cargar\+Pendientes()} inmediatamente para iniciar la carga de datos. 
+\end{DoxyItemize}\Hypertarget{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4}\index{StatelessWidget@{StatelessWidget}!build@{build}}
+\index{build@{build}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily \label{class_stateless_widget_adc71e9cabb5af2c1c5904fd1bd5923e4} 
+override Widget Stateless\+Widget\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a75b1cfa47ea30625d18814798e52e973}\index{StatelessWidget@{StatelessWidget}!HomeScreen@{HomeScreen}}
+\index{HomeScreen@{HomeScreen}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{HomeScreen()}{HomeScreen()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a75b1cfa47ea30625d18814798e52e973} 
+const Stateless\+Widget\+::\+Home\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor principal de la clase \mbox{[}Home\+Screen\mbox{]}. 
+
+\Hypertarget{class_stateless_widget_a92abedf7e1a4b2fd0a24adc1e9d54777}\index{StatelessWidget@{StatelessWidget}!InventarioScreen@{InventarioScreen}}
+\index{InventarioScreen@{InventarioScreen}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{InventarioScreen()}{InventarioScreen()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a92abedf7e1a4b2fd0a24adc1e9d54777} 
+const Stateless\+Widget\+::\+Inventario\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor por defecto de la pantalla de inventario. 
+
+\Hypertarget{class_stateless_widget_a81bc25728e77162e8d26ee23deaf657a}\index{StatelessWidget@{StatelessWidget}!MyApp@{MyApp}}
+\index{MyApp@{MyApp}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{MyApp()}{MyApp()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a81bc25728e77162e8d26ee23deaf657a} 
+const Stateless\+Widget\+::\+My\+App (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a92325503f5cee922a5ac4cfd50b2ef2e}\index{StatelessWidget@{StatelessWidget}!QrPendientesScreen@{QrPendientesScreen}}
+\index{QrPendientesScreen@{QrPendientesScreen}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{QrPendientesScreen()}{QrPendientesScreen()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a92325503f5cee922a5ac4cfd50b2ef2e} 
+const Stateless\+Widget\+::\+Qr\+Pendientes\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor por defecto. 
+
+\Hypertarget{class_stateless_widget_a70738cfdf03250762024ffd86502e021}\index{StatelessWidget@{StatelessWidget}!ReportesScreen@{ReportesScreen}}
+\index{ReportesScreen@{ReportesScreen}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{ReportesScreen()}{ReportesScreen()}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a70738cfdf03250762024ffd86502e021} 
+const Stateless\+Widget\+::\+Reportes\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_stateless_widget_ac3ea8be6d3365edcc58214442103b9a8}\index{StatelessWidget@{StatelessWidget}!\_inputDecoration@{\_inputDecoration}}
+\index{\_inputDecoration@{\_inputDecoration}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{\_inputDecoration}{\_inputDecoration}}
+{\footnotesize\ttfamily \label{class_stateless_widget_ac3ea8be6d3365edcc58214442103b9a8} 
+const Stateless\+Widget\+::\+\_\+input\+Decoration\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ InputDecoration(}
+\DoxyCodeLine{\ \ \ \ filled:\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\ \ \ \ fillColor:\ Colors.white,}
+\DoxyCodeLine{\ \ \ \ contentPadding:\ EdgeInsets.symmetric(horizontal:\ 12,\ vertical:\ 10),}
+\DoxyCodeLine{\ \ \ \ border:\ OutlineInputBorder(}
+\DoxyCodeLine{\ \ \ \ \ \ borderRadius:\ BorderRadius.all(Radius.circular(12)),}
+\DoxyCodeLine{\ \ \ \ \ \ borderSide:\ BorderSide(\mbox{\hyperlink{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7}{color}}:\ Color(0xFFE5E5E5)),}
+\DoxyCodeLine{\ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ enabledBorder:\ OutlineInputBorder(}
+\DoxyCodeLine{\ \ \ \ \ \ borderRadius:\ BorderRadius.all(Radius.circular(12)),}
+\DoxyCodeLine{\ \ \ \ \ \ borderSide:\ BorderSide(\mbox{\hyperlink{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7}{color}}:\ Color(0xFFE5E5E5)),}
+\DoxyCodeLine{\ \ \ \ ),}
+\DoxyCodeLine{\ \ \ \ focusedBorder:\ OutlineInputBorder(}
+\DoxyCodeLine{\ \ \ \ \ \ borderRadius:\ BorderRadius.all(Radius.circular(12)),}
+\DoxyCodeLine{\ \ \ \ \ \ borderSide:\ BorderSide(\mbox{\hyperlink{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7}{color}}:\ Color(0xFF1452BD)),}
+\DoxyCodeLine{\ \ \ \ ),}
+\DoxyCodeLine{\ \ )}
+
+\end{DoxyCode}
+\Hypertarget{class_stateless_widget_a10bfafd268bb2b113ad2b4681331b9a5}\index{StatelessWidget@{StatelessWidget}!backgroundColor@{backgroundColor}}
+\index{backgroundColor@{backgroundColor}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{backgroundColor}{backgroundColor}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a10bfafd268bb2b113ad2b4681331b9a5} 
+final Color Stateless\+Widget\+::background\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Color de fondo del botón. 
+
+\Hypertarget{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7}\index{StatelessWidget@{StatelessWidget}!color@{color}}
+\index{color@{color}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a4a65992da0851a78f41374297e0f4bb7} 
+final Color Stateless\+Widget\+::color\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a512db6e7605363c5bf9db2737ad486d5}\index{StatelessWidget@{StatelessWidget}!controller@{controller}}
+\index{controller@{controller}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a512db6e7605363c5bf9db2737ad486d5} 
+final Text\+Editing\+Controller Stateless\+Widget\+::controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a624af3b5385d4f418e1861a3851e0524}\index{StatelessWidget@{StatelessWidget}!esDinero@{esDinero}}
+\index{esDinero@{esDinero}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{esDinero}{esDinero}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a624af3b5385d4f418e1861a3851e0524} 
+final bool Stateless\+Widget\+::es\+Dinero\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_ad1dffa656bd71bbd93a32ce8c06486e6}\index{StatelessWidget@{StatelessWidget}!esPassword@{esPassword}}
+\index{esPassword@{esPassword}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{esPassword}{esPassword}}
+{\footnotesize\ttfamily \label{class_stateless_widget_ad1dffa656bd71bbd93a32ce8c06486e6} 
+final bool Stateless\+Widget\+::es\+Password\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_aea55a2faf13b70069aebeb3bb96da07c}\index{StatelessWidget@{StatelessWidget}!hint@{hint}}
+\index{hint@{hint}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{hint}{hint}}
+{\footnotesize\ttfamily \label{class_stateless_widget_aea55a2faf13b70069aebeb3bb96da07c} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateless\+Widget\+::hint\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a3bff1981cdbde62f0617f10ee22080f5}\index{StatelessWidget@{StatelessWidget}!icon@{icon}}
+\index{icon@{icon}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{icon}{icon}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a3bff1981cdbde62f0617f10ee22080f5} 
+final Icon\+Data Stateless\+Widget\+::icon\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Icono que se muestra a la izquierda del texto. 
+
+\Hypertarget{class_stateless_widget_a21607df3d8a344c16eb378fddb25c70f}\index{StatelessWidget@{StatelessWidget}!iconColor@{iconColor}}
+\index{iconColor@{iconColor}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{iconColor}{iconColor}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a21607df3d8a344c16eb378fddb25c70f} 
+final Color Stateless\+Widget\+::icon\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Color del icono del botón. 
+
+\Hypertarget{class_stateless_widget_acc2878de55941b1bbc505632d24f03ad}\index{StatelessWidget@{StatelessWidget}!icono@{icono}}
+\index{icono@{icono}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{icono}{icono}}
+{\footnotesize\ttfamily \label{class_stateless_widget_acc2878de55941b1bbc505632d24f03ad} 
+final Icon\+Data Stateless\+Widget\+::icono\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a93e5e009c2af515d272673a4344f1e09}\index{StatelessWidget@{StatelessWidget}!items@{items}}
+\index{items@{items}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a93e5e009c2af515d272673a4344f1e09} 
+final List$<$\mbox{\hyperlink{reportes__screen_8dart_ad3156604d89fa916cfbf9f7b5311849a}{\+\_\+\+Ranking\+Item}}$>$ Stateless\+Widget\+::items\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a8faca7b6c3fea8fd07142facec171a5d}\index{StatelessWidget@{StatelessWidget}!label@{label}}
+\index{label@{label}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{label}{label}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a8faca7b6c3fea8fd07142facec171a5d} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateless\+Widget\+::label\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Texto que se muestra en el botón. 
+
+\Hypertarget{class_stateless_widget_a3e9acdf648cc66522a2acab9cdeca196}\index{StatelessWidget@{StatelessWidget}!onPressed@{onPressed}}
+\index{onPressed@{onPressed}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{onPressed}{onPressed}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a3e9acdf648cc66522a2acab9cdeca196} 
+final Void\+Callback Stateless\+Widget\+::on\+Pressed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback que se ejecuta al pulsar el botón. 
+
+\Hypertarget{class_stateless_widget_a34c807822ee5e8da10c4eaea6cf1c0d9}\index{StatelessWidget@{StatelessWidget}!onTogglePassword@{onTogglePassword}}
+\index{onTogglePassword@{onTogglePassword}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{onTogglePassword}{onTogglePassword}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a34c807822ee5e8da10c4eaea6cf1c0d9} 
+final Void\+Callback Stateless\+Widget\+::on\+Toggle\+Password\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a0fcb59e656ccb691f8d9f5889c64ef21}\index{StatelessWidget@{StatelessWidget}!provider@{provider}}
+\index{provider@{provider}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{provider}{provider}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a0fcb59e656ccb691f8d9f5889c64ef21} 
+final Reportes\+Provider Stateless\+Widget\+::provider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a59555ec61ae7cc6efdba8dab07f82131}\index{StatelessWidget@{StatelessWidget}!textColor@{textColor}}
+\index{textColor@{textColor}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{textColor}{textColor}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a59555ec61ae7cc6efdba8dab07f82131} 
+final Color Stateless\+Widget\+::text\+Color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Color del texto del botón. 
+
+\Hypertarget{class_stateless_widget_aa21be5e0fd02de61d81e2a3f46eee3c8}\index{StatelessWidget@{StatelessWidget}!valor@{valor}}
+\index{valor@{valor}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{valor}{valor}}
+{\footnotesize\ttfamily \label{class_stateless_widget_aa21be5e0fd02de61d81e2a3f46eee3c8} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateless\+Widget\+::valor\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateless_widget_a071ef56963a11f2370779e0ec6006ebb}\index{StatelessWidget@{StatelessWidget}!verPassword@{verPassword}}
+\index{verPassword@{verPassword}!StatelessWidget@{StatelessWidget}}
+\doxysubsubsection{\texorpdfstring{verPassword}{verPassword}}
+{\footnotesize\ttfamily \label{class_stateless_widget_a071ef56963a11f2370779e0ec6006ebb} 
+final bool Stateless\+Widget\+::ver\+Password\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+lib/\mbox{\hyperlink{main_8dart}{main.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{home__screen_8dart}{home\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{login__screen_8dart}{login\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{reportes__screen_8dart}{reportes\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{bottom__nav__bar_8dart}{bottom\+\_\+nav\+\_\+bar.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{inventario__screen_8dart}{inventario\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{qr__pendientes__screen_8dart}{qr\+\_\+pendientes\+\_\+screen.\+dart}}\item 
+lib/presentation/widgets/\mbox{\hyperlink{alertas__popup_8dart}{alertas\+\_\+popup.\+dart}}\end{DoxyCompactItemize}

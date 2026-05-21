@@ -1,0 +1,109 @@
+\doxysection{Referencia de la clase Backup\+Info}
+\hypertarget{class_backup_info}{}\label{class_backup_info}\index{BackupInfo@{BackupInfo}}
+
+
+Modelo que representa la información de un archivo de backup generado.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_backup_info_a7a795853a3c57c13aacc63c8e98242b9}{Backup\+Info}} (\{ required this.\+ruta, required this.\+nombre, required this.\+fecha\+Creacion, required this.\+tamano\+Bytes, \})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_backup_info_abb55c0415a0278bcd7f4e9be44560010}{ruta}}
+\begin{DoxyCompactList}\small\item\em Ruta absoluta del archivo de backup en el sistema de archivos. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_backup_info_a7e8b32be16f94aa519bc4ba6d569ccb0}{nombre}}
+\begin{DoxyCompactList}\small\item\em Nombre del archivo de backup. \end{DoxyCompactList}\item 
+final Date\+Time \mbox{\hyperlink{class_backup_info_a98367576a12daa459793f6f1373ef0f1}{fecha\+Creacion}}
+\begin{DoxyCompactList}\small\item\em Fecha y hora en que fue creado el archivo de backup. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{class_backup_info_a70649e1cddd164ad21cec54054d972ba}{tamano\+Bytes}}
+\begin{DoxyCompactList}\small\item\em Tamaño del archivo de backup en bytes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{class_backup_info_ac5677dab936b6807c539666939976f1b}{tamano\+Legible}}
+\begin{DoxyCompactList}\small\item\em Retorna el tamaño del archivo en formato legible (B, KB o MB) según el rango en que se encuentre el valor en bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Modelo que representa la información de un archivo de backup generado. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_backup_info_a7a795853a3c57c13aacc63c8e98242b9}\index{BackupInfo@{BackupInfo}!BackupInfo@{BackupInfo}}
+\index{BackupInfo@{BackupInfo}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{BackupInfo()}{BackupInfo()}}
+{\footnotesize\ttfamily \label{class_backup_info_a7a795853a3c57c13aacc63c8e98242b9} 
+const Backup\+Info\+::\+Backup\+Info (\begin{DoxyParamCaption}\item[{\{ required this.\+ruta, required this.\+nombre, required this.\+fecha\+Creacion, required this.\+tamano\+Bytes, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_backup_info_a98367576a12daa459793f6f1373ef0f1}\index{BackupInfo@{BackupInfo}!fechaCreacion@{fechaCreacion}}
+\index{fechaCreacion@{fechaCreacion}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{fechaCreacion}{fechaCreacion}}
+{\footnotesize\ttfamily \label{class_backup_info_a98367576a12daa459793f6f1373ef0f1} 
+final Date\+Time Backup\+Info\+::fecha\+Creacion\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fecha y hora en que fue creado el archivo de backup. 
+
+\Hypertarget{class_backup_info_a7e8b32be16f94aa519bc4ba6d569ccb0}\index{BackupInfo@{BackupInfo}!nombre@{nombre}}
+\index{nombre@{nombre}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{nombre}{nombre}}
+{\footnotesize\ttfamily \label{class_backup_info_a7e8b32be16f94aa519bc4ba6d569ccb0} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Backup\+Info\+::nombre\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nombre del archivo de backup. 
+
+\Hypertarget{class_backup_info_abb55c0415a0278bcd7f4e9be44560010}\index{BackupInfo@{BackupInfo}!ruta@{ruta}}
+\index{ruta@{ruta}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{ruta}{ruta}}
+{\footnotesize\ttfamily \label{class_backup_info_abb55c0415a0278bcd7f4e9be44560010} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Backup\+Info\+::ruta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ruta absoluta del archivo de backup en el sistema de archivos. 
+
+\Hypertarget{class_backup_info_a70649e1cddd164ad21cec54054d972ba}\index{BackupInfo@{BackupInfo}!tamanoBytes@{tamanoBytes}}
+\index{tamanoBytes@{tamanoBytes}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{tamanoBytes}{tamanoBytes}}
+{\footnotesize\ttfamily \label{class_backup_info_a70649e1cddd164ad21cec54054d972ba} 
+final int Backup\+Info\+::tamano\+Bytes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Tamaño del archivo de backup en bytes. 
+
+\Hypertarget{class_backup_info_ac5677dab936b6807c539666939976f1b}\index{BackupInfo@{BackupInfo}!tamanoLegible@{tamanoLegible}}
+\index{tamanoLegible@{tamanoLegible}!BackupInfo@{BackupInfo}}
+\doxysubsubsection{\texorpdfstring{tamanoLegible}{tamanoLegible}}
+{\footnotesize\ttfamily \label{class_backup_info_ac5677dab936b6807c539666939976f1b} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get Backup\+Info\+::tamano\+Legible\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_backup_info_a70649e1cddd164ad21cec54054d972ba}{tamanoBytes}}\ <\ 1024)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'\$tamanoBytes\ B'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_backup_info_a70649e1cddd164ad21cec54054d972ba}{tamanoBytes}}\ <\ 1024\ *\ 1024)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'\$\{(tamanoBytes\ /\ 1024).toStringAsFixed(1)\}\ KB'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'\$\{(tamanoBytes\ /\ (1024\ *\ 1024)).toStringAsFixed(1)\}\ MB'}}
+
+\end{DoxyCode}
+
+
+Retorna el tamaño del archivo en formato legible (B, KB o MB) según el rango en que se encuentre el valor en bytes. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/services/\mbox{\hyperlink{backup__service_8dart}{backup\+\_\+service.\+dart}}\end{DoxyCompactItemize}

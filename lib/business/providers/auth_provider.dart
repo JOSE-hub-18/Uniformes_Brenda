@@ -1,11 +1,11 @@
+// lib/business/providers/auth_provider.dart
+
 import 'package:flutter/material.dart';
 import '../../data/repositories/usuario_repository.dart';
 import '../usecases/login_usecase.dart';
 import '../../models/models.dart';
 
 /// Proveedor de estado para la autenticación de usuarios.
-/// Gestiona el flujo de login y logout, así como el estado del usuario activo.
-/// Extiende [ChangeNotifier] para notificar cambios a los widgets suscritos.
 class AuthProvider extends ChangeNotifier {
   /// Repositorio encargado de obtener los datos de usuarios.
   final _usuarioRepo = UsuarioRepository();
@@ -22,7 +22,7 @@ class AuthProvider extends ChangeNotifier {
   /// Usuario autenticado actualmente. Null si no hay sesión activa.
   Usuario? _usuarioActual;
 
-  // Getters
+  /// Getters
   bool get cargando => _cargando;
   String? get error => _error;
   Usuario? get usuarioActual => _usuarioActual;
@@ -44,11 +44,7 @@ class AuthProvider extends ChangeNotifier {
     try {
       final usuarios = await _usuarioRepo.obtenerTodos();
 
-      final user = await _loginUseCase.execute(
-        usuarios,
-        usuario,
-        password,
-      );
+      final user = await _loginUseCase.execute(usuarios, usuario, password);
 
       if (user != null) {
         _usuarioActual = user;

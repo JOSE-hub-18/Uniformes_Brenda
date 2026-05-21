@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['navigatetoinventory_0',['navigateToInventory',['../class_change_notifier.html#a8abf39f1cf20f8837873c0f7103f98df',1,'ChangeNotifier']]],
+  ['navigatetoneworder_1',['navigateToNewOrder',['../class_change_notifier.html#a6f212a3aa9f13c073faed72683bd7af1',1,'ChangeNotifier']]],
+  ['navigatetoorders_2',['navigateToOrders',['../class_change_notifier.html#a9773de3af8c3f237c5dacb18b5d74653',1,'ChangeNotifier']]],
+  ['noexiste_3',['noExiste',['../restar__unidades__usecase_8dart.html#a5cd35a77a1e5224cd2bfc0fb8496df3fae1536c781bf1e28d700e479dcbecf1f4',1,'restar_unidades_usecase.dart']]],
+  ['nombre_4',['nombre',['../class_backup_info.html#a7e8b32be16f94aa519bc4ba6d569ccb0',1,'BackupInfo::nombre'],['../reportes__screen_8dart.html#aff57a087d0f97cdabc778d018825a270',1,'nombre:&#160;reportes_screen.dart']]],
+  ['nombreescuela_5',['nombreEscuela',['../class_stateful_widget.html#af6a7bcb3ac6edd6293da205c06b72697',1,'StatefulWidget']]],
+  ['nombreescuelaseleccionada_6',['nombreEscuelaSeleccionada',['../class_change_notifier.html#a2b80321f142da0a1803f97d9aefd3f92',1,'ChangeNotifier']]],
+  ['nombremesseleccionado_7',['nombreMesSeleccionado',['../class_change_notifier.html#ab3c3f869658d338db1808f69f2f91731',1,'ChangeNotifier']]],
+  ['nombreprenda_8',['nombrePrenda',['../class_stateful_widget.html#a9f80187fd131d65fec2ae52920dfd373',1,'StatefulWidget']]],
+  ['nombretalla_9',['nombreTalla',['../class_registro_talla_result.html#af307b87d6db4b46af434e04a9d32085e',1,'RegistroTallaResult']]],
+  ['nopertenece_10',['noPertenece',['../restar__unidades__usecase_8dart.html#a5cd35a77a1e5224cd2bfc0fb8496df3fa12b2a51fe65beda211ed6d4692c8103a',1,'restar_unidades_usecase.dart']]],
+  ['nueva_5forden_5fprovider_2edart_11',['nueva_orden_provider.dart',['../nueva__orden__provider_8dart.html',1,'']]],
+  ['nueva_5forden_5fscreen_2edart_12',['nueva_orden_screen.dart',['../nueva__orden__screen_8dart.html',1,'']]],
+  ['nueva_5forden_5fusecase_2edart_13',['nueva_orden_usecase.dart',['../nueva__orden__usecase_8dart.html',1,'']]],
+  ['nuevaordenresult_14',['NuevaOrdenResult',['../nueva__orden__usecase_8dart.html#a83c92da21e4c8bcce0cbd7278d88db4a',1,'nueva_orden_usecase.dart']]],
+  ['nuevaordenusecase_15',['NuevaOrdenUseCase',['../class_nueva_orden_use_case.html',1,'']]]
+];

@@ -1,0 +1,140 @@
+\doxysection{Referencia de la clase Backup\+Service}
+\hypertarget{class_backup_service}{}\label{class_backup_service}\index{BackupService@{BackupService}}
+
+
+Servicio que gestiona las operaciones de backup de la base de datos.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_backup_service}{Backup\+Service}}(\{required \mbox{\hyperlink{class_backup_repository}{Backup\+Repository}} backup\+Repository\}) Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ \mbox{\hyperlink{class_backup_service_aa722444bfcccdeaa1ee01a8c4035d84e}{crear\+Backup}} () async
+\begin{DoxyCompactList}\small\item\em Crea un nuevo archivo de backup de la base de datos. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ \mbox{\hyperlink{class_backup_service_abbe22c5b1173805c75e512ee1aacfcbd}{crear\+YCompartir\+Backup}} () async
+\begin{DoxyCompactList}\small\item\em Crea un nuevo backup y lo comparte inmediatamente a través del sistema de compartición nativo del dispositivo. \end{DoxyCompactList}\item 
+Future$<$ List$<$ \mbox{\hyperlink{class_backup_info}{Backup\+Info}} $>$ $>$ \mbox{\hyperlink{class_backup_service_a52319fb964ce8648c99bfbfe0aa17da5}{listar\+Backups}} () async
+\begin{DoxyCompactList}\small\item\em Obtiene la lista de backups disponibles en el directorio de backups, ordenados de más reciente a más antiguo. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ \mbox{\hyperlink{class_backup_service_a3097069e217e252368ad3f6b54b6a8e9}{compartir\+Backup}} (\mbox{\hyperlink{class_backup_info}{Backup\+Info}} \mbox{\hyperlink{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}{backup}}) async
+\begin{DoxyCompactList}\small\item\em Comparte un archivo de backup existente mediante el sistema nativo del dispositivo. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ \mbox{\hyperlink{class_backup_service_ace7033824aa2e193d7c4b37063cc91d9}{eliminar\+Backup}} (\mbox{\hyperlink{class_backup_info}{Backup\+Info}} \mbox{\hyperlink{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}{backup}}) async
+\begin{DoxyCompactList}\small\item\em Elimina el archivo de backup del sistema de archivos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_backup_service_a5857802c8ddb04567101809ecb690331}{\+\_\+limpiar\+Backups\+Antiguos}} () async
+\begin{DoxyCompactList}\small\item\em Elimina los backups más antiguos cuando se supera el límite de \mbox{[}\+\_\+max\+Backups\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ Directory $>$ \mbox{\hyperlink{class_backup_service_ab5119c6185552d9d4f9f5840dfcbda4b}{\+\_\+directorio\+Backups}} () async
+\begin{DoxyCompactList}\small\item\em Retorna el directorio donde se almacenan los backups. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_backup_repository}{Backup\+Repository}} \mbox{\hyperlink{class_backup_service_a934c894963237a846fed0d2296c24153}{\+\_\+backup\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio que ejecuta la creación física del archivo de backup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos estáticos privados}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{class_backup_service_ad462346a509d111e65242162fae47f35}{\+\_\+max\+Backups}} = 5
+\begin{DoxyCompactList}\small\item\em Número máximo de backups que se conservan en el directorio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Servicio que gestiona las operaciones de backup de la base de datos. 
+
+Permite crear, listar, compartir y eliminar backups, además de mantener un límite máximo de archivos almacenados. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_backup_service_ab5119c6185552d9d4f9f5840dfcbda4b}\index{BackupService@{BackupService}!\_directorioBackups@{\_directorioBackups}}
+\index{\_directorioBackups@{\_directorioBackups}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{\_directorioBackups()}{\_directorioBackups()}}
+{\footnotesize\ttfamily \label{class_backup_service_ab5119c6185552d9d4f9f5840dfcbda4b} 
+Future$<$ Directory $>$ Backup\+Service\+::\+\_\+directorio\+Backups (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el directorio donde se almacenan los backups. 
+
+Si el directorio no existe, lo crea de forma recursiva. \Hypertarget{class_backup_service_a5857802c8ddb04567101809ecb690331}\index{BackupService@{BackupService}!\_limpiarBackupsAntiguos@{\_limpiarBackupsAntiguos}}
+\index{\_limpiarBackupsAntiguos@{\_limpiarBackupsAntiguos}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{\_limpiarBackupsAntiguos()}{\_limpiarBackupsAntiguos()}}
+{\footnotesize\ttfamily \label{class_backup_service_a5857802c8ddb04567101809ecb690331} 
+Future$<$ void $>$ Backup\+Service\+::\+\_\+limpiar\+Backups\+Antiguos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina los backups más antiguos cuando se supera el límite de \mbox{[}\+\_\+max\+Backups\mbox{]}. 
+
+La lista ya viene ordenada de más reciente a más antiguo, por lo que se eliminan los elementos al final de la lista. \Hypertarget{class_backup_service_a3097069e217e252368ad3f6b54b6a8e9}\index{BackupService@{BackupService}!compartirBackup@{compartirBackup}}
+\index{compartirBackup@{compartirBackup}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{compartirBackup()}{compartirBackup()}}
+{\footnotesize\ttfamily \label{class_backup_service_a3097069e217e252368ad3f6b54b6a8e9} 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ Backup\+Service\+::compartir\+Backup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_backup_info}{Backup\+Info}}}]{backup}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Comparte un archivo de backup existente mediante el sistema nativo del dispositivo. 
+
+Verifica que el archivo exista en el sistema de archivos antes de intentar compartirlo. \Hypertarget{class_backup_service_aa722444bfcccdeaa1ee01a8c4035d84e}\index{BackupService@{BackupService}!crearBackup@{crearBackup}}
+\index{crearBackup@{crearBackup}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{crearBackup()}{crearBackup()}}
+{\footnotesize\ttfamily \label{class_backup_service_aa722444bfcccdeaa1ee01a8c4035d84e} 
+\mbox{\hyperlink{class_backup_service}{Backup\+Service}}(\{required \mbox{\hyperlink{class_backup_repository}{Backup\+Repository}} backup\+Repository\}) Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ Backup\+Service\+::crear\+Backup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Crea un nuevo archivo de backup de la base de datos. 
+
+Una vez creado, ejecuta la limpieza de backups antiguos para mantener el límite definido por \mbox{[}\+\_\+max\+Backups\mbox{]}. Retorna un \mbox{[}Backup\+Result\mbox{]} con el resultado de la operación. \Hypertarget{class_backup_service_abbe22c5b1173805c75e512ee1aacfcbd}\index{BackupService@{BackupService}!crearYCompartirBackup@{crearYCompartirBackup}}
+\index{crearYCompartirBackup@{crearYCompartirBackup}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{crearYCompartirBackup()}{crearYCompartirBackup()}}
+{\footnotesize\ttfamily \label{class_backup_service_abbe22c5b1173805c75e512ee1aacfcbd} 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ Backup\+Service\+::crear\+YCompartir\+Backup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Crea un nuevo backup y lo comparte inmediatamente a través del sistema de compartición nativo del dispositivo. 
+
+Si la creación falla, retorna el resultado sin intentar compartir. Si el backup se crea pero no se puede compartir, retorna el error manteniendo la referencia al backup generado. \Hypertarget{class_backup_service_ace7033824aa2e193d7c4b37063cc91d9}\index{BackupService@{BackupService}!eliminarBackup@{eliminarBackup}}
+\index{eliminarBackup@{eliminarBackup}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{eliminarBackup()}{eliminarBackup()}}
+{\footnotesize\ttfamily \label{class_backup_service_ace7033824aa2e193d7c4b37063cc91d9} 
+Future$<$ \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} $>$ Backup\+Service\+::eliminar\+Backup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_backup_info}{Backup\+Info}}}]{backup}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina el archivo de backup del sistema de archivos. 
+
+Si el archivo no existe, la operación se considera exitosa para mantener consistencia con el estado esperado. \Hypertarget{class_backup_service_a52319fb964ce8648c99bfbfe0aa17da5}\index{BackupService@{BackupService}!listarBackups@{listarBackups}}
+\index{listarBackups@{listarBackups}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{listarBackups()}{listarBackups()}}
+{\footnotesize\ttfamily \label{class_backup_service_a52319fb964ce8648c99bfbfe0aa17da5} 
+Future$<$ List$<$ \mbox{\hyperlink{class_backup_info}{Backup\+Info}} $>$ $>$ Backup\+Service\+::listar\+Backups (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene la lista de backups disponibles en el directorio de backups, ordenados de más reciente a más antiguo. 
+
+Filtra únicamente archivos con el prefijo \textquotesingle{}backup\+\_\+uniformes\+\_\+\textquotesingle{} y extensión \textquotesingle{}.db\textquotesingle{}. Retorna una lista vacía si el directorio no existe o si ocurre un error. Los backups se ordenan descendentemente por fecha de creación para que el más reciente aparezca primero en la lista.
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_backup_service_a934c894963237a846fed0d2296c24153}\index{BackupService@{BackupService}!\_backupRepository@{\_backupRepository}}
+\index{\_backupRepository@{\_backupRepository}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{\_backupRepository}{\_backupRepository}}
+{\footnotesize\ttfamily \label{class_backup_service_a934c894963237a846fed0d2296c24153} 
+final \mbox{\hyperlink{class_backup_repository}{Backup\+Repository}} Backup\+Service\+::\+\_\+backup\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio que ejecuta la creación física del archivo de backup. 
+
+\Hypertarget{class_backup_service_ad462346a509d111e65242162fae47f35}\index{BackupService@{BackupService}!\_maxBackups@{\_maxBackups}}
+\index{\_maxBackups@{\_maxBackups}!BackupService@{BackupService}}
+\doxysubsubsection{\texorpdfstring{\_maxBackups}{\_maxBackups}}
+{\footnotesize\ttfamily \label{class_backup_service_ad462346a509d111e65242162fae47f35} 
+const int Backup\+Service\+::\+\_\+max\+Backups = 5\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Número máximo de backups que se conservan en el directorio. 
+
+Los backups más antiguos se eliminan automáticamente al superar este límite. 
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/services/\mbox{\hyperlink{backup__service_8dart}{backup\+\_\+service.\+dart}}\end{DoxyCompactItemize}

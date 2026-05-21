@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Uniformes Brenda: Referencia de la clase PrintUseCase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Uniformes Brenda
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Métodos privados</a> &#124;
+<a href="#pri-attribs">Atributos privados</a> &#124;
+<a href="class_print_use_case-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle"><div class="title">Referencia de la clase PrintUseCase</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Caso de uso que gestiona la impresión de etiquetas QR para unidades de inventario.  
+ <a href="#details">Más...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Métodos privados</h2></td></tr>
+<tr class="memitem:af5c7e43c02dc33cb21363db9f273dc45" id="r_af5c7e43c02dc33cb21363db9f273dc45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5c7e43c02dc33cb21363db9f273dc45">PrintUseCase</a> ({required this.printer, required this.repo})</td></tr>
+<tr class="separator:af5c7e43c02dc33cb21363db9f273dc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5556b71e53e8c4971bc0ac3e0c54cfa3" id="r_a5556b71e53e8c4971bc0ac3e0c54cfa3"><td class="memItemLeft" align="right" valign="top">Future&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5556b71e53e8c4971bc0ac3e0c54cfa3">ejecutar</a> (int <a class="el" href="alertas__stock__usecase_8dart.html#a4cb5dfd4b759f4dc811414050537b32a">idInventario</a>, int cantidad) async</td></tr>
+<tr class="memdesc:a5556b71e53e8c4971bc0ac3e0c54cfa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta e imprime la cantidad indicada de unidades para el inventario dado.  <br /></td></tr>
+<tr class="separator:a5556b71e53e8c4971bc0ac3e0c54cfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d5ee7a6148d323aa8f782d43529826" id="r_a19d5ee7a6148d323aa8f782d43529826"><td class="memItemLeft" align="right" valign="top">Future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19d5ee7a6148d323aa8f782d43529826">imprimirQrExistente</a> (int <a class="el" href="nueva__orden__usecase_8dart.html#a02970868f5973f099b5437bb98a04bfd">idUnidad</a>) async</td></tr>
+<tr class="memdesc:a19d5ee7a6148d323aa8f782d43529826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reimprime la etiqueta QR de una unidad existente sin crear un nuevo registro.  <br /></td></tr>
+<tr class="separator:a19d5ee7a6148d323aa8f782d43529826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atributos privados</h2></td></tr>
+<tr class="memitem:ab0a311e6ea2b45efbb72cefb40aef5ee" id="r_ab0a311e6ea2b45efbb72cefb40aef5ee"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_print_service.html">PrintService</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0a311e6ea2b45efbb72cefb40aef5ee">printer</a></td></tr>
+<tr class="memdesc:ab0a311e6ea2b45efbb72cefb40aef5ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Servicio de impresión utilizado para conectar y enviar comandos a la impresora.  <br /></td></tr>
+<tr class="separator:ab0a311e6ea2b45efbb72cefb40aef5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833a7ebbe4e0a86f747944d73271e4a4" id="r_a833a7ebbe4e0a86f747944d73271e4a4"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_unidad_repository.html">UnidadRepository</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a833a7ebbe4e0a86f747944d73271e4a4">repo</a></td></tr>
+<tr class="memdesc:a833a7ebbe4e0a86f747944d73271e4a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repositorio de unidades para insertar y eliminar registros durante el proceso.  <br /></td></tr>
+<tr class="separator:a833a7ebbe4e0a86f747944d73271e4a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Caso de uso que gestiona la impresión de etiquetas QR para unidades de inventario. </p>
+<p>Coordina la creación de unidades en el repositorio, el envío a la impresora y el rollback de unidades que no pudieron imprimirse. </p>
+</div><h2 class="groupheader">Documentación de constructores y destructores</h2>
+<a id="af5c7e43c02dc33cb21363db9f273dc45" name="af5c7e43c02dc33cb21363db9f273dc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5c7e43c02dc33cb21363db9f273dc45">&#9670;&#160;</a></span>PrintUseCase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PrintUseCase::PrintUseCase </td>
+          <td>(</td>
+          <td class="paramtype">{required this.printer, required this.repo}</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="a5556b71e53e8c4971bc0ac3e0c54cfa3" name="a5556b71e53e8c4971bc0ac3e0c54cfa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5556b71e53e8c4971bc0ac3e0c54cfa3">&#9670;&#160;</a></span>ejecutar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> &gt; PrintUseCase::ejecutar </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idInventario</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cantidad</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inserta e imprime la cantidad indicada de unidades para el inventario dado. </p>
+<p>Establece una única conexión BLE para todas las impresiones del lote. Por cada unidad, inserta el registro en el repositorio antes de imprimir. Si la impresión de una unidad falla, elimina el registro recién insertado para mantener la consistencia entre las unidades físicas y los registros del sistema, y detiene el proceso retornando un resumen parcial de la operación. La desconexión de la impresora se ejecuta siempre en el bloque finally. </p>
+<p>Rollback de la unidad insertada si la impresión falla, para evitar registros sin etiqueta física generada.</p>
+
+</div>
+</div>
+<a id="a19d5ee7a6148d323aa8f782d43529826" name="a19d5ee7a6148d323aa8f782d43529826"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d5ee7a6148d323aa8f782d43529826">&#9670;&#160;</a></span>imprimirQrExistente()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; void &gt; PrintUseCase::imprimirQrExistente </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idUnidad</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimprime la etiqueta QR de una unidad existente sin crear un nuevo registro. </p>
+<p>Útil para reponer etiquetas dañadas o perdidas de unidades ya registradas en el sistema. La conexión se establece con un timeout de 15 segundos. La desconexión se ejecuta siempre en el bloque finally. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de datos miembro</h2>
+<a id="ab0a311e6ea2b45efbb72cefb40aef5ee" name="ab0a311e6ea2b45efbb72cefb40aef5ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0a311e6ea2b45efbb72cefb40aef5ee">&#9670;&#160;</a></span>printer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_print_service.html">PrintService</a> PrintUseCase::printer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Servicio de impresión utilizado para conectar y enviar comandos a la impresora. </p>
+
+</div>
+</div>
+<a id="a833a7ebbe4e0a86f747944d73271e4a4" name="a833a7ebbe4e0a86f747944d73271e4a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a833a7ebbe4e0a86f747944d73271e4a4">&#9670;&#160;</a></span>repo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_unidad_repository.html">UnidadRepository</a> PrintUseCase::repo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Repositorio de unidades para insertar y eliminar registros durante el proceso. </p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>lib/business/usecases/<a class="el" href="print__usecase_8dart.html">print_usecase.dart</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

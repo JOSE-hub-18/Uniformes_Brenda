@@ -1,0 +1,73 @@
+\doxysection{Referencia del archivo lib/presentation/screens/inventario\+\_\+screen.dart}
+\hypertarget{inventario__screen_8dart}{}\label{inventario__screen_8dart}\index{lib/presentation/screens/inventario\_screen.dart@{lib/presentation/screens/inventario\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}}
+\begin{DoxyCompactList}\small\item\em Widget raíz de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{inventario__screen_8dart_a5f64c719e607545441bebdaae8bd5e86}{\+\_\+\+Lista\+Inventario}} (\{ required \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{this.\+items}}, \})
+\begin{DoxyCompactList}\small\item\em Constructor que recibe la lista de items. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{inventario__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye el \mbox{[}List\+View\mbox{]} agrupando por el campo \textquotesingle{}prenda\textquotesingle{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Inventario\+Screen extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}
+\begin{DoxyCompactList}\small\item\em Lista que renderiza los elementos del inventario agrupados por prenda. \end{DoxyCompactList}\item 
+class Inventario\+Screen extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{inventario__screen_8dart_a5f64c719e607545441bebdaae8bd5e86}\index{inventario\_screen.dart@{inventario\_screen.dart}!\_ListaInventario@{\_ListaInventario}}
+\index{\_ListaInventario@{\_ListaInventario}!inventario\_screen.dart@{inventario\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_ListaInventario()}{\_ListaInventario()}}
+{\footnotesize\ttfamily \label{inventario__screen_8dart_a5f64c719e607545441bebdaae8bd5e86} 
+const \+\_\+\+Lista\+Inventario (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{this.\+items}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor que recibe la lista de items. 
+
+\Hypertarget{inventario__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}\index{inventario\_screen.dart@{inventario\_screen.dart}!build@{build}}
+\index{build@{build}!inventario\_screen.dart@{inventario\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{inventario__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye el \mbox{[}List\+View\mbox{]} agrupando por el campo \textquotesingle{}prenda\textquotesingle{}. 
+
+
+\begin{DoxyItemize}
+\item Mantiene una variable local {\ttfamily ultima\+Prenda} para detectar cambios de grupo.
+\item Cada vez que `item\mbox{[}\textquotesingle{}prenda'\mbox{]}{\ttfamily difiere de}ultima\+Prenda\`{} se renderiza un header. 
+\end{DoxyItemize}
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}\index{inventario\_screen.dart@{inventario\_screen.dart}!items@{items}}
+\index{items@{items}!inventario\_screen.dart@{inventario\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c} 
+class Inventario\+Screen extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} items}
+
+\Hypertarget{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}\index{inventario\_screen.dart@{inventario\_screen.dart}!String@{String}}
+\index{String@{String}!inventario\_screen.dart@{inventario\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{String}{String}}
+{\footnotesize\ttfamily \label{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169} 
+class Inventario\+Screen extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} String}
+
+
+
+Lista que renderiza los elementos del inventario agrupados por prenda. 
+
+
+\begin{DoxyItemize}
+\item Recibe una lista de mapas con los campos esperados\+: \textquotesingle{}prenda\textquotesingle{}, \textquotesingle{}talla\textquotesingle{}, \textquotesingle{}precio\textquotesingle{}, \textquotesingle{}stock\textquotesingle{}, \textquotesingle{}id\textquotesingle{}, \textquotesingle{}escuela\textquotesingle{}.
+\item Implementa lógica simple para mostrar un header cada vez que cambia la prenda. Lista de items de inventario representados como mapas dinámicos. 
+\end{DoxyItemize}

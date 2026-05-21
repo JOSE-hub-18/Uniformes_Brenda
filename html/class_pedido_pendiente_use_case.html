@@ -1,0 +1,494 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Uniformes Brenda: Referencia de la clase PedidoPendienteUseCase</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Uniformes Brenda
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Métodos privados</a> &#124;
+<a href="#pri-attribs">Atributos privados</a> &#124;
+<a href="class_pedido_pendiente_use_case-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle"><div class="title">Referencia de la clase PedidoPendienteUseCase</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Caso de uso que gestiona el ciclo de vida de los pedidos en estado pendiente.  
+ <a href="#details">Más...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Métodos privados</h2></td></tr>
+<tr class="memitem:a783ad2260af4ba58f4fc3f8391975739" id="r_a783ad2260af4ba58f4fc3f8391975739"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_pedido_pendiente_use_case.html">PedidoPendienteUseCase</a>({ required <a class="el" href="class_pedido_repository.html">PedidoRepository</a> pedidoRepository, required <a class="el" href="class_unidad_repository.html">UnidadRepository</a> <a class="el" href="restar__unidades__usecase_8dart.html#af0e7ab2df122fd24402ce5f66c2cb6be">unidadRepository</a>, required <a class="el" href="class_venta_repository.html">VentaRepository</a> ventaRepository, required <a class="el" href="class_qr_use_case.html">QrUseCase</a> qrUseCase, }) Future&lt; List&lt; Pedido &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a783ad2260af4ba58f4fc3f8391975739">obtenerPedidosPendientes</a> () async</td></tr>
+<tr class="memdesc:a783ad2260af4ba58f4fc3f8391975739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna todos los pedidos cuyo estado sea [EstadoPedido.pendiente].  <br /></td></tr>
+<tr class="separator:a783ad2260af4ba58f4fc3f8391975739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d77223c26b0dace059ec2da1cb25031" id="r_a1d77223c26b0dace059ec2da1cb25031"><td class="memItemLeft" align="right" valign="top">Future&lt; List&lt; Map&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a>, dynamic &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d77223c26b0dace059ec2da1cb25031">obtenerDetallesConInfo</a> (int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>,) async</td></tr>
+<tr class="memdesc:a1d77223c26b0dace059ec2da1cb25031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna los detalles del pedido enriquecidos con información de inventario, prenda, escuela y talla para su presentación en pantalla.  <br /></td></tr>
+<tr class="separator:a1d77223c26b0dace059ec2da1cb25031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0330aca053034643c80526f92ad5387e" id="r_a0330aca053034643c80526f92ad5387e"><td class="memItemLeft" align="right" valign="top">Future&lt; List&lt; DetallePedido &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0330aca053034643c80526f92ad5387e">obtenerDetalles</a> (int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>) async</td></tr>
+<tr class="memdesc:a0330aca053034643c80526f92ad5387e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna los detalles del pedido como modelos [DetallePedido].  <br /></td></tr>
+<tr class="separator:a0330aca053034643c80526f92ad5387e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0eae1a054e650f556b440e73cb74f2b" id="r_ab0eae1a054e650f556b440e73cb74f2b"><td class="memItemLeft" align="right" valign="top">Future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0eae1a054e650f556b440e73cb74f2b">registrarUnidad</a> ({ required int idDetallePedido, required int <a class="el" href="nueva__orden__usecase_8dart.html#a02970868f5973f099b5437bb98a04bfd">idUnidad</a>, }) async</td></tr>
+<tr class="memdesc:ab0eae1a054e650f556b440e73cb74f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asocia una unidad física a un detalle de pedido específico.  <br /></td></tr>
+<tr class="separator:ab0eae1a054e650f556b440e73cb74f2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b80634206b02aefe0c5a50cb2d0202d" id="r_a4b80634206b02aefe0c5a50cb2d0202d"><td class="memItemLeft" align="right" valign="top">Future&lt; Map&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a>, dynamic &gt;?&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b80634206b02aefe0c5a50cb2d0202d">registrarQrPedido</a> ({ required int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>, required int idDetallePedido, required int idInventarioEsperado, required <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> qr, bool forzarMovimiento=false, }) async</td></tr>
+<tr class="memdesc:a4b80634206b02aefe0c5a50cb2d0202d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registra una unidad física en un detalle de pedido mediante escaneo QR.  <br /></td></tr>
+<tr class="separator:a4b80634206b02aefe0c5a50cb2d0202d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c42f91c6957d3291c3045cc0617af0" id="r_ad5c42f91c6957d3291c3045cc0617af0"><td class="memItemLeft" align="right" valign="top">Future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5c42f91c6957d3291c3045cc0617af0">desregistrarUnidad</a> (int idDetallePedido) async</td></tr>
+<tr class="memdesc:ad5c42f91c6957d3291c3045cc0617af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina la asociación de una unidad física a un detalle de pedido, dejando el detalle sin unidad registrada.  <br /></td></tr>
+<tr class="separator:ad5c42f91c6957d3291c3045cc0617af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a12cc7ff9eb7c647958e246c3121642" id="r_a2a12cc7ff9eb7c647958e246c3121642"><td class="memItemLeft" align="right" valign="top">Future&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a12cc7ff9eb7c647958e246c3121642">pedidoCompleto</a> (int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>) async</td></tr>
+<tr class="memdesc:a2a12cc7ff9eb7c647958e246c3121642"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna true si todos los detalles del pedido tienen una unidad física registrada.  <br /></td></tr>
+<tr class="separator:a2a12cc7ff9eb7c647958e246c3121642"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c37054ee7a9db734522d9dd009aa0b" id="r_ab3c37054ee7a9db734522d9dd009aa0b"><td class="memItemLeft" align="right" valign="top">Future&lt; void &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3c37054ee7a9db734522d9dd009aa0b">completarPedido</a> (int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>) async</td></tr>
+<tr class="memdesc:ab3c37054ee7a9db734522d9dd009aa0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Completa un pedido pendiente convirtiéndolo en venta.  <br /></td></tr>
+<tr class="separator:ab3c37054ee7a9db734522d9dd009aa0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a22638eec08e29405c17fb6f9414476" id="r_a8a22638eec08e29405c17fb6f9414476"><td class="memItemLeft" align="right" valign="top">Future&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a22638eec08e29405c17fb6f9414476">eliminarDetallePedido</a> ({ required int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>, required int idDetallePedido, }) async</td></tr>
+<tr class="memdesc:a8a22638eec08e29405c17fb6f9414476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina un detalle del pedido y, si era el último detalle restante, elimina también el pedido completo.  <br /></td></tr>
+<tr class="separator:a8a22638eec08e29405c17fb6f9414476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Atributos privados</h2></td></tr>
+<tr class="memitem:a9d62bbd08ea726c16b2ed6c21b3def89" id="r_a9d62bbd08ea726c16b2ed6c21b3def89"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_pedido_repository.html">PedidoRepository</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d62bbd08ea726c16b2ed6c21b3def89">_pedidoRepository</a></td></tr>
+<tr class="separator:a9d62bbd08ea726c16b2ed6c21b3def89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afebfe3562f75541eef2bd310de555a07" id="r_afebfe3562f75541eef2bd310de555a07"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_unidad_repository.html">UnidadRepository</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afebfe3562f75541eef2bd310de555a07">_unidadRepository</a></td></tr>
+<tr class="separator:afebfe3562f75541eef2bd310de555a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace8ded11488e5b6a17d7dfe77c753741" id="r_ace8ded11488e5b6a17d7dfe77c753741"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_venta_repository.html">VentaRepository</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace8ded11488e5b6a17d7dfe77c753741">_ventaRepository</a></td></tr>
+<tr class="separator:ace8ded11488e5b6a17d7dfe77c753741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ce6137bd98f6df8381add1960d3036" id="r_ae2ce6137bd98f6df8381add1960d3036"><td class="memItemLeft" align="right" valign="top">final <a class="el" href="class_qr_use_case.html">QrUseCase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2ce6137bd98f6df8381add1960d3036">_qrUseCase</a></td></tr>
+<tr class="separator:ae2ce6137bd98f6df8381add1960d3036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Caso de uso que gestiona el ciclo de vida de los pedidos en estado pendiente. </p>
+<p>Cubre la consulta, el registro de unidades físicas por QR, la validación de completitud y la conversión del pedido a venta al completarse. </p>
+</div><h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="ab3c37054ee7a9db734522d9dd009aa0b" name="ab3c37054ee7a9db734522d9dd009aa0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c37054ee7a9db734522d9dd009aa0b">&#9670;&#160;</a></span>completarPedido()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; void &gt; PedidoPendienteUseCase::completarPedido </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPedido</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Completa un pedido pendiente convirtiéndolo en venta. </p>
+<p>Verifica que el pedido exista y que todos sus detalles tengan unidad registrada. Desactiva cada unidad entregada para retirarla del stock disponible. Si el pedido proviene de una orden con venta existente, agrega los detalles a esa venta. Si no tiene venta de origen, crea una nueva venta completada. Finalmente actualiza el estado del pedido a [EstadoPedido.completado]. </p>
+<p>Si el pedido no tiene una venta de origen, se genera una nueva venta completada con los detalles de las unidades entregadas.</p>
+<p>Si ya existe una venta de origen, los detalles se agregan a ella para mantener la trazabilidad de la orden completa.</p>
+
+</div>
+</div>
+<a id="ad5c42f91c6957d3291c3045cc0617af0" name="ad5c42f91c6957d3291c3045cc0617af0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5c42f91c6957d3291c3045cc0617af0">&#9670;&#160;</a></span>desregistrarUnidad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; void &gt; PedidoPendienteUseCase::desregistrarUnidad </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idDetallePedido</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elimina la asociación de una unidad física a un detalle de pedido, dejando el detalle sin unidad registrada. </p>
+
+</div>
+</div>
+<a id="a8a22638eec08e29405c17fb6f9414476" name="a8a22638eec08e29405c17fb6f9414476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a22638eec08e29405c17fb6f9414476">&#9670;&#160;</a></span>eliminarDetallePedido()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; bool &gt; PedidoPendienteUseCase::eliminarDetallePedido </td>
+          <td>(</td>
+          <td class="paramtype">{ required int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>, required int idDetallePedido, }</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Elimina un detalle del pedido y, si era el último detalle restante, elimina también el pedido completo. </p>
+<p>Retorna true si el pedido fue eliminado por quedar sin detalles, false en caso contrario. </p>
+<p>Regla de negocio: un pedido sin detalles no tiene razón de existir y se elimina automáticamente.</p>
+
+</div>
+</div>
+<a id="a0330aca053034643c80526f92ad5387e" name="a0330aca053034643c80526f92ad5387e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0330aca053034643c80526f92ad5387e">&#9670;&#160;</a></span>obtenerDetalles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; List&lt; DetallePedido &gt; &gt; PedidoPendienteUseCase::obtenerDetalles </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPedido</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna los detalles del pedido como modelos [DetallePedido]. </p>
+
+</div>
+</div>
+<a id="a1d77223c26b0dace059ec2da1cb25031" name="a1d77223c26b0dace059ec2da1cb25031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d77223c26b0dace059ec2da1cb25031">&#9670;&#160;</a></span>obtenerDetallesConInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; List&lt; Map&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a>, dynamic &gt; &gt; &gt; PedidoPendienteUseCase::obtenerDetallesConInfo </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPedido</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna los detalles del pedido enriquecidos con información de inventario, prenda, escuela y talla para su presentación en pantalla. </p>
+
+</div>
+</div>
+<a id="a783ad2260af4ba58f4fc3f8391975739" name="a783ad2260af4ba58f4fc3f8391975739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a783ad2260af4ba58f4fc3f8391975739">&#9670;&#160;</a></span>obtenerPedidosPendientes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_pedido_pendiente_use_case.html">PedidoPendienteUseCase</a>({ required <a class="el" href="class_pedido_repository.html">PedidoRepository</a> pedidoRepository, required <a class="el" href="class_unidad_repository.html">UnidadRepository</a> <a class="el" href="restar__unidades__usecase_8dart.html#af0e7ab2df122fd24402ce5f66c2cb6be">unidadRepository</a>, required <a class="el" href="class_venta_repository.html">VentaRepository</a> ventaRepository, required <a class="el" href="class_qr_use_case.html">QrUseCase</a> qrUseCase, }) Future&lt; List&lt; Pedido &gt; &gt; PedidoPendienteUseCase::obtenerPedidosPendientes </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna todos los pedidos cuyo estado sea [EstadoPedido.pendiente]. </p>
+
+</div>
+</div>
+<a id="a2a12cc7ff9eb7c647958e246c3121642" name="a2a12cc7ff9eb7c647958e246c3121642"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a12cc7ff9eb7c647958e246c3121642">&#9670;&#160;</a></span>pedidoCompleto()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; bool &gt; PedidoPendienteUseCase::pedidoCompleto </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>idPedido</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna true si todos los detalles del pedido tienen una unidad física registrada. </p>
+
+</div>
+</div>
+<a id="a4b80634206b02aefe0c5a50cb2d0202d" name="a4b80634206b02aefe0c5a50cb2d0202d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b80634206b02aefe0c5a50cb2d0202d">&#9670;&#160;</a></span>registrarQrPedido()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; Map&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a>, dynamic &gt;?&gt; PedidoPendienteUseCase::registrarQrPedido </td>
+          <td>(</td>
+          <td class="paramtype">{ required int <a class="el" href="nueva__orden__usecase_8dart.html#a568e436532e24bec3009f4d95a3e7d78">idPedido</a>, required int idDetallePedido, required int idInventarioEsperado, required <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> qr, bool forzarMovimiento=false, }</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Registra una unidad física en un detalle de pedido mediante escaneo QR. </p>
+<p>Valida que la unidad exista, esté activa y corresponda al inventario esperado. Si la unidad ya está asignada a otro detalle del mismo u otro pedido, retorna un mapa con los datos del conflicto para que la capa de presentación solicite confirmación al usuario antes de forzar el movimiento. Si [forzarMovimiento] es true, desregistra la asignación anterior y registra la unidad en el detalle indicado sin solicitar confirmación adicional. Retorna null si la operación se completó sin conflictos. </p>
+<p>Regla de negocio: la unidad escaneada debe pertenecer al mismo inventario que el detalle del pedido que se intenta registrar.</p>
+<p>Si la unidad ya está asignada al mismo detalle, no se realiza ninguna acción.</p>
+<p>Si la unidad está asignada a un detalle diferente y no se fuerza el movimiento, se retorna la información del conflicto para que el usuario decida.</p>
+
+</div>
+</div>
+<a id="ab0eae1a054e650f556b440e73cb74f2b" name="ab0eae1a054e650f556b440e73cb74f2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0eae1a054e650f556b440e73cb74f2b">&#9670;&#160;</a></span>registrarUnidad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; void &gt; PedidoPendienteUseCase::registrarUnidad </td>
+          <td>(</td>
+          <td class="paramtype">{ required int idDetallePedido, required int <a class="el" href="nueva__orden__usecase_8dart.html#a02970868f5973f099b5437bb98a04bfd">idUnidad</a>, }</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Asocia una unidad física a un detalle de pedido específico. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentación de datos miembro</h2>
+<a id="a9d62bbd08ea726c16b2ed6c21b3def89" name="a9d62bbd08ea726c16b2ed6c21b3def89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d62bbd08ea726c16b2ed6c21b3def89">&#9670;&#160;</a></span>_pedidoRepository</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_pedido_repository.html">PedidoRepository</a> PedidoPendienteUseCase::_pedidoRepository</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2ce6137bd98f6df8381add1960d3036" name="ae2ce6137bd98f6df8381add1960d3036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ce6137bd98f6df8381add1960d3036">&#9670;&#160;</a></span>_qrUseCase</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_qr_use_case.html">QrUseCase</a> PedidoPendienteUseCase::_qrUseCase</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afebfe3562f75541eef2bd310de555a07" name="afebfe3562f75541eef2bd310de555a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afebfe3562f75541eef2bd310de555a07">&#9670;&#160;</a></span>_unidadRepository</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_unidad_repository.html">UnidadRepository</a> PedidoPendienteUseCase::_unidadRepository</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ace8ded11488e5b6a17d7dfe77c753741" name="ace8ded11488e5b6a17d7dfe77c753741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace8ded11488e5b6a17d7dfe77c753741">&#9670;&#160;</a></span>_ventaRepository</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">final <a class="el" href="class_venta_repository.html">VentaRepository</a> PedidoPendienteUseCase::_ventaRepository</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>lib/business/usecases/<a class="el" href="pedidos__pendientes__usecase_8dart.html">pedidos_pendientes_usecase.dart</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

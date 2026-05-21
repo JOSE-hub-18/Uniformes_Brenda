@@ -1,0 +1,47 @@
+\doxysection{Referencia de la clase Login\+Use\+Case}
+\hypertarget{class_login_use_case}{}\label{class_login_use_case}\index{LoginUseCase@{LoginUseCase}}
+
+
+Caso de uso para el inicio de sesión.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Usuario?$>$ \mbox{\hyperlink{class_login_use_case_aa38cdd74649353276b8f637017803276}{execute}} (List$<$ Usuario $>$ usuarios, \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} username, \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} password,) async
+\begin{DoxyCompactList}\small\item\em Ejecuta la lógica de autenticación contra la lista de usuarios proporcionada. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_login_use_case_adc8cdb35f178d70ad180dea77ef26a2b}{\+\_\+hash\+Password}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} password)
+\begin{DoxyCompactList}\small\item\em Genera un hash SHA-\/256 de la contraseña concatenada con un salt estático. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso para el inicio de sesión. 
+
+Se encarga de validar credenciales y retornar el usuario autenticado. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_login_use_case_adc8cdb35f178d70ad180dea77ef26a2b}\index{LoginUseCase@{LoginUseCase}!\_hashPassword@{\_hashPassword}}
+\index{\_hashPassword@{\_hashPassword}!LoginUseCase@{LoginUseCase}}
+\doxysubsubsection{\texorpdfstring{\_hashPassword()}{\_hashPassword()}}
+{\footnotesize\ttfamily \label{class_login_use_case_adc8cdb35f178d70ad180dea77ef26a2b} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Login\+Use\+Case\+::\+\_\+hash\+Password (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Genera un hash SHA-\/256 de la contraseña concatenada con un salt estático. 
+
+El salt reduce la efectividad de ataques por tablas rainbow sobre los hashes almacenados. \Hypertarget{class_login_use_case_aa38cdd74649353276b8f637017803276}\index{LoginUseCase@{LoginUseCase}!execute@{execute}}
+\index{execute@{execute}!LoginUseCase@{LoginUseCase}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_login_use_case_aa38cdd74649353276b8f637017803276} 
+Future$<$ Usuario?$>$ Login\+Use\+Case\+::execute (\begin{DoxyParamCaption}\item[{List$<$ Usuario $>$}]{usuarios}{, }\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{username}{, }\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ejecuta la lógica de autenticación contra la lista de usuarios proporcionada. 
+
+Valida que los campos no estén vacíos, busca el usuario por nombre, verifica que esté activo y compara el hash de la contraseña ingresada con el hash almacenado en el modelo. Lanza una excepción genérica en cualquier caso de fallo para evitar revelar si el error es por usuario inexistente o contraseña incorrecta. Cualquier excepción durante la búsqueda o validación se unifica en un error genérico de credenciales para evitar enumeración de usuarios.
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{login__usecase_8dart}{login\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

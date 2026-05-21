@@ -1,0 +1,163 @@
+\doxysection{Referencia de la clase Nueva\+Orden\+Use\+Case}
+\hypertarget{class_nueva_orden_use_case}{}\label{class_nueva_orden_use_case}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+
+
+Caso de uso que gestiona la creación de órdenes mixtas, combinando items de venta directa (con unidad física) y pedidos (sin unidad asignada).  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}}(\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} orden\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{class_nueva_orden_use_case_af41b4a835896fd4154305c2aee9f4d77}{agregar\+Por\+Qr}} (\{ required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ items\+Actuales, \}) async
+\begin{DoxyCompactList}\small\item\em Agrega un item a la orden mediante escaneo de código QR. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{class_nueva_orden_use_case_ad4247b734c559d8234caecca8d9ce066}{agregar\+Manual}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a9fbd4ae362763cf9cb08aeb62fca0829}{id\+Inventario}}, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ items\+Actuales, \}) async
+\begin{DoxyCompactList}\small\item\em Agrega un item a la orden de forma manual mediante el identificador de inventario. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_nueva_orden_use_case_a83adf6262bdfa791ca0cff0d139cefa2}{confirmar\+Mixto}} (\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, \}) async
+\begin{DoxyCompactList}\small\item\em Confirma una orden mixta que puede contener items de venta y de pedido. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}{Nueva\+Orden\+Result}} $>$ \mbox{\hyperlink{class_nueva_orden_use_case_a82b7c67c66da3a55d605854bd88dcb6e}{\+\_\+confirmar\+Venta}} (\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, required int id\+Orden\+Origen, \}) async
+\begin{DoxyCompactList}\small\item\em Procesa los items de tipo venta dentro de una orden. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}{Nueva\+Orden\+Result}} $>$ \mbox{\hyperlink{class_nueva_orden_use_case_a7ed759e4053128668e59f7bec619a35b}{\+\_\+confirmar\+Pedido}} (\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, required int id\+Orden\+Origen, required int? id\+Venta\+Origen, \}) async
+\begin{DoxyCompactList}\small\item\em Procesa los items de tipo pedido dentro de una orden. \end{DoxyCompactList}\item 
+Future$<$ List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ $>$ \mbox{\hyperlink{class_nueva_orden_use_case_a1825e8fd0386ab2b2cf7fa3043a03bae}{\+\_\+resolver\+Unidades}} (List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}) async
+\begin{DoxyCompactList}\small\item\em Asigna una unidad física a cada item que aún no tenga una. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_nueva_orden_use_case_a07d6ae0e727b1e68bb34058df52a42cb}{\+\_\+calcular\+Total}} (List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}})
+\begin{DoxyCompactList}\small\item\em Calcula el total de la orden sumando el precio unitario de cada item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} \mbox{\hyperlink{class_nueva_orden_use_case_a1e27ea26d200fd9c7858ebe023b944ab}{\+\_\+inventario\+Repository}}
+\item 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{class_nueva_orden_use_case_a993aedf1dfe89301a4e24c4863d4efc4}{\+\_\+unidad\+Repository}}
+\item 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} \mbox{\hyperlink{class_nueva_orden_use_case_a8079ffc28ff69a424cd55e8ab94f7512}{\+\_\+venta\+Repository}}
+\item 
+final \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} \mbox{\hyperlink{class_nueva_orden_use_case_a4d996df48792dba3aaf4f9c6e419681a}{\+\_\+pedido\+Repository}}
+\item 
+final \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} \mbox{\hyperlink{class_nueva_orden_use_case_a9a30474d0cce7093817cf95a08d3bb2f}{\+\_\+orden\+Repository}}
+\item 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} \mbox{\hyperlink{class_nueva_orden_use_case_addf04ecc4c7abeb4014d9a30e444a84c}{\+\_\+qr\+Use\+Case}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que gestiona la creación de órdenes mixtas, combinando items de venta directa (con unidad física) y pedidos (sin unidad asignada). 
+
+Coordina la validación, resolución de unidades, persistencia de ventas, pedidos y la orden raíz que los agrupa. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_nueva_orden_use_case_a07d6ae0e727b1e68bb34058df52a42cb}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_calcularTotal@{\_calcularTotal}}
+\index{\_calcularTotal@{\_calcularTotal}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_calcularTotal()}{\_calcularTotal()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a07d6ae0e727b1e68bb34058df52a42cb} 
+double Nueva\+Orden\+Use\+Case\+::\+\_\+calcular\+Total (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$}]{items}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Calcula el total de la orden sumando el precio unitario de cada item. 
+
+\Hypertarget{class_nueva_orden_use_case_a7ed759e4053128668e59f7bec619a35b}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_confirmarPedido@{\_confirmarPedido}}
+\index{\_confirmarPedido@{\_confirmarPedido}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_confirmarPedido()}{\_confirmarPedido()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a7ed759e4053128668e59f7bec619a35b} 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}{Nueva\+Orden\+Result}} $>$ Nueva\+Orden\+Use\+Case\+::\+\_\+confirmar\+Pedido (\begin{DoxyParamCaption}\item[{\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, required int id\+Orden\+Origen, required int? id\+Venta\+Origen, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Procesa los items de tipo pedido dentro de una orden. 
+
+Crea el pedido en estado pendiente con sus detalles sin unidad física asignada. Puede vincularse a una venta previa de la misma orden mediante \mbox{[}id\+Venta\+Origen\mbox{]}. La unidad física se asigna posteriormente al registrar la entrega del pedido.\Hypertarget{class_nueva_orden_use_case_a82b7c67c66da3a55d605854bd88dcb6e}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_confirmarVenta@{\_confirmarVenta}}
+\index{\_confirmarVenta@{\_confirmarVenta}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_confirmarVenta()}{\_confirmarVenta()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a82b7c67c66da3a55d605854bd88dcb6e} 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}{Nueva\+Orden\+Result}} $>$ Nueva\+Orden\+Use\+Case\+::\+\_\+confirmar\+Venta (\begin{DoxyParamCaption}\item[{\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, required int id\+Orden\+Origen, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Procesa los items de tipo venta dentro de una orden. 
+
+Resuelve las unidades físicas de los items que no las tengan asignadas, verifica que cada unidad siga disponible, persiste la venta con sus detalles y desactiva las unidades vendidas para retirarlas del stock disponible. Verificación de disponibilidad previa a la escritura\+: garantiza que ninguna unidad haya sido vendida entre el momento en que se agregó a la orden y la confirmación.
+
+Desactivación de unidades tras la persistencia exitosa de la venta. Una unidad desactivada no puede ser vendida ni asignada a nuevas órdenes.\Hypertarget{class_nueva_orden_use_case_a1825e8fd0386ab2b2cf7fa3043a03bae}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_resolverUnidades@{\_resolverUnidades}}
+\index{\_resolverUnidades@{\_resolverUnidades}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_resolverUnidades()}{\_resolverUnidades()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a1825e8fd0386ab2b2cf7fa3043a03bae} 
+Future$<$ List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ $>$ Nueva\+Orden\+Use\+Case\+::\+\_\+resolver\+Unidades (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$}]{items}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Asigna una unidad física a cada item que aún no tenga una. 
+
+Para items sin unidad resuelta, consulta las unidades activas del inventario y selecciona la primera que no haya sido asignada ya en esta misma operación. Lanza una excepción si no hay unidades disponibles para algún item. Conjunto de IDs de unidades ya asignadas, para evitar asignar la misma unidad a más de un item dentro del mismo proceso de resolución.\Hypertarget{class_nueva_orden_use_case_ad4247b734c559d8234caecca8d9ce066}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!agregarManual@{agregarManual}}
+\index{agregarManual@{agregarManual}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{agregarManual()}{agregarManual()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_ad4247b734c559d8234caecca8d9ce066} 
+Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ Nueva\+Orden\+Use\+Case\+::agregar\+Manual (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a9fbd4ae362763cf9cb08aeb62fca0829}{id\+Inventario}}, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ items\+Actuales, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Agrega un item a la orden de forma manual mediante el identificador de inventario. 
+
+No requiere unidad física; el item se tratará como pedido. Retorna un \mbox{[}Item\+Orden\mbox{]} de tipo \mbox{[}Tipo\+Item\+Orden.\+pedido\mbox{]} sin unidad asignada. \Hypertarget{class_nueva_orden_use_case_af41b4a835896fd4154305c2aee9f4d77}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!agregarPorQr@{agregarPorQr}}
+\index{agregarPorQr@{agregarPorQr}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{agregarPorQr()}{agregarPorQr()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_af41b4a835896fd4154305c2aee9f4d77} 
+\mbox{\hyperlink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}}(\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} orden\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) Future$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ Nueva\+Orden\+Use\+Case\+::agregar\+Por\+Qr (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ items\+Actuales, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Agrega un item a la orden mediante escaneo de código QR. 
+
+Valida que la unidad exista, esté activa y no haya sido agregada previamente. Retorna un \mbox{[}Item\+Orden\mbox{]} de tipo \mbox{[}Tipo\+Item\+Orden.\+venta\mbox{]} con la unidad física asignada. Regla de negocio\+: no se permite agregar la misma unidad física más de una vez en la orden.\Hypertarget{class_nueva_orden_use_case_a83adf6262bdfa791ca0cff0d139cefa2}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!confirmarMixto@{confirmarMixto}}
+\index{confirmarMixto@{confirmarMixto}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{confirmarMixto()}{confirmarMixto()}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a83adf6262bdfa791ca0cff0d139cefa2} 
+Future$<$ void $>$ Nueva\+Orden\+Use\+Case\+::confirmar\+Mixto (\begin{DoxyParamCaption}\item[{\{ required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Confirma una orden mixta que puede contener items de venta y de pedido. 
+
+Crea primero el registro de orden raíz y luego procesa cada grupo por separado. Si existen items de venta, se procesan primero y su identificador se vincula al pedido resultante para mantener la trazabilidad entre ambas transacciones. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_nueva_orden_use_case_a1e27ea26d200fd9c7858ebe023b944ab}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_inventarioRepository@{\_inventarioRepository}}
+\index{\_inventarioRepository@{\_inventarioRepository}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepository}{\_inventarioRepository}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a1e27ea26d200fd9c7858ebe023b944ab} 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} Nueva\+Orden\+Use\+Case\+::\+\_\+inventario\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_nueva_orden_use_case_a9a30474d0cce7093817cf95a08d3bb2f}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_ordenRepository@{\_ordenRepository}}
+\index{\_ordenRepository@{\_ordenRepository}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_ordenRepository}{\_ordenRepository}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a9a30474d0cce7093817cf95a08d3bb2f} 
+final \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} Nueva\+Orden\+Use\+Case\+::\+\_\+orden\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_nueva_orden_use_case_a4d996df48792dba3aaf4f9c6e419681a}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_pedidoRepository@{\_pedidoRepository}}
+\index{\_pedidoRepository@{\_pedidoRepository}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_pedidoRepository}{\_pedidoRepository}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a4d996df48792dba3aaf4f9c6e419681a} 
+final \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} Nueva\+Orden\+Use\+Case\+::\+\_\+pedido\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_nueva_orden_use_case_addf04ecc4c7abeb4014d9a30e444a84c}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_qrUseCase@{\_qrUseCase}}
+\index{\_qrUseCase@{\_qrUseCase}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_qrUseCase}{\_qrUseCase}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_addf04ecc4c7abeb4014d9a30e444a84c} 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} Nueva\+Orden\+Use\+Case\+::\+\_\+qr\+Use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_nueva_orden_use_case_a993aedf1dfe89301a4e24c4863d4efc4}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_unidadRepository@{\_unidadRepository}}
+\index{\_unidadRepository@{\_unidadRepository}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_unidadRepository}{\_unidadRepository}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a993aedf1dfe89301a4e24c4863d4efc4} 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} Nueva\+Orden\+Use\+Case\+::\+\_\+unidad\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_nueva_orden_use_case_a8079ffc28ff69a424cd55e8ab94f7512}\index{NuevaOrdenUseCase@{NuevaOrdenUseCase}!\_ventaRepository@{\_ventaRepository}}
+\index{\_ventaRepository@{\_ventaRepository}!NuevaOrdenUseCase@{NuevaOrdenUseCase}}
+\doxysubsubsection{\texorpdfstring{\_ventaRepository}{\_ventaRepository}}
+{\footnotesize\ttfamily \label{class_nueva_orden_use_case_a8079ffc28ff69a424cd55e8ab94f7512} 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} Nueva\+Orden\+Use\+Case\+::\+\_\+venta\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{nueva__orden__usecase_8dart}{nueva\+\_\+orden\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

@@ -1,0 +1,163 @@
+\doxysection{Referencia de la clase Venta\+Repository}
+\hypertarget{class_venta_repository}{}\label{class_venta_repository}\index{VentaRepository@{VentaRepository}}
+
+
+Repositorio encargado de gestionar operaciones relacionadas con ventas y detalles de venta.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_venta_repository_ab6b217c39492e7a9d8df2c2ed8246703}{insertar\+Venta\+YDetalles}} (\{ required Venta \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}{venta}}, required List$<$ Detalle\+Venta $>$ detalles, \}) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta una venta junto con todos sus detalles asociados. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_venta_repository_a436c1894268a7c20fe1a3536a75715d6}{insertar\+Detalles\+Venta}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}, required List$<$ Detalle\+Venta $>$ detalles, \}) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta detalles adicionales a una venta ya existente. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_venta_repository_a9877c12b6545aaed741ae28280e556e2}{eliminar\+Detalle\+Venta}} (int id\+Detalle\+Venta) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina un detalle específico de venta. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_venta_repository_ae8e2f53a1d81f339f45ed7c06b312fa5}{contar\+Detalles\+Venta}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad de detalles asociados a una venta. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_venta_repository_ae90b96b63fb746a2b385cfe2c324fe04}{actualizar\+Estado\+Cancelado}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Cambia el estado de una venta a cancelada. \end{DoxyCompactList}\item 
+Future$<$ Venta?$>$ \mbox{\hyperlink{class_venta_repository_a407ba8c47482a9f8fa7e129440994805}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene una venta mediante su identificador. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Venta $>$ $>$ \mbox{\hyperlink{class_venta_repository_aa480b70e0d0ac5426fcf3f4a75ed9f99}{obtener\+Todas}} () \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todas las ventas registradas ordenadas por fecha descendente. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Venta $>$ $>$ \mbox{\hyperlink{class_venta_repository_a0ab401f07a0fb461eef29ee63e1b3cda}{obtener\+Por\+Usuario}} (int id\+Usuario) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todas las ventas realizadas por un usuario específico. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_venta_repository_a8c1c1540cb18716f5d8aa5a1fd0ac4e6}{obtener\+Detalles\+Por\+Venta}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}},) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene los detalles completos asociados a una venta. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_venta_repository_aaddf4b4926dcc346180ff4704af8e97b}{eliminar}} (int id) \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina una venta mediante su identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar operaciones relacionadas con ventas y detalles de venta. 
+
+Centraliza procesos de registro, consulta, cancelación y eliminación de ventas. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_venta_repository_ae90b96b63fb746a2b385cfe2c324fe04}\index{VentaRepository@{VentaRepository}!actualizarEstadoCancelado@{actualizarEstadoCancelado}}
+\index{actualizarEstadoCancelado@{actualizarEstadoCancelado}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{actualizarEstadoCancelado()}{actualizarEstadoCancelado()}}
+{\footnotesize\ttfamily \label{class_venta_repository_ae90b96b63fb746a2b385cfe2c324fe04} 
+Future$<$ void $>$ Venta\+Repository\+::actualizar\+Estado\+Cancelado (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Cambia el estado de una venta a cancelada. 
+
+La operación realiza una cancelación lógica sin eliminar el registro físicamente. \Hypertarget{class_venta_repository_ae8e2f53a1d81f339f45ed7c06b312fa5}\index{VentaRepository@{VentaRepository}!contarDetallesVenta@{contarDetallesVenta}}
+\index{contarDetallesVenta@{contarDetallesVenta}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{contarDetallesVenta()}{contarDetallesVenta()}}
+{\footnotesize\ttfamily \label{class_venta_repository_ae8e2f53a1d81f339f45ed7c06b312fa5} 
+Future$<$ int $>$ Venta\+Repository\+::contar\+Detalles\+Venta (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene la cantidad de detalles asociados a una venta. 
+
+Esta operación puede utilizarse para validar si una venta conserva productos relacionados. \Hypertarget{class_venta_repository_aaddf4b4926dcc346180ff4704af8e97b}\index{VentaRepository@{VentaRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_venta_repository_aaddf4b4926dcc346180ff4704af8e97b} 
+Future$<$ int $>$ Venta\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina una venta mediante su identificador. 
+
+\Hypertarget{class_venta_repository_a9877c12b6545aaed741ae28280e556e2}\index{VentaRepository@{VentaRepository}!eliminarDetalleVenta@{eliminarDetalleVenta}}
+\index{eliminarDetalleVenta@{eliminarDetalleVenta}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{eliminarDetalleVenta()}{eliminarDetalleVenta()}}
+{\footnotesize\ttfamily \label{class_venta_repository_a9877c12b6545aaed741ae28280e556e2} 
+Future$<$ void $>$ Venta\+Repository\+::eliminar\+Detalle\+Venta (\begin{DoxyParamCaption}\item[{int}]{id\+Detalle\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un detalle específico de venta. 
+
+\Hypertarget{class_venta_repository_a436c1894268a7c20fe1a3536a75715d6}\index{VentaRepository@{VentaRepository}!insertarDetallesVenta@{insertarDetallesVenta}}
+\index{insertarDetallesVenta@{insertarDetallesVenta}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{insertarDetallesVenta()}{insertarDetallesVenta()}}
+{\footnotesize\ttfamily \label{class_venta_repository_a436c1894268a7c20fe1a3536a75715d6} 
+Future$<$ void $>$ Venta\+Repository\+::insertar\+Detalles\+Venta (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}, required List$<$ Detalle\+Venta $>$ detalles, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta detalles adicionales a una venta ya existente. 
+
+La operación se ejecuta dentro de una transacción para mantener consistencia en inserciones múltiples. \Hypertarget{class_venta_repository_ab6b217c39492e7a9d8df2c2ed8246703}\index{VentaRepository@{VentaRepository}!insertarVentaYDetalles@{insertarVentaYDetalles}}
+\index{insertarVentaYDetalles@{insertarVentaYDetalles}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{insertarVentaYDetalles()}{insertarVentaYDetalles()}}
+{\footnotesize\ttfamily \label{class_venta_repository_ab6b217c39492e7a9d8df2c2ed8246703} 
+Future$<$ int $>$ Venta\+Repository\+::insertar\+Venta\+YDetalles (\begin{DoxyParamCaption}\item[{\{ required Venta \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}{venta}}, required List$<$ Detalle\+Venta $>$ detalles, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta una venta junto con todos sus detalles asociados. 
+
+La operación se ejecuta dentro de una transacción para garantizar integridad entre la tabla de ventas y detalle\+\_\+venta.
+
+Retorna el identificador de la venta creada. \Hypertarget{class_venta_repository_a8c1c1540cb18716f5d8aa5a1fd0ac4e6}\index{VentaRepository@{VentaRepository}!obtenerDetallesPorVenta@{obtenerDetallesPorVenta}}
+\index{obtenerDetallesPorVenta@{obtenerDetallesPorVenta}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerDetallesPorVenta()}{obtenerDetallesPorVenta()}}
+{\footnotesize\ttfamily \label{class_venta_repository_a8c1c1540cb18716f5d8aa5a1fd0ac4e6} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Venta\+Repository\+::obtener\+Detalles\+Por\+Venta (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene los detalles completos asociados a una venta. 
+
+La consulta integra información relacionada con inventario, escuela, prenda y talla. \Hypertarget{class_venta_repository_a407ba8c47482a9f8fa7e129440994805}\index{VentaRepository@{VentaRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_venta_repository_a407ba8c47482a9f8fa7e129440994805} 
+Future$<$ Venta?$>$ Venta\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene una venta mediante su identificador. 
+
+Retorna null cuando el registro no existe. \Hypertarget{class_venta_repository_a0ab401f07a0fb461eef29ee63e1b3cda}\index{VentaRepository@{VentaRepository}!obtenerPorUsuario@{obtenerPorUsuario}}
+\index{obtenerPorUsuario@{obtenerPorUsuario}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorUsuario()}{obtenerPorUsuario()}}
+{\footnotesize\ttfamily \label{class_venta_repository_a0ab401f07a0fb461eef29ee63e1b3cda} 
+Future$<$ List$<$ Venta $>$ $>$ Venta\+Repository\+::obtener\+Por\+Usuario (\begin{DoxyParamCaption}\item[{int}]{id\+Usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todas las ventas realizadas por un usuario específico. 
+
+El resultado se ordena por fecha descendente. \Hypertarget{class_venta_repository_aa480b70e0d0ac5426fcf3f4a75ed9f99}\index{VentaRepository@{VentaRepository}!obtenerTodas@{obtenerTodas}}
+\index{obtenerTodas@{obtenerTodas}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodas()}{obtenerTodas()}}
+{\footnotesize\ttfamily \label{class_venta_repository_aa480b70e0d0ac5426fcf3f4a75ed9f99} 
+Future$<$ List$<$ Venta $>$ $>$ Venta\+Repository\+::obtener\+Todas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todas las ventas registradas ordenadas por fecha descendente. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242}\index{VentaRepository@{VentaRepository}!async@{async}}
+\index{async@{async}!VentaRepository@{VentaRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_venta_repository_ac747dabdc99bd603d1e04344c78a2242} 
+Future$<$Database$>$ get \+\_\+db Venta\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{venta__repository_8dart}{venta\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

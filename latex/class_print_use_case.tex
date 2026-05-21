@@ -1,0 +1,88 @@
+\doxysection{Referencia de la clase Print\+Use\+Case}
+\hypertarget{class_print_use_case}{}\label{class_print_use_case}\index{PrintUseCase@{PrintUseCase}}
+
+
+Caso de uso que gestiona la impresión de etiquetas QR para unidades de inventario.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_print_use_case_af5c7e43c02dc33cb21363db9f273dc45}{Print\+Use\+Case}} (\{required this.\+printer, required this.\+repo\})
+\item 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{class_print_use_case_a5556b71e53e8c4971bc0ac3e0c54cfa3}{ejecutar}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, int cantidad) async
+\begin{DoxyCompactList}\small\item\em Inserta e imprime la cantidad indicada de unidades para el inventario dado. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_print_use_case_a19d5ee7a6148d323aa8f782d43529826}{imprimir\+Qr\+Existente}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}) async
+\begin{DoxyCompactList}\small\item\em Reimprime la etiqueta QR de una unidad existente sin crear un nuevo registro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_print_service}{Print\+Service}} \mbox{\hyperlink{class_print_use_case_ab0a311e6ea2b45efbb72cefb40aef5ee}{printer}}
+\begin{DoxyCompactList}\small\item\em Servicio de impresión utilizado para conectar y enviar comandos a la impresora. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{class_print_use_case_a833a7ebbe4e0a86f747944d73271e4a4}{repo}}
+\begin{DoxyCompactList}\small\item\em Repositorio de unidades para insertar y eliminar registros durante el proceso. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que gestiona la impresión de etiquetas QR para unidades de inventario. 
+
+Coordina la creación de unidades en el repositorio, el envío a la impresora y el rollback de unidades que no pudieron imprimirse. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_print_use_case_af5c7e43c02dc33cb21363db9f273dc45}\index{PrintUseCase@{PrintUseCase}!PrintUseCase@{PrintUseCase}}
+\index{PrintUseCase@{PrintUseCase}!PrintUseCase@{PrintUseCase}}
+\doxysubsubsection{\texorpdfstring{PrintUseCase()}{PrintUseCase()}}
+{\footnotesize\ttfamily \label{class_print_use_case_af5c7e43c02dc33cb21363db9f273dc45} 
+Print\+Use\+Case\+::\+Print\+Use\+Case (\begin{DoxyParamCaption}\item[{\{required this.\+printer, required this.\+repo\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_print_use_case_a5556b71e53e8c4971bc0ac3e0c54cfa3}\index{PrintUseCase@{PrintUseCase}!ejecutar@{ejecutar}}
+\index{ejecutar@{ejecutar}!PrintUseCase@{PrintUseCase}}
+\doxysubsubsection{\texorpdfstring{ejecutar()}{ejecutar()}}
+{\footnotesize\ttfamily \label{class_print_use_case_a5556b71e53e8c4971bc0ac3e0c54cfa3} 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ Print\+Use\+Case\+::ejecutar (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{, }\item[{int}]{cantidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta e imprime la cantidad indicada de unidades para el inventario dado. 
+
+Establece una única conexión BLE para todas las impresiones del lote. Por cada unidad, inserta el registro en el repositorio antes de imprimir. Si la impresión de una unidad falla, elimina el registro recién insertado para mantener la consistencia entre las unidades físicas y los registros del sistema, y detiene el proceso retornando un resumen parcial de la operación. La desconexión de la impresora se ejecuta siempre en el bloque finally. Rollback de la unidad insertada si la impresión falla, para evitar registros sin etiqueta física generada.\Hypertarget{class_print_use_case_a19d5ee7a6148d323aa8f782d43529826}\index{PrintUseCase@{PrintUseCase}!imprimirQrExistente@{imprimirQrExistente}}
+\index{imprimirQrExistente@{imprimirQrExistente}!PrintUseCase@{PrintUseCase}}
+\doxysubsubsection{\texorpdfstring{imprimirQrExistente()}{imprimirQrExistente()}}
+{\footnotesize\ttfamily \label{class_print_use_case_a19d5ee7a6148d323aa8f782d43529826} 
+Future$<$ void $>$ Print\+Use\+Case\+::imprimir\+Qr\+Existente (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reimprime la etiqueta QR de una unidad existente sin crear un nuevo registro. 
+
+Útil para reponer etiquetas dañadas o perdidas de unidades ya registradas en el sistema. La conexión se establece con un timeout de 15 segundos. La desconexión se ejecuta siempre en el bloque finally. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_print_use_case_ab0a311e6ea2b45efbb72cefb40aef5ee}\index{PrintUseCase@{PrintUseCase}!printer@{printer}}
+\index{printer@{printer}!PrintUseCase@{PrintUseCase}}
+\doxysubsubsection{\texorpdfstring{printer}{printer}}
+{\footnotesize\ttfamily \label{class_print_use_case_ab0a311e6ea2b45efbb72cefb40aef5ee} 
+final \mbox{\hyperlink{class_print_service}{Print\+Service}} Print\+Use\+Case\+::printer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Servicio de impresión utilizado para conectar y enviar comandos a la impresora. 
+
+\Hypertarget{class_print_use_case_a833a7ebbe4e0a86f747944d73271e4a4}\index{PrintUseCase@{PrintUseCase}!repo@{repo}}
+\index{repo@{repo}!PrintUseCase@{PrintUseCase}}
+\doxysubsubsection{\texorpdfstring{repo}{repo}}
+{\footnotesize\ttfamily \label{class_print_use_case_a833a7ebbe4e0a86f747944d73271e4a4} 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} Print\+Use\+Case\+::repo\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de unidades para insertar y eliminar registros durante el proceso. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{print__usecase_8dart}{print\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

@@ -57,10 +57,10 @@ class RegistrarInventarioUseCase {
     required PrendaRepository prendaRepository,
     required TallaRepository tallaRepository,
     required EscuelaRepository escuelaRepository,
-  })  : _inventarioRepository = inventarioRepository,
-        _prendaRepository = prendaRepository,
-        _tallaRepository = tallaRepository,
-        _escuelaRepository = escuelaRepository;
+  }) : _inventarioRepository = inventarioRepository,
+       _prendaRepository = prendaRepository,
+       _tallaRepository = tallaRepository,
+       _escuelaRepository = escuelaRepository;
 
   /// Registra un item de inventario por cada talla seleccionada
   /// para la combinación de prenda y escuela indicadas.
@@ -75,7 +75,6 @@ class RegistrarInventarioUseCase {
     required List<int> idsTallas,
     required int idEscuela,
   }) async {
-
     if (precio <= 0) {
       throw ArgumentError('El precio debe ser mayor a cero.');
     }
@@ -107,33 +106,37 @@ class RegistrarInventarioUseCase {
     for (final idTalla in idsTallas) {
       final talla = tallasMap[idTalla];
       if (talla == null) {
-        resultados.add(RegistroTallaResult(
-          idTalla: idTalla,
-          nombreTalla: 'Desconocida',
-          exitoso: false,
-          mensajeError: 'La talla con ID $idTalla no existe.',
-        ));
+        resultados.add(
+          RegistroTallaResult(
+            idTalla: idTalla,
+            nombreTalla: 'Desconocida',
+            exitoso: false,
+            mensajeError: 'La talla con ID $idTalla no existe.',
+          ),
+        );
         continue;
       }
 
       /// Regla de negocio: no se permite registrar más de un item de inventario
       /// para la misma combinación de escuela, prenda y talla.
-      final combinacionExistente =
-          await _inventarioRepository.obtenerPorCombinacion(
-        idEscuela: idEscuela,
-        idPrenda: idPrenda,
-        idTalla: idTalla,
-      );
+      final combinacionExistente = await _inventarioRepository
+          .obtenerPorCombinacion(
+            idEscuela: idEscuela,
+            idPrenda: idPrenda,
+            idTalla: idTalla,
+          );
 
       if (combinacionExistente != null) {
-        resultados.add(RegistroTallaResult(
-          idTalla: idTalla,
-          nombreTalla: talla.talla,
-          exitoso: false,
-          mensajeError:
-              'Ya existe un registro para "${prenda.nombre}" '
-              'talla "${talla.talla}" en esta escuela.',
-        ));
+        resultados.add(
+          RegistroTallaResult(
+            idTalla: idTalla,
+            nombreTalla: talla.talla,
+            exitoso: false,
+            mensajeError:
+                'Ya existe un registro para "${prenda.nombre}" '
+                'talla "${talla.talla}" en esta escuela.',
+          ),
+        );
         continue;
       }
 
@@ -147,18 +150,22 @@ class RegistrarInventarioUseCase {
 
         await _inventarioRepository.insertar(nuevoInventario);
 
-        resultados.add(RegistroTallaResult(
-          idTalla: idTalla,
-          nombreTalla: talla.talla,
-          exitoso: true,
-        ));
+        resultados.add(
+          RegistroTallaResult(
+            idTalla: idTalla,
+            nombreTalla: talla.talla,
+            exitoso: true,
+          ),
+        );
       } catch (e) {
-        resultados.add(RegistroTallaResult(
-          idTalla: idTalla,
-          nombreTalla: talla.talla,
-          exitoso: false,
-          mensajeError: 'Error al insertar: ${e.toString()}',
-        ));
+        resultados.add(
+          RegistroTallaResult(
+            idTalla: idTalla,
+            nombreTalla: talla.talla,
+            exitoso: false,
+            mensajeError: 'Error al insertar: ${e.toString()}',
+          ),
+        );
       }
     }
 

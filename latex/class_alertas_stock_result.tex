@@ -1,0 +1,99 @@
+\doxysection{Referencia de la clase Alertas\+Stock\+Result}
+\hypertarget{class_alertas_stock_result}{}\label{class_alertas_stock_result}\index{AlertasStockResult@{AlertasStockResult}}
+
+
+Agrupa el resultado de la consulta de alertas de stock, separando los items agotados de los que están en nivel crítico.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_alertas_stock_result_a10523d4294f11373dd6178fdf7845b09}{Alertas\+Stock\+Result}} (\{required this.\+agotados, required this.\+criticos\})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ \mbox{\hyperlink{class_alertas_stock_result_a54ad68688224d78dc7b45b3099f330fe}{agotados}}
+\item 
+final List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ \mbox{\hyperlink{class_alertas_stock_result_a6be492747683078c6ab2c9e940310f74}{criticos}}
+\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_alertas_stock_result_a3436d27d9aa6d51837122388d490a7a0}{todas}} =$>$ \mbox{[}...\mbox{\hyperlink{class_alertas_stock_result_a54ad68688224d78dc7b45b3099f330fe}{agotados}}
+\begin{DoxyCompactList}\small\item\em Retorna la lista combinada de todas las alertas, con los agotados primero. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_alertas_stock_result_abdba7ef4383db1ee823504878a1b2ab7}{criticos}}
+\item 
+bool get \mbox{\hyperlink{class_alertas_stock_result_a1b704833b2fd05b705c571d92b7594ea}{hay\+Alertas}} =$>$ agotados.\+is\+Not\+Empty \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} criticos.\+is\+Not\+Empty
+\begin{DoxyCompactList}\small\item\em Retorna true si existe al menos una alerta activa entre agotados y críticos. \end{DoxyCompactList}\item 
+int get \mbox{\hyperlink{class_alertas_stock_result_a25dc5a58a8ab87464e40fa017686dece}{total\+Agotados}} =$>$ agotados.\+length
+\item 
+int get \mbox{\hyperlink{class_alertas_stock_result_a2befcafcd0bdf770cda71d34a031373c}{total\+Criticos}} =$>$ criticos.\+length
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Agrupa el resultado de la consulta de alertas de stock, separando los items agotados de los que están en nivel crítico. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_alertas_stock_result_a10523d4294f11373dd6178fdf7845b09}\index{AlertasStockResult@{AlertasStockResult}!AlertasStockResult@{AlertasStockResult}}
+\index{AlertasStockResult@{AlertasStockResult}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{AlertasStockResult()}{AlertasStockResult()}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a10523d4294f11373dd6178fdf7845b09} 
+const Alertas\+Stock\+Result\+::\+Alertas\+Stock\+Result (\begin{DoxyParamCaption}\item[{\{required this.\+agotados, required this.\+criticos\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_alertas_stock_result_a54ad68688224d78dc7b45b3099f330fe}\index{AlertasStockResult@{AlertasStockResult}!agotados@{agotados}}
+\index{agotados@{agotados}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{agotados}{agotados}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a54ad68688224d78dc7b45b3099f330fe} 
+final List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ Alertas\+Stock\+Result\+::agotados\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_alertas_stock_result_a6be492747683078c6ab2c9e940310f74}\index{AlertasStockResult@{AlertasStockResult}!criticos@{criticos}}
+\index{criticos@{criticos}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{criticos}{criticos}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a6be492747683078c6ab2c9e940310f74} 
+final List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ Alertas\+Stock\+Result\+::criticos\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_alertas_stock_result_abdba7ef4383db1ee823504878a1b2ab7}\index{AlertasStockResult@{AlertasStockResult}!criticos@{criticos}}
+\index{criticos@{criticos}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{criticos}{criticos}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_abdba7ef4383db1ee823504878a1b2ab7} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Alertas\+Stock\+Result\+::criticos\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_alertas_stock_result_a1b704833b2fd05b705c571d92b7594ea}\index{AlertasStockResult@{AlertasStockResult}!hayAlertas@{hayAlertas}}
+\index{hayAlertas@{hayAlertas}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{hayAlertas}{hayAlertas}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a1b704833b2fd05b705c571d92b7594ea} 
+bool get Alertas\+Stock\+Result\+::hay\+Alertas =$>$ agotados.\+is\+Not\+Empty \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} criticos.\+is\+Not\+Empty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna true si existe al menos una alerta activa entre agotados y críticos. 
+
+\Hypertarget{class_alertas_stock_result_a3436d27d9aa6d51837122388d490a7a0}\index{AlertasStockResult@{AlertasStockResult}!todas@{todas}}
+\index{todas@{todas}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{todas}{todas}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a3436d27d9aa6d51837122388d490a7a0} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Alertas\+Stock\+Result\+::todas =$>$ \mbox{[}...\mbox{\hyperlink{class_alertas_stock_result_a54ad68688224d78dc7b45b3099f330fe}{agotados}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna la lista combinada de todas las alertas, con los agotados primero. 
+
+\Hypertarget{class_alertas_stock_result_a25dc5a58a8ab87464e40fa017686dece}\index{AlertasStockResult@{AlertasStockResult}!totalAgotados@{totalAgotados}}
+\index{totalAgotados@{totalAgotados}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{totalAgotados}{totalAgotados}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a25dc5a58a8ab87464e40fa017686dece} 
+int get Alertas\+Stock\+Result\+::total\+Agotados =$>$ agotados.\+length\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_alertas_stock_result_a2befcafcd0bdf770cda71d34a031373c}\index{AlertasStockResult@{AlertasStockResult}!totalCriticos@{totalCriticos}}
+\index{totalCriticos@{totalCriticos}!AlertasStockResult@{AlertasStockResult}}
+\doxysubsubsection{\texorpdfstring{totalCriticos}{totalCriticos}}
+{\footnotesize\ttfamily \label{class_alertas_stock_result_a2befcafcd0bdf770cda71d34a031373c} 
+int get Alertas\+Stock\+Result\+::total\+Criticos =$>$ criticos.\+length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{alertas__stock__usecase_8dart}{alertas\+\_\+stock\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

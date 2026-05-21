@@ -1,0 +1,73 @@
+\doxysection{Referencia de la clase Ventas\+Use\+Case}
+\hypertarget{class_ventas_use_case}{}\label{class_ventas_use_case}\index{VentasUseCase@{VentasUseCase}}
+
+
+Caso de uso que expone las operaciones de consulta sobre el historial de ventas.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ventas_use_case}{Ventas\+Use\+Case}}(\{required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository\}) Future$<$ List$<$ Venta $>$ $>$ \mbox{\hyperlink{class_ventas_use_case_abcad6d600e408efda7d5647ef4ec6ac4}{obtener\+Ventas}} () async
+\begin{DoxyCompactList}\small\item\em Retorna todas las ventas registradas en el sistema. \end{DoxyCompactList}\item 
+Future$<$ Venta?$>$ \mbox{\hyperlink{class_ventas_use_case_acb84972d6759f579752d2de098da9e77}{obtener\+Venta}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}) async
+\begin{DoxyCompactList}\small\item\em Retorna la venta correspondiente al identificador indicado. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_ventas_use_case_a9bb26214413eeaad563488b7ff80f43d}{obtener\+Detalles\+Venta}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}) async
+\begin{DoxyCompactList}\small\item\em Retorna los detalles de una venta enriquecidos con información de unidad, prenda, talla y escuela para su presentación en pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} \mbox{\hyperlink{class_ventas_use_case_ace4c875d6e62d41bd814b38411ab9ac7}{\+\_\+venta\+Repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que expone las operaciones de consulta sobre el historial de ventas. 
+
+Actúa como intermediario entre la capa de presentación y el repositorio de ventas. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_ventas_use_case_a9bb26214413eeaad563488b7ff80f43d}\index{VentasUseCase@{VentasUseCase}!obtenerDetallesVenta@{obtenerDetallesVenta}}
+\index{obtenerDetallesVenta@{obtenerDetallesVenta}!VentasUseCase@{VentasUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerDetallesVenta()}{obtenerDetallesVenta()}}
+{\footnotesize\ttfamily \label{class_ventas_use_case_a9bb26214413eeaad563488b7ff80f43d} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Ventas\+Use\+Case\+::obtener\+Detalles\+Venta (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna los detalles de una venta enriquecidos con información de unidad, prenda, talla y escuela para su presentación en pantalla. 
+
+\Hypertarget{class_ventas_use_case_acb84972d6759f579752d2de098da9e77}\index{VentasUseCase@{VentasUseCase}!obtenerVenta@{obtenerVenta}}
+\index{obtenerVenta@{obtenerVenta}!VentasUseCase@{VentasUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerVenta()}{obtenerVenta()}}
+{\footnotesize\ttfamily \label{class_ventas_use_case_acb84972d6759f579752d2de098da9e77} 
+Future$<$ Venta?$>$ Ventas\+Use\+Case\+::obtener\+Venta (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna la venta correspondiente al identificador indicado. 
+
+Retorna null si no existe ninguna venta con ese identificador. \Hypertarget{class_ventas_use_case_abcad6d600e408efda7d5647ef4ec6ac4}\index{VentasUseCase@{VentasUseCase}!obtenerVentas@{obtenerVentas}}
+\index{obtenerVentas@{obtenerVentas}!VentasUseCase@{VentasUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerVentas()}{obtenerVentas()}}
+{\footnotesize\ttfamily \label{class_ventas_use_case_abcad6d600e408efda7d5647ef4ec6ac4} 
+\mbox{\hyperlink{class_ventas_use_case}{Ventas\+Use\+Case}}(\{required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository\}) Future$<$ List$<$ Venta $>$ $>$ Ventas\+Use\+Case\+::obtener\+Ventas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todas las ventas registradas en el sistema. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_ventas_use_case_ace4c875d6e62d41bd814b38411ab9ac7}\index{VentasUseCase@{VentasUseCase}!\_ventaRepository@{\_ventaRepository}}
+\index{\_ventaRepository@{\_ventaRepository}!VentasUseCase@{VentasUseCase}}
+\doxysubsubsection{\texorpdfstring{\_ventaRepository}{\_ventaRepository}}
+{\footnotesize\ttfamily \label{class_ventas_use_case_ace4c875d6e62d41bd814b38411ab9ac7} 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} Ventas\+Use\+Case\+::\+\_\+venta\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{ventas__usecase_8dart}{ventas\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

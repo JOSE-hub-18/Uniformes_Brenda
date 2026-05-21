@@ -12,12 +12,8 @@ import '../../models/models.dart';
 /// Centraliza procesos de registro, consulta,
 /// cancelación y eliminación de ventas.
 class VentaRepository {
-
   /// Obtiene una instancia activa de la base de datos.
-  Future<Database> get _db async =>
-      await DatabaseHelper
-          .instance
-          .database;
+  Future<Database> get _db async => await DatabaseHelper.instance.database;
 
   /// Inserta una venta junto con todos sus detalles asociados.
   ///
@@ -27,61 +23,40 @@ class VentaRepository {
   ///
   /// Retorna el identificador de la venta creada.
   Future<int> insertarVentaYDetalles({
-
     required Venta venta,
 
-    required List<DetalleVenta>
-        detalles,
+    required List<DetalleVenta> detalles,
   }) async {
-
     final db = await _db;
 
-    return await db.transaction(
+    return await db.transaction((txn) async {
+      // Inserta el registro principal de la venta.
+      final idVenta = await txn.insert(
+        'ventas',
 
-      (txn) async {
+        venta.toMap()..remove('id'),
 
-        // Inserta el registro principal de la venta.
-        final idVenta =
-            await txn.insert(
+        conflictAlgorithm: ConflictAlgorithm.abort,
+      );
 
-          'ventas',
+      // Inserta todos los detalles asociados
+      // a la venta recién creada.
+      for (final detalle in detalles) {
+        final detalleMap = detalle.toMap()
+          ..remove('id')
+          ..['id_venta'] = idVenta;
 
-          venta.toMap()
-            ..remove('id'),
+        await txn.insert(
+          'detalle_venta',
 
-          conflictAlgorithm:
-              ConflictAlgorithm
-                  .abort,
+          detalleMap,
+
+          conflictAlgorithm: ConflictAlgorithm.abort,
         );
+      }
 
-        // Inserta todos los detalles asociados
-        // a la venta recién creada.
-        for (final detalle
-            in detalles) {
-
-          final detalleMap =
-              detalle.toMap()
-
-                ..remove('id')
-
-                ..['id_venta'] =
-                    idVenta;
-
-          await txn.insert(
-
-            'detalle_venta',
-
-            detalleMap,
-
-            conflictAlgorithm:
-                ConflictAlgorithm
-                    .abort,
-          );
-        }
-
-        return idVenta;
-      },
-    );
+      return idVenta;
+    });
   }
 
   /// Inserta detalles adicionales
@@ -90,64 +65,41 @@ class VentaRepository {
   /// La operación se ejecuta dentro de una transacción
   /// para mantener consistencia en inserciones múltiples.
   Future<void> insertarDetallesVenta({
-
     required int idVenta,
 
-    required List<DetalleVenta>
-        detalles,
+    required List<DetalleVenta> detalles,
   }) async {
-
     final db = await _db;
 
-    await db.transaction(
+    await db.transaction((txn) async {
+      // Inserta cada detalle utilizando
+      // la venta existente como referencia.
+      for (final detalle in detalles) {
+        final detalleMap = detalle.toMap()
+          ..remove('id')
+          ..['id_venta'] = idVenta;
 
-      (txn) async {
+        await txn.insert(
+          'detalle_venta',
 
-        // Inserta cada detalle utilizando
-        // la venta existente como referencia.
-        for (final detalle
-            in detalles) {
+          detalleMap,
 
-          final detalleMap =
-              detalle.toMap()
-
-                ..remove('id')
-
-                ..['id_venta'] =
-                    idVenta;
-
-          await txn.insert(
-
-            'detalle_venta',
-
-            detalleMap,
-
-            conflictAlgorithm:
-                ConflictAlgorithm
-                    .abort,
-          );
-        }
-      },
-    );
+          conflictAlgorithm: ConflictAlgorithm.abort,
+        );
+      }
+    });
   }
 
   /// Elimina un detalle específico de venta.
-  Future<void>
-      eliminarDetalleVenta(
-    int idDetalleVenta,
-  ) async {
-
+  Future<void> eliminarDetalleVenta(int idDetalleVenta) async {
     final db = await _db;
 
     await db.delete(
-
       'detalle_venta',
 
       where: 'id = ?',
 
-      whereArgs: [
-        idDetalleVenta,
-      ],
+      whereArgs: [idDetalleVenta],
     );
   }
 
@@ -156,82 +108,52 @@ class VentaRepository {
   ///
   /// Esta operación puede utilizarse para validar
   /// si una venta conserva productos relacionados.
-  Future<int>
-      contarDetallesVenta(
-    int idVenta,
-  ) async {
-
+  Future<int> contarDetallesVenta(int idVenta) async {
     final db = await _db;
 
-    final resultado =
-        await db.rawQuery(
-
+    final resultado = await db.rawQuery(
       '''
       SELECT COUNT(*) as total
       FROM detalle_venta
       WHERE id_venta = ?
       ''',
 
-      [
-        idVenta,
-      ],
+      [idVenta],
     );
 
-    return Sqflite
-        .firstIntValue(
-      resultado,
-    )!;
+    return Sqflite.firstIntValue(resultado)!;
   }
 
   /// Cambia el estado de una venta a cancelada.
   ///
   /// La operación realiza una cancelación lógica
   /// sin eliminar el registro físicamente.
-  Future<void>
-      actualizarEstadoCancelado(
-    int idVenta,
-  ) async {
-
+  Future<void> actualizarEstadoCancelado(int idVenta) async {
     final db = await _db;
 
     await db.update(
-
       'ventas',
 
-      {
-        'estado':
-            EstadoVenta
-                .cancelada
-                .toDb(),
-      },
+      {'estado': EstadoVenta.cancelada.toDb()},
 
       where: 'id = ?',
 
-      whereArgs: [
-        idVenta,
-      ],
+      whereArgs: [idVenta],
     );
   }
 
   /// Obtiene una venta mediante su identificador.
   ///
   /// Retorna null cuando el registro no existe.
-  Future<Venta?> obtenerPorId(
-    int id,
-  ) async {
-
+  Future<Venta?> obtenerPorId(int id) async {
     final db = await _db;
 
-    final maps =
-        await db.query(
-
+    final maps = await db.query(
       'ventas',
 
       where: 'id = ?',
 
-      whereArgs: [
-        id,
-      ],
+      whereArgs: [id],
 
       limit: 1,
     );
@@ -240,68 +162,37 @@ class VentaRepository {
       return null;
     }
 
-    return Venta.fromMap(
-      maps.first,
-    );
+    return Venta.fromMap(maps.first);
   }
 
   /// Obtiene todas las ventas registradas
   /// ordenadas por fecha descendente.
-  Future<List<Venta>>
-      obtenerTodas() async {
-
+  Future<List<Venta>> obtenerTodas() async {
     final db = await _db;
 
-    final maps =
-        await db.query(
+    final maps = await db.query('ventas', orderBy: 'fecha DESC');
 
-      'ventas',
-
-      orderBy:
-          'fecha DESC',
-    );
-
-    return maps
-        .map(
-          (m) =>
-              Venta.fromMap(m),
-        )
-        .toList();
+    return maps.map((m) => Venta.fromMap(m)).toList();
   }
 
   /// Obtiene todas las ventas realizadas
   /// por un usuario específico.
   ///
   /// El resultado se ordena por fecha descendente.
-  Future<List<Venta>>
-      obtenerPorUsuario(
-    int idUsuario,
-  ) async {
-
+  Future<List<Venta>> obtenerPorUsuario(int idUsuario) async {
     final db = await _db;
 
-    final maps =
-        await db.query(
-
+    final maps = await db.query(
       'ventas',
 
-      where:
-          'id_usuario = ?',
+      where: 'id_usuario = ?',
 
-      whereArgs: [
-        idUsuario,
-      ],
+      whereArgs: [idUsuario],
 
-      orderBy:
-          'fecha DESC',
+      orderBy: 'fecha DESC',
     );
 
-    return maps
-        .map(
-          (m) =>
-              Venta.fromMap(m),
-        )
-        .toList();
+    return maps.map((m) => Venta.fromMap(m)).toList();
   }
 
   /// Obtiene los detalles completos asociados
@@ -309,16 +200,12 @@ class VentaRepository {
   ///
   /// La consulta integra información relacionada
   /// con inventario, escuela, prenda y talla.
-  Future<List<Map<String, dynamic>>>
-      obtenerDetallesPorVenta(
+  Future<List<Map<String, dynamic>>> obtenerDetallesPorVenta(
     int idVenta,
   ) async {
-
     final db = await _db;
 
-    final resultado =
-        await db.rawQuery(
-
+    final resultado = await db.rawQuery(
       '''
       SELECT
 
@@ -354,30 +241,16 @@ class VentaRepository {
       WHERE dv.id_venta = ?
       ''',
 
-      [
-        idVenta,
-      ],
+      [idVenta],
     );
 
     return resultado;
   }
 
   /// Elimina una venta mediante su identificador.
-  Future<int> eliminar(
-    int id,
-  ) async {
-
+  Future<int> eliminar(int id) async {
     final db = await _db;
 
-    return await db.delete(
-
-      'ventas',
-
-      where: 'id = ?',
-
-      whereArgs: [
-        id,
-      ],
-    );
+    return await db.delete('ventas', where: 'id = ?', whereArgs: [id]);
   }
 }

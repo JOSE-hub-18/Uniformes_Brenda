@@ -1,0 +1,163 @@
+\doxysection{Referencia de la clase Unidad\+Repository}
+\hypertarget{class_unidad_repository}{}\label{class_unidad_repository}\index{UnidadRepository@{UnidadRepository}}
+
+
+Repositorio encargado de gestionar las operaciones relacionadas con unidades de inventario.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ List$<$ int $>$ $>$ \mbox{\hyperlink{class_unidad_repository_a5546a00e2129596462f1024e592cbcb2}{insertar\+Unidades}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, int cantidad) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta múltiples unidades asociadas a un inventario. \end{DoxyCompactList}\item 
+Future$<$ Unidad?$>$ \mbox{\hyperlink{class_unidad_repository_a537308c6b7815a6b561d9bef2fe5c788}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene una unidad mediante su identificador. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_unidad_repository_a59fad9815f202ed7903bd063a1a8d515}{pertenece}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Verifica si una unidad pertenece a un inventario específico. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Unidad $>$ $>$ \mbox{\hyperlink{class_unidad_repository_a8eec647865281b2137097174a99d1739}{obtener\+Por\+Inventario}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todas las unidades activas asociadas a un inventario. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_unidad_repository_a5e7a592221120740fd7ba6a5e33f865c}{desactivar}} (int id) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Marca una unidad como inactiva. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_unidad_repository_abb3fb7aa5af58e0f07bddc323a5d2dcb}{reactivar}} (int id) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Reactiva una unidad previamente desactivada. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_unidad_repository_a76dd0b8ee206b432c83ae80b4296a4ca}{marcar\+Pendiente\+Impresion}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Marca una unidad como pendiente de impresión. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_unidad_repository_a9cbd28fac98bf087380f8e9542c968a4}{quitar\+Pendiente\+Impresion}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina el estado pendiente de impresión de una unidad. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_unidad_repository_a136a8bb01e143c4c21f7ae20ce3c4f2f}{obtener\+Pendientes\+Impresion}} () \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todas las unidades marcadas como pendientes de impresión. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_unidad_repository_ac4ffaf02905aba92238992a8930bfcc2}{eliminar}} (int id) \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina una unidad mediante su identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar las operaciones relacionadas con unidades de inventario. 
+
+Permite administrar activación, impresión, validaciones y consultas asociadas a unidades físicas. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_unidad_repository_a5e7a592221120740fd7ba6a5e33f865c}\index{UnidadRepository@{UnidadRepository}!desactivar@{desactivar}}
+\index{desactivar@{desactivar}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{desactivar()}{desactivar()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a5e7a592221120740fd7ba6a5e33f865c} 
+Future$<$ int $>$ Unidad\+Repository\+::desactivar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Marca una unidad como inactiva. 
+
+Esta operación representa lógicamente una unidad vendida o fuera de disponibilidad. \Hypertarget{class_unidad_repository_ac4ffaf02905aba92238992a8930bfcc2}\index{UnidadRepository@{UnidadRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_ac4ffaf02905aba92238992a8930bfcc2} 
+Future$<$ int $>$ Unidad\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina una unidad mediante su identificador. 
+
+\Hypertarget{class_unidad_repository_a5546a00e2129596462f1024e592cbcb2}\index{UnidadRepository@{UnidadRepository}!insertarUnidades@{insertarUnidades}}
+\index{insertarUnidades@{insertarUnidades}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{insertarUnidades()}{insertarUnidades()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a5546a00e2129596462f1024e592cbcb2} 
+Future$<$ List$<$ int $>$ $>$ Unidad\+Repository\+::insertar\+Unidades (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{, }\item[{int}]{cantidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta múltiples unidades asociadas a un inventario. 
+
+Cada unidad se crea inicialmente como activa y sin pendiente de impresión.
+
+La operación se ejecuta dentro de una transacción para garantizar consistencia en inserciones masivas. \Hypertarget{class_unidad_repository_a76dd0b8ee206b432c83ae80b4296a4ca}\index{UnidadRepository@{UnidadRepository}!marcarPendienteImpresion@{marcarPendienteImpresion}}
+\index{marcarPendienteImpresion@{marcarPendienteImpresion}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{marcarPendienteImpresion()}{marcarPendienteImpresion()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a76dd0b8ee206b432c83ae80b4296a4ca} 
+Future$<$ int $>$ Unidad\+Repository\+::marcar\+Pendiente\+Impresion (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Marca una unidad como pendiente de impresión. 
+
+Esta bandera puede ser utilizada para procesos relacionados con etiquetas, códigos o tickets. \Hypertarget{class_unidad_repository_a136a8bb01e143c4c21f7ae20ce3c4f2f}\index{UnidadRepository@{UnidadRepository}!obtenerPendientesImpresion@{obtenerPendientesImpresion}}
+\index{obtenerPendientesImpresion@{obtenerPendientesImpresion}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPendientesImpresion()}{obtenerPendientesImpresion()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a136a8bb01e143c4c21f7ae20ce3c4f2f} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Unidad\+Repository\+::obtener\+Pendientes\+Impresion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todas las unidades marcadas como pendientes de impresión. 
+
+La consulta incluye información descriptiva relacionada con escuela, prenda y talla. \Hypertarget{class_unidad_repository_a537308c6b7815a6b561d9bef2fe5c788}\index{UnidadRepository@{UnidadRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a537308c6b7815a6b561d9bef2fe5c788} 
+Future$<$ Unidad?$>$ Unidad\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene una unidad mediante su identificador. 
+
+Retorna null cuando no existe un registro asociado. \Hypertarget{class_unidad_repository_a8eec647865281b2137097174a99d1739}\index{UnidadRepository@{UnidadRepository}!obtenerPorInventario@{obtenerPorInventario}}
+\index{obtenerPorInventario@{obtenerPorInventario}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorInventario()}{obtenerPorInventario()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a8eec647865281b2137097174a99d1739} 
+Future$<$ List$<$ Unidad $>$ $>$ Unidad\+Repository\+::obtener\+Por\+Inventario (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todas las unidades activas asociadas a un inventario. 
+
+Las unidades inactivas o vendidas son excluidas del resultado. \Hypertarget{class_unidad_repository_a59fad9815f202ed7903bd063a1a8d515}\index{UnidadRepository@{UnidadRepository}!pertenece@{pertenece}}
+\index{pertenece@{pertenece}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{pertenece()}{pertenece()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a59fad9815f202ed7903bd063a1a8d515} 
+Future$<$ bool $>$ Unidad\+Repository\+::pertenece (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{, }\item[{int}]{id\+Inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Verifica si una unidad pertenece a un inventario específico. 
+
+Retorna true cuando existe coincidencia entre la unidad y el inventario indicado. \Hypertarget{class_unidad_repository_a9cbd28fac98bf087380f8e9542c968a4}\index{UnidadRepository@{UnidadRepository}!quitarPendienteImpresion@{quitarPendienteImpresion}}
+\index{quitarPendienteImpresion@{quitarPendienteImpresion}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{quitarPendienteImpresion()}{quitarPendienteImpresion()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_a9cbd28fac98bf087380f8e9542c968a4} 
+Future$<$ int $>$ Unidad\+Repository\+::quitar\+Pendiente\+Impresion (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina el estado pendiente de impresión de una unidad. 
+
+\Hypertarget{class_unidad_repository_abb3fb7aa5af58e0f07bddc323a5d2dcb}\index{UnidadRepository@{UnidadRepository}!reactivar@{reactivar}}
+\index{reactivar@{reactivar}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{reactivar()}{reactivar()}}
+{\footnotesize\ttfamily \label{class_unidad_repository_abb3fb7aa5af58e0f07bddc323a5d2dcb} 
+Future$<$ int $>$ Unidad\+Repository\+::reactivar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reactiva una unidad previamente desactivada. 
+
+La operación restablece la disponibilidad de la unidad dentro del inventario. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_unidad_repository_ada29b36cf74077f914a5b742605eed81}\index{UnidadRepository@{UnidadRepository}!async@{async}}
+\index{async@{async}!UnidadRepository@{UnidadRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_unidad_repository_ada29b36cf74077f914a5b742605eed81} 
+Future$<$Database$>$ get \+\_\+db Unidad\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{unidad__repository_8dart}{unidad\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

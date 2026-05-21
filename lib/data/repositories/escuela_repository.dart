@@ -5,7 +5,6 @@ import '../../models/models.dart';
 /// Repositorio que gestiona las operaciones de acceso a datos
 /// para la tabla de escuelas.
 class EscuelaRepository {
-
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
   /// Inserta una nueva escuela en la base de datos.

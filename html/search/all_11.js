@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['talla_0',['talla',['../class_stateful_widget.html#a3dc3168c99448719211a5dd95081fd87',1,'StatefulWidget::talla'],['../alertas__stock__usecase_8dart.html#a9ab41aa60dce28c382677f75f3653a16',1,'talla:&#160;alertas_stock_usecase.dart']]],
+  ['talla_5frepository_2edart_1',['talla_repository.dart',['../talla__repository_8dart.html',1,'']]],
+  ['tallarepository_2',['TallaRepository',['../class_talla_repository.html',1,'']]],
+  ['tallarepository_3',['tallaRepository',['../class_change_notifier.html#a87cdba8d7f7752d687756eabfb776278',1,'ChangeNotifier']]],
+  ['tallas_4',['tallas',['../class_change_notifier.html#ae60d2a704980ccdabc9dceb50b361e9a',1,'ChangeNotifier']]],
+  ['tamanobytes_5',['tamanoBytes',['../class_backup_info.html#a70649e1cddd164ad21cec54054d972ba',1,'BackupInfo']]],
+  ['tamanolegible_6',['tamanoLegible',['../class_backup_info.html#ac5677dab936b6807c539666939976f1b',1,'BackupInfo']]],
+  ['textcolor_7',['textColor',['../class_stateless_widget.html#a59555ec61ae7cc6efdba8dab07f82131',1,'StatelessWidget']]],
+  ['tieneunidadresuelta_8',['tieneUnidadResuelta',['../nueva__orden__usecase_8dart.html#af25da7320d4001759716a575adbe54bd',1,'nueva_orden_usecase.dart']]],
+  ['tipo_9',['tipo',['../alertas__stock__usecase_8dart.html#afce995a416a870a55a4e89bd2d88cd71',1,'tipo:&#160;alertas_stock_usecase.dart'],['../nueva__orden__usecase_8dart.html#afce995a416a870a55a4e89bd2d88cd71',1,'tipo:&#160;nueva_orden_usecase.dart']]],
+  ['tipoalerta_10',['TipoAlerta',['../alertas__stock__usecase_8dart.html#a60b6868cf8ccfcd196df975610e82d70',1,'alertas_stock_usecase.dart']]],
+  ['tipoconfirmacion_11',['TipoConfirmacion',['../nueva__orden__usecase_8dart.html#af437592e0f364a5340c522befe6d8d93',1,'nueva_orden_usecase.dart']]],
+  ['tipoitemorden_12',['TipoItemOrden',['../nueva__orden__usecase_8dart.html#a14814e34ca7be0e0e85745258ee25d02',1,'nueva_orden_usecase.dart']]],
+  ['titulo_13',['titulo',['../reportes__screen_8dart.html#a9e62a4c5de691617cdbfa7226f2ba36d',1,'titulo:&#160;reportes_screen.dart'],['../alertas__popup_8dart.html#a64debc2c043d46ba1a8678606b02eb24',1,'titulo:&#160;alertas_popup.dart']]],
+  ['todas_14',['todas',['../class_alertas_stock_result.html#a3436d27d9aa6d51837122388d490a7a0',1,'AlertasStockResult::todas'],['../class_change_notifier.html#af2e728995de6e1bfc303b76e20ade6ac',1,'ChangeNotifier::todas']]],
+  ['todb_15',['toDb',['../models_8dart.html#a0b1716027a5549b2dc57d8a903c24d26',1,'models.dart']]],
+  ['todosexitosos_16',['todosExitosos',['../registrar__inventario__usecase_8dart.html#a6f430143a669a100a3b2d1ae4a3e1587',1,'registrar_inventario_usecase.dart']]],
+  ['total_17',['total',['../class_change_notifier.html#ae4a775194cb60858d00b5b44220e1dd9',1,'ChangeNotifier::total'],['../nueva__orden__usecase_8dart.html#ac6fd6f43a735960ff62d3f799c8acfd9',1,'total:&#160;nueva_orden_usecase.dart']]],
+  ['totalagotados_18',['totalAgotados',['../class_alertas_stock_result.html#a25dc5a58a8ab87464e40fa017686dece',1,'AlertasStockResult']]],
+  ['totalalertas_19',['totalAlertas',['../class_change_notifier.html#a04124af84eb5ebb95ddcf9bda1431927',1,'ChangeNotifier']]],
+  ['totalcriticos_20',['totalCriticos',['../class_alertas_stock_result.html#a2befcafcd0bdf770cda71d34a031373c',1,'AlertasStockResult']]],
+  ['totalexitosos_21',['totalExitosos',['../registrar__inventario__usecase_8dart.html#aa08b70c3e744ee4e8c85faa38920a020',1,'registrar_inventario_usecase.dart']]],
+  ['totalfallidos_22',['totalFallidos',['../registrar__inventario__usecase_8dart.html#aa7d9c5e205ca3c94ab3cb95a923e9bd2',1,'registrar_inventario_usecase.dart']]],
+  ['totalprendas_23',['totalPrendas',['../class_change_notifier.html#a4b8989b1c54fc14e38d57e213ae1972d',1,'ChangeNotifier::totalPrendas'],['../nueva__orden__usecase_8dart.html#a8229fdb400ee1c5530b2b07d5ca76f4c',1,'totalPrendas:&#160;nueva_orden_usecase.dart']]],
+  ['totalvendido_24',['totalVendido',['../class_change_notifier.html#af6a94ed91c0f9077e82448584d5f211f',1,'ChangeNotifier']]]
+];

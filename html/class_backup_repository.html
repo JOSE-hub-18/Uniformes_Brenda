@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Uniformes Brenda: Referencia de la clase BackupRepository</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Uniformes Brenda
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#pri-methods">Métodos privados</a> &#124;
+<a href="class_backup_repository-members.html">Lista de todos los miembros</a>  </div>
+  <div class="headertitle"><div class="title">Referencia de la clase BackupRepository</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Repositorio encargado de gestionar la creación física de archivos de backup de la base de datos SQLite en el almacenamiento local del dispositivo.  
+ <a href="#details">Más...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Métodos privados</h2></td></tr>
+<tr class="memitem:a63c899dd6c36349259aaeaf4a382d922" id="r_a63c899dd6c36349259aaeaf4a382d922"><td class="memItemLeft" align="right" valign="top">Future&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63c899dd6c36349259aaeaf4a382d922">crearBackup</a> () async</td></tr>
+<tr class="memdesc:a63c899dd6c36349259aaeaf4a382d922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Genera una copia del archivo de base de datos activo en el directorio de backups.  <br /></td></tr>
+<tr class="separator:a63c899dd6c36349259aaeaf4a382d922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac63d718eb35f5be43596e6dc821c4a1a" id="r_ac63d718eb35f5be43596e6dc821c4a1a"><td class="memItemLeft" align="right" valign="top">Future&lt; Directory &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac63d718eb35f5be43596e6dc821c4a1a">_obtenerDirectorioBackups</a> () async</td></tr>
+<tr class="memdesc:ac63d718eb35f5be43596e6dc821c4a1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna el directorio donde se almacenan los backups dentro del directorio de documentos de la aplicación.  <br /></td></tr>
+<tr class="separator:ac63d718eb35f5be43596e6dc821c4a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Repositorio encargado de gestionar la creación física de archivos de backup de la base de datos SQLite en el almacenamiento local del dispositivo. </p>
+</div><h2 class="groupheader">Documentación de funciones miembro</h2>
+<a id="ac63d718eb35f5be43596e6dc821c4a1a" name="ac63d718eb35f5be43596e6dc821c4a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63d718eb35f5be43596e6dc821c4a1a">&#9670;&#160;</a></span>_obtenerDirectorioBackups()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; Directory &gt; BackupRepository::_obtenerDirectorioBackups </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retorna el directorio donde se almacenan los backups dentro del directorio de documentos de la aplicación. </p>
+<p>Si el directorio no existe, lo crea de forma recursiva. </p>
+
+</div>
+</div>
+<a id="a63c899dd6c36349259aaeaf4a382d922" name="a63c899dd6c36349259aaeaf4a382d922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63c899dd6c36349259aaeaf4a382d922">&#9670;&#160;</a></span>crearBackup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Future&lt; <a class="el" href="inventario__screen_8dart.html#a546dceeeb42ab79b92e6bd16f299f169">String</a> &gt; BackupRepository::crearBackup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Genera una copia del archivo de base de datos activo en el directorio de backups. </p>
+<p>El nombre del archivo incluye la fecha y hora de creación con formato 'backup_uniformes_YYYY_MM_DD_HH_mm.db' para facilitar su identificación. Retorna la ruta absoluta del archivo de backup generado. </p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li>lib/data/repositories/<a class="el" href="backup__repository_8dart.html">backup_repository.dart</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

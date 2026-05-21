@@ -1,0 +1,413 @@
+\doxysection{Referencia de la clase Stateful\+Widget}
+\hypertarget{class_stateful_widget}{}\label{class_stateful_widget}\index{StatefulWidget@{StatefulWidget}}
+
+
+Pantalla para modificar la cantidad de unidades de un inventario específico.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a536e74dc58c4898dc783f93126f94b39}{Administrar\+Cantidad\+Screen}} (\{super.\+key, required this.\+id\+Inventario\})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a536e74dc58c4898dc783f93126f94b39}{Administrar\+Cantidad\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a08e64b916e464c579b0a0282bc90265d}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_add8e33cd9e32cec8d2ac33e07d735f75}{Administrar\+Prenda\+Screen}} (\{ super.\+key, required this.\+id\+Inventario, required this.\+nombre\+Escuela, required this.\+nombre\+Prenda, required this.\+talla, required this.\+cantidad, \})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_add8e33cd9e32cec8d2ac33e07d735f75}{Administrar\+Prenda\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a7198be658851c914b4f5735e1b0be4a7}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a5eb5cd5d80d684ae46ef82f21b653aa4}{Agregar\+Prendas\+Pedido\+Screen}} (\{super.\+key\})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a5eb5cd5d80d684ae46ef82f21b653aa4}{Agregar\+Prendas\+Pedido\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a40a66a40b998e25ada2e0adaf5a953b1}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_ab012979f79a5444b20e28fb762a70e4d}{Exito\+Screen}} (\{super.\+key\})
+\begin{DoxyCompactList}\small\item\em Constructor principal de la clase \mbox{[}Exito\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_ab012979f79a5444b20e28fb762a70e4d}{Exito\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_ae90e317890191c68c1dc79300c38ed80}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a9176246b19c9247c62a074664f3a4cac}{Login\+Screen}} (\{super.\+key\})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a9176246b19c9247c62a074664f3a4cac}{Login\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a9efde1c4b41870f19d56efae6091915c}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a341b15e56bdce4e77a6cbdbb2804a2eb}{Agregar\+Pedido\+Screen}} (\{ super.\+key, \})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a341b15e56bdce4e77a6cbdbb2804a2eb}{Agregar\+Pedido\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a045f10a8db1965a71dbccbd7da2807c4}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a58e50ea3d422b75af81caf361903e1e9}{Pedidos\+Pendientes\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la pantalla de pedidos pendientes. \end{DoxyCompactList}\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a58e50ea3d422b75af81caf361903e1e9}{Pedidos\+Pendientes\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a15c568b1fa801e1a897905cf2e44e82a}{create\+State}} ()
+\item 
+final Future$<$ \mbox{\hyperlink{qr__screen_8dart_a988c3d04b4978ac42fe885a291eb2f38}{Scan\+Feedback}} $>$ \mbox{\hyperlink{class_stateful_widget_a522434333668568c75e3ab6f297d142a}{Function}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr) on\+Scan
+\begin{DoxyCompactList}\small\item\em Callback que cada pantalla define para procesar el QR. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_stateful_widget_a8d901fbb676ac1b827ff1737a9719b84}{QRScanner\+Screen}} (\{ super.\+key, required this.\+on\+Scan, this.\+mostrar\+Mensaje=true, \})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a8d901fbb676ac1b827ff1737a9719b84}{QRScanner\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a3fee2be7771e49769eb6a1c257a9d72c}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a82b1714847f75f1d8bc47d0f1d453dd6}{Registrar\+Prenda\+Screen}} (\{ super.\+key, required this.\+registrar\+Inventario\+Use\+Case, \})
+\begin{DoxyCompactList}\small\item\em Constructor que recibe el caso de uso responsable de registrar el inventario. \end{DoxyCompactList}\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a82b1714847f75f1d8bc47d0f1d453dd6}{Registrar\+Prenda\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a834dddaeb5a1784c6380333582abd21e}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a1e82d99d7da35729addf00d7206d11b5}{Revisar\+Pedido\+Screen}} (\{ super.\+key, required this.\+id\+Pedido, \})
+\begin{DoxyCompactList}\small\item\em Constructor principal de la pantalla de revisión de pedidos. \end{DoxyCompactList}\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a1e82d99d7da35729addf00d7206d11b5}{Revisar\+Pedido\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a44905be11374bacfa03d92abb3d3ed79}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_ad78f01daa8e8e08d2d9d2642bf624515}{Revisar\+Venta\+Screen}} (\{ super.\+key, required this.\+id\+Venta, \})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_ad78f01daa8e8e08d2d9d2642bf624515}{Revisar\+Venta\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_a397daab3424e96edf9be2b8b0eb67421}{create\+State}} ()
+\item 
+const \mbox{\hyperlink{class_stateful_widget_a77df21df9ae1992b34898ad44f0e292d}{Ventas\+Screen}} (\{ super.\+key, \})
+\item 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a77df21df9ae1992b34898ad44f0e292d}{Ventas\+Screen}} $>$ \mbox{\hyperlink{class_stateful_widget_af6d70de0c9237bc895aa8a7a290c31bf}{create\+State}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final int \mbox{\hyperlink{class_stateful_widget_aeece363982a0b15087ca41810471b681}{id\+Inventario}}
+\begin{DoxyCompactList}\small\item\em Identificador único del inventario a administrar. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateful_widget_af6a7bcb3ac6edd6293da205c06b72697}{nombre\+Escuela}}
+\begin{DoxyCompactList}\small\item\em Nombre de la escuela asociada al inventario. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateful_widget_a9f80187fd131d65fec2ae52920dfd373}{nombre\+Prenda}}
+\begin{DoxyCompactList}\small\item\em Nombre de la prenda asociada al inventario. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_stateful_widget_a3dc3168c99448719211a5dd95081fd87}{talla}}
+\begin{DoxyCompactList}\small\item\em Talla de la prenda. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{class_stateful_widget_acb533634754f93d112137035d9ad242c}{cantidad}}
+\begin{DoxyCompactList}\small\item\em Cantidad inicial de unidades disponibles al abrir la pantalla. \end{DoxyCompactList}\item 
+final bool \mbox{\hyperlink{class_stateful_widget_a448cc722ad543c53daddbf61e4bd3783}{mostrar\+Mensaje}}
+\begin{DoxyCompactList}\small\item\em Indica si se debe mostrar el mensaje de feedback en pantalla. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}} \mbox{\hyperlink{class_stateful_widget_aa93ca6439b5c45aeb185aeee685adaf2}{registrar\+Inventario\+Use\+Case}}
+\item 
+final int \mbox{\hyperlink{class_stateful_widget_ab4a7a39b875f2464f1361838e6ab8e38}{id\+Pedido}}
+\begin{DoxyCompactList}\small\item\em Identificador único del pedido que será consultado. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{class_stateful_widget_a1a25ee91bc57bae2b36bdb7ab718caeb}{id\+Venta}}
+\begin{DoxyCompactList}\small\item\em Identificador de la venta a revisar. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Pantalla para modificar la cantidad de unidades de un inventario específico. 
+
+Pantalla que lista las ventas registradas y permite filtrarlas por año y mes.
+
+Pantalla para revisar los detalles de una venta.
+
+Pantalla encargada de mostrar el detalle de un pedido pendiente, permitiendo registrar unidades mediante códigos QR, eliminar prendas del pedido y completar el pedido cuando todas las unidades han sido registradas.
+
+Pantalla para registrar una nueva prenda en el inventario.
+
+Pantalla que implementa un escáner de códigos QR usando {\ttfamily mobile\+\_\+scanner}.
+
+Pantalla que muestra la lista de pedidos pendientes.
+
+Pantalla para crear una nueva orden o venta.
+
+Pantalla de inicio de sesión con animaciones de entrada y validación.
+
+Pantalla de confirmación visual que indica el éxito de una operación.
+
+Pantalla para agregar prendas a un pedido existente.
+
+Pantalla para visualizar y modificar los datos de una prenda de inventario.
+
+Expone dos operaciones\+: agregar unidades mediante impresión de QRs, y restar unidades mediante escaneo de QRs físicos. Requiere \mbox{[}id\+Inventario\mbox{]} para identificar el inventario sobre el que opera.
+
+Permite editar el precio, consultar la cantidad disponible, navegar a \mbox{[}Administrar\+Cantidad\+Screen\mbox{]} para modificar unidades, y eliminar el registro del inventario.
+
+Permite filtrar el inventario disponible por escuela y tipo de prenda, y agregar unidades al pedido activo. Nota\+: los datos de escuelas, prendas e inventario son estáticos en esta versión.
+
+Componente de tipo \mbox{[}\doxylink{class_stateful_widget}{Stateful\+Widget}\mbox{]} diseñado para notificar de forma efímera al usuario que una transacción o modificación de datos ha culminado exitosamente.
+
+
+\begin{DoxyItemize}
+\item Implementa un formulario simple con campos de usuario y contraseña.
+\item Usa \mbox{[}Auth\+Provider\mbox{]} para realizar la autenticación y mostrar estado de carga/errores.
+\item Incluye animaciones de entrada (fade + slide) controladas por un \mbox{[}Animation\+Controller\mbox{]}.
+\item Permite seleccionar escuela, prenda y talla desde el inventario.
+\item Soporta agregar ítems manualmente o mediante escaneo de QR.
+\item Muestra las prendas agregadas agrupadas por inventario y permite confirmar la orden.
+\item Componente de tipo \mbox{[}\doxylink{class_stateful_widget}{Stateful\+Widget}\mbox{]} que consulta al proveedor \mbox{[}Pedidos\+Pendientes\+Provider\mbox{]} para obtener los pedidos pendientes.
+\item Permite crear un nuevo pedido y revisar pedidos existentes.
+\item La recarga de datos se realiza en {\ttfamily init\+State} mediante el provider.
+\item Recibe un callback {\ttfamily on\+Scan} que procesa el valor del QR y devuelve un {\ttfamily Scan\+Feedback}.
+\item {\ttfamily mostrar\+Mensaje} controla si se muestra un mensaje visual tras el escaneo.
+\item Presenta un formulario con campos\+: tipo de prenda, precio, talla y escuela.
+\item Utiliza un caso de uso \mbox{[}\doxylink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}\mbox{]} para ejecutar la operación de registro y muestra retroalimentación al usuario mediante Snack\+Bars.
+\item Muestra los ítems vendidos asociados a una venta específica.
+\item Permite devolver prendas (reactivar unidad, eliminar detalle de venta), reimprimir QRs y actualizar el inventario y listados relacionados.
+\item Usa \mbox{[}Ventas\+Provider\mbox{]} para obtener y observar el listado de ventas.
+\item Permite navegar a la vista de revisión de una venta individual. 
+\end{DoxyItemize}
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_stateful_widget_a536e74dc58c4898dc783f93126f94b39}\index{StatefulWidget@{StatefulWidget}!AdministrarCantidadScreen@{AdministrarCantidadScreen}}
+\index{AdministrarCantidadScreen@{AdministrarCantidadScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{AdministrarCantidadScreen()}{AdministrarCantidadScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a536e74dc58c4898dc783f93126f94b39} 
+const Stateful\+Widget\+::\+Administrar\+Cantidad\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key, required this.\+id\+Inventario\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_add8e33cd9e32cec8d2ac33e07d735f75}\index{StatefulWidget@{StatefulWidget}!AdministrarPrendaScreen@{AdministrarPrendaScreen}}
+\index{AdministrarPrendaScreen@{AdministrarPrendaScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{AdministrarPrendaScreen()}{AdministrarPrendaScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_add8e33cd9e32cec8d2ac33e07d735f75} 
+const Stateful\+Widget\+::\+Administrar\+Prenda\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, required this.\+id\+Inventario, required this.\+nombre\+Escuela, required this.\+nombre\+Prenda, required this.\+talla, required this.\+cantidad, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a341b15e56bdce4e77a6cbdbb2804a2eb}\index{StatefulWidget@{StatefulWidget}!AgregarPedidoScreen@{AgregarPedidoScreen}}
+\index{AgregarPedidoScreen@{AgregarPedidoScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{AgregarPedidoScreen()}{AgregarPedidoScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a341b15e56bdce4e77a6cbdbb2804a2eb} 
+const Stateful\+Widget\+::\+Agregar\+Pedido\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a5eb5cd5d80d684ae46ef82f21b653aa4}\index{StatefulWidget@{StatefulWidget}!AgregarPrendasPedidoScreen@{AgregarPrendasPedidoScreen}}
+\index{AgregarPrendasPedidoScreen@{AgregarPrendasPedidoScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{AgregarPrendasPedidoScreen()}{AgregarPrendasPedidoScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a5eb5cd5d80d684ae46ef82f21b653aa4} 
+const Stateful\+Widget\+::\+Agregar\+Prendas\+Pedido\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a08e64b916e464c579b0a0282bc90265d}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [1/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a08e64b916e464c579b0a0282bc90265d} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a536e74dc58c4898dc783f93126f94b39}{Administrar\+Cantidad\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a7198be658851c914b4f5735e1b0be4a7}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [2/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a7198be658851c914b4f5735e1b0be4a7} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_add8e33cd9e32cec8d2ac33e07d735f75}{Administrar\+Prenda\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a40a66a40b998e25ada2e0adaf5a953b1}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [3/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a40a66a40b998e25ada2e0adaf5a953b1} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a5eb5cd5d80d684ae46ef82f21b653aa4}{Agregar\+Prendas\+Pedido\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_ae90e317890191c68c1dc79300c38ed80}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [4/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_ae90e317890191c68c1dc79300c38ed80} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_ab012979f79a5444b20e28fb762a70e4d}{Exito\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a9efde1c4b41870f19d56efae6091915c}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [5/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a9efde1c4b41870f19d56efae6091915c} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a9176246b19c9247c62a074664f3a4cac}{Login\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a045f10a8db1965a71dbccbd7da2807c4}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [6/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a045f10a8db1965a71dbccbd7da2807c4} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a341b15e56bdce4e77a6cbdbb2804a2eb}{Agregar\+Pedido\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a15c568b1fa801e1a897905cf2e44e82a}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [7/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a15c568b1fa801e1a897905cf2e44e82a} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a58e50ea3d422b75af81caf361903e1e9}{Pedidos\+Pendientes\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a3fee2be7771e49769eb6a1c257a9d72c}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [8/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a3fee2be7771e49769eb6a1c257a9d72c} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a8d901fbb676ac1b827ff1737a9719b84}{QRScanner\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a834dddaeb5a1784c6380333582abd21e}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [9/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a834dddaeb5a1784c6380333582abd21e} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a82b1714847f75f1d8bc47d0f1d453dd6}{Registrar\+Prenda\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a44905be11374bacfa03d92abb3d3ed79}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [10/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a44905be11374bacfa03d92abb3d3ed79} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a1e82d99d7da35729addf00d7206d11b5}{Revisar\+Pedido\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a397daab3424e96edf9be2b8b0eb67421}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [11/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a397daab3424e96edf9be2b8b0eb67421} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_ad78f01daa8e8e08d2d9d2642bf624515}{Revisar\+Venta\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_af6d70de0c9237bc895aa8a7a290c31bf}\index{StatefulWidget@{StatefulWidget}!createState@{createState}}
+\index{createState@{createState}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}\hspace{0.1cm}{\footnotesize\ttfamily [12/12]}}
+{\footnotesize\ttfamily \label{class_stateful_widget_af6d70de0c9237bc895aa8a7a290c31bf} 
+override State$<$ \mbox{\hyperlink{class_stateful_widget_a77df21df9ae1992b34898ad44f0e292d}{Ventas\+Screen}} $>$ Stateful\+Widget\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_ab012979f79a5444b20e28fb762a70e4d}\index{StatefulWidget@{StatefulWidget}!ExitoScreen@{ExitoScreen}}
+\index{ExitoScreen@{ExitoScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{ExitoScreen()}{ExitoScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_ab012979f79a5444b20e28fb762a70e4d} 
+const Stateful\+Widget\+::\+Exito\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor principal de la clase \mbox{[}Exito\+Screen\mbox{]}. 
+
+\Hypertarget{class_stateful_widget_a522434333668568c75e3ab6f297d142a}\index{StatefulWidget@{StatefulWidget}!Function@{Function}}
+\index{Function@{Function}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{Function()}{Function()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a522434333668568c75e3ab6f297d142a} 
+final Future$<$ \mbox{\hyperlink{qr__screen_8dart_a988c3d04b4978ac42fe885a291eb2f38}{Scan\+Feedback}} $>$ Stateful\+Widget\+::\+Function (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Callback que cada pantalla define para procesar el QR. 
+
+\Hypertarget{class_stateful_widget_a9176246b19c9247c62a074664f3a4cac}\index{StatefulWidget@{StatefulWidget}!LoginScreen@{LoginScreen}}
+\index{LoginScreen@{LoginScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{LoginScreen()}{LoginScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a9176246b19c9247c62a074664f3a4cac} 
+const Stateful\+Widget\+::\+Login\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a58e50ea3d422b75af81caf361903e1e9}\index{StatefulWidget@{StatefulWidget}!PedidosPendientesScreen@{PedidosPendientesScreen}}
+\index{PedidosPendientesScreen@{PedidosPendientesScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{PedidosPendientesScreen()}{PedidosPendientesScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a58e50ea3d422b75af81caf361903e1e9} 
+const Stateful\+Widget\+::\+Pedidos\+Pendientes\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor por defecto de la pantalla de pedidos pendientes. 
+
+\Hypertarget{class_stateful_widget_a8d901fbb676ac1b827ff1737a9719b84}\index{StatefulWidget@{StatefulWidget}!QRScannerScreen@{QRScannerScreen}}
+\index{QRScannerScreen@{QRScannerScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{QRScannerScreen()}{QRScannerScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a8d901fbb676ac1b827ff1737a9719b84} 
+const Stateful\+Widget\+::\+QRScanner\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, required this.\+on\+Scan, this.\+mostrar\+Mensaje=true, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a82b1714847f75f1d8bc47d0f1d453dd6}\index{StatefulWidget@{StatefulWidget}!RegistrarPrendaScreen@{RegistrarPrendaScreen}}
+\index{RegistrarPrendaScreen@{RegistrarPrendaScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{RegistrarPrendaScreen()}{RegistrarPrendaScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a82b1714847f75f1d8bc47d0f1d453dd6} 
+const Stateful\+Widget\+::\+Registrar\+Prenda\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, required this.\+registrar\+Inventario\+Use\+Case, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor que recibe el caso de uso responsable de registrar el inventario. 
+
+\Hypertarget{class_stateful_widget_a1e82d99d7da35729addf00d7206d11b5}\index{StatefulWidget@{StatefulWidget}!RevisarPedidoScreen@{RevisarPedidoScreen}}
+\index{RevisarPedidoScreen@{RevisarPedidoScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{RevisarPedidoScreen()}{RevisarPedidoScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a1e82d99d7da35729addf00d7206d11b5} 
+const Stateful\+Widget\+::\+Revisar\+Pedido\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, required this.\+id\+Pedido, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructor principal de la pantalla de revisión de pedidos. 
+
+\Hypertarget{class_stateful_widget_ad78f01daa8e8e08d2d9d2642bf624515}\index{StatefulWidget@{StatefulWidget}!RevisarVentaScreen@{RevisarVentaScreen}}
+\index{RevisarVentaScreen@{RevisarVentaScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{RevisarVentaScreen()}{RevisarVentaScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_ad78f01daa8e8e08d2d9d2642bf624515} 
+const Stateful\+Widget\+::\+Revisar\+Venta\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, required this.\+id\+Venta, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a77df21df9ae1992b34898ad44f0e292d}\index{StatefulWidget@{StatefulWidget}!VentasScreen@{VentasScreen}}
+\index{VentasScreen@{VentasScreen}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{VentasScreen()}{VentasScreen()}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a77df21df9ae1992b34898ad44f0e292d} 
+const Stateful\+Widget\+::\+Ventas\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_stateful_widget_acb533634754f93d112137035d9ad242c}\index{StatefulWidget@{StatefulWidget}!cantidad@{cantidad}}
+\index{cantidad@{cantidad}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{cantidad}{cantidad}}
+{\footnotesize\ttfamily \label{class_stateful_widget_acb533634754f93d112137035d9ad242c} 
+final int Stateful\+Widget\+::cantidad\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cantidad inicial de unidades disponibles al abrir la pantalla. 
+
+\Hypertarget{class_stateful_widget_aeece363982a0b15087ca41810471b681}\index{StatefulWidget@{StatefulWidget}!idInventario@{idInventario}}
+\index{idInventario@{idInventario}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{idInventario}{idInventario}}
+{\footnotesize\ttfamily \label{class_stateful_widget_aeece363982a0b15087ca41810471b681} 
+final int Stateful\+Widget\+::id\+Inventario\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identificador único del inventario a administrar. 
+
+Identificador único del registro de inventario. \Hypertarget{class_stateful_widget_ab4a7a39b875f2464f1361838e6ab8e38}\index{StatefulWidget@{StatefulWidget}!idPedido@{idPedido}}
+\index{idPedido@{idPedido}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{idPedido}{idPedido}}
+{\footnotesize\ttfamily \label{class_stateful_widget_ab4a7a39b875f2464f1361838e6ab8e38} 
+final int Stateful\+Widget\+::id\+Pedido\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identificador único del pedido que será consultado. 
+
+\Hypertarget{class_stateful_widget_a1a25ee91bc57bae2b36bdb7ab718caeb}\index{StatefulWidget@{StatefulWidget}!idVenta@{idVenta}}
+\index{idVenta@{idVenta}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{idVenta}{idVenta}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a1a25ee91bc57bae2b36bdb7ab718caeb} 
+final int Stateful\+Widget\+::id\+Venta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identificador de la venta a revisar. 
+
+\Hypertarget{class_stateful_widget_a448cc722ad543c53daddbf61e4bd3783}\index{StatefulWidget@{StatefulWidget}!mostrarMensaje@{mostrarMensaje}}
+\index{mostrarMensaje@{mostrarMensaje}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{mostrarMensaje}{mostrarMensaje}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a448cc722ad543c53daddbf61e4bd3783} 
+final bool Stateful\+Widget\+::mostrar\+Mensaje\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica si se debe mostrar el mensaje de feedback en pantalla. 
+
+\Hypertarget{class_stateful_widget_af6a7bcb3ac6edd6293da205c06b72697}\index{StatefulWidget@{StatefulWidget}!nombreEscuela@{nombreEscuela}}
+\index{nombreEscuela@{nombreEscuela}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{nombreEscuela}{nombreEscuela}}
+{\footnotesize\ttfamily \label{class_stateful_widget_af6a7bcb3ac6edd6293da205c06b72697} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateful\+Widget\+::nombre\+Escuela\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nombre de la escuela asociada al inventario. 
+
+\Hypertarget{class_stateful_widget_a9f80187fd131d65fec2ae52920dfd373}\index{StatefulWidget@{StatefulWidget}!nombrePrenda@{nombrePrenda}}
+\index{nombrePrenda@{nombrePrenda}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{nombrePrenda}{nombrePrenda}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a9f80187fd131d65fec2ae52920dfd373} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateful\+Widget\+::nombre\+Prenda\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nombre de la prenda asociada al inventario. 
+
+\Hypertarget{class_stateful_widget_aa93ca6439b5c45aeb185aeee685adaf2}\index{StatefulWidget@{StatefulWidget}!registrarInventarioUseCase@{registrarInventarioUseCase}}
+\index{registrarInventarioUseCase@{registrarInventarioUseCase}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{registrarInventarioUseCase}{registrarInventarioUseCase}}
+{\footnotesize\ttfamily \label{class_stateful_widget_aa93ca6439b5c45aeb185aeee685adaf2} 
+final \mbox{\hyperlink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}} Stateful\+Widget\+::registrar\+Inventario\+Use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_stateful_widget_a3dc3168c99448719211a5dd95081fd87}\index{StatefulWidget@{StatefulWidget}!talla@{talla}}
+\index{talla@{talla}!StatefulWidget@{StatefulWidget}}
+\doxysubsubsection{\texorpdfstring{talla}{talla}}
+{\footnotesize\ttfamily \label{class_stateful_widget_a3dc3168c99448719211a5dd95081fd87} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Stateful\+Widget\+::talla\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Talla de la prenda. 
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+lib/presentation/screens/\mbox{\hyperlink{administrar__cantidad__screen_8dart}{administrar\+\_\+cantidad\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{administrar__prenda__screen_8dart}{administrar\+\_\+prenda\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{qr__screen_8dart}{qr\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{registrar__prenda__screen_8dart}{registrar\+\_\+prenda\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{revisar__pedido__screen_8dart}{revisar\+\_\+pedido\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{revisar__venta__screen_8dart}{revisar\+\_\+venta\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{agregar__prendas__pedido__screen_8dart}{agregar\+\_\+prendas\+\_\+pedido\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{exito__screen_8dart}{exito\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{login__screen_8dart}{login\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{nueva__orden__screen_8dart}{nueva\+\_\+orden\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{pedidos__pendientes__screen_8dart}{pedidos\+\_\+pendientes\+\_\+screen.\+dart}}\item 
+lib/presentation/screens/\mbox{\hyperlink{ventas__screen_8dart}{ventas\+\_\+screen.\+dart}}\end{DoxyCompactItemize}

@@ -1,0 +1,141 @@
+\doxysection{Referencia de la clase Usuario\+Repository}
+\hypertarget{class_usuario_repository}{}\label{class_usuario_repository}\index{UsuarioRepository@{UsuarioRepository}}
+
+
+Repositorio encargado de gestionar las operaciones CRUD relacionadas con usuarios del sistema.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_usuario_repository_a3495d561182b17f339a42c69965af8d0}{insertar}} (Usuario usuario) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta un nuevo usuario en la base de datos. \end{DoxyCompactList}\item 
+Future$<$ Usuario?$>$ \mbox{\hyperlink{class_usuario_repository_a2da65b89de558ff00de4411d90e17d2d}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene un usuario mediante su identificador. \end{DoxyCompactList}\item 
+Future$<$ Usuario?$>$ \mbox{\hyperlink{class_usuario_repository_a8103b4f4f8aeedd79cb31f21a63edf3a}{obtener\+Por\+Usuario}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} usuario) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene un usuario utilizando el nombre de usuario. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Usuario $>$ $>$ \mbox{\hyperlink{class_usuario_repository_a15e026a0433835b777123128d31b7fb9}{obtener\+Todos}} () \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todos los usuarios registrados ordenados alfabéticamente por nombre. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Usuario $>$ $>$ \mbox{\hyperlink{class_usuario_repository_ae695c34902442f8b1bd9900f85190938}{obtener\+Activos}} () \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene únicamente los usuarios activos. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_usuario_repository_a185d3dbbc8c876fc5fcc74b63bdeb042}{actualizar}} (Usuario usuario) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Actualiza la información de un usuario existente. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_usuario_repository_adc1c59f3b5cdb9d8591983882273acdc}{desactivar}} (int id) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Desactiva un usuario de manera lógica. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_usuario_repository_af44b358d1f2f2f8a21ea66ecbb2f884b}{eliminar}} (int id) \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina un usuario mediante su identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar las operaciones CRUD relacionadas con usuarios del sistema. 
+
+Incluye consultas de autenticación lógica, administración de estados y mantenimiento de registros. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_usuario_repository_a185d3dbbc8c876fc5fcc74b63bdeb042}\index{UsuarioRepository@{UsuarioRepository}!actualizar@{actualizar}}
+\index{actualizar@{actualizar}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{actualizar()}{actualizar()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a185d3dbbc8c876fc5fcc74b63bdeb042} 
+Future$<$ int $>$ Usuario\+Repository\+::actualizar (\begin{DoxyParamCaption}\item[{Usuario}]{usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza la información de un usuario existente. 
+
+La operación utiliza el identificador primario como criterio de actualización. \Hypertarget{class_usuario_repository_adc1c59f3b5cdb9d8591983882273acdc}\index{UsuarioRepository@{UsuarioRepository}!desactivar@{desactivar}}
+\index{desactivar@{desactivar}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{desactivar()}{desactivar()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_adc1c59f3b5cdb9d8591983882273acdc} 
+Future$<$ int $>$ Usuario\+Repository\+::desactivar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Desactiva un usuario de manera lógica. 
+
+La operación conserva el registro en la base de datos pero impide que sea considerado activo. \Hypertarget{class_usuario_repository_af44b358d1f2f2f8a21ea66ecbb2f884b}\index{UsuarioRepository@{UsuarioRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_af44b358d1f2f2f8a21ea66ecbb2f884b} 
+Future$<$ int $>$ Usuario\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un usuario mediante su identificador. 
+
+\Hypertarget{class_usuario_repository_a3495d561182b17f339a42c69965af8d0}\index{UsuarioRepository@{UsuarioRepository}!insertar@{insertar}}
+\index{insertar@{insertar}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a3495d561182b17f339a42c69965af8d0} 
+Future$<$ int $>$ Usuario\+Repository\+::insertar (\begin{DoxyParamCaption}\item[{Usuario}]{usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta un nuevo usuario en la base de datos. 
+
+El identificador primario es removido del mapa antes de la inserción para permitir autoincremento.
+
+La operación utiliza conflicto tipo abort para evitar registros inválidos o duplicados. \Hypertarget{class_usuario_repository_ae695c34902442f8b1bd9900f85190938}\index{UsuarioRepository@{UsuarioRepository}!obtenerActivos@{obtenerActivos}}
+\index{obtenerActivos@{obtenerActivos}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerActivos()}{obtenerActivos()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_ae695c34902442f8b1bd9900f85190938} 
+Future$<$ List$<$ Usuario $>$ $>$ Usuario\+Repository\+::obtener\+Activos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene únicamente los usuarios activos. 
+
+Los registros desactivados son excluidos del resultado. \Hypertarget{class_usuario_repository_a2da65b89de558ff00de4411d90e17d2d}\index{UsuarioRepository@{UsuarioRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a2da65b89de558ff00de4411d90e17d2d} 
+Future$<$ Usuario?$>$ Usuario\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene un usuario mediante su identificador. 
+
+Retorna null cuando no existe un registro asociado. \Hypertarget{class_usuario_repository_a8103b4f4f8aeedd79cb31f21a63edf3a}\index{UsuarioRepository@{UsuarioRepository}!obtenerPorUsuario@{obtenerPorUsuario}}
+\index{obtenerPorUsuario@{obtenerPorUsuario}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorUsuario()}{obtenerPorUsuario()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a8103b4f4f8aeedd79cb31f21a63edf3a} 
+Future$<$ Usuario?$>$ Usuario\+Repository\+::obtener\+Por\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{usuario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene un usuario utilizando el nombre de usuario. 
+
+Esta operación puede ser utilizada para procesos de autenticación o validación de existencia.
+
+Retorna null cuando no existe coincidencia. \Hypertarget{class_usuario_repository_a15e026a0433835b777123128d31b7fb9}\index{UsuarioRepository@{UsuarioRepository}!obtenerTodos@{obtenerTodos}}
+\index{obtenerTodos@{obtenerTodos}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodos()}{obtenerTodos()}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a15e026a0433835b777123128d31b7fb9} 
+Future$<$ List$<$ Usuario $>$ $>$ Usuario\+Repository\+::obtener\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todos los usuarios registrados ordenados alfabéticamente por nombre. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a}\index{UsuarioRepository@{UsuarioRepository}!async@{async}}
+\index{async@{async}!UsuarioRepository@{UsuarioRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_usuario_repository_a17afe0dc738120efc550785c7a507a0a} 
+Future$<$Database$>$ get \+\_\+db Usuario\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{usuario__repository_8dart}{usuario\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

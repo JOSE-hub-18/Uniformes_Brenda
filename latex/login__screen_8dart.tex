@@ -1,0 +1,121 @@
+\doxysection{Referencia del archivo lib/presentation/screens/login\+\_\+screen.dart}
+\hypertarget{login__screen_8dart}{}\label{login__screen_8dart}\index{lib/presentation/screens/login\_screen.dart@{lib/presentation/screens/login\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}}
+\begin{DoxyCompactList}\small\item\em Widget raíz de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{login__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+override void \mbox{\hyperlink{login__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}{dispose}} ()
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{login__screen_8dart_a43434bacd8d5cfe3971c803cec81283a}{\+\_\+handle\+Login}} () async
+\begin{DoxyCompactList}\small\item\em Método que se ejecuta al presionar "{}\+Entrar"{}. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{login__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}{build}} (Build\+Context context)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Login\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{login__screen_8dart_ae67a3fb51b0b070de65742e8699c17c3}{\+\_\+usuario\+Controller}} = Text\+Editing\+Controller()
+\begin{DoxyCompactList}\small\item\em Estado asociado a \mbox{[}Login\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{login__screen_8dart_a9396e184b8a63e4f1f5ad9d9ae640b5f}{\+\_\+password\+Controller}} = Text\+Editing\+Controller()
+\item 
+bool \mbox{\hyperlink{login__screen_8dart_a8a23f22e27e70821503e2a74d1a6f4d4}{\+\_\+ver\+Password}} = false
+\item 
+late Animation\+Controller \mbox{\hyperlink{login__screen_8dart_af3f79ae00350545e4eba4581d7057959}{\+\_\+anim\+Controller}}
+\item 
+late Animation$<$ double $>$ \mbox{\hyperlink{login__screen_8dart_aef83c2112861cf2932eb29c5fee6b353}{\+\_\+fade\+Anim}}
+\item 
+late Animation$<$ Offset $>$ \mbox{\hyperlink{login__screen_8dart_a14e269e30e4538797d5cd231ab2e919d}{\+\_\+slide\+Anim}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{login__screen_8dart_a43434bacd8d5cfe3971c803cec81283a}\index{login\_screen.dart@{login\_screen.dart}!\_handleLogin@{\_handleLogin}}
+\index{\_handleLogin@{\_handleLogin}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_handleLogin()}{\_handleLogin()}}
+{\footnotesize\ttfamily \label{login__screen_8dart_a43434bacd8d5cfe3971c803cec81283a} 
+Future$<$ void $>$ \+\_\+handle\+Login (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Método que se ejecuta al presionar "{}\+Entrar"{}. 
+
+
+\begin{DoxyItemize}
+\item Obtiene el \mbox{[}Auth\+Provider\mbox{]} sin suscribirse a cambios.
+\item Llama a {\ttfamily login} del proveedor con los valores de los controladores.
+\item Si la autenticación es exitosa navega a la ruta \textquotesingle{}/home\textquotesingle{} pasando el usuario.
+\item Maneja el estado {\ttfamily mounted} antes de realizar navegación para evitar errores. 
+\end{DoxyItemize}\Hypertarget{login__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}\index{login\_screen.dart@{login\_screen.dart}!build@{build}}
+\index{build@{build}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{login__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{login__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}\index{login\_screen.dart@{login\_screen.dart}!dispose@{dispose}}
+\index{dispose@{dispose}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily \label{login__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2} 
+override void dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{login__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{login\_screen.dart@{login\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{login__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{login__screen_8dart_af3f79ae00350545e4eba4581d7057959}\index{login\_screen.dart@{login\_screen.dart}!\_animController@{\_animController}}
+\index{\_animController@{\_animController}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_animController}{\_animController}}
+{\footnotesize\ttfamily \label{login__screen_8dart_af3f79ae00350545e4eba4581d7057959} 
+late Animation\+Controller \+\_\+anim\+Controller}
+
+\Hypertarget{login__screen_8dart_aef83c2112861cf2932eb29c5fee6b353}\index{login\_screen.dart@{login\_screen.dart}!\_fadeAnim@{\_fadeAnim}}
+\index{\_fadeAnim@{\_fadeAnim}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_fadeAnim}{\_fadeAnim}}
+{\footnotesize\ttfamily \label{login__screen_8dart_aef83c2112861cf2932eb29c5fee6b353} 
+late Animation$<$double$>$ \+\_\+fade\+Anim}
+
+\Hypertarget{login__screen_8dart_a9396e184b8a63e4f1f5ad9d9ae640b5f}\index{login\_screen.dart@{login\_screen.dart}!\_passwordController@{\_passwordController}}
+\index{\_passwordController@{\_passwordController}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_passwordController}{\_passwordController}}
+{\footnotesize\ttfamily \label{login__screen_8dart_a9396e184b8a63e4f1f5ad9d9ae640b5f} 
+final \+\_\+password\+Controller = Text\+Editing\+Controller()}
+
+\Hypertarget{login__screen_8dart_a14e269e30e4538797d5cd231ab2e919d}\index{login\_screen.dart@{login\_screen.dart}!\_slideAnim@{\_slideAnim}}
+\index{\_slideAnim@{\_slideAnim}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_slideAnim}{\_slideAnim}}
+{\footnotesize\ttfamily \label{login__screen_8dart_a14e269e30e4538797d5cd231ab2e919d} 
+late Animation$<$Offset$>$ \+\_\+slide\+Anim}
+
+\Hypertarget{login__screen_8dart_ae67a3fb51b0b070de65742e8699c17c3}\index{login\_screen.dart@{login\_screen.dart}!\_usuarioController@{\_usuarioController}}
+\index{\_usuarioController@{\_usuarioController}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_usuarioController}{\_usuarioController}}
+{\footnotesize\ttfamily \label{login__screen_8dart_ae67a3fb51b0b070de65742e8699c17c3} 
+class Login\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+usuario\+Controller = Text\+Editing\+Controller()}
+
+
+
+Estado asociado a \mbox{[}Login\+Screen\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Mantiene controladores de texto para los campos de entrada.
+\item Controla la visibilidad de la contraseña y las animaciones de entrada.
+\item Gestiona la interacción con \mbox{[}Auth\+Provider\mbox{]} para realizar el login. 
+\end{DoxyItemize}\Hypertarget{login__screen_8dart_a8a23f22e27e70821503e2a74d1a6f4d4}\index{login\_screen.dart@{login\_screen.dart}!\_verPassword@{\_verPassword}}
+\index{\_verPassword@{\_verPassword}!login\_screen.dart@{login\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_verPassword}{\_verPassword}}
+{\footnotesize\ttfamily \label{login__screen_8dart_a8a23f22e27e70821503e2a74d1a6f4d4} 
+bool \+\_\+ver\+Password = false}
+

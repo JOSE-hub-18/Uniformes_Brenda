@@ -1,0 +1,136 @@
+\doxysection{Referencia del archivo lib/presentation/screens/reportes\+\_\+screen.dart}
+\hypertarget{reportes__screen_8dart}{}\label{reportes__screen_8dart}\index{lib/presentation/screens/reportes\_screen.dart@{lib/presentation/screens/reportes\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}}
+\begin{DoxyCompactList}\small\item\em Widget raíz de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{reportes__screen_8dart_a03391f6a0f069746bd0cd0a1b0770db7}{Reportes\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{reportes__screen_8dart_a6b804f4946e54bbd9b180dadad675a85}{\+\_\+\+Reportes\+View}} ()
+\begin{DoxyCompactList}\small\item\em Vista que consume \mbox{[}Reportes\+Provider\mbox{]} y renderiza la UI de reportes. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{reportes__screen_8dart_a03391f6a0f069746bd0cd0a1b0770db7}{Reportes\+Screen}} (\{super.\+key\})
+\item 
+override Widget \mbox{\hyperlink{reportes__screen_8dart_a0275b50784a9c0bd8142f18e67736da2}{build}} (Build\+Context context)
+\item 
+const \mbox{\hyperlink{reportes__screen_8dart_aa482a0b00d29062a5189170bfc58707b}{\+\_\+\+Section\+Title}} (\{required \mbox{\hyperlink{reportes__screen_8dart_a9e62a4c5de691617cdbfa7226f2ba36d}{this.\+titulo}}\})
+\item 
+const \mbox{\hyperlink{reportes__screen_8dart_ad3156604d89fa916cfbf9f7b5311849a}{\+\_\+\+Ranking\+Item}} (\{ required \mbox{\hyperlink{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}{this.\+nombre}}, required \mbox{\hyperlink{reportes__screen_8dart_a476f061ab5ad22c117a78a269454096d}{this.\+monto}}, required \mbox{\hyperlink{reportes__screen_8dart_a3eeeeac6cdc2ee3e5a002df84f6916a0}{this.\+subtitulo}}, required \mbox{\hyperlink{reportes__screen_8dart_a4ce8a3909f1f50040c1c5646c3e469ee}{this.\+proporcion}}, \})
+\item 
+const \mbox{\hyperlink{reportes__screen_8dart_a9cfe8fd60cec7b890b20fa96eaf65036}{\+\_\+\+Empty\+State}} (\{required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}\})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class \+\_\+\+Filtros\+Section extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{reportes__screen_8dart_a9e62a4c5de691617cdbfa7226f2ba36d}{titulo}}
+\begin{DoxyCompactList}\small\item\em Widget simple para mostrar títulos de sección en mayúsculas y estilo pequeño. \end{DoxyCompactList}\item 
+class \+\_\+\+Stat\+Card extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}{nombre}}
+\begin{DoxyCompactList}\small\item\em Modelo simple que representa un elemento del ranking. \end{DoxyCompactList}\item 
+final double \mbox{\hyperlink{reportes__screen_8dart_a476f061ab5ad22c117a78a269454096d}{monto}}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{reportes__screen_8dart_a3eeeeac6cdc2ee3e5a002df84f6916a0}{subtitulo}}
+\item 
+final double \mbox{\hyperlink{reportes__screen_8dart_a4ce8a3909f1f50040c1c5646c3e469ee}{proporcion}}
+\item 
+class \+\_\+\+Ranking\+Card extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{reportes__screen_8dart_a7d372428343f944dab91c67173b35438}{mensaje}}
+\begin{DoxyCompactList}\small\item\em Widget que muestra un estado vacío con icono y mensaje. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{reportes__screen_8dart_a9cfe8fd60cec7b890b20fa96eaf65036}\index{reportes\_screen.dart@{reportes\_screen.dart}!\_EmptyState@{\_EmptyState}}
+\index{\_EmptyState@{\_EmptyState}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_EmptyState()}{\_EmptyState()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a9cfe8fd60cec7b890b20fa96eaf65036} 
+const \+\_\+\+Empty\+State (\begin{DoxyParamCaption}\item[{\{required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}\}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{reportes__screen_8dart_ad3156604d89fa916cfbf9f7b5311849a}\index{reportes\_screen.dart@{reportes\_screen.dart}!\_RankingItem@{\_RankingItem}}
+\index{\_RankingItem@{\_RankingItem}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_RankingItem()}{\_RankingItem()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_ad3156604d89fa916cfbf9f7b5311849a} 
+const \+\_\+\+Ranking\+Item (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}{this.\+nombre}}, required \mbox{\hyperlink{reportes__screen_8dart_a476f061ab5ad22c117a78a269454096d}{this.\+monto}}, required \mbox{\hyperlink{reportes__screen_8dart_a3eeeeac6cdc2ee3e5a002df84f6916a0}{this.\+subtitulo}}, required \mbox{\hyperlink{reportes__screen_8dart_a4ce8a3909f1f50040c1c5646c3e469ee}{this.\+proporcion}}, \}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{reportes__screen_8dart_a6b804f4946e54bbd9b180dadad675a85}\index{reportes\_screen.dart@{reportes\_screen.dart}!\_ReportesView@{\_ReportesView}}
+\index{\_ReportesView@{\_ReportesView}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_ReportesView()}{\_ReportesView()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a6b804f4946e54bbd9b180dadad675a85} 
+class \mbox{\hyperlink{reportes__screen_8dart_a03391f6a0f069746bd0cd0a1b0770db7}{Reportes\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \+\_\+\+Reportes\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vista que consume \mbox{[}Reportes\+Provider\mbox{]} y renderiza la UI de reportes. 
+
+
+\begin{DoxyItemize}
+\item Muestra filtros (año, mes, escuela), resumen de métricas y rankings.
+\item Gestiona estados\+: cargando, vacío o con datos. 
+\end{DoxyItemize}\Hypertarget{reportes__screen_8dart_aa482a0b00d29062a5189170bfc58707b}\index{reportes\_screen.dart@{reportes\_screen.dart}!\_SectionTitle@{\_SectionTitle}}
+\index{\_SectionTitle@{\_SectionTitle}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_SectionTitle()}{\_SectionTitle()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_aa482a0b00d29062a5189170bfc58707b} 
+const \+\_\+\+Section\+Title (\begin{DoxyParamCaption}\item[{\{required \mbox{\hyperlink{reportes__screen_8dart_a9e62a4c5de691617cdbfa7226f2ba36d}{this.\+titulo}}\}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{reportes__screen_8dart_a0275b50784a9c0bd8142f18e67736da2}\index{reportes\_screen.dart@{reportes\_screen.dart}!build@{build}}
+\index{build@{build}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a0275b50784a9c0bd8142f18e67736da2} 
+override Widget \+\_\+\+Reportes\+View\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{reportes__screen_8dart_a03391f6a0f069746bd0cd0a1b0770db7}\index{reportes\_screen.dart@{reportes\_screen.dart}!ReportesScreen@{ReportesScreen}}
+\index{ReportesScreen@{ReportesScreen}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{ReportesScreen()}{ReportesScreen()}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a03391f6a0f069746bd0cd0a1b0770db7} 
+const \+\_\+\+Reportes\+View\+::\+Reportes\+Screen (\begin{DoxyParamCaption}\item[{\{super.\+key\}}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{reportes__screen_8dart_a7d372428343f944dab91c67173b35438}\index{reportes\_screen.dart@{reportes\_screen.dart}!mensaje@{mensaje}}
+\index{mensaje@{mensaje}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{mensaje}{mensaje}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a7d372428343f944dab91c67173b35438} 
+class \+\_\+\+Ranking\+Card extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} mensaje}
+
+
+
+Widget que muestra un estado vacío con icono y mensaje. 
+
+\Hypertarget{reportes__screen_8dart_a476f061ab5ad22c117a78a269454096d}\index{reportes\_screen.dart@{reportes\_screen.dart}!monto@{monto}}
+\index{monto@{monto}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{monto}{monto}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a476f061ab5ad22c117a78a269454096d} 
+final double monto}
+
+\Hypertarget{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}\index{reportes\_screen.dart@{reportes\_screen.dart}!nombre@{nombre}}
+\index{nombre@{nombre}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{nombre}{nombre}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270} 
+class \+\_\+\+Stat\+Card extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} nombre}
+
+
+
+Modelo simple que representa un elemento del ranking. 
+
+\Hypertarget{reportes__screen_8dart_a4ce8a3909f1f50040c1c5646c3e469ee}\index{reportes\_screen.dart@{reportes\_screen.dart}!proporcion@{proporcion}}
+\index{proporcion@{proporcion}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{proporcion}{proporcion}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a4ce8a3909f1f50040c1c5646c3e469ee} 
+final double proporcion}
+
+\Hypertarget{reportes__screen_8dart_a3eeeeac6cdc2ee3e5a002df84f6916a0}\index{reportes\_screen.dart@{reportes\_screen.dart}!subtitulo@{subtitulo}}
+\index{subtitulo@{subtitulo}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{subtitulo}{subtitulo}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a3eeeeac6cdc2ee3e5a002df84f6916a0} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} subtitulo}
+
+\Hypertarget{reportes__screen_8dart_a9e62a4c5de691617cdbfa7226f2ba36d}\index{reportes\_screen.dart@{reportes\_screen.dart}!titulo@{titulo}}
+\index{titulo@{titulo}!reportes\_screen.dart@{reportes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{titulo}{titulo}}
+{\footnotesize\ttfamily \label{reportes__screen_8dart_a9e62a4c5de691617cdbfa7226f2ba36d} 
+class \+\_\+\+Filtros\+Section extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} titulo}
+
+
+
+Widget simple para mostrar títulos de sección en mayúsculas y estilo pequeño. 
+

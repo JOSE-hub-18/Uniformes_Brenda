@@ -1,0 +1,1747 @@
+\doxysection{Referencia de la clase Change\+Notifier}
+\hypertarget{class_change_notifier}{}\label{class_change_notifier}\index{ChangeNotifier@{ChangeNotifier}}
+
+
+Proveedor de estado para la autenticación de usuarios.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_change_notifier_a51cabe1941c2545d0ebf66a6a30115cd}{login}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} usuario, \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} password) async
+\begin{DoxyCompactList}\small\item\em Ejecuta el flujo de autenticación con las credenciales proporcionadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a319bd8d68b6d79d32387a5d913921b75}{logout}} ()
+\begin{DoxyCompactList}\small\item\em Cierra la sesión del usuario actual limpiando el estado de autenticación. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a5394f91812cb82451081a62d49445340}{limpiar\+Error}} ()
+\begin{DoxyCompactList}\small\item\em Limpia el mensaje de error actual y notifica a los listeners. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_change_notifier_ae23904197ecb877e9dc29ceea81ec1fa}{Inventario\+Provider}} ()
+\begin{DoxyCompactList}\small\item\em Constructor que dispara la carga inicial de catálogos al instanciar el proveedor. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a09d47b51978ec780912a531aa7026c90}{\+\_\+inicializar\+Datos}} () async
+\begin{DoxyCompactList}\small\item\em Carga los catálogos de escuelas y prendas necesarios para el funcionamiento del módulo. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a8ea961400d5cec5f0a737383e3efe42b}{cargar\+Inventario}} (int id\+Escuela) async
+\begin{DoxyCompactList}\small\item\em Carga el inventario filtrado por la escuela indicada y, opcionalmente, por la prenda actualmente seleccionada. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a5f399f72b5dbf3c5c2a6ebc2d7d291a0}{seleccionar\+Prenda}} (int? id\+Prenda) async
+\begin{DoxyCompactList}\small\item\em Actualiza el filtro de prenda seleccionada y recarga el inventario si hay una escuela activa. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a2b70c381b1cbe7ddb63572fd6633d4ac}{recargar\+Escuelas}} () async
+\begin{DoxyCompactList}\small\item\em Recarga el catálogo de escuelas desde el repositorio y, si hay una escuela seleccionada, recarga también el inventario activo para reflejar cualquier cambio reciente en los datos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_ab788adca0735500dc559fc7390d16b14}{cargar\+Alertas}} () async
+\begin{DoxyCompactList}\small\item\em Ejecuta \mbox{[}Alertas\+Stock\+Use\+Case.\+obtener\+Alertas\mbox{]} y actualiza el estado local. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_ae9ae4ef80a0dfd27e01be7945637b2d5}{refrescar}} () async
+\begin{DoxyCompactList}\small\item\em Actualiza las alertas desde el caso de uso sin activar el indicador de carga. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}{limpiar}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia las listas de alertas a vacío y notifica a los listeners. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a98c8b0eb906b1e7240498ae988909ca7}{set\+User\+Name}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} name)
+\begin{DoxyCompactList}\small\item\em Actualiza el nombre del usuario y notifica a los listeners. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a8abf39f1cf20f8837873c0f7103f98df}{navigate\+To\+Inventory}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Navega a la pantalla de inventario. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a9773de3af8c3f237c5dacb18b5d74653}{navigate\+To\+Orders}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Navega a la pantalla de órdenes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a6f212a3aa9f13c073faed72683bd7af1}{navigate\+To\+New\+Order}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Navega a la pantalla de nueva orden. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_af77dcc8312872055c92ba9c5f993d352}{cargar\+Inventario}} () async
+\begin{DoxyCompactList}\small\item\em Obtiene el inventario completo desde \mbox{[}\doxylink{class_inventario_repository}{Inventario\+Repository}\mbox{]} y notifica a los listeners. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a1db1386d0a4ac029982b1d5f8ef4939e}{agregar\+Qr}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr) async
+\begin{DoxyCompactList}\small\item\em Agrega un item a la orden mediante escaneo de QR, correspondiente a una venta. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_aadbbc6b0992c543461f58cefd393c986}{agregar\+Manual}} (\{required int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}\}) async
+\begin{DoxyCompactList}\small\item\em Agrega un item a la orden mediante selección manual de inventario, correspondiente a un pedido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a05e3f2834c375020876035a2f5f49e8e}{eliminar\+Item}} (\mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} item)
+\begin{DoxyCompactList}\small\item\em Elimina un \mbox{[}Item\+Orden\mbox{]} de la lista de items de la orden actual. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}{limpiar}} ()
+\begin{DoxyCompactList}\small\item\em Vacía la lista de items de la orden sin persistir cambios. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_af50af75508b9e0d60f704e8ab623f7a8}{confirmar}} (\{ required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, \}) async
+\begin{DoxyCompactList}\small\item\em Confirma y persiste la orden actual ejecutando \mbox{[}\doxylink{class_nueva_orden_use_case_a83adf6262bdfa791ca0cff0d139cefa2}{Nueva\+Orden\+Use\+Case.\+confirmar\+Mixto}\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a51efa2e5d84cffc4bacd509344c3d756}{cargar\+Pedidos}} () async
+\begin{DoxyCompactList}\small\item\em Carga la lista de pedidos pendientes desde \mbox{[}\doxylink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_ad26e1ae22fa2af3f919c0cf189deadad}{cargar\+Detalles}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Carga los detalles del pedido identificado por \mbox{[}id\+Pedido\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ \mbox{\hyperlink{class_change_notifier_afe417ef5816d3aa88162fba044af8878}{registrar\+Qr\+Pedido}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, required int id\+Inventario\+Esperado, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, bool forzar\+Movimiento=false, \}) async
+\begin{DoxyCompactList}\small\item\em Registra un QR escaneado contra un detalle de pedido específico. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_abcba30895b4d764df56a243751c48c7d}{desregistrar\+Unidad}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}) async
+\begin{DoxyCompactList}\small\item\em Desregistra la unidad asociada a un detalle de pedido, revirtiendo su registro. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_change_notifier_a8779d0df8072a395d00dfedf3c1d3e0c}{eliminar\+Detalle\+Pedido}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}) async
+\begin{DoxyCompactList}\small\item\em Elimina un detalle de pedido y recarga el estado del provider. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_change_notifier_abe0aaa81bac5f1bb801c675c23773ad9}{pedido\+Completo}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Verifica si todos los detalles del pedido identificado por \mbox{[}id\+Pedido\mbox{]} han sido registrados con QR. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a280517d6175d23d52652cc86b8d51e50}{completar\+Pedido}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Marca el pedido como completado y recarga la lista de pedidos pendientes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_change_notifier_a0d5940180d15ae3772113c2f6a5c3df5}{Print\+Provider}} (this.\+use\+Case, this.\+alertas\+Provider)
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Print\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} y \mbox{[}alertas\+Provider\mbox{]} requeridos. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_change_notifier_af6dad959990ba274ca2a878f2626f1c9}{solicitar\+Permisos\+Bluetooth}} () async
+\begin{DoxyCompactList}\small\item\em Solicita los permisos de Bluetooth y ubicación requeridos para la impresión. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a298e1d8a63a08a0661eb52f2b5009456}{agregar\+Unidades}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, int cantidad) async
+\begin{DoxyCompactList}\small\item\em Agrega unidades al inventario e imprime los QRs correspondientes. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a8bf1c89a8166a53a258fda145cc621b5}{imprimir\+Qr\+Existente}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}) async
+\begin{DoxyCompactList}\small\item\em Reimprime el QR de una unidad ya existente sin crear un nuevo registro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a0d4b4f07b5ff4bda6d819ee47f9b02bb}{limpiar\+Mensaje}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia \mbox{[}mensaje\mbox{]} a vacío y notifica a los listeners. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a664f7d7961521e433caa7e5e49edf566}{cargar\+Pendientes}} () async
+\begin{DoxyCompactList}\small\item\em Obtiene desde \mbox{[}\doxylink{class_unidad_repository}{Unidad\+Repository}\mbox{]} las unidades con QR pendiente de impresión. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_change_notifier_a701efa441579c07cb28ee5342feb348c}{Qr\+Provider}} (this.\+use\+Case)
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Qr\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} requerido. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a58de06d3b6e683ed1df43b843362d38d}{procesar\+Qr}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr) async
+\begin{DoxyCompactList}\small\item\em Procesa un código QR escaneado y agrega la unidad correspondiente a la lista. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a32b2ca7ff28986fede039f766f15f2cd}{eliminar\+Unidad}} (int unidad\+Id)
+\begin{DoxyCompactList}\small\item\em Elimina la unidad identificada por \mbox{[}unidad\+Id\mbox{]} de la lista de unidades procesadas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}{limpiar}} ()
+\begin{DoxyCompactList}\small\item\em Reinicia el estado completo del provider, limpiando unidades y errores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_change_notifier_a4867459b66672c5d1b6940ea94f995d0}{Registrar\+Inventario\+Provider}} (\{ required this.\+prenda\+Repository, required this.\+talla\+Repository, required this.\+escuela\+Repository, \})
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Registrar\+Inventario\+Provider\mbox{]} con los repositorios requeridos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a2d87c74aace562887bdaeb8832ff9667}{cargar\+Catalogos}} () async
+\begin{DoxyCompactList}\small\item\em Carga los catálogos de prendas, tallas y escuelas desde sus repositorios. \end{DoxyCompactList}\item 
+Future$<$ Escuela?$>$ \mbox{\hyperlink{class_change_notifier_a0eb995b69167bda7d99a1b6a430b946b}{agregar\+Escuela}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}{nombre}}) async
+\begin{DoxyCompactList}\small\item\em Inserta una nueva escuela en el repositorio y actualiza la lista local. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_adc5cd5bfc84529d7df78f2c7300600fd}{inicializar}} () async
+\begin{DoxyCompactList}\small\item\em Inicializa el provider cargando el catálogo de escuelas y los reportes iniciales. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a9c7e741a84c49dc693876a349a8e187a}{cargar\+Reportes}} () async
+\begin{DoxyCompactList}\small\item\em Carga todos los indicadores de reporte aplicando los filtros activos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_aee2b1ded92d8bdde164f6cb4a0007312}{cambiar\+Year}} (int nuevo) async
+\begin{DoxyCompactList}\small\item\em Actualiza el filtro de año y recarga los reportes. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_ae186066c1083d998d57b367346da39ed}{cambiar\+Month}} (int? nuevo) async
+\begin{DoxyCompactList}\small\item\em Actualiza el filtro de mes y recarga los reportes. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_aa447e79e44ca77318de0090f55184e1e}{cambiar\+Escuela}} (int? id\+Escuela) async
+\begin{DoxyCompactList}\small\item\em Actualiza el filtro de escuela y recarga los reportes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}{return}} \mbox{\hyperlink{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}{escuelas}} \mbox{\hyperlink{class_change_notifier_a64ac628c1ac1b5256359d4a91b3d8ffb}{first\+Where}} ((e)=$>$ e.\+id\+Escuela==\mbox{\hyperlink{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f}{id\+Escuela\+Seleccionada}}, or\+Else\+:()=$>$ Escuela(id\+Escuela\+:0, nombre\+:\textquotesingle{}Todas las \mbox{\hyperlink{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}{escuelas}}\textquotesingle{}),) .\mbox{\hyperlink{reportes__screen_8dart_aff57a087d0f97cdabc778d018825a270}{nombre}}
+\item 
+\mbox{\hyperlink{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}{return}} (escuelas\+Mas\+Ventas.\+first\mbox{[}\textquotesingle{}\mbox{\hyperlink{class_change_notifier_ae4a775194cb60858d00b5b44220e1dd9}{total}}\textquotesingle{}\mbox{]} as num).to\+Double()
+\item 
+\mbox{\hyperlink{class_change_notifier_a0ff339ddf95e25fedd3712ce8b768bc8}{return}} (prendas\+Mas\+Vendidas.\+first\mbox{[}\textquotesingle{}cantidad\textquotesingle{}\mbox{]} as num).to\+Double()
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a88a11094a84c12ffe2ebccaa2669f914}{cargar\+Ventas}} () async
+\begin{DoxyCompactList}\small\item\em Carga el historial completo de ventas desde \mbox{[}\doxylink{class_ventas_use_case}{Ventas\+Use\+Case}\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a46debad30e7d16dd331db451e1bb5098}{cargar\+Detalles}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}) async
+\begin{DoxyCompactList}\small\item\em Carga los detalles de la venta identificada por \mbox{[}id\+Venta\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_change_notifier_a297fa3527a4d5dd08a3803196cdd7031}{refrescar\+Alertas}} () async
+\begin{DoxyCompactList}\small\item\em Refresca las alertas de stock a través de \mbox{[}Alertas\+Provider\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_change_notifier_a8c6b765cbb8d36423293f979a63b571b}{\+\_\+usuario\+Repo}} = \mbox{\hyperlink{class_usuario_repository}{Usuario\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Repositorio encargado de obtener los datos de usuarios. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_change_notifier_a1ae6ba0b200baebc50908e8db7f7621d}{\+\_\+login\+Use\+Case}} = \mbox{\hyperlink{class_login_use_case}{Login\+Use\+Case}}()
+\begin{DoxyCompactList}\small\item\em Caso de uso que ejecuta la lógica de autenticación. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_change_notifier_ac7d7c703fab3e2d537b420ddcbb41eaa}{\+\_\+cargando}} = false
+\begin{DoxyCompactList}\small\item\em Indica si hay una operación asíncrona en curso. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_change_notifier_ab90017e151b97004989be67cce42d0c4}{\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em Mensaje de error producido durante el último intento de autenticación. Null si no hay error. \end{DoxyCompactList}\item 
+Usuario \mbox{\hyperlink{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}{\+\_\+usuario\+Actual}}
+\begin{DoxyCompactList}\small\item\em Usuario autenticado actualmente. Null si no hay sesión activa. \end{DoxyCompactList}\item 
+bool get \mbox{\hyperlink{class_change_notifier_a89502e100264c60e39dfaa4d604e6951}{cargando}} =$>$ \mbox{\hyperlink{class_change_notifier_ac7d7c703fab3e2d537b420ddcbb41eaa}{\+\_\+cargando}}
+\begin{DoxyCompactList}\small\item\em Expone el estado de carga a los widgets consumidores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17}{error}} =$>$ \mbox{\hyperlink{class_change_notifier_ab90017e151b97004989be67cce42d0c4}{\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em Expone el mensaje de error a los widgets consumidores. \end{DoxyCompactList}\item 
+Usuario get \mbox{\hyperlink{class_change_notifier_ac6549e2cf496b9d6d76d0e1aa9439703}{usuario\+Actual}} =$>$ \mbox{\hyperlink{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}{\+\_\+usuario\+Actual}}
+\item 
+bool get \mbox{\hyperlink{class_change_notifier_a574ce08b2f575005fbf1e9b4d81fbf38}{esta\+Autenticado}} =$>$ \mbox{\hyperlink{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}{\+\_\+usuario\+Actual}} != null
+\begin{DoxyCompactList}\small\item\em Retorna true si existe un usuario autenticado en sesión. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_change_notifier_af67817d36175fb3d7f1feff3c3d3b1af}{\+\_\+inventario\+Repo}} = \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Repositorio encargado de obtener y filtrar los registros de inventario. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_change_notifier_a2fc8cbdf2942ac162e82144b95a034a3}{\+\_\+escuela\+Repo}} = \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Repositorio encargado de obtener el catálogo de escuelas. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_change_notifier_a1d97a897ff02602b5280c0bb38b9f752}{\+\_\+prenda\+Repo}} = \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Repositorio encargado de obtener el catálogo de prendas. \end{DoxyCompactList}\item 
+List$<$ Escuela $>$ \mbox{\hyperlink{class_change_notifier_a4c550fc64a86c0bda1b2e3bc5425e3e5}{\+\_\+escuelas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de escuelas disponibles cargadas al inicializar el proveedor. \end{DoxyCompactList}\item 
+List$<$ Prenda $>$ \mbox{\hyperlink{class_change_notifier_a3d9d2c2b558c528f76feff5c0056a18d}{\+\_\+prendas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de prendas disponibles cargadas al inicializar el proveedor. \end{DoxyCompactList}\item 
+Escuela \mbox{\hyperlink{class_change_notifier_a5942923558ef619d43c5ac9bb784cf51}{\+\_\+escuela\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em Escuela seleccionada actualmente para filtrar el inventario. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_change_notifier_a6e3f93b0679bc0ecb28eaaddf014f3a8}{\+\_\+id\+Prenda\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em Identificador de la prenda seleccionada como filtro adicional. Null si no se aplica filtro por prenda. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_a3d10bc6d0e92a7a3b16c56c144e6eeee}{\+\_\+items\+Inventario}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de items del inventario resultante del filtrado aplicado. \end{DoxyCompactList}\item 
+List$<$ Escuela $>$ get \mbox{\hyperlink{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}{escuelas}} =$>$ \mbox{\hyperlink{class_change_notifier_a4c550fc64a86c0bda1b2e3bc5425e3e5}{\+\_\+escuelas}}
+\begin{DoxyCompactList}\small\item\em Lista de escuelas disponibles para el filtro. \end{DoxyCompactList}\item 
+List$<$ Prenda $>$ get \mbox{\hyperlink{class_change_notifier_a0026aafc3669dc8629d8faef40193bb4}{prendas}} =$>$ \mbox{\hyperlink{class_change_notifier_a3d9d2c2b558c528f76feff5c0056a18d}{\+\_\+prendas}}
+\item 
+Escuela get \mbox{\hyperlink{class_change_notifier_a11601ad62eebbab1027b77103f4c910f}{escuela\+Seleccionada}} =$>$ \mbox{\hyperlink{class_change_notifier_a5942923558ef619d43c5ac9bb784cf51}{\+\_\+escuela\+Seleccionada}}
+\item 
+int get \mbox{\hyperlink{class_change_notifier_ae873dbe755f3fdc4bee99b9c4dc13137}{id\+Prenda\+Seleccionada}} =$>$ \mbox{\hyperlink{class_change_notifier_a6e3f93b0679bc0ecb28eaaddf014f3a8}{\+\_\+id\+Prenda\+Seleccionada}}
+\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ get \mbox{\hyperlink{class_change_notifier_a6d57975ff633a9e39a47c31f5f009104}{items\+Inventario}} =$>$ \mbox{\hyperlink{class_change_notifier_a3d10bc6d0e92a7a3b16c56c144e6eeee}{\+\_\+items\+Inventario}}
+\item 
+final Alertas\+Stock\+Use\+Case \mbox{\hyperlink{class_change_notifier_a1863dfb518241a7d25dd6df48a8e73f6}{\+\_\+use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso encargado de obtener las alertas de stock. \end{DoxyCompactList}\item 
+Alertas\+Provider(\{required Alertas\+Stock\+Use\+Case \mbox{\hyperlink{class_change_notifier_a48c51529afc58e280c260c6e7c8fe55d}{use\+Case}}\}) bool \mbox{\hyperlink{class_change_notifier_a641269620581fe8ae6cc53d536fb7fd1}{\+\_\+cargando}} = false
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Alertas\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} requerido. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ \mbox{\hyperlink{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}{\+\_\+agotados}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de inventarios con stock en cero. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ \mbox{\hyperlink{class_change_notifier_aedb3e9b34aea60f68a9fb05d61edcffa}{\+\_\+criticos}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de inventarios con stock por debajo del umbral crítico. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_change_notifier_a81ccbf5f4bf93c6d42d7c67aceb3e576}{agotados}} =$>$ \mbox{\hyperlink{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}{\+\_\+agotados}}
+\begin{DoxyCompactList}\small\item\em Expone los registros de inventario agotados. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_change_notifier_a8b5508786312fc6e1deeba95e7a4b59b}{criticos}} =$>$ \mbox{\hyperlink{class_change_notifier_aedb3e9b34aea60f68a9fb05d61edcffa}{\+\_\+criticos}}
+\begin{DoxyCompactList}\small\item\em Expone los registros de inventario en estado crítico. \end{DoxyCompactList}\item 
+bool get \mbox{\hyperlink{class_change_notifier_aa817a0d70bb93856287dbb0571b6f9a5}{hay\+Alertas}} =$>$ \+\_\+agotados.\+is\+Not\+Empty \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} \+\_\+criticos.\+is\+Not\+Empty
+\begin{DoxyCompactList}\small\item\em Retorna true si existe al menos una alerta activa de cualquier tipo. \end{DoxyCompactList}\item 
+int get \mbox{\hyperlink{class_change_notifier_a04124af84eb5ebb95ddcf9bda1431927}{total\+Alertas}} =$>$ \+\_\+agotados.\+length + \+\_\+criticos.\+length
+\begin{DoxyCompactList}\small\item\em Retorna el total de alertas activas sumando agotados y críticos. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_change_notifier_af2e728995de6e1bfc303b76e20ade6ac}{todas}} =$>$ \mbox{[}...\mbox{\hyperlink{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}{\+\_\+agotados}}
+\begin{DoxyCompactList}\small\item\em Retorna la lista unificada de alertas, con agotados antes que críticos. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ get \mbox{\hyperlink{class_change_notifier_a92ec0db9adac3e674cc6b2ce84481675}{\+\_\+criticos}}
+\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_change_notifier_a39fb25b230e671ac1e8c659a68ac6dbe}{\+\_\+user\+Name}} = \textquotesingle{}Usuario\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Nombre del usuario actualmente autenticado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{class_change_notifier_aa782f3a601ab68d407888afe09938f3c}{user\+Name}} =$>$ \mbox{\hyperlink{class_change_notifier_a39fb25b230e671ac1e8c659a68ac6dbe}{\+\_\+user\+Name}}
+\begin{DoxyCompactList}\small\item\em Expone el nombre del usuario a los widgets consumidores. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}} \mbox{\hyperlink{class_change_notifier_ae86ecd22eed9a99b77f9373746dc2ded}{\+\_\+use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que encapsula la lógica de negocio para crear órdenes. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} \mbox{\hyperlink{class_change_notifier_a502394493fd4cb4fbcca0f3b8c3b1973}{\+\_\+inventario\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio para obtener el inventario disponible. \end{DoxyCompactList}\item 
+final Alertas\+Provider \mbox{\hyperlink{class_change_notifier_a5f9d347c69384a1d12ecbd39f3e20a92}{alertas\+Provider}}
+\begin{DoxyCompactList}\small\item\em Referencia al provider de alertas para refrescarlas al confirmar una orden. \end{DoxyCompactList}\item 
+Nueva\+Orden\+Provider(\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} orden\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, required this.\+alertas\+Provider, \}) final List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{class_change_notifier_a1410f9b95712d5958645fdf668d515c6}{\+\_\+items}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Nueva\+Orden\+Provider\mbox{]} inyectando todos los repositorios y casos de uso necesarios para el flujo de nueva orden. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ get \mbox{\hyperlink{class_change_notifier_a0d9a5cb8c750397fbf7d6ec2697651b4}{items}} =$>$ \mbox{\hyperlink{class_change_notifier_a1410f9b95712d5958645fdf668d515c6}{\+\_\+items}}
+\begin{DoxyCompactList}\small\item\em Expone los items de la orden actual como lista de solo lectura. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_a291b06d74a9cd0b2e29b6adc703f850b}{\+\_\+inventario}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista del inventario completo disponible para selección manual. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ get \mbox{\hyperlink{class_change_notifier_a49fa5df07fb07bea63fec8264c50cb44}{inventario}} =$>$ \mbox{\hyperlink{class_change_notifier_a291b06d74a9cd0b2e29b6adc703f850b}{\+\_\+inventario}}
+\begin{DoxyCompactList}\small\item\em Expone el inventario disponible a los widgets consumidores. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17}{error}}
+\begin{DoxyCompactList}\small\item\em Mensaje de error del último fallo ocurrido. Null si no hay error. \end{DoxyCompactList}\item 
+double get \mbox{\hyperlink{class_change_notifier_ae4a775194cb60858d00b5b44220e1dd9}{total}}
+\begin{DoxyCompactList}\small\item\em Calcula el total monetario de la orden sumando el precio unitario de cada item. \end{DoxyCompactList}\item 
+int get \mbox{\hyperlink{class_change_notifier_a4b8989b1c54fc14e38d57e213ae1972d}{total\+Prendas}} =$>$ \+\_\+items.\+length
+\begin{DoxyCompactList}\small\item\em Retorna el número total de prendas agregadas a la orden. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}} \mbox{\hyperlink{class_change_notifier_a2f4219bb54a31c3430fe0faab5bf97b5}{\+\_\+use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que encapsula la lógica de negocio de pedidos pendientes. \end{DoxyCompactList}\item 
+Pedidos\+Pendientes\+Provider(\{ required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) List$<$ Pedido $>$ \mbox{\hyperlink{class_change_notifier_a9134123cf1a2768070a1bd46c28311ce}{\+\_\+pedidos}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Pedidos\+Pendientes\+Provider\mbox{]} inyectando los repositorios y el caso de uso de QR necesarios para el flujo de pedidos. \end{DoxyCompactList}\item 
+List$<$ Pedido $>$ get \mbox{\hyperlink{class_change_notifier_aad715227ad3f4acb1e89ff929021d2a8}{pedidos}} =$>$ \mbox{\hyperlink{class_change_notifier_a9134123cf1a2768070a1bd46c28311ce}{\+\_\+pedidos}}
+\begin{DoxyCompactList}\small\item\em Expone la lista de pedidos pendientes a los widgets consumidores. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_afec4ef19f0cd31ab14ee2f2f77a14a26}{\+\_\+detalles}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de detalles del pedido actualmente seleccionado. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ get \mbox{\hyperlink{class_change_notifier_a0eaa72d2416f51f79d20779266d98064}{detalles}} =$>$ \mbox{\hyperlink{class_change_notifier_afec4ef19f0cd31ab14ee2f2f77a14a26}{\+\_\+detalles}}
+\begin{DoxyCompactList}\small\item\em Expone los detalles del pedido seleccionado a los widgets consumidores. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_print_use_case}{Print\+Use\+Case}} \mbox{\hyperlink{class_change_notifier_a48c51529afc58e280c260c6e7c8fe55d}{use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que encapsula la lógica de impresión de QRs. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_change_notifier_a0f0407a2ed0240a6452a421f78f15d78}{loading}} = false
+\begin{DoxyCompactList}\small\item\em Indica si hay una operación de impresión en curso. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{class_change_notifier_ad35b71f4bba7180209fd50ef8f5ca18c}{mensaje}} = "{}"{}
+\begin{DoxyCompactList}\small\item\em Mensaje de resultado de la última operación ejecutada. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{class_change_notifier_a1d7f91369308f291c2e4359dde34bb21}{\+\_\+repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de unidades. \end{DoxyCompactList}\item 
+Qr\+Pendientes\+Provider(\{required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} repository\}) List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_af9794dc30b96d3356ad73b9350179630}{\+\_\+pendientes}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Qr\+Pendientes\+Provider\mbox{]} con el \mbox{[}repository\mbox{]} requerido. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ get \mbox{\hyperlink{class_change_notifier_a45707acbf04d24ce2cf288fae555a855}{pendientes}} =$>$ \mbox{\hyperlink{class_change_notifier_af9794dc30b96d3356ad73b9350179630}{\+\_\+pendientes}}
+\begin{DoxyCompactList}\small\item\em Expone la lista de unidades pendientes a los widgets consumidores. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} \mbox{\hyperlink{class_change_notifier_adb64423aea83543afe03c5bc2d86a55b}{use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso encargado de resolver un código QR a una \mbox{[}Unidad\mbox{]}. \end{DoxyCompactList}\item 
+final List$<$ Unidad $>$ \mbox{\hyperlink{class_change_notifier_a765b3ec7eea41c150432907d67cf9eea}{\+\_\+unidades}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista interna de unidades procesadas en la sesión actual. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_change_notifier_a7165d613779c6238d62c7b52960643af}{\+\_\+procesando}} = false
+\begin{DoxyCompactList}\small\item\em Indica si hay un procesamiento de QR en curso. \end{DoxyCompactList}\item 
+List$<$ Unidad $>$ get \mbox{\hyperlink{class_change_notifier_a630fbd5f5df9796cc787501e6c625c6a}{unidades}} =$>$ List.\+unmodifiable(\mbox{\hyperlink{class_change_notifier_a765b3ec7eea41c150432907d67cf9eea}{\+\_\+unidades}})
+\begin{DoxyCompactList}\small\item\em Expone la lista de unidades como vista de solo lectura. \end{DoxyCompactList}\item 
+bool get \mbox{\hyperlink{class_change_notifier_aed276dfb12042c1fbbaaf1e96d9ff0af}{procesando}} =$>$ \mbox{\hyperlink{class_change_notifier_a7165d613779c6238d62c7b52960643af}{\+\_\+procesando}}
+\begin{DoxyCompactList}\small\item\em Expone el estado de procesamiento a los widgets consumidores. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} \mbox{\hyperlink{class_change_notifier_a68f3c288884a171b8c0975a63425ae6b}{prenda\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de prendas. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} \mbox{\hyperlink{class_change_notifier_a87cdba8d7f7752d687756eabfb776278}{talla\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de tallas. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} \mbox{\hyperlink{class_change_notifier_a469b1f0cf89eafae2e2e9dc5d1961f88}{escuela\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de escuelas. \end{DoxyCompactList}\item 
+List$<$ Prenda $>$ \mbox{\hyperlink{class_change_notifier_a9e2f96f6be9ea4ce393311b02a3b5fb6}{prendas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de prendas disponibles en el catálogo. \end{DoxyCompactList}\item 
+List$<$ Talla $>$ \mbox{\hyperlink{class_change_notifier_ae60d2a704980ccdabc9dceb50b361e9a}{tallas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de tallas disponibles en el catálogo. \end{DoxyCompactList}\item 
+List$<$ Escuela $>$ \mbox{\hyperlink{class_change_notifier_a59c6880eb5e7dff7e815900d7c53f5d1}{escuelas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista de escuelas disponibles en el catálogo. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_change_notifier_a742324eece04c7d883bfb879f0b26bbd}{cargando}} = false
+\begin{DoxyCompactList}\small\item\em Indica si hay una operación de carga en curso. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_reporte_repository}{Reporte\+Repository}} \mbox{\hyperlink{class_change_notifier_aaee839421881821cc21cd7803e0e56d1}{\+\_\+repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de reportes de ventas. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} \mbox{\hyperlink{class_change_notifier_abb0ba3c0e3bd09fda505c1011873818a}{\+\_\+escuela\+Repository}}
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de escuelas para poblar el filtro. \end{DoxyCompactList}\item 
+Reportes\+Provider(\{ required \mbox{\hyperlink{class_reporte_repository}{Reporte\+Repository}} repository, required \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} \mbox{\hyperlink{class_change_notifier_a469b1f0cf89eafae2e2e9dc5d1961f88}{escuela\+Repository}}, \}) bool \mbox{\hyperlink{class_change_notifier_a0114f7b599d4d1554f12a39b8abe8178}{cargando}} = false
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Reportes\+Provider\mbox{]} con los repositorios requeridos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_change_notifier_a7f545fce9e81f04b16733352f27e649d}{year}} = Date\+Time.\+now().year
+\begin{DoxyCompactList}\small\item\em Año actualmente seleccionado como filtro. Por defecto el año en curso. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_change_notifier_af16e82760d2015d6087bed8ffd00444e}{month}}
+\begin{DoxyCompactList}\small\item\em Mes actualmente seleccionado como filtro. Null indica todos los meses. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f}{id\+Escuela\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em ID de la escuela seleccionada como filtro. Null indica todas las escuelas. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_change_notifier_af6a94ed91c0f9077e82448584d5f211f}{total\+Vendido}} = 0
+\begin{DoxyCompactList}\small\item\em Total monetario de ventas según los filtros activos. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_change_notifier_ac2ee3622564240db13f9dd4998013c00}{cantidad\+Ventas}} = 0
+\begin{DoxyCompactList}\small\item\em Cantidad de ventas realizadas según los filtros activos. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_a367a5a7fb5cef3039144e900ecbddadf}{prendas\+Mas\+Vendidas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ranking de prendas más vendidas según los filtros activos. \end{DoxyCompactList}\item 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{class_change_notifier_a92de352cd6ffb027741a2e72a2092dbd}{escuelas\+Mas\+Ventas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Ranking de escuelas con más ventas. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{class_change_notifier_ab3c3f869658d338db1808f69f2f91731}{nombre\+Mes\+Seleccionado}}
+\begin{DoxyCompactList}\small\item\em Retorna el nombre del mes seleccionado, o \textquotesingle{}Todo el año\textquotesingle{} si no hay mes activo. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{class_change_notifier_aeea7fc4000c6041fd4d7b7c172f28922}{meses}}
+\item 
+\mbox{\hyperlink{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}{return}} \mbox{\hyperlink{class_change_notifier_a66cf4eec3a7977252673a41e8b4ee116}{meses}} \mbox{[}month!\mbox{]}
+\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{class_change_notifier_a2b80321f142da0a1803f97d9aefd3f92}{nombre\+Escuela\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em Retorna el nombre de la escuela seleccionada, o \textquotesingle{}Todas las escuelas\textquotesingle{} si no hay filtro activo. \end{DoxyCompactList}\item 
+double get \mbox{\hyperlink{class_change_notifier_a6bf1f85b7ecbee41a97432d777806737}{max\+Total\+Escuela}}
+\begin{DoxyCompactList}\small\item\em Retorna el total de ventas de la escuela con mayor venta para normalizar barras. \end{DoxyCompactList}\item 
+double get \mbox{\hyperlink{class_change_notifier_a7f05b36ff7086b73f2c4352a627e8e0a}{max\+Cantidad\+Prenda}}
+\begin{DoxyCompactList}\small\item\em Retorna la cantidad de la prenda más vendida para normalizar barras. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_ventas_use_case}{Ventas\+Use\+Case}} \mbox{\hyperlink{class_change_notifier_ac967aa0d902454ec9596cae248c5223c}{\+\_\+use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que encapsula la lógica de negocio de ventas. \end{DoxyCompactList}\item 
+Ventas\+Provider(\{ required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required this.\+alertas\+Provider, \}) List$<$ Venta $>$ \mbox{\hyperlink{class_change_notifier_a01b3d39bdd0c6df7492e71da27305024}{\+\_\+ventas}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Crea una instancia de \mbox{[}Ventas\+Provider\mbox{]} inyectando el repositorio y el provider de alertas requeridos. \end{DoxyCompactList}\item 
+List$<$ Venta $>$ get \mbox{\hyperlink{class_change_notifier_ae6d719227f4aeb94918a0bb6223d1f9b}{ventas}} =$>$ \mbox{\hyperlink{class_change_notifier_a01b3d39bdd0c6df7492e71da27305024}{\+\_\+ventas}}
+\begin{DoxyCompactList}\small\item\em Expone la lista de ventas a los widgets consumidores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Proveedor de estado para la autenticación de usuarios. 
+
+Provider de estado para la gestión del historial de ventas.
+
+Provider de estado para la pantalla de reportes de ventas.
+
+Provider de estado para el flujo de registro de inventario.
+
+Provider de estado para la gestión de unidades obtenidas mediante escaneo de QR.
+
+Provider de estado para la gestión de unidades con QR pendiente de impresión.
+
+Provider de estado para la gestión de impresión de QRs via Bluetooth.
+
+Provider de estado para la gestión de pedidos pendientes.
+
+Provider de estado para el flujo de creación de una nueva orden.
+
+Provider de estado para la pantalla principal de la aplicación.
+
+Provider de estado para la gestión de alertas de stock del inventario.
+
+Proveedor de estado para el módulo de inventario.
+
+Gestiona la carga y filtrado de inventario por escuela y prenda, así como el estado de selección activa del usuario. Extiende \mbox{[}\doxylink{class_change_notifier}{Change\+Notifier}\mbox{]} para notificar cambios a los widgets suscritos.
+
+Consume \mbox{[}Alertas\+Stock\+Use\+Case\mbox{]} para obtener los registros de inventario en estado agotado o crítico, y notifica a los widgets suscritos ante cualquier cambio de estado.
+
+Gestiona el nombre del usuario autenticado y centraliza la navegación hacia las secciones principales del sistema.
+
+Coordina la interacción entre \mbox{[}\doxylink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}\mbox{]}, \mbox{[}\doxylink{class_inventario_repository}{Inventario\+Repository}\mbox{]} y \mbox{[}Alertas\+Provider\mbox{]} para gestionar los items de la orden, ya sea por escaneo de QR (venta) o por selección manual (pedido).
+
+Coordina \mbox{[}\doxylink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}\mbox{]} para cargar, registrar, desregistrar y completar pedidos, notificando a los widgets suscritos ante cada cambio.
+
+Coordina \mbox{[}\doxylink{class_print_use_case}{Print\+Use\+Case}\mbox{]} con la solicitud de permisos de Bluetooth y la actualización de \mbox{[}Alertas\+Provider\mbox{]} tras cada operación de impresión.
+
+Consume \mbox{[}\doxylink{class_unidad_repository}{Unidad\+Repository}\mbox{]} para obtener las unidades que han sido registradas en el sistema pero cuyos QRs aún no han sido impresos físicamente.
+
+Consume \mbox{[}\doxylink{class_qr_use_case}{Qr\+Use\+Case}\mbox{]} para resolver los códigos QR escaneados a instancias de \mbox{[}Unidad\mbox{]}, manteniendo una lista acumulada de unidades procesadas en la sesión.
+
+Gestiona la carga de catálogos de prendas, tallas y escuelas, y expone la operación de agregar nuevas escuelas al sistema.
+
+Gestiona los filtros de año, mes y escuela, y consume \mbox{[}\doxylink{class_reporte_repository}{Reporte\+Repository}\mbox{]} para obtener los indicadores de ventas y los rankings de prendas y escuelas.
+
+Consume \mbox{[}\doxylink{class_ventas_use_case}{Ventas\+Use\+Case}\mbox{]} para obtener el listado de ventas y sus detalles, y coordina con \mbox{[}Alertas\+Provider\mbox{]} para refrescar alertas de stock ante operaciones que modifiquen el inventario. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_change_notifier_a09d47b51978ec780912a531aa7026c90}\index{ChangeNotifier@{ChangeNotifier}!\_inicializarDatos@{\_inicializarDatos}}
+\index{\_inicializarDatos@{\_inicializarDatos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_inicializarDatos()}{\_inicializarDatos()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a09d47b51978ec780912a531aa7026c90} 
+Future$<$ void $>$ Change\+Notifier\+::\+\_\+inicializar\+Datos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga los catálogos de escuelas y prendas necesarios para el funcionamiento del módulo. 
+
+En caso de error, inicializa las listas vacías para evitar estados inconsistentes. \Hypertarget{class_change_notifier_a0eb995b69167bda7d99a1b6a430b946b}\index{ChangeNotifier@{ChangeNotifier}!agregarEscuela@{agregarEscuela}}
+\index{agregarEscuela@{agregarEscuela}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{agregarEscuela()}{agregarEscuela()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0eb995b69167bda7d99a1b6a430b946b} 
+Future$<$ Escuela?$>$ Change\+Notifier\+::agregar\+Escuela (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{nombre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta una nueva escuela en el repositorio y actualiza la lista local. 
+
+Regla de negocio\+: el nombre no puede estar vacío o contener solo espacios. Retorna la instancia de \mbox{[}Escuela\mbox{]} insertada con su ID asignado, o null si el nombre no es válido. \Hypertarget{class_change_notifier_aadbbc6b0992c543461f58cefd393c986}\index{ChangeNotifier@{ChangeNotifier}!agregarManual@{agregarManual}}
+\index{agregarManual@{agregarManual}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{agregarManual()}{agregarManual()}}
+{\footnotesize\ttfamily \label{class_change_notifier_aadbbc6b0992c543461f58cefd393c986} 
+Future$<$ void $>$ Change\+Notifier\+::agregar\+Manual (\begin{DoxyParamCaption}\item[{\{required int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}\}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Agrega un item a la orden mediante selección manual de inventario, correspondiente a un pedido. 
+
+Delega la lógica de validación a \mbox{[}\doxylink{class_nueva_orden_use_case_ad4247b734c559d8234caecca8d9ce066}{Nueva\+Orden\+Use\+Case.\+agregar\+Manual}\mbox{]}. Lanza una excepción si el inventario no tiene stock disponible o ya fue agregado. \Hypertarget{class_change_notifier_a1db1386d0a4ac029982b1d5f8ef4939e}\index{ChangeNotifier@{ChangeNotifier}!agregarQr@{agregarQr}}
+\index{agregarQr@{agregarQr}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{agregarQr()}{agregarQr()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1db1386d0a4ac029982b1d5f8ef4939e} 
+Future$<$ void $>$ Change\+Notifier\+::agregar\+Qr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Agrega un item a la orden mediante escaneo de QR, correspondiente a una venta. 
+
+Delega la validación y búsqueda del item a \mbox{[}\doxylink{class_nueva_orden_use_case_af41b4a835896fd4154305c2aee9f4d77}{Nueva\+Orden\+Use\+Case.\+agregar\+Por\+Qr}\mbox{]}. Lanza una excepción si el QR es inválido, ya fue agregado, o no pertenece al inventario. \Hypertarget{class_change_notifier_a298e1d8a63a08a0661eb52f2b5009456}\index{ChangeNotifier@{ChangeNotifier}!agregarUnidades@{agregarUnidades}}
+\index{agregarUnidades@{agregarUnidades}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{agregarUnidades()}{agregarUnidades()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a298e1d8a63a08a0661eb52f2b5009456} 
+Future$<$ void $>$ Change\+Notifier\+::agregar\+Unidades (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{, }\item[{int}]{cantidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Agrega unidades al inventario e imprime los QRs correspondientes. 
+
+Regla de negocio\+: no se ejecuta si ya hay una impresión en curso o si la cantidad es menor o igual a cero. Solicita permisos Bluetooth antes de proceder con la impresión. Al completarse exitosamente, refresca \mbox{[}Alertas\+Provider\mbox{]}. Propaga la excepción al caller en caso de error. \Hypertarget{class_change_notifier_aa447e79e44ca77318de0090f55184e1e}\index{ChangeNotifier@{ChangeNotifier}!cambiarEscuela@{cambiarEscuela}}
+\index{cambiarEscuela@{cambiarEscuela}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cambiarEscuela()}{cambiarEscuela()}}
+{\footnotesize\ttfamily \label{class_change_notifier_aa447e79e44ca77318de0090f55184e1e} 
+Future$<$ void $>$ Change\+Notifier\+::cambiar\+Escuela (\begin{DoxyParamCaption}\item[{int?}]{id\+Escuela}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el filtro de escuela y recarga los reportes. 
+
+Null indica todas las escuelas. \Hypertarget{class_change_notifier_ae186066c1083d998d57b367346da39ed}\index{ChangeNotifier@{ChangeNotifier}!cambiarMonth@{cambiarMonth}}
+\index{cambiarMonth@{cambiarMonth}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cambiarMonth()}{cambiarMonth()}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae186066c1083d998d57b367346da39ed} 
+Future$<$ void $>$ Change\+Notifier\+::cambiar\+Month (\begin{DoxyParamCaption}\item[{int?}]{nuevo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el filtro de mes y recarga los reportes. 
+
+Null indica todos los meses del año seleccionado. \Hypertarget{class_change_notifier_aee2b1ded92d8bdde164f6cb4a0007312}\index{ChangeNotifier@{ChangeNotifier}!cambiarYear@{cambiarYear}}
+\index{cambiarYear@{cambiarYear}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cambiarYear()}{cambiarYear()}}
+{\footnotesize\ttfamily \label{class_change_notifier_aee2b1ded92d8bdde164f6cb4a0007312} 
+Future$<$ void $>$ Change\+Notifier\+::cambiar\+Year (\begin{DoxyParamCaption}\item[{int}]{nuevo}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el filtro de año y recarga los reportes. 
+
+\Hypertarget{class_change_notifier_ab788adca0735500dc559fc7390d16b14}\index{ChangeNotifier@{ChangeNotifier}!cargarAlertas@{cargarAlertas}}
+\index{cargarAlertas@{cargarAlertas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarAlertas()}{cargarAlertas()}}
+{\footnotesize\ttfamily \label{class_change_notifier_ab788adca0735500dc559fc7390d16b14} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Alertas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ejecuta \mbox{[}Alertas\+Stock\+Use\+Case.\+obtener\+Alertas\mbox{]} y actualiza el estado local. 
+
+Activa el indicador de carga antes de la llamada y lo desactiva al terminar. En caso de error, reinicia ambas listas a vacío para evitar datos inconsistentes. \Hypertarget{class_change_notifier_a2d87c74aace562887bdaeb8832ff9667}\index{ChangeNotifier@{ChangeNotifier}!cargarCatalogos@{cargarCatalogos}}
+\index{cargarCatalogos@{cargarCatalogos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarCatalogos()}{cargarCatalogos()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a2d87c74aace562887bdaeb8832ff9667} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Catalogos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga los catálogos de prendas, tallas y escuelas desde sus repositorios. 
+
+Activa el indicador de carga durante la operación y lo desactiva al finalizar. \Hypertarget{class_change_notifier_ad26e1ae22fa2af3f919c0cf189deadad}\index{ChangeNotifier@{ChangeNotifier}!cargarDetalles@{cargarDetalles}}
+\index{cargarDetalles@{cargarDetalles}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarDetalles()}{cargarDetalles()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_ad26e1ae22fa2af3f919c0cf189deadad} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Detalles (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga los detalles del pedido identificado por \mbox{[}id\+Pedido\mbox{]}. 
+
+Incluye información enriquecida de cada línea de detalle. Activa el indicador de carga durante la operación. \Hypertarget{class_change_notifier_a46debad30e7d16dd331db451e1bb5098}\index{ChangeNotifier@{ChangeNotifier}!cargarDetalles@{cargarDetalles}}
+\index{cargarDetalles@{cargarDetalles}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarDetalles()}{cargarDetalles()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a46debad30e7d16dd331db451e1bb5098} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Detalles (\begin{DoxyParamCaption}\item[{int}]{id\+Venta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga los detalles de la venta identificada por \mbox{[}id\+Venta\mbox{]}. 
+
+Activa el indicador de carga durante la operación y lo desactiva al finalizar. En caso de error, almacena el mensaje en \mbox{[}error\mbox{]}. \Hypertarget{class_change_notifier_af77dcc8312872055c92ba9c5f993d352}\index{ChangeNotifier@{ChangeNotifier}!cargarInventario@{cargarInventario}}
+\index{cargarInventario@{cargarInventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarInventario()}{cargarInventario()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_af77dcc8312872055c92ba9c5f993d352} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Inventario (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene el inventario completo desde \mbox{[}\doxylink{class_inventario_repository}{Inventario\+Repository}\mbox{]} y notifica a los listeners. 
+
+\Hypertarget{class_change_notifier_a8ea961400d5cec5f0a737383e3efe42b}\index{ChangeNotifier@{ChangeNotifier}!cargarInventario@{cargarInventario}}
+\index{cargarInventario@{cargarInventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarInventario()}{cargarInventario()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8ea961400d5cec5f0a737383e3efe42b} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Inventario (\begin{DoxyParamCaption}\item[{int}]{id\+Escuela}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga el inventario filtrado por la escuela indicada y, opcionalmente, por la prenda actualmente seleccionada. 
+
+Actualiza \mbox{[}\+\_\+escuela\+Seleccionada\mbox{]} buscando la coincidencia en el catálogo local. \Hypertarget{class_change_notifier_a51efa2e5d84cffc4bacd509344c3d756}\index{ChangeNotifier@{ChangeNotifier}!cargarPedidos@{cargarPedidos}}
+\index{cargarPedidos@{cargarPedidos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarPedidos()}{cargarPedidos()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a51efa2e5d84cffc4bacd509344c3d756} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Pedidos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga la lista de pedidos pendientes desde \mbox{[}\doxylink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}\mbox{]}. 
+
+Activa el indicador de carga durante la operación y lo desactiva al finalizar. En caso de error, almacena el mensaje en \mbox{[}error\mbox{]}. \Hypertarget{class_change_notifier_a664f7d7961521e433caa7e5e49edf566}\index{ChangeNotifier@{ChangeNotifier}!cargarPendientes@{cargarPendientes}}
+\index{cargarPendientes@{cargarPendientes}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarPendientes()}{cargarPendientes()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a664f7d7961521e433caa7e5e49edf566} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Pendientes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene desde \mbox{[}\doxylink{class_unidad_repository}{Unidad\+Repository}\mbox{]} las unidades con QR pendiente de impresión. 
+
+Activa el indicador de carga durante la operación y lo desactiva al finalizar, independientemente del resultado mediante el bloque finally. \Hypertarget{class_change_notifier_a9c7e741a84c49dc693876a349a8e187a}\index{ChangeNotifier@{ChangeNotifier}!cargarReportes@{cargarReportes}}
+\index{cargarReportes@{cargarReportes}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarReportes()}{cargarReportes()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a9c7e741a84c49dc693876a349a8e187a} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Reportes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga todos los indicadores de reporte aplicando los filtros activos. 
+
+Regla de negocio\+: el ranking de escuelas solo se calcula cuando no hay una escuela específica seleccionada como filtro. \Hypertarget{class_change_notifier_a88a11094a84c12ffe2ebccaa2669f914}\index{ChangeNotifier@{ChangeNotifier}!cargarVentas@{cargarVentas}}
+\index{cargarVentas@{cargarVentas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargarVentas()}{cargarVentas()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a88a11094a84c12ffe2ebccaa2669f914} 
+Future$<$ void $>$ Change\+Notifier\+::cargar\+Ventas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Carga el historial completo de ventas desde \mbox{[}\doxylink{class_ventas_use_case}{Ventas\+Use\+Case}\mbox{]}. 
+
+Activa el indicador de carga durante la operación y lo desactiva al finalizar. En caso de error, almacena el mensaje en \mbox{[}error\mbox{]}. \Hypertarget{class_change_notifier_a280517d6175d23d52652cc86b8d51e50}\index{ChangeNotifier@{ChangeNotifier}!completarPedido@{completarPedido}}
+\index{completarPedido@{completarPedido}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{completarPedido()}{completarPedido()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a280517d6175d23d52652cc86b8d51e50} 
+Future$<$ void $>$ Change\+Notifier\+::completar\+Pedido (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Marca el pedido como completado y recarga la lista de pedidos pendientes. 
+
+Limpia \mbox{[}\+\_\+detalles\mbox{]} al finalizar ya que el pedido deja de estar pendiente. Propaga la excepción al caller en caso de error. \Hypertarget{class_change_notifier_af50af75508b9e0d60f704e8ab623f7a8}\index{ChangeNotifier@{ChangeNotifier}!confirmar@{confirmar}}
+\index{confirmar@{confirmar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{confirmar()}{confirmar()}}
+{\footnotesize\ttfamily \label{class_change_notifier_af50af75508b9e0d60f704e8ab623f7a8} 
+Future$<$ void $>$ Change\+Notifier\+::confirmar (\begin{DoxyParamCaption}\item[{\{ required int id\+Usuario, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? nombre\+Cliente, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Confirma y persiste la orden actual ejecutando \mbox{[}\doxylink{class_nueva_orden_use_case_a83adf6262bdfa791ca0cff0d139cefa2}{Nueva\+Orden\+Use\+Case.\+confirmar\+Mixto}\mbox{]}. 
+
+Activa el indicador de carga durante la operación. Al completarse exitosamente, limpia los items y refresca \mbox{[}Alertas\+Provider\mbox{]}. En caso de error, propaga la excepción al caller para manejo en la UI. \Hypertarget{class_change_notifier_abcba30895b4d764df56a243751c48c7d}\index{ChangeNotifier@{ChangeNotifier}!desregistrarUnidad@{desregistrarUnidad}}
+\index{desregistrarUnidad@{desregistrarUnidad}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{desregistrarUnidad()}{desregistrarUnidad()}}
+{\footnotesize\ttfamily \label{class_change_notifier_abcba30895b4d764df56a243751c48c7d} 
+Future$<$ void $>$ Change\+Notifier\+::desregistrar\+Unidad (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Desregistra la unidad asociada a un detalle de pedido, revirtiendo su registro. 
+
+Recarga los detalles del pedido al finalizar. Propaga la excepción al caller en caso de error. \Hypertarget{class_change_notifier_a8779d0df8072a395d00dfedf3c1d3e0c}\index{ChangeNotifier@{ChangeNotifier}!eliminarDetallePedido@{eliminarDetallePedido}}
+\index{eliminarDetallePedido@{eliminarDetallePedido}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{eliminarDetallePedido()}{eliminarDetallePedido()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8779d0df8072a395d00dfedf3c1d3e0c} 
+Future$<$ bool $>$ Change\+Notifier\+::eliminar\+Detalle\+Pedido (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un detalle de pedido y recarga el estado del provider. 
+
+Retorna true si el pedido completo fue eliminado como consecuencia de eliminar su último detalle, en cuyo caso limpia \mbox{[}\+\_\+detalles\mbox{]}. Retorna false si el pedido aún tiene otros detalles pendientes. \Hypertarget{class_change_notifier_a05e3f2834c375020876035a2f5f49e8e}\index{ChangeNotifier@{ChangeNotifier}!eliminarItem@{eliminarItem}}
+\index{eliminarItem@{eliminarItem}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{eliminarItem()}{eliminarItem()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a05e3f2834c375020876035a2f5f49e8e} 
+void Change\+Notifier\+::eliminar\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un \mbox{[}Item\+Orden\mbox{]} de la lista de items de la orden actual. 
+
+\Hypertarget{class_change_notifier_a32b2ca7ff28986fede039f766f15f2cd}\index{ChangeNotifier@{ChangeNotifier}!eliminarUnidad@{eliminarUnidad}}
+\index{eliminarUnidad@{eliminarUnidad}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{eliminarUnidad()}{eliminarUnidad()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a32b2ca7ff28986fede039f766f15f2cd} 
+void Change\+Notifier\+::eliminar\+Unidad (\begin{DoxyParamCaption}\item[{int}]{unidad\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina la unidad identificada por \mbox{[}unidad\+Id\mbox{]} de la lista de unidades procesadas. 
+
+\Hypertarget{class_change_notifier_a64ac628c1ac1b5256359d4a91b3d8ffb}\index{ChangeNotifier@{ChangeNotifier}!firstWhere@{firstWhere}}
+\index{firstWhere@{firstWhere}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{firstWhere()}{firstWhere()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a64ac628c1ac1b5256359d4a91b3d8ffb} 
+\mbox{\hyperlink{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}{return}} \mbox{\hyperlink{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}{escuelas}} Change\+Notifier\+::first\+Where (\begin{DoxyParamCaption}\item[{(e)}]{}{, }\item[{e.}]{id\+Escuela}{ = {\ttfamily =\mbox{\hyperlink{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f}{id\+Escuela\+Seleccionada}}}, }\item[{or\+Else\+:()}]{}{, }\item[{Escuela(id\+Escuela\+:0, nombre\+:\textquotesingle{}Todas las \mbox{\hyperlink{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}{escuelas}}\textquotesingle{})}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a8bf1c89a8166a53a258fda145cc621b5}\index{ChangeNotifier@{ChangeNotifier}!imprimirQrExistente@{imprimirQrExistente}}
+\index{imprimirQrExistente@{imprimirQrExistente}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{imprimirQrExistente()}{imprimirQrExistente()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8bf1c89a8166a53a258fda145cc621b5} 
+Future$<$ void $>$ Change\+Notifier\+::imprimir\+Qr\+Existente (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reimprime el QR de una unidad ya existente sin crear un nuevo registro. 
+
+Lanza una excepción si ya hay una impresión en curso. Solicita permisos Bluetooth antes de proceder. No modifica el inventario ni actualiza las alertas de stock. \Hypertarget{class_change_notifier_adc5cd5bfc84529d7df78f2c7300600fd}\index{ChangeNotifier@{ChangeNotifier}!inicializar@{inicializar}}
+\index{inicializar@{inicializar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{inicializar()}{inicializar()}}
+{\footnotesize\ttfamily \label{class_change_notifier_adc5cd5bfc84529d7df78f2c7300600fd} 
+Future$<$ void $>$ Change\+Notifier\+::inicializar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inicializa el provider cargando el catálogo de escuelas y los reportes iniciales. 
+
+\Hypertarget{class_change_notifier_ae23904197ecb877e9dc29ceea81ec1fa}\index{ChangeNotifier@{ChangeNotifier}!InventarioProvider@{InventarioProvider}}
+\index{InventarioProvider@{InventarioProvider}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{InventarioProvider()}{InventarioProvider()}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae23904197ecb877e9dc29ceea81ec1fa} 
+Change\+Notifier\+::\+Inventario\+Provider (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Constructor que dispara la carga inicial de catálogos al instanciar el proveedor. 
+
+\Hypertarget{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}\index{ChangeNotifier@{ChangeNotifier}!limpiar@{limpiar}}
+\index{limpiar@{limpiar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{limpiar()}{limpiar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7} 
+void Change\+Notifier\+::limpiar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reinicia las listas de alertas a vacío y notifica a los listeners. 
+
+Se utiliza al cerrar sesión o al salir de la sección de alertas. \Hypertarget{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}\index{ChangeNotifier@{ChangeNotifier}!limpiar@{limpiar}}
+\index{limpiar@{limpiar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{limpiar()}{limpiar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7} 
+void Change\+Notifier\+::limpiar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Vacía la lista de items de la orden sin persistir cambios. 
+
+\Hypertarget{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7}\index{ChangeNotifier@{ChangeNotifier}!limpiar@{limpiar}}
+\index{limpiar@{limpiar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{limpiar()}{limpiar()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a535ed9cb16206aa2c0266b8d36af96d7} 
+void Change\+Notifier\+::limpiar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reinicia el estado completo del provider, limpiando unidades y errores. 
+
+\Hypertarget{class_change_notifier_a5394f91812cb82451081a62d49445340}\index{ChangeNotifier@{ChangeNotifier}!limpiarError@{limpiarError}}
+\index{limpiarError@{limpiarError}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{limpiarError()}{limpiarError()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a5394f91812cb82451081a62d49445340} 
+void Change\+Notifier\+::limpiar\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Limpia el mensaje de error actual y notifica a los listeners. 
+
+\Hypertarget{class_change_notifier_a0d4b4f07b5ff4bda6d819ee47f9b02bb}\index{ChangeNotifier@{ChangeNotifier}!limpiarMensaje@{limpiarMensaje}}
+\index{limpiarMensaje@{limpiarMensaje}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{limpiarMensaje()}{limpiarMensaje()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0d4b4f07b5ff4bda6d819ee47f9b02bb} 
+void Change\+Notifier\+::limpiar\+Mensaje (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reinicia \mbox{[}mensaje\mbox{]} a vacío y notifica a los listeners. 
+
+Se invoca al iniciar una pantalla para evitar mostrar mensajes residuales. \Hypertarget{class_change_notifier_a51cabe1941c2545d0ebf66a6a30115cd}\index{ChangeNotifier@{ChangeNotifier}!login@{login}}
+\index{login@{login}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a51cabe1941c2545d0ebf66a6a30115cd} 
+Future$<$ bool $>$ Change\+Notifier\+::login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{usuario}{, }\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{password}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Ejecuta el flujo de autenticación con las credenciales proporcionadas. 
+
+Obtiene la lista de usuarios desde el repositorio y delega la validación al caso de uso \mbox{[}\doxylink{class_login_use_case}{Login\+Use\+Case}\mbox{]}. Retorna true si las credenciales son válidas, false en caso contrario. En caso de error durante la operación, se establece un mensaje genérico para evitar exponer detalles internos del sistema. Regla de negocio\+: no se distingue entre usuario inexistente y contraseña incorrecta para evitar enumeración de usuarios.
+
+Cualquier excepción durante el proceso de autenticación se trata como credenciales inválidas, sin exponer el error real al cliente.\Hypertarget{class_change_notifier_a319bd8d68b6d79d32387a5d913921b75}\index{ChangeNotifier@{ChangeNotifier}!logout@{logout}}
+\index{logout@{logout}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a319bd8d68b6d79d32387a5d913921b75} 
+void Change\+Notifier\+::logout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Cierra la sesión del usuario actual limpiando el estado de autenticación. 
+
+\Hypertarget{class_change_notifier_a8abf39f1cf20f8837873c0f7103f98df}\index{ChangeNotifier@{ChangeNotifier}!navigateToInventory@{navigateToInventory}}
+\index{navigateToInventory@{navigateToInventory}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{navigateToInventory()}{navigateToInventory()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8abf39f1cf20f8837873c0f7103f98df} 
+void Change\+Notifier\+::navigate\+To\+Inventory (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Navega a la pantalla de inventario. 
+
+\Hypertarget{class_change_notifier_a6f212a3aa9f13c073faed72683bd7af1}\index{ChangeNotifier@{ChangeNotifier}!navigateToNewOrder@{navigateToNewOrder}}
+\index{navigateToNewOrder@{navigateToNewOrder}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{navigateToNewOrder()}{navigateToNewOrder()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a6f212a3aa9f13c073faed72683bd7af1} 
+void Change\+Notifier\+::navigate\+To\+New\+Order (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Navega a la pantalla de nueva orden. 
+
+Actualmente deshabilitado. \Hypertarget{class_change_notifier_a9773de3af8c3f237c5dacb18b5d74653}\index{ChangeNotifier@{ChangeNotifier}!navigateToOrders@{navigateToOrders}}
+\index{navigateToOrders@{navigateToOrders}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{navigateToOrders()}{navigateToOrders()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a9773de3af8c3f237c5dacb18b5d74653} 
+void Change\+Notifier\+::navigate\+To\+Orders (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Navega a la pantalla de órdenes. 
+
+Actualmente deshabilitado. \Hypertarget{class_change_notifier_abe0aaa81bac5f1bb801c675c23773ad9}\index{ChangeNotifier@{ChangeNotifier}!pedidoCompleto@{pedidoCompleto}}
+\index{pedidoCompleto@{pedidoCompleto}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{pedidoCompleto()}{pedidoCompleto()}}
+{\footnotesize\ttfamily \label{class_change_notifier_abe0aaa81bac5f1bb801c675c23773ad9} 
+Future$<$ bool $>$ Change\+Notifier\+::pedido\+Completo (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Verifica si todos los detalles del pedido identificado por \mbox{[}id\+Pedido\mbox{]} han sido registrados con QR. 
+
+Retorna true si el pedido está listo para ser completado. \Hypertarget{class_change_notifier_a0d5940180d15ae3772113c2f6a5c3df5}\index{ChangeNotifier@{ChangeNotifier}!PrintProvider@{PrintProvider}}
+\index{PrintProvider@{PrintProvider}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{PrintProvider()}{PrintProvider()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0d5940180d15ae3772113c2f6a5c3df5} 
+Change\+Notifier\+::\+Print\+Provider (\begin{DoxyParamCaption}\item[{this.}]{use\+Case}{, }\item[{this.}]{alertas\+Provider}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Print\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} y \mbox{[}alertas\+Provider\mbox{]} requeridos. 
+
+\Hypertarget{class_change_notifier_a58de06d3b6e683ed1df43b843362d38d}\index{ChangeNotifier@{ChangeNotifier}!procesarQr@{procesarQr}}
+\index{procesarQr@{procesarQr}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{procesarQr()}{procesarQr()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a58de06d3b6e683ed1df43b843362d38d} 
+Future$<$ void $>$ Change\+Notifier\+::procesar\+Qr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Procesa un código QR escaneado y agrega la unidad correspondiente a la lista. 
+
+Regla de negocio\+: no se procesa un nuevo QR si ya hay uno en curso. Regla de negocio\+: una unidad ya escaneada no puede agregarse de nuevo. Si el QR no corresponde a ninguna unidad registrada, establece un mensaje de error. \Hypertarget{class_change_notifier_a701efa441579c07cb28ee5342feb348c}\index{ChangeNotifier@{ChangeNotifier}!QrProvider@{QrProvider}}
+\index{QrProvider@{QrProvider}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{QrProvider()}{QrProvider()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a701efa441579c07cb28ee5342feb348c} 
+Change\+Notifier\+::\+Qr\+Provider (\begin{DoxyParamCaption}\item[{this.}]{use\+Case}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Qr\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} requerido. 
+
+\Hypertarget{class_change_notifier_a2b70c381b1cbe7ddb63572fd6633d4ac}\index{ChangeNotifier@{ChangeNotifier}!recargarEscuelas@{recargarEscuelas}}
+\index{recargarEscuelas@{recargarEscuelas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{recargarEscuelas()}{recargarEscuelas()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a2b70c381b1cbe7ddb63572fd6633d4ac} 
+Future$<$ void $>$ Change\+Notifier\+::recargar\+Escuelas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Recarga el catálogo de escuelas desde el repositorio y, si hay una escuela seleccionada, recarga también el inventario activo para reflejar cualquier cambio reciente en los datos. 
+
+\Hypertarget{class_change_notifier_ae9ae4ef80a0dfd27e01be7945637b2d5}\index{ChangeNotifier@{ChangeNotifier}!refrescar@{refrescar}}
+\index{refrescar@{refrescar}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{refrescar()}{refrescar()}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae9ae4ef80a0dfd27e01be7945637b2d5} 
+Future$<$ void $>$ Change\+Notifier\+::refrescar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza las alertas desde el caso de uso sin activar el indicador de carga. 
+
+Diseñado para refrescos en segundo plano donde no se requiere feedback visual. Los errores se suprimen silenciosamente para no interrumpir la UI. \Hypertarget{class_change_notifier_a297fa3527a4d5dd08a3803196cdd7031}\index{ChangeNotifier@{ChangeNotifier}!refrescarAlertas@{refrescarAlertas}}
+\index{refrescarAlertas@{refrescarAlertas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{refrescarAlertas()}{refrescarAlertas()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a297fa3527a4d5dd08a3803196cdd7031} 
+Future$<$ void $>$ Change\+Notifier\+::refrescar\+Alertas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Refresca las alertas de stock a través de \mbox{[}Alertas\+Provider\mbox{]}. 
+
+Se invoca manualmente ante operaciones que modifiquen el inventario, como devoluciones, cancelaciones o ajustes de stock. \Hypertarget{class_change_notifier_a4867459b66672c5d1b6940ea94f995d0}\index{ChangeNotifier@{ChangeNotifier}!RegistrarInventarioProvider@{RegistrarInventarioProvider}}
+\index{RegistrarInventarioProvider@{RegistrarInventarioProvider}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{RegistrarInventarioProvider()}{RegistrarInventarioProvider()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a4867459b66672c5d1b6940ea94f995d0} 
+Change\+Notifier\+::\+Registrar\+Inventario\+Provider (\begin{DoxyParamCaption}\item[{\{ required this.\+prenda\+Repository, required this.\+talla\+Repository, required this.\+escuela\+Repository, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Registrar\+Inventario\+Provider\mbox{]} con los repositorios requeridos. 
+
+\Hypertarget{class_change_notifier_afe417ef5816d3aa88162fba044af8878}\index{ChangeNotifier@{ChangeNotifier}!registrarQrPedido@{registrarQrPedido}}
+\index{registrarQrPedido@{registrarQrPedido}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{registrarQrPedido()}{registrarQrPedido()}}
+{\footnotesize\ttfamily \label{class_change_notifier_afe417ef5816d3aa88162fba044af8878} 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ Change\+Notifier\+::registrar\+Qr\+Pedido (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, required int id\+Inventario\+Esperado, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, bool forzar\+Movimiento=false, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Registra un QR escaneado contra un detalle de pedido específico. 
+
+Retorna un mapa con información del conflicto si la unidad escaneada no corresponde al inventario esperado, o null si el registro fue exitoso. El parámetro \mbox{[}forzar\+Movimiento\mbox{]} permite ignorar conflictos de inventario. Recarga los detalles del pedido al finalizar la operación. \Hypertarget{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}\index{ChangeNotifier@{ChangeNotifier}!return@{return}}
+\index{return@{return}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{return()}{return()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177} 
+Change\+Notifier\+::return (\begin{DoxyParamCaption}\item[{escuelas\+Mas\+Ventas.\+first as}]{num}{\mbox{[} \textquotesingle{}total\textquotesingle{}\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a0ff339ddf95e25fedd3712ce8b768bc8}\index{ChangeNotifier@{ChangeNotifier}!return@{return}}
+\index{return@{return}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{return()}{return()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0ff339ddf95e25fedd3712ce8b768bc8} 
+Change\+Notifier\+::return (\begin{DoxyParamCaption}\item[{prendas\+Mas\+Vendidas.\+first as}]{num}{\mbox{[} \textquotesingle{}cantidad\textquotesingle{}\mbox{]}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a5f399f72b5dbf3c5c2a6ebc2d7d291a0}\index{ChangeNotifier@{ChangeNotifier}!seleccionarPrenda@{seleccionarPrenda}}
+\index{seleccionarPrenda@{seleccionarPrenda}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{seleccionarPrenda()}{seleccionarPrenda()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a5f399f72b5dbf3c5c2a6ebc2d7d291a0} 
+Future$<$ void $>$ Change\+Notifier\+::seleccionar\+Prenda (\begin{DoxyParamCaption}\item[{int?}]{id\+Prenda}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el filtro de prenda seleccionada y recarga el inventario si hay una escuela activa. 
+
+Un valor null elimina el filtro por prenda. \Hypertarget{class_change_notifier_a98c8b0eb906b1e7240498ae988909ca7}\index{ChangeNotifier@{ChangeNotifier}!setUserName@{setUserName}}
+\index{setUserName@{setUserName}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{setUserName()}{setUserName()}}
+{\footnotesize\ttfamily \label{class_change_notifier_a98c8b0eb906b1e7240498ae988909ca7} 
+void Change\+Notifier\+::set\+User\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el nombre del usuario y notifica a los listeners. 
+
+\Hypertarget{class_change_notifier_af6dad959990ba274ca2a878f2626f1c9}\index{ChangeNotifier@{ChangeNotifier}!solicitarPermisosBluetooth@{solicitarPermisosBluetooth}}
+\index{solicitarPermisosBluetooth@{solicitarPermisosBluetooth}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{solicitarPermisosBluetooth()}{solicitarPermisosBluetooth()}}
+{\footnotesize\ttfamily \label{class_change_notifier_af6dad959990ba274ca2a878f2626f1c9} 
+Future$<$ bool $>$ Change\+Notifier\+::solicitar\+Permisos\+Bluetooth (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Solicita los permisos de Bluetooth y ubicación requeridos para la impresión. 
+
+Retorna true únicamente si los tres permisos fueron concedidos\+: bluetooth\+Scan, bluetooth\+Connect y location. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}\index{ChangeNotifier@{ChangeNotifier}!\_agotados@{\_agotados}}
+\index{\_agotados@{\_agotados}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_agotados}{\_agotados}}
+{\footnotesize\ttfamily \label{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ Change\+Notifier\+::\+\_\+agotados = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de inventarios con stock en cero. 
+
+\Hypertarget{class_change_notifier_ac7d7c703fab3e2d537b420ddcbb41eaa}\index{ChangeNotifier@{ChangeNotifier}!\_cargando@{\_cargando}}
+\index{\_cargando@{\_cargando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_cargando}{\_cargando}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_ac7d7c703fab3e2d537b420ddcbb41eaa} 
+bool Change\+Notifier\+::\+\_\+cargando = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica si hay una operación asíncrona en curso. 
+
+Indica si hay una operación de carga en curso. \Hypertarget{class_change_notifier_a641269620581fe8ae6cc53d536fb7fd1}\index{ChangeNotifier@{ChangeNotifier}!\_cargando@{\_cargando}}
+\index{\_cargando@{\_cargando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_cargando}{\_cargando}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a641269620581fe8ae6cc53d536fb7fd1} 
+Alertas\+Provider (\{required Alertas\+Stock\+Use\+Case \mbox{\hyperlink{class_change_notifier_a48c51529afc58e280c260c6e7c8fe55d}{use\+Case}}\}) bool Change\+Notifier\+::\+\_\+cargando = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Alertas\+Provider\mbox{]} con el \mbox{[}use\+Case\mbox{]} requerido. 
+
+Indica si hay una operación de carga en curso. \Hypertarget{class_change_notifier_aedb3e9b34aea60f68a9fb05d61edcffa}\index{ChangeNotifier@{ChangeNotifier}!\_criticos@{\_criticos}}
+\index{\_criticos@{\_criticos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_criticos}{\_criticos}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_aedb3e9b34aea60f68a9fb05d61edcffa} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ Change\+Notifier\+::\+\_\+criticos = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de inventarios con stock por debajo del umbral crítico. 
+
+\Hypertarget{class_change_notifier_a92ec0db9adac3e674cc6b2ce84481675}\index{ChangeNotifier@{ChangeNotifier}!\_criticos@{\_criticos}}
+\index{\_criticos@{\_criticos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_criticos}{\_criticos}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a92ec0db9adac3e674cc6b2ce84481675} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Change\+Notifier\+::\+\_\+criticos\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_afec4ef19f0cd31ab14ee2f2f77a14a26}\index{ChangeNotifier@{ChangeNotifier}!\_detalles@{\_detalles}}
+\index{\_detalles@{\_detalles}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_detalles}{\_detalles}}
+{\footnotesize\ttfamily \label{class_change_notifier_afec4ef19f0cd31ab14ee2f2f77a14a26} 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ Change\+Notifier\+::\+\_\+detalles = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de detalles del pedido actualmente seleccionado. 
+
+Lista de detalles de la venta actualmente seleccionada. \Hypertarget{class_change_notifier_ab90017e151b97004989be67cce42d0c4}\index{ChangeNotifier@{ChangeNotifier}!\_error@{\_error}}
+\index{\_error@{\_error}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_error}{\_error}}
+{\footnotesize\ttfamily \label{class_change_notifier_ab90017e151b97004989be67cce42d0c4} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Change\+Notifier\+::\+\_\+error\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mensaje de error producido durante el último intento de autenticación. Null si no hay error. 
+
+Mensaje del último error ocurrido. Null si no hay error activo. \Hypertarget{class_change_notifier_a2fc8cbdf2942ac162e82144b95a034a3}\index{ChangeNotifier@{ChangeNotifier}!\_escuelaRepo@{\_escuelaRepo}}
+\index{\_escuelaRepo@{\_escuelaRepo}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_escuelaRepo}{\_escuelaRepo}}
+{\footnotesize\ttfamily \label{class_change_notifier_a2fc8cbdf2942ac162e82144b95a034a3} 
+final Change\+Notifier\+::\+\_\+escuela\+Repo = \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio encargado de obtener el catálogo de escuelas. 
+
+\Hypertarget{class_change_notifier_abb0ba3c0e3bd09fda505c1011873818a}\index{ChangeNotifier@{ChangeNotifier}!\_escuelaRepository@{\_escuelaRepository}}
+\index{\_escuelaRepository@{\_escuelaRepository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_escuelaRepository}{\_escuelaRepository}}
+{\footnotesize\ttfamily \label{class_change_notifier_abb0ba3c0e3bd09fda505c1011873818a} 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} Change\+Notifier\+::\+\_\+escuela\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de escuelas para poblar el filtro. 
+
+\Hypertarget{class_change_notifier_a4c550fc64a86c0bda1b2e3bc5425e3e5}\index{ChangeNotifier@{ChangeNotifier}!\_escuelas@{\_escuelas}}
+\index{\_escuelas@{\_escuelas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_escuelas}{\_escuelas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a4c550fc64a86c0bda1b2e3bc5425e3e5} 
+List$<$Escuela$>$ Change\+Notifier\+::\+\_\+escuelas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de escuelas disponibles cargadas al inicializar el proveedor. 
+
+\Hypertarget{class_change_notifier_a5942923558ef619d43c5ac9bb784cf51}\index{ChangeNotifier@{ChangeNotifier}!\_escuelaSeleccionada@{\_escuelaSeleccionada}}
+\index{\_escuelaSeleccionada@{\_escuelaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_escuelaSeleccionada}{\_escuelaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_a5942923558ef619d43c5ac9bb784cf51} 
+Escuela Change\+Notifier\+::\+\_\+escuela\+Seleccionada\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Escuela seleccionada actualmente para filtrar el inventario. 
+
+\Hypertarget{class_change_notifier_a6e3f93b0679bc0ecb28eaaddf014f3a8}\index{ChangeNotifier@{ChangeNotifier}!\_idPrendaSeleccionada@{\_idPrendaSeleccionada}}
+\index{\_idPrendaSeleccionada@{\_idPrendaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_idPrendaSeleccionada}{\_idPrendaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_a6e3f93b0679bc0ecb28eaaddf014f3a8} 
+int Change\+Notifier\+::\+\_\+id\+Prenda\+Seleccionada\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identificador de la prenda seleccionada como filtro adicional. Null si no se aplica filtro por prenda. 
+
+\Hypertarget{class_change_notifier_a291b06d74a9cd0b2e29b6adc703f850b}\index{ChangeNotifier@{ChangeNotifier}!\_inventario@{\_inventario}}
+\index{\_inventario@{\_inventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_inventario}{\_inventario}}
+{\footnotesize\ttfamily \label{class_change_notifier_a291b06d74a9cd0b2e29b6adc703f850b} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ Change\+Notifier\+::\+\_\+inventario = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista del inventario completo disponible para selección manual. 
+
+\Hypertarget{class_change_notifier_af67817d36175fb3d7f1feff3c3d3b1af}\index{ChangeNotifier@{ChangeNotifier}!\_inventarioRepo@{\_inventarioRepo}}
+\index{\_inventarioRepo@{\_inventarioRepo}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepo}{\_inventarioRepo}}
+{\footnotesize\ttfamily \label{class_change_notifier_af67817d36175fb3d7f1feff3c3d3b1af} 
+final Change\+Notifier\+::\+\_\+inventario\+Repo = \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio encargado de obtener y filtrar los registros de inventario. 
+
+\Hypertarget{class_change_notifier_a502394493fd4cb4fbcca0f3b8c3b1973}\index{ChangeNotifier@{ChangeNotifier}!\_inventarioRepository@{\_inventarioRepository}}
+\index{\_inventarioRepository@{\_inventarioRepository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepository}{\_inventarioRepository}}
+{\footnotesize\ttfamily \label{class_change_notifier_a502394493fd4cb4fbcca0f3b8c3b1973} 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} Change\+Notifier\+::\+\_\+inventario\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio para obtener el inventario disponible. 
+
+\Hypertarget{class_change_notifier_a1410f9b95712d5958645fdf668d515c6}\index{ChangeNotifier@{ChangeNotifier}!\_items@{\_items}}
+\index{\_items@{\_items}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_items}{\_items}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1410f9b95712d5958645fdf668d515c6} 
+Nueva\+Orden\+Provider (\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_orden_repository}{Orden\+Repository}} orden\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, required this.\+alertas\+Provider, \}) final List$<$\mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}}$>$ Change\+Notifier\+::\+\_\+items = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Nueva\+Orden\+Provider\mbox{]} inyectando todos los repositorios y casos de uso necesarios para el flujo de nueva orden. 
+
+Lista de items agregados a la orden actual. \Hypertarget{class_change_notifier_a3d10bc6d0e92a7a3b16c56c144e6eeee}\index{ChangeNotifier@{ChangeNotifier}!\_itemsInventario@{\_itemsInventario}}
+\index{\_itemsInventario@{\_itemsInventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_itemsInventario}{\_itemsInventario}}
+{\footnotesize\ttfamily \label{class_change_notifier_a3d10bc6d0e92a7a3b16c56c144e6eeee} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ Change\+Notifier\+::\+\_\+items\+Inventario = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de items del inventario resultante del filtrado aplicado. 
+
+\Hypertarget{class_change_notifier_a1ae6ba0b200baebc50908e8db7f7621d}\index{ChangeNotifier@{ChangeNotifier}!\_loginUseCase@{\_loginUseCase}}
+\index{\_loginUseCase@{\_loginUseCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_loginUseCase}{\_loginUseCase}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1ae6ba0b200baebc50908e8db7f7621d} 
+final Change\+Notifier\+::\+\_\+login\+Use\+Case = \mbox{\hyperlink{class_login_use_case}{Login\+Use\+Case}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso que ejecuta la lógica de autenticación. 
+
+\Hypertarget{class_change_notifier_a9134123cf1a2768070a1bd46c28311ce}\index{ChangeNotifier@{ChangeNotifier}!\_pedidos@{\_pedidos}}
+\index{\_pedidos@{\_pedidos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_pedidos}{\_pedidos}}
+{\footnotesize\ttfamily \label{class_change_notifier_a9134123cf1a2768070a1bd46c28311ce} 
+Pedidos\+Pendientes\+Provider (\{ required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) List$<$Pedido$>$ Change\+Notifier\+::\+\_\+pedidos = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Pedidos\+Pendientes\+Provider\mbox{]} inyectando los repositorios y el caso de uso de QR necesarios para el flujo de pedidos. 
+
+Lista de pedidos pendientes cargados desde el repositorio. \Hypertarget{class_change_notifier_af9794dc30b96d3356ad73b9350179630}\index{ChangeNotifier@{ChangeNotifier}!\_pendientes@{\_pendientes}}
+\index{\_pendientes@{\_pendientes}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_pendientes}{\_pendientes}}
+{\footnotesize\ttfamily \label{class_change_notifier_af9794dc30b96d3356ad73b9350179630} 
+Qr\+Pendientes\+Provider (\{required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} repository\}) List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ Change\+Notifier\+::\+\_\+pendientes = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Qr\+Pendientes\+Provider\mbox{]} con el \mbox{[}repository\mbox{]} requerido. 
+
+Lista de unidades con QR pendiente de impresión. \Hypertarget{class_change_notifier_a1d97a897ff02602b5280c0bb38b9f752}\index{ChangeNotifier@{ChangeNotifier}!\_prendaRepo@{\_prendaRepo}}
+\index{\_prendaRepo@{\_prendaRepo}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_prendaRepo}{\_prendaRepo}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1d97a897ff02602b5280c0bb38b9f752} 
+final Change\+Notifier\+::\+\_\+prenda\+Repo = \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio encargado de obtener el catálogo de prendas. 
+
+\Hypertarget{class_change_notifier_a3d9d2c2b558c528f76feff5c0056a18d}\index{ChangeNotifier@{ChangeNotifier}!\_prendas@{\_prendas}}
+\index{\_prendas@{\_prendas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_prendas}{\_prendas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a3d9d2c2b558c528f76feff5c0056a18d} 
+List$<$Prenda$>$ Change\+Notifier\+::\+\_\+prendas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de prendas disponibles cargadas al inicializar el proveedor. 
+
+\Hypertarget{class_change_notifier_a7165d613779c6238d62c7b52960643af}\index{ChangeNotifier@{ChangeNotifier}!\_procesando@{\_procesando}}
+\index{\_procesando@{\_procesando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_procesando}{\_procesando}}
+{\footnotesize\ttfamily \label{class_change_notifier_a7165d613779c6238d62c7b52960643af} 
+bool Change\+Notifier\+::\+\_\+procesando = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica si hay un procesamiento de QR en curso. 
+
+\Hypertarget{class_change_notifier_a1d7f91369308f291c2e4359dde34bb21}\index{ChangeNotifier@{ChangeNotifier}!\_repository@{\_repository}}
+\index{\_repository@{\_repository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_repository}{\_repository}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1d7f91369308f291c2e4359dde34bb21} 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} Change\+Notifier\+::\+\_\+repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de unidades. 
+
+\Hypertarget{class_change_notifier_aaee839421881821cc21cd7803e0e56d1}\index{ChangeNotifier@{ChangeNotifier}!\_repository@{\_repository}}
+\index{\_repository@{\_repository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_repository}{\_repository}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_aaee839421881821cc21cd7803e0e56d1} 
+final \mbox{\hyperlink{class_reporte_repository}{Reporte\+Repository}} Change\+Notifier\+::\+\_\+repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de reportes de ventas. 
+
+\Hypertarget{class_change_notifier_a765b3ec7eea41c150432907d67cf9eea}\index{ChangeNotifier@{ChangeNotifier}!\_unidades@{\_unidades}}
+\index{\_unidades@{\_unidades}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_unidades}{\_unidades}}
+{\footnotesize\ttfamily \label{class_change_notifier_a765b3ec7eea41c150432907d67cf9eea} 
+final List$<$Unidad$>$ Change\+Notifier\+::\+\_\+unidades = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista interna de unidades procesadas en la sesión actual. 
+
+\Hypertarget{class_change_notifier_a1863dfb518241a7d25dd6df48a8e73f6}\index{ChangeNotifier@{ChangeNotifier}!\_useCase@{\_useCase}}
+\index{\_useCase@{\_useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_useCase}{\_useCase}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a1863dfb518241a7d25dd6df48a8e73f6} 
+final Alertas\+Stock\+Use\+Case Change\+Notifier\+::\+\_\+use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso encargado de obtener las alertas de stock. 
+
+\Hypertarget{class_change_notifier_ae86ecd22eed9a99b77f9373746dc2ded}\index{ChangeNotifier@{ChangeNotifier}!\_useCase@{\_useCase}}
+\index{\_useCase@{\_useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_useCase}{\_useCase}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae86ecd22eed9a99b77f9373746dc2ded} 
+final \mbox{\hyperlink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}} Change\+Notifier\+::\+\_\+use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso que encapsula la lógica de negocio para crear órdenes. 
+
+\Hypertarget{class_change_notifier_a2f4219bb54a31c3430fe0faab5bf97b5}\index{ChangeNotifier@{ChangeNotifier}!\_useCase@{\_useCase}}
+\index{\_useCase@{\_useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_useCase}{\_useCase}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a2f4219bb54a31c3430fe0faab5bf97b5} 
+final \mbox{\hyperlink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}} Change\+Notifier\+::\+\_\+use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso que encapsula la lógica de negocio de pedidos pendientes. 
+
+\Hypertarget{class_change_notifier_ac967aa0d902454ec9596cae248c5223c}\index{ChangeNotifier@{ChangeNotifier}!\_useCase@{\_useCase}}
+\index{\_useCase@{\_useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_useCase}{\_useCase}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_change_notifier_ac967aa0d902454ec9596cae248c5223c} 
+final \mbox{\hyperlink{class_ventas_use_case}{Ventas\+Use\+Case}} Change\+Notifier\+::\+\_\+use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso que encapsula la lógica de negocio de ventas. 
+
+\Hypertarget{class_change_notifier_a39fb25b230e671ac1e8c659a68ac6dbe}\index{ChangeNotifier@{ChangeNotifier}!\_userName@{\_userName}}
+\index{\_userName@{\_userName}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_userName}{\_userName}}
+{\footnotesize\ttfamily \label{class_change_notifier_a39fb25b230e671ac1e8c659a68ac6dbe} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Change\+Notifier\+::\+\_\+user\+Name = \textquotesingle{}Usuario\textquotesingle{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nombre del usuario actualmente autenticado. 
+
+Valor por defecto\+: \textquotesingle{}Usuario\textquotesingle{}. \Hypertarget{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}\index{ChangeNotifier@{ChangeNotifier}!\_usuarioActual@{\_usuarioActual}}
+\index{\_usuarioActual@{\_usuarioActual}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_usuarioActual}{\_usuarioActual}}
+{\footnotesize\ttfamily \label{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2} 
+Usuario Change\+Notifier\+::\+\_\+usuario\+Actual\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Usuario autenticado actualmente. Null si no hay sesión activa. 
+
+\Hypertarget{class_change_notifier_a8c6b765cbb8d36423293f979a63b571b}\index{ChangeNotifier@{ChangeNotifier}!\_usuarioRepo@{\_usuarioRepo}}
+\index{\_usuarioRepo@{\_usuarioRepo}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_usuarioRepo}{\_usuarioRepo}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8c6b765cbb8d36423293f979a63b571b} 
+final Change\+Notifier\+::\+\_\+usuario\+Repo = \mbox{\hyperlink{class_usuario_repository}{Usuario\+Repository}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio encargado de obtener los datos de usuarios. 
+
+\Hypertarget{class_change_notifier_a01b3d39bdd0c6df7492e71da27305024}\index{ChangeNotifier@{ChangeNotifier}!\_ventas@{\_ventas}}
+\index{\_ventas@{\_ventas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{\_ventas}{\_ventas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a01b3d39bdd0c6df7492e71da27305024} 
+Ventas\+Provider (\{ required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required this.\+alertas\+Provider, \}) List$<$Venta$>$ Change\+Notifier\+::\+\_\+ventas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Ventas\+Provider\mbox{]} inyectando el repositorio y el provider de alertas requeridos. 
+
+Lista de ventas cargadas desde el repositorio. \Hypertarget{class_change_notifier_a81ccbf5f4bf93c6d42d7c67aceb3e576}\index{ChangeNotifier@{ChangeNotifier}!agotados@{agotados}}
+\index{agotados@{agotados}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{agotados}{agotados}}
+{\footnotesize\ttfamily \label{class_change_notifier_a81ccbf5f4bf93c6d42d7c67aceb3e576} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Change\+Notifier\+::agotados =$>$ \mbox{\hyperlink{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}{\+\_\+agotados}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone los registros de inventario agotados. 
+
+\Hypertarget{class_change_notifier_a5f9d347c69384a1d12ecbd39f3e20a92}\index{ChangeNotifier@{ChangeNotifier}!alertasProvider@{alertasProvider}}
+\index{alertasProvider@{alertasProvider}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{alertasProvider}{alertasProvider}}
+{\footnotesize\ttfamily \label{class_change_notifier_a5f9d347c69384a1d12ecbd39f3e20a92} 
+final Alertas\+Provider Change\+Notifier\+::alertas\+Provider\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referencia al provider de alertas para refrescarlas al confirmar una orden. 
+
+Referencia al provider de alertas para refrescarlas ante cambios de stock.
+
+Referencia al provider de alertas para refrescarlas tras agregar unidades. \Hypertarget{class_change_notifier_ac2ee3622564240db13f9dd4998013c00}\index{ChangeNotifier@{ChangeNotifier}!cantidadVentas@{cantidadVentas}}
+\index{cantidadVentas@{cantidadVentas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cantidadVentas}{cantidadVentas}}
+{\footnotesize\ttfamily \label{class_change_notifier_ac2ee3622564240db13f9dd4998013c00} 
+int Change\+Notifier\+::cantidad\+Ventas = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cantidad de ventas realizadas según los filtros activos. 
+
+\Hypertarget{class_change_notifier_a89502e100264c60e39dfaa4d604e6951}\index{ChangeNotifier@{ChangeNotifier}!cargando@{cargando}}
+\index{cargando@{cargando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargando}{cargando}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a89502e100264c60e39dfaa4d604e6951} 
+bool get Change\+Notifier\+::cargando =$>$ \mbox{\hyperlink{class_change_notifier_ac7d7c703fab3e2d537b420ddcbb41eaa}{\+\_\+cargando}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone el estado de carga a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a742324eece04c7d883bfb879f0b26bbd}\index{ChangeNotifier@{ChangeNotifier}!cargando@{cargando}}
+\index{cargando@{cargando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargando}{cargando}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a742324eece04c7d883bfb879f0b26bbd} 
+bool Change\+Notifier\+::cargando = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica si hay una operación de carga en curso. 
+
+\Hypertarget{class_change_notifier_a0114f7b599d4d1554f12a39b8abe8178}\index{ChangeNotifier@{ChangeNotifier}!cargando@{cargando}}
+\index{cargando@{cargando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{cargando}{cargando}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0114f7b599d4d1554f12a39b8abe8178} 
+Reportes\+Provider (\{ required \mbox{\hyperlink{class_reporte_repository}{Reporte\+Repository}} repository, required \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} \mbox{\hyperlink{class_change_notifier_a469b1f0cf89eafae2e2e9dc5d1961f88}{escuela\+Repository}}, \}) bool Change\+Notifier\+::cargando = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Crea una instancia de \mbox{[}Reportes\+Provider\mbox{]} con los repositorios requeridos. 
+
+Indica si hay una operación de carga en curso. \Hypertarget{class_change_notifier_a8b5508786312fc6e1deeba95e7a4b59b}\index{ChangeNotifier@{ChangeNotifier}!criticos@{criticos}}
+\index{criticos@{criticos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{criticos}{criticos}}
+{\footnotesize\ttfamily \label{class_change_notifier_a8b5508786312fc6e1deeba95e7a4b59b} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Change\+Notifier\+::criticos =$>$ \mbox{\hyperlink{class_change_notifier_aedb3e9b34aea60f68a9fb05d61edcffa}{\+\_\+criticos}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone los registros de inventario en estado crítico. 
+
+\Hypertarget{class_change_notifier_a0eaa72d2416f51f79d20779266d98064}\index{ChangeNotifier@{ChangeNotifier}!detalles@{detalles}}
+\index{detalles@{detalles}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{detalles}{detalles}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0eaa72d2416f51f79d20779266d98064} 
+List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ get Change\+Notifier\+::detalles =$>$ \mbox{\hyperlink{class_change_notifier_afec4ef19f0cd31ab14ee2f2f77a14a26}{\+\_\+detalles}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone los detalles del pedido seleccionado a los widgets consumidores. 
+
+Expone los detalles de la venta seleccionada a los widgets consumidores. \Hypertarget{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17}\index{ChangeNotifier@{ChangeNotifier}!error@{error}}
+\index{error@{error}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{error}{error}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Change\+Notifier\+::error =$>$ \mbox{\hyperlink{class_change_notifier_ab90017e151b97004989be67cce42d0c4}{\+\_\+error}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone el mensaje de error a los widgets consumidores. 
+
+Mensaje del último error ocurrido. Null si no hay error activo. \Hypertarget{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17}\index{ChangeNotifier@{ChangeNotifier}!error@{error}}
+\index{error@{error}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{error}{error}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_aeebe1cbe7259ad7647c8e9f1a79ace17} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Change\+Notifier\+::error\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mensaje de error del último fallo ocurrido. Null si no hay error. 
+
+Mensaje del último error ocurrido. Null si no hay error activo. \Hypertarget{class_change_notifier_a469b1f0cf89eafae2e2e9dc5d1961f88}\index{ChangeNotifier@{ChangeNotifier}!escuelaRepository@{escuelaRepository}}
+\index{escuelaRepository@{escuelaRepository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{escuelaRepository}{escuelaRepository}}
+{\footnotesize\ttfamily \label{class_change_notifier_a469b1f0cf89eafae2e2e9dc5d1961f88} 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} Change\+Notifier\+::escuela\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de escuelas. 
+
+\Hypertarget{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024}\index{ChangeNotifier@{ChangeNotifier}!escuelas@{escuelas}}
+\index{escuelas@{escuelas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{escuelas}{escuelas}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a5cabd11ca7c73aa807c9bee685d34024} 
+List$<$ Escuela $>$ Change\+Notifier\+::escuelas =$>$ \mbox{\hyperlink{class_change_notifier_a4c550fc64a86c0bda1b2e3bc5425e3e5}{\+\_\+escuelas}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de escuelas disponibles para el filtro. 
+
+\Hypertarget{class_change_notifier_a59c6880eb5e7dff7e815900d7c53f5d1}\index{ChangeNotifier@{ChangeNotifier}!escuelas@{escuelas}}
+\index{escuelas@{escuelas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{escuelas}{escuelas}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a59c6880eb5e7dff7e815900d7c53f5d1} 
+List$<$Escuela$>$ Change\+Notifier\+::escuelas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de escuelas disponibles en el catálogo. 
+
+Lista de escuelas disponibles para el filtro. \Hypertarget{class_change_notifier_a11601ad62eebbab1027b77103f4c910f}\index{ChangeNotifier@{ChangeNotifier}!escuelaSeleccionada@{escuelaSeleccionada}}
+\index{escuelaSeleccionada@{escuelaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{escuelaSeleccionada}{escuelaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_a11601ad62eebbab1027b77103f4c910f} 
+Escuela get Change\+Notifier\+::escuela\+Seleccionada =$>$ \mbox{\hyperlink{class_change_notifier_a5942923558ef619d43c5ac9bb784cf51}{\+\_\+escuela\+Seleccionada}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a92de352cd6ffb027741a2e72a2092dbd}\index{ChangeNotifier@{ChangeNotifier}!escuelasMasVentas@{escuelasMasVentas}}
+\index{escuelasMasVentas@{escuelasMasVentas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{escuelasMasVentas}{escuelasMasVentas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a92de352cd6ffb027741a2e72a2092dbd} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ Change\+Notifier\+::escuelas\+Mas\+Ventas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ranking de escuelas con más ventas. 
+
+Se vacía cuando hay una escuela específica seleccionada como filtro. \Hypertarget{class_change_notifier_a574ce08b2f575005fbf1e9b4d81fbf38}\index{ChangeNotifier@{ChangeNotifier}!estaAutenticado@{estaAutenticado}}
+\index{estaAutenticado@{estaAutenticado}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{estaAutenticado}{estaAutenticado}}
+{\footnotesize\ttfamily \label{class_change_notifier_a574ce08b2f575005fbf1e9b4d81fbf38} 
+bool get Change\+Notifier\+::esta\+Autenticado =$>$ \mbox{\hyperlink{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}{\+\_\+usuario\+Actual}} != null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna true si existe un usuario autenticado en sesión. 
+
+\Hypertarget{class_change_notifier_aa817a0d70bb93856287dbb0571b6f9a5}\index{ChangeNotifier@{ChangeNotifier}!hayAlertas@{hayAlertas}}
+\index{hayAlertas@{hayAlertas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{hayAlertas}{hayAlertas}}
+{\footnotesize\ttfamily \label{class_change_notifier_aa817a0d70bb93856287dbb0571b6f9a5} 
+bool get Change\+Notifier\+::hay\+Alertas =$>$ \+\_\+agotados.\+is\+Not\+Empty \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} \+\_\+criticos.\+is\+Not\+Empty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna true si existe al menos una alerta activa de cualquier tipo. 
+
+\Hypertarget{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f}\index{ChangeNotifier@{ChangeNotifier}!idEscuelaSeleccionada@{idEscuelaSeleccionada}}
+\index{idEscuelaSeleccionada@{idEscuelaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{idEscuelaSeleccionada}{idEscuelaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f} 
+int Change\+Notifier\+::id\+Escuela\+Seleccionada\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ID de la escuela seleccionada como filtro. Null indica todas las escuelas. 
+
+\Hypertarget{class_change_notifier_ae873dbe755f3fdc4bee99b9c4dc13137}\index{ChangeNotifier@{ChangeNotifier}!idPrendaSeleccionada@{idPrendaSeleccionada}}
+\index{idPrendaSeleccionada@{idPrendaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{idPrendaSeleccionada}{idPrendaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae873dbe755f3fdc4bee99b9c4dc13137} 
+int get Change\+Notifier\+::id\+Prenda\+Seleccionada =$>$ \mbox{\hyperlink{class_change_notifier_a6e3f93b0679bc0ecb28eaaddf014f3a8}{\+\_\+id\+Prenda\+Seleccionada}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a49fa5df07fb07bea63fec8264c50cb44}\index{ChangeNotifier@{ChangeNotifier}!inventario@{inventario}}
+\index{inventario@{inventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{inventario}{inventario}}
+{\footnotesize\ttfamily \label{class_change_notifier_a49fa5df07fb07bea63fec8264c50cb44} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ get Change\+Notifier\+::inventario =$>$ \mbox{\hyperlink{class_change_notifier_a291b06d74a9cd0b2e29b6adc703f850b}{\+\_\+inventario}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone el inventario disponible a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a0d9a5cb8c750397fbf7d6ec2697651b4}\index{ChangeNotifier@{ChangeNotifier}!items@{items}}
+\index{items@{items}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0d9a5cb8c750397fbf7d6ec2697651b4} 
+List$<$\mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}}$>$ get Change\+Notifier\+::items =$>$ \mbox{\hyperlink{class_change_notifier_a1410f9b95712d5958645fdf668d515c6}{\+\_\+items}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone los items de la orden actual como lista de solo lectura. 
+
+\Hypertarget{class_change_notifier_a6d57975ff633a9e39a47c31f5f009104}\index{ChangeNotifier@{ChangeNotifier}!itemsInventario@{itemsInventario}}
+\index{itemsInventario@{itemsInventario}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{itemsInventario}{itemsInventario}}
+{\footnotesize\ttfamily \label{class_change_notifier_a6d57975ff633a9e39a47c31f5f009104} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ get Change\+Notifier\+::items\+Inventario =$>$ \mbox{\hyperlink{class_change_notifier_a3d10bc6d0e92a7a3b16c56c144e6eeee}{\+\_\+items\+Inventario}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a0f0407a2ed0240a6452a421f78f15d78}\index{ChangeNotifier@{ChangeNotifier}!loading@{loading}}
+\index{loading@{loading}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{loading}{loading}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0f0407a2ed0240a6452a421f78f15d78} 
+bool Change\+Notifier\+::loading = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indica si hay una operación de impresión en curso. 
+
+\Hypertarget{class_change_notifier_a7f05b36ff7086b73f2c4352a627e8e0a}\index{ChangeNotifier@{ChangeNotifier}!maxCantidadPrenda@{maxCantidadPrenda}}
+\index{maxCantidadPrenda@{maxCantidadPrenda}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{maxCantidadPrenda}{maxCantidadPrenda}}
+{\footnotesize\ttfamily \label{class_change_notifier_a7f05b36ff7086b73f2c4352a627e8e0a} 
+double get Change\+Notifier\+::max\+Cantidad\+Prenda\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_change_notifier_a367a5a7fb5cef3039144e900ecbddadf}{prendasMasVendidas}}.isEmpty)\ \textcolor{keywordflow}{return}\ 1}
+
+\end{DoxyCode}
+
+
+Retorna la cantidad de la prenda más vendida para normalizar barras. 
+
+Retorna 1 si la lista está vacía para evitar división por cero. \Hypertarget{class_change_notifier_a6bf1f85b7ecbee41a97432d777806737}\index{ChangeNotifier@{ChangeNotifier}!maxTotalEscuela@{maxTotalEscuela}}
+\index{maxTotalEscuela@{maxTotalEscuela}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{maxTotalEscuela}{maxTotalEscuela}}
+{\footnotesize\ttfamily \label{class_change_notifier_a6bf1f85b7ecbee41a97432d777806737} 
+double get Change\+Notifier\+::max\+Total\+Escuela\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_change_notifier_a92de352cd6ffb027741a2e72a2092dbd}{escuelasMasVentas}}.isEmpty)\ \textcolor{keywordflow}{return}\ 1}
+
+\end{DoxyCode}
+
+
+Retorna el total de ventas de la escuela con mayor venta para normalizar barras. 
+
+Retorna 1 si la lista está vacía para evitar división por cero. \Hypertarget{class_change_notifier_ad35b71f4bba7180209fd50ef8f5ca18c}\index{ChangeNotifier@{ChangeNotifier}!mensaje@{mensaje}}
+\index{mensaje@{mensaje}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{mensaje}{mensaje}}
+{\footnotesize\ttfamily \label{class_change_notifier_ad35b71f4bba7180209fd50ef8f5ca18c} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} Change\+Notifier\+::mensaje = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mensaje de resultado de la última operación ejecutada. 
+
+Vacío si no hay mensaje activo. \Hypertarget{class_change_notifier_aeea7fc4000c6041fd4d7b7c172f28922}\index{ChangeNotifier@{ChangeNotifier}!meses@{meses}}
+\index{meses@{meses}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{meses}{meses}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_aeea7fc4000c6041fd4d7b7c172f28922} 
+const Change\+Notifier\+::meses\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{''},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Enero'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Febrero'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Marzo'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Abril'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Mayo'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Junio'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Julio'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Agosto'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Septiembre'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Octubre'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Noviembre'},}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{stringliteral}{'Diciembre'},}
+\DoxyCodeLine{\ \ \ \ ]}
+
+\end{DoxyCode}
+\Hypertarget{class_change_notifier_a66cf4eec3a7977252673a41e8b4ee116}\index{ChangeNotifier@{ChangeNotifier}!meses@{meses}}
+\index{meses@{meses}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{meses}{meses}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a66cf4eec3a7977252673a41e8b4ee116} 
+\mbox{\hyperlink{class_change_notifier_a7be0d5aeedae853694fb966f3ff69177}{return}} Change\+Notifier\+::meses\mbox{[}month!\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_af16e82760d2015d6087bed8ffd00444e}\index{ChangeNotifier@{ChangeNotifier}!month@{month}}
+\index{month@{month}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{month}{month}}
+{\footnotesize\ttfamily \label{class_change_notifier_af16e82760d2015d6087bed8ffd00444e} 
+int Change\+Notifier\+::month\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mes actualmente seleccionado como filtro. Null indica todos los meses. 
+
+\Hypertarget{class_change_notifier_a2b80321f142da0a1803f97d9aefd3f92}\index{ChangeNotifier@{ChangeNotifier}!nombreEscuelaSeleccionada@{nombreEscuelaSeleccionada}}
+\index{nombreEscuelaSeleccionada@{nombreEscuelaSeleccionada}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{nombreEscuelaSeleccionada}{nombreEscuelaSeleccionada}}
+{\footnotesize\ttfamily \label{class_change_notifier_a2b80321f142da0a1803f97d9aefd3f92} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get Change\+Notifier\+::nombre\+Escuela\+Seleccionada\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_change_notifier_af4d5e5c36d5187483cf0df34d9ae869f}{idEscuelaSeleccionada}}\ ==\ null)\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'Todas\ las\ escuelas'}}
+
+\end{DoxyCode}
+
+
+Retorna el nombre de la escuela seleccionada, o \textquotesingle{}Todas las escuelas\textquotesingle{} si no hay filtro activo. 
+
+\Hypertarget{class_change_notifier_ab3c3f869658d338db1808f69f2f91731}\index{ChangeNotifier@{ChangeNotifier}!nombreMesSeleccionado@{nombreMesSeleccionado}}
+\index{nombreMesSeleccionado@{nombreMesSeleccionado}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{nombreMesSeleccionado}{nombreMesSeleccionado}}
+{\footnotesize\ttfamily \label{class_change_notifier_ab3c3f869658d338db1808f69f2f91731} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get Change\+Notifier\+::nombre\+Mes\+Seleccionado\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_change_notifier_af16e82760d2015d6087bed8ffd00444e}{month}}\ ==\ null)\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'Todo\ el\ año'}}
+
+\end{DoxyCode}
+
+
+Retorna el nombre del mes seleccionado, o \textquotesingle{}Todo el año\textquotesingle{} si no hay mes activo. 
+
+\Hypertarget{class_change_notifier_aad715227ad3f4acb1e89ff929021d2a8}\index{ChangeNotifier@{ChangeNotifier}!pedidos@{pedidos}}
+\index{pedidos@{pedidos}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{pedidos}{pedidos}}
+{\footnotesize\ttfamily \label{class_change_notifier_aad715227ad3f4acb1e89ff929021d2a8} 
+List$<$Pedido$>$ get Change\+Notifier\+::pedidos =$>$ \mbox{\hyperlink{class_change_notifier_a9134123cf1a2768070a1bd46c28311ce}{\+\_\+pedidos}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone la lista de pedidos pendientes a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a45707acbf04d24ce2cf288fae555a855}\index{ChangeNotifier@{ChangeNotifier}!pendientes@{pendientes}}
+\index{pendientes@{pendientes}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{pendientes}{pendientes}}
+{\footnotesize\ttfamily \label{class_change_notifier_a45707acbf04d24ce2cf288fae555a855} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ get Change\+Notifier\+::pendientes =$>$ \mbox{\hyperlink{class_change_notifier_af9794dc30b96d3356ad73b9350179630}{\+\_\+pendientes}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone la lista de unidades pendientes a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a68f3c288884a171b8c0975a63425ae6b}\index{ChangeNotifier@{ChangeNotifier}!prendaRepository@{prendaRepository}}
+\index{prendaRepository@{prendaRepository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{prendaRepository}{prendaRepository}}
+{\footnotesize\ttfamily \label{class_change_notifier_a68f3c288884a171b8c0975a63425ae6b} 
+final \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} Change\+Notifier\+::prenda\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de prendas. 
+
+\Hypertarget{class_change_notifier_a0026aafc3669dc8629d8faef40193bb4}\index{ChangeNotifier@{ChangeNotifier}!prendas@{prendas}}
+\index{prendas@{prendas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{prendas}{prendas}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a0026aafc3669dc8629d8faef40193bb4} 
+List$<$Prenda$>$ get Change\+Notifier\+::prendas =$>$ \mbox{\hyperlink{class_change_notifier_a3d9d2c2b558c528f76feff5c0056a18d}{\+\_\+prendas}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_a9e2f96f6be9ea4ce393311b02a3b5fb6}\index{ChangeNotifier@{ChangeNotifier}!prendas@{prendas}}
+\index{prendas@{prendas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{prendas}{prendas}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a9e2f96f6be9ea4ce393311b02a3b5fb6} 
+List$<$Prenda$>$ Change\+Notifier\+::prendas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de prendas disponibles en el catálogo. 
+
+\Hypertarget{class_change_notifier_a367a5a7fb5cef3039144e900ecbddadf}\index{ChangeNotifier@{ChangeNotifier}!prendasMasVendidas@{prendasMasVendidas}}
+\index{prendasMasVendidas@{prendasMasVendidas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{prendasMasVendidas}{prendasMasVendidas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a367a5a7fb5cef3039144e900ecbddadf} 
+List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ Change\+Notifier\+::prendas\+Mas\+Vendidas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ranking de prendas más vendidas según los filtros activos. 
+
+\Hypertarget{class_change_notifier_aed276dfb12042c1fbbaaf1e96d9ff0af}\index{ChangeNotifier@{ChangeNotifier}!procesando@{procesando}}
+\index{procesando@{procesando}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{procesando}{procesando}}
+{\footnotesize\ttfamily \label{class_change_notifier_aed276dfb12042c1fbbaaf1e96d9ff0af} 
+bool get Change\+Notifier\+::procesando =$>$ \mbox{\hyperlink{class_change_notifier_a7165d613779c6238d62c7b52960643af}{\+\_\+procesando}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone el estado de procesamiento a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a87cdba8d7f7752d687756eabfb776278}\index{ChangeNotifier@{ChangeNotifier}!tallaRepository@{tallaRepository}}
+\index{tallaRepository@{tallaRepository}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{tallaRepository}{tallaRepository}}
+{\footnotesize\ttfamily \label{class_change_notifier_a87cdba8d7f7752d687756eabfb776278} 
+final \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} Change\+Notifier\+::talla\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Repositorio de acceso a datos de tallas. 
+
+\Hypertarget{class_change_notifier_ae60d2a704980ccdabc9dceb50b361e9a}\index{ChangeNotifier@{ChangeNotifier}!tallas@{tallas}}
+\index{tallas@{tallas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{tallas}{tallas}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae60d2a704980ccdabc9dceb50b361e9a} 
+List$<$Talla$>$ Change\+Notifier\+::tallas = \mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lista de tallas disponibles en el catálogo. 
+
+\Hypertarget{class_change_notifier_af2e728995de6e1bfc303b76e20ade6ac}\index{ChangeNotifier@{ChangeNotifier}!todas@{todas}}
+\index{todas@{todas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{todas}{todas}}
+{\footnotesize\ttfamily \label{class_change_notifier_af2e728995de6e1bfc303b76e20ade6ac} 
+List$<$\mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}$>$ get Change\+Notifier\+::todas =$>$ \mbox{[}...\mbox{\hyperlink{class_change_notifier_abc86fae2eab7d58fca0ca902d344f4fb}{\+\_\+agotados}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna la lista unificada de alertas, con agotados antes que críticos. 
+
+\Hypertarget{class_change_notifier_ae4a775194cb60858d00b5b44220e1dd9}\index{ChangeNotifier@{ChangeNotifier}!total@{total}}
+\index{total@{total}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{total}{total}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae4a775194cb60858d00b5b44220e1dd9} 
+double get Change\+Notifier\+::total\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_change_notifier_a1410f9b95712d5958645fdf668d515c6}{\_items}}.fold(0,\ (sum,\ item)\ =>\ sum\ +\ item.precioUnitario)}
+
+\end{DoxyCode}
+
+
+Calcula el total monetario de la orden sumando el precio unitario de cada item. 
+
+\Hypertarget{class_change_notifier_a04124af84eb5ebb95ddcf9bda1431927}\index{ChangeNotifier@{ChangeNotifier}!totalAlertas@{totalAlertas}}
+\index{totalAlertas@{totalAlertas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{totalAlertas}{totalAlertas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a04124af84eb5ebb95ddcf9bda1431927} 
+int get Change\+Notifier\+::total\+Alertas =$>$ \+\_\+agotados.\+length + \+\_\+criticos.\+length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna el total de alertas activas sumando agotados y críticos. 
+
+\Hypertarget{class_change_notifier_a4b8989b1c54fc14e38d57e213ae1972d}\index{ChangeNotifier@{ChangeNotifier}!totalPrendas@{totalPrendas}}
+\index{totalPrendas@{totalPrendas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{totalPrendas}{totalPrendas}}
+{\footnotesize\ttfamily \label{class_change_notifier_a4b8989b1c54fc14e38d57e213ae1972d} 
+int get Change\+Notifier\+::total\+Prendas =$>$ \+\_\+items.\+length\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retorna el número total de prendas agregadas a la orden. 
+
+\Hypertarget{class_change_notifier_af6a94ed91c0f9077e82448584d5f211f}\index{ChangeNotifier@{ChangeNotifier}!totalVendido@{totalVendido}}
+\index{totalVendido@{totalVendido}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{totalVendido}{totalVendido}}
+{\footnotesize\ttfamily \label{class_change_notifier_af6a94ed91c0f9077e82448584d5f211f} 
+double Change\+Notifier\+::total\+Vendido = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Total monetario de ventas según los filtros activos. 
+
+\Hypertarget{class_change_notifier_a630fbd5f5df9796cc787501e6c625c6a}\index{ChangeNotifier@{ChangeNotifier}!unidades@{unidades}}
+\index{unidades@{unidades}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{unidades}{unidades}}
+{\footnotesize\ttfamily \label{class_change_notifier_a630fbd5f5df9796cc787501e6c625c6a} 
+List$<$Unidad$>$ get Change\+Notifier\+::unidades =$>$ List.\+unmodifiable(\mbox{\hyperlink{class_change_notifier_a765b3ec7eea41c150432907d67cf9eea}{\+\_\+unidades}})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone la lista de unidades como vista de solo lectura. 
+
+\Hypertarget{class_change_notifier_a48c51529afc58e280c260c6e7c8fe55d}\index{ChangeNotifier@{ChangeNotifier}!useCase@{useCase}}
+\index{useCase@{useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{useCase}{useCase}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_a48c51529afc58e280c260c6e7c8fe55d} 
+final \mbox{\hyperlink{class_print_use_case}{Print\+Use\+Case}} Change\+Notifier\+::use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso que encapsula la lógica de impresión de QRs. 
+
+\Hypertarget{class_change_notifier_adb64423aea83543afe03c5bc2d86a55b}\index{ChangeNotifier@{ChangeNotifier}!useCase@{useCase}}
+\index{useCase@{useCase}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{useCase}{useCase}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_change_notifier_adb64423aea83543afe03c5bc2d86a55b} 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} Change\+Notifier\+::use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Caso de uso encargado de resolver un código QR a una \mbox{[}Unidad\mbox{]}. 
+
+\Hypertarget{class_change_notifier_aa782f3a601ab68d407888afe09938f3c}\index{ChangeNotifier@{ChangeNotifier}!userName@{userName}}
+\index{userName@{userName}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{userName}{userName}}
+{\footnotesize\ttfamily \label{class_change_notifier_aa782f3a601ab68d407888afe09938f3c} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get Change\+Notifier\+::user\+Name =$>$ \mbox{\hyperlink{class_change_notifier_a39fb25b230e671ac1e8c659a68ac6dbe}{\+\_\+user\+Name}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone el nombre del usuario a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_ac6549e2cf496b9d6d76d0e1aa9439703}\index{ChangeNotifier@{ChangeNotifier}!usuarioActual@{usuarioActual}}
+\index{usuarioActual@{usuarioActual}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{usuarioActual}{usuarioActual}}
+{\footnotesize\ttfamily \label{class_change_notifier_ac6549e2cf496b9d6d76d0e1aa9439703} 
+Usuario get Change\+Notifier\+::usuario\+Actual =$>$ \mbox{\hyperlink{class_change_notifier_af5a729e9a85b23a9aeaa50253639f7f2}{\+\_\+usuario\+Actual}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_change_notifier_ae6d719227f4aeb94918a0bb6223d1f9b}\index{ChangeNotifier@{ChangeNotifier}!ventas@{ventas}}
+\index{ventas@{ventas}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{ventas}{ventas}}
+{\footnotesize\ttfamily \label{class_change_notifier_ae6d719227f4aeb94918a0bb6223d1f9b} 
+List$<$Venta$>$ get Change\+Notifier\+::ventas =$>$ \mbox{\hyperlink{class_change_notifier_a01b3d39bdd0c6df7492e71da27305024}{\+\_\+ventas}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expone la lista de ventas a los widgets consumidores. 
+
+\Hypertarget{class_change_notifier_a7f545fce9e81f04b16733352f27e649d}\index{ChangeNotifier@{ChangeNotifier}!year@{year}}
+\index{year@{year}!ChangeNotifier@{ChangeNotifier}}
+\doxysubsubsection{\texorpdfstring{year}{year}}
+{\footnotesize\ttfamily \label{class_change_notifier_a7f545fce9e81f04b16733352f27e649d} 
+int Change\+Notifier\+::year = Date\+Time.\+now().year\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Año actualmente seleccionado como filtro. Por defecto el año en curso. 
+
+
+
+La documentación de esta clase está generada de los siguientes archivos\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/providers/\mbox{\hyperlink{auth__provider_8dart}{auth\+\_\+provider.\+dart}}\item 
+lib/business/providers/\mbox{\hyperlink{inventario__provider_8dart}{inventario\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{alertas__provider_8dart}{alertas\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{home__provider_8dart}{home\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{nueva__orden__provider_8dart}{nueva\+\_\+orden\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{pedidos__pendientes__provider_8dart}{pedidos\+\_\+pendientes\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{print__provider_8dart}{print\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{qr__pendientes__provider_8dart}{qr\+\_\+pendientes\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{qr__provider_8dart}{qr\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{registrar__inventario__provider_8dart}{registrar\+\_\+inventario\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{reportes__provider_8dart}{reportes\+\_\+provider.\+dart}}\item 
+lib/presentation/providers/\mbox{\hyperlink{ventas__provider_8dart}{ventas\+\_\+provider.\+dart}}\end{DoxyCompactItemize}

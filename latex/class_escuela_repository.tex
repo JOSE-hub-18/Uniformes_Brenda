@@ -1,0 +1,95 @@
+\doxysection{Referencia de la clase Escuela\+Repository}
+\hypertarget{class_escuela_repository}{}\label{class_escuela_repository}\index{EscuelaRepository@{EscuelaRepository}}
+
+
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de escuelas.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_escuela_repository_addab9f3a4cda02b1e179a00dc91c2871}{insertar}} (Escuela \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}{escuela}}) \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta una nueva escuela en la base de datos. \end{DoxyCompactList}\item 
+Future$<$ Escuela?$>$ \mbox{\hyperlink{class_escuela_repository_aed35d7f35f4f34f60a78f92119d16f31}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna la escuela con el identificador indicado. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Escuela $>$ $>$ \mbox{\hyperlink{class_escuela_repository_ac04a70aa452c1f2e344ae2400fe92c7d}{obtener\+Todas}} () \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna todas las escuelas registradas, ordenadas alfabéticamente por nombre. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_escuela_repository_a3e65ab6f828dfcbf3c1b3a7c86de024a}{actualizar}} (Escuela \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}{escuela}}) \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}}
+\begin{DoxyCompactList}\small\item\em Actualiza los datos de una escuela existente identificada por su id. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_escuela_repository_ab710b2e4f8b6be2e7103230e46b0dac4}{eliminar}} (int id) \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina la escuela con el identificador indicado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de escuelas. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_escuela_repository_a3e65ab6f828dfcbf3c1b3a7c86de024a}\index{EscuelaRepository@{EscuelaRepository}!actualizar@{actualizar}}
+\index{actualizar@{actualizar}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{actualizar()}{actualizar()}}
+{\footnotesize\ttfamily \label{class_escuela_repository_a3e65ab6f828dfcbf3c1b3a7c86de024a} 
+Future$<$ int $>$ Escuela\+Repository\+::actualizar (\begin{DoxyParamCaption}\item[{Escuela}]{escuela}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza los datos de una escuela existente identificada por su id. 
+
+\Hypertarget{class_escuela_repository_ab710b2e4f8b6be2e7103230e46b0dac4}\index{EscuelaRepository@{EscuelaRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_escuela_repository_ab710b2e4f8b6be2e7103230e46b0dac4} 
+Future$<$ int $>$ Escuela\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina la escuela con el identificador indicado. 
+
+\Hypertarget{class_escuela_repository_addab9f3a4cda02b1e179a00dc91c2871}\index{EscuelaRepository@{EscuelaRepository}!insertar@{insertar}}
+\index{insertar@{insertar}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_escuela_repository_addab9f3a4cda02b1e179a00dc91c2871} 
+Future$<$ int $>$ Escuela\+Repository\+::insertar (\begin{DoxyParamCaption}\item[{Escuela}]{escuela}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta una nueva escuela en la base de datos. 
+
+Lanza una excepción si ya existe un registro con el mismo nombre (Conflict\+Algorithm.\+abort). \Hypertarget{class_escuela_repository_aed35d7f35f4f34f60a78f92119d16f31}\index{EscuelaRepository@{EscuelaRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_escuela_repository_aed35d7f35f4f34f60a78f92119d16f31} 
+Future$<$ Escuela?$>$ Escuela\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna la escuela con el identificador indicado. 
+
+Retorna null si no existe. \Hypertarget{class_escuela_repository_ac04a70aa452c1f2e344ae2400fe92c7d}\index{EscuelaRepository@{EscuelaRepository}!obtenerTodas@{obtenerTodas}}
+\index{obtenerTodas@{obtenerTodas}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodas()}{obtenerTodas()}}
+{\footnotesize\ttfamily \label{class_escuela_repository_ac04a70aa452c1f2e344ae2400fe92c7d} 
+Future$<$ List$<$ Escuela $>$ $>$ Escuela\+Repository\+::obtener\+Todas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todas las escuelas registradas, ordenadas alfabéticamente por nombre. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1}\index{EscuelaRepository@{EscuelaRepository}!async@{async}}
+\index{async@{async}!EscuelaRepository@{EscuelaRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_escuela_repository_a6221e14ca298802b7875bd4b30fea7a1} 
+Future$<$Database$>$ get \+\_\+db Escuela\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{escuela__repository_8dart}{escuela\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

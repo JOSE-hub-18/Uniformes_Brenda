@@ -46,10 +46,7 @@ class AlertasStockResult {
   final List<AlertaStock> agotados;
   final List<AlertaStock> criticos;
 
-  const AlertasStockResult({
-    required this.agotados,
-    required this.criticos,
-  });
+  const AlertasStockResult({required this.agotados, required this.criticos});
 
   /// Retorna la lista combinada de todas las alertas, con los agotados primero.
   List<AlertaStock> get todas => [...agotados, ...criticos];
@@ -71,19 +68,15 @@ class AlertasStockUseCase {
   /// a este valor y mayor a 0 se clasifican como críticos.
   static const int umbralCritico = 3;
 
-  AlertasStockUseCase({
-    required InventarioRepository inventarioRepository,
-  }) : _inventarioRepository = inventarioRepository;
+  AlertasStockUseCase({required InventarioRepository inventarioRepository})
+    : _inventarioRepository = inventarioRepository;
 
   /// Retorna todas las alertas activas agrupadas en agotados y críticos.
   Future<AlertasStockResult> obtenerAlertas() async {
     final agotados = await _obtenerAgotados();
     final criticos = await _obtenerCriticos();
 
-    return AlertasStockResult(
-      agotados: agotados,
-      criticos: criticos,
-    );
+    return AlertasStockResult(agotados: agotados, criticos: criticos);
   }
 
   /// Retorna únicamente los items sin stock (0 unidades disponibles).
@@ -105,16 +98,12 @@ class AlertasStockUseCase {
 
     if (stock == 0) {
       final agotados = await _obtenerAgotados();
-      return agotados
-          .where((a) => a.idInventario == idInventario)
-          .firstOrNull;
+      return agotados.where((a) => a.idInventario == idInventario).firstOrNull;
     }
 
     if (stock <= umbralCritico) {
       final criticos = await _obtenerCriticos();
-      return criticos
-          .where((a) => a.idInventario == idInventario)
-          .firstOrNull;
+      return criticos.where((a) => a.idInventario == idInventario).firstOrNull;
     }
 
     return null;
@@ -132,11 +121,15 @@ class AlertasStockUseCase {
     final partes = <String>[];
 
     if (resultado.totalAgotados > 0) {
-      partes.add('${resultado.totalAgotados} agotado${resultado.totalAgotados > 1 ? 's' : ''}');
+      partes.add(
+        '${resultado.totalAgotados} agotado${resultado.totalAgotados > 1 ? 's' : ''}',
+      );
     }
 
     if (resultado.totalCriticos > 0) {
-      partes.add('${resultado.totalCriticos} crítico${resultado.totalCriticos > 1 ? 's' : ''}');
+      partes.add(
+        '${resultado.totalCriticos} crítico${resultado.totalCriticos > 1 ? 's' : ''}',
+      );
     }
 
     return partes.join(' · ');
@@ -147,15 +140,19 @@ class AlertasStockUseCase {
   Future<List<AlertaStock>> _obtenerAgotados() async {
     final rows = await _inventarioRepository.obtenerStockAgotado();
 
-    return rows.map((row) => AlertaStock(
-      idInventario: row['id'] as int,
-      escuela: row['escuela'] as String,
-      prenda: row['prenda'] as String,
-      talla: row['talla'] as String,
-      precio: (row['precio'] as num).toDouble(),
-      stock: 0,
-      tipo: TipoAlerta.agotado,
-    )).toList();
+    return rows
+        .map(
+          (row) => AlertaStock(
+            idInventario: row['id'] as int,
+            escuela: row['escuela'] as String,
+            prenda: row['prenda'] as String,
+            talla: row['talla'] as String,
+            precio: (row['precio'] as num).toDouble(),
+            stock: 0,
+            tipo: TipoAlerta.agotado,
+          ),
+        )
+        .toList();
   }
 
   /// Obtiene del repositorio los items con stock crítico y los mapea
@@ -163,14 +160,18 @@ class AlertasStockUseCase {
   Future<List<AlertaStock>> _obtenerCriticos() async {
     final rows = await _inventarioRepository.obtenerStockCritico();
 
-    return rows.map((row) => AlertaStock(
-      idInventario: row['id'] as int,
-      escuela: row['escuela'] as String,
-      prenda: row['prenda'] as String,
-      talla: row['talla'] as String,
-      precio: (row['precio'] as num).toDouble(),
-      stock: row['stock'] as int,
-      tipo: TipoAlerta.critico,
-    )).toList();
+    return rows
+        .map(
+          (row) => AlertaStock(
+            idInventario: row['id'] as int,
+            escuela: row['escuela'] as String,
+            prenda: row['prenda'] as String,
+            talla: row['talla'] as String,
+            precio: (row['precio'] as num).toDouble(),
+            stock: row['stock'] as int,
+            tipo: TipoAlerta.critico,
+          ),
+        )
+        .toList();
   }
 }

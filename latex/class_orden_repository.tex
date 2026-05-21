@@ -1,0 +1,71 @@
+\doxysection{Referencia de la clase Orden\+Repository}
+\hypertarget{class_orden_repository}{}\label{class_orden_repository}\index{OrdenRepository@{OrdenRepository}}
+
+
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de órdenes.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_orden_repository_acda2bee41020ed3c494da91fa60758ce}{insertar}} (Orden orden) \mbox{\hyperlink{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta una nueva orden en la base de datos y retorna su identificador generado. \end{DoxyCompactList}\item 
+Future$<$ Orden?$>$ \mbox{\hyperlink{class_orden_repository_a3b6dd2bdcc21c09385284820b6fce42b}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna la orden con el identificador indicado. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Orden $>$ $>$ \mbox{\hyperlink{class_orden_repository_a5d1213903d13ae6fe6776f678a28fef6}{obtener\+Todas}} () \mbox{\hyperlink{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna todas las órdenes registradas, ordenadas por fecha descendente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de órdenes. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_orden_repository_acda2bee41020ed3c494da91fa60758ce}\index{OrdenRepository@{OrdenRepository}!insertar@{insertar}}
+\index{insertar@{insertar}!OrdenRepository@{OrdenRepository}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_orden_repository_acda2bee41020ed3c494da91fa60758ce} 
+Future$<$ int $>$ Orden\+Repository\+::insertar (\begin{DoxyParamCaption}\item[{Orden}]{orden}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta una nueva orden en la base de datos y retorna su identificador generado. 
+
+\Hypertarget{class_orden_repository_a3b6dd2bdcc21c09385284820b6fce42b}\index{OrdenRepository@{OrdenRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!OrdenRepository@{OrdenRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_orden_repository_a3b6dd2bdcc21c09385284820b6fce42b} 
+Future$<$ Orden?$>$ Orden\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna la orden con el identificador indicado. 
+
+Retorna null si no existe ninguna orden con ese id. \Hypertarget{class_orden_repository_a5d1213903d13ae6fe6776f678a28fef6}\index{OrdenRepository@{OrdenRepository}!obtenerTodas@{obtenerTodas}}
+\index{obtenerTodas@{obtenerTodas}!OrdenRepository@{OrdenRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodas()}{obtenerTodas()}}
+{\footnotesize\ttfamily \label{class_orden_repository_a5d1213903d13ae6fe6776f678a28fef6} 
+Future$<$ List$<$ Orden $>$ $>$ Orden\+Repository\+::obtener\+Todas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todas las órdenes registradas, ordenadas por fecha descendente. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20}\index{OrdenRepository@{OrdenRepository}!async@{async}}
+\index{async@{async}!OrdenRepository@{OrdenRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_orden_repository_aba13bbbf917e99fbb2e7d4eada822c20} 
+Future$<$Database$>$ get \+\_\+db Orden\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{orden__repository_8dart}{orden\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

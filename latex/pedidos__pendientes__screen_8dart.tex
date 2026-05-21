@@ -1,0 +1,75 @@
+\doxysection{Referencia del archivo lib/presentation/screens/pedidos\+\_\+pendientes\+\_\+screen.dart}
+\hypertarget{pedidos__pendientes__screen_8dart}{}\label{pedidos__pendientes__screen_8dart}\index{lib/presentation/screens/pedidos\_pendientes\_screen.dart@{lib/presentation/screens/pedidos\_pendientes\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}{Pedidos\+Pendientes\+Screen}} extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a831291414f3b2a2b3af2b363c5f7c84b}{init\+State}} ()
+\begin{DoxyCompactList}\small\item\em Estado asociado a \mbox{[}Pedidos\+Pendientes\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}{Pedidos\+Pendientes\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor por defecto de la pantalla de pedidos pendientes. \end{DoxyCompactList}\item 
+override State$<$ \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}{Pedidos\+Pendientes\+Screen}} $>$ \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a30b525bfeca2f6f18076255efe8bfd75}{create\+State}} ()
+\item 
+override Widget \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}{build}} (Build\+Context context,)
+\item 
+Widget \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a29bca504f451fae66530544c3e8932e0}{\+\_\+build\+Pedido\+Card}} (Build\+Context context, Pedido \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}{pedido}},)
+\begin{DoxyCompactList}\small\item\em Construye la tarjeta visual que representa un pedido pendiente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{pedidos__pendientes__screen_8dart_a29bca504f451fae66530544c3e8932e0}\index{pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}!\_buildPedidoCard@{\_buildPedidoCard}}
+\index{\_buildPedidoCard@{\_buildPedidoCard}!pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_buildPedidoCard()}{\_buildPedidoCard()}}
+{\footnotesize\ttfamily \label{pedidos__pendientes__screen_8dart_a29bca504f451fae66530544c3e8932e0} 
+Widget \+\_\+build\+Pedido\+Card (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{, }\item[{Pedido}]{pedido}{}\end{DoxyParamCaption})}
+
+
+
+Construye la tarjeta visual que representa un pedido pendiente. 
+
+
+\begin{DoxyItemize}
+\item Muestra información básica\+: id, cliente, fecha y estado.
+\item Incluye acción "{}\+Ver"{} que navega a \mbox{[}Revisar\+Pedido\+Screen\mbox{]} y espera un resultado booleano que indica si el pedido fue eliminado o modificado.
+\item Si el resultado es {\ttfamily true}, se recargan los pedidos desde el provider. 
+\end{DoxyItemize}\Hypertarget{pedidos__pendientes__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}\index{pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}!build@{build}}
+\index{build@{build}!pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{pedidos__pendientes__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pedidos__pendientes__screen_8dart_a30b525bfeca2f6f18076255efe8bfd75}\index{pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}!createState@{createState}}
+\index{createState@{createState}!pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{createState()}{createState()}}
+{\footnotesize\ttfamily \label{pedidos__pendientes__screen_8dart_a30b525bfeca2f6f18076255efe8bfd75} 
+override State$<$ \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}{Pedidos\+Pendientes\+Screen}} $>$ init\+State\+::create\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{pedidos__pendientes__screen_8dart_a831291414f3b2a2b3af2b363c5f7c84b}\index{pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{pedidos__pendientes__screen_8dart_a831291414f3b2a2b3af2b363c5f7c84b} 
+class \mbox{\hyperlink{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}{Pedidos\+Pendientes\+Screen}} extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Estado asociado a \mbox{[}Pedidos\+Pendientes\+Screen\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Inicializa la carga de pedidos pendientes una vez que el primer frame ha sido renderizado.
+\item Observa cambios en el provider para actualizar la UI. 
+\end{DoxyItemize}\Hypertarget{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd}\index{pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}!PedidosPendientesScreen@{PedidosPendientesScreen}}
+\index{PedidosPendientesScreen@{PedidosPendientesScreen}!pedidos\_pendientes\_screen.dart@{pedidos\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{PedidosPendientesScreen()}{PedidosPendientesScreen()}}
+{\footnotesize\ttfamily \label{pedidos__pendientes__screen_8dart_a33a1258bc26a8054c790668f0d59adfd} 
+const init\+State\+::\+Pedidos\+Pendientes\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto de la pantalla de pedidos pendientes. 
+

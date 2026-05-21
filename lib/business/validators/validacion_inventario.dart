@@ -4,7 +4,6 @@ import '../../models/models.dart';
 /// aplicables a los registros de inventario.
 /// Todos sus métodos son estáticos y lanzan excepciones ante datos inválidos.
 class ValidacionInventario {
-
   /// Verifica que los identificadores de escuela, prenda y talla
   /// sean valores positivos válidos.
   static void validarCamposObligatorios(Inventario inventario) {
@@ -45,7 +44,7 @@ class ValidacionInventario {
   ) async {
     if (await tieneVentasActivas(idInventario)) {
       throw Exception(
-        "No se puede eliminar el inventario porque tiene ventas activas"
+        "No se puede eliminar el inventario porque tiene ventas activas",
       );
     }
   }

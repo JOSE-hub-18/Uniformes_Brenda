@@ -1,0 +1,205 @@
+\doxysection{Referencia del archivo lib/presentation/screens/qr\+\_\+screen.dart}
+\hypertarget{qr__screen_8dart}{}\label{qr__screen_8dart}\index{lib/presentation/screens/qr\_screen.dart@{lib/presentation/screens/qr\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_custom_painter}{Custom\+Painter}}
+\begin{DoxyCompactList}\small\item\em Overlay visual del scanner que dibuja\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18}{Resultado\+Scan}} \{ \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18ad8b76af209cd7ba83b4ebf33ba1637b2}{ok}}
+, \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18ad606e435413ea0944dd00d49e901e4ed}{error}}
+, \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18a813786a44b5e39cc134e394a6746b95a}{duplicado}}
+ \}
+\begin{DoxyCompactList}\small\item\em Resultado genérico para cualquier pantalla de escaneo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{qr__screen_8dart_a988c3d04b4978ac42fe885a291eb2f38}{Scan\+Feedback}} (\{ required \mbox{\hyperlink{qr__screen_8dart_a5d32390e71b43bb4bab5e18cdc43ebe8}{this.\+resultado}}, required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}, \})
+\begin{DoxyCompactList}\small\item\em Constructor que obliga a proporcionar resultado y mensaje. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{qr__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{qr__screen_8dart_a0df6752745d1e4dac44d9dc16d667d3e}{\+\_\+handle\+Scan}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr,) async
+\begin{DoxyCompactList}\small\item\em Maneja el resultado del escaneo. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{qr__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}{dispose}} ()
+\item 
+override Widget \mbox{\hyperlink{qr__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}{build}} (Build\+Context context,)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18}{Resultado\+Scan}} \mbox{\hyperlink{qr__screen_8dart_a5d32390e71b43bb4bab5e18cdc43ebe8}{resultado}}
+\begin{DoxyCompactList}\small\item\em Modelo de feedback configurable que encapsula el resultado del escaneo y un mensaje legible para mostrar al usuario. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{qr__screen_8dart_aefa23d072ce41f0d847af3fedff30bf2}{mensaje}}
+\begin{DoxyCompactList}\small\item\em Mensaje descriptivo asociado al resultado. \end{DoxyCompactList}\item 
+class QRScanner\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{qr__screen_8dart_aa9004a56ece42f443b1c32d532aeb5a8}{controller}}
+\begin{DoxyCompactList}\small\item\em Estado asociado a \mbox{[}QRScanner\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{qr__screen_8dart_a83fc74a011acee3b35ca9bf657ed916f}{\+\_\+procesando}}
+\begin{DoxyCompactList}\small\item\em Indicador para evitar procesar múltiples códigos simultáneamente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{qr__screen_8dart_aab16faed76eb823b668937c3ad65adda}{\+\_\+mensaje}} = "{}"{}
+\begin{DoxyCompactList}\small\item\em Mensaje temporal que se muestra en pantalla tras el escaneo. \end{DoxyCompactList}\item 
+Color \mbox{\hyperlink{qr__screen_8dart_a31ffc333e99b193e484004927a7b6abc}{\+\_\+color\+Mensaje}}
+\begin{DoxyCompactList}\small\item\em Color del contenedor del mensaje (verde/rojo/transparente). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18}\index{qr\_screen.dart@{qr\_screen.dart}!ResultadoScan@{ResultadoScan}}
+\index{ResultadoScan@{ResultadoScan}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{ResultadoScan}{ResultadoScan}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18} 
+enum \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18}{Resultado\+Scan}}}
+
+
+
+Resultado genérico para cualquier pantalla de escaneo. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ok}\+: escaneo exitoso.
+\item {\ttfamily error}\+: ocurrió un error al procesar el escaneo.
+\item {\ttfamily duplicado}\+: el código ya fue procesado previamente. 
+\end{DoxyItemize}\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ok@{ok}!qr\_screen.dart@{qr\_screen.dart}}\index{qr\_screen.dart@{qr\_screen.dart}!ok@{ok}}}\Hypertarget{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18ad8b76af209cd7ba83b4ebf33ba1637b2}\label{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18} 
+ok&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{error@{error}!qr\_screen.dart@{qr\_screen.dart}}\index{qr\_screen.dart@{qr\_screen.dart}!error@{error}}}\Hypertarget{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18ad606e435413ea0944dd00d49e901e4ed}\label{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18} 
+error&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{duplicado@{duplicado}!qr\_screen.dart@{qr\_screen.dart}}\index{qr\_screen.dart@{qr\_screen.dart}!duplicado@{duplicado}}}\Hypertarget{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18a813786a44b5e39cc134e394a6746b95a}\label{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18} 
+duplicado&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{qr__screen_8dart_a0df6752745d1e4dac44d9dc16d667d3e}\index{qr\_screen.dart@{qr\_screen.dart}!\_handleScan@{\_handleScan}}
+\index{\_handleScan@{\_handleScan}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_handleScan()}{\_handleScan()}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a0df6752745d1e4dac44d9dc16d667d3e} 
+Future$<$ void $>$ \+\_\+handle\+Scan (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})}
+
+
+
+Maneja el resultado del escaneo. 
+
+
+\begin{DoxyItemize}
+\item Evita reentradas usando {\ttfamily \+\_\+procesando}.
+\item Llama al callback {\ttfamily widget.\+on\+Scan} y actualiza el mensaje y color según el feedback.
+\item Espera un breve lapso para mostrar el mensaje y luego lo oculta. 
+\end{DoxyItemize}\Hypertarget{qr__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}\index{qr\_screen.dart@{qr\_screen.dart}!build@{build}}
+\index{build@{build}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{qr__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}\index{qr\_screen.dart@{qr\_screen.dart}!dispose@{dispose}}
+\index{dispose@{dispose}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2} 
+override void dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{qr__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{qr\_screen.dart@{qr\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{qr__screen_8dart_a988c3d04b4978ac42fe885a291eb2f38}\index{qr\_screen.dart@{qr\_screen.dart}!ScanFeedback@{ScanFeedback}}
+\index{ScanFeedback@{ScanFeedback}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{ScanFeedback()}{ScanFeedback()}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a988c3d04b4978ac42fe885a291eb2f38} 
+Scan\+Feedback (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{qr__screen_8dart_a5d32390e71b43bb4bab5e18cdc43ebe8}{this.\+resultado}}, required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor que obliga a proporcionar resultado y mensaje. 
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{qr__screen_8dart_a31ffc333e99b193e484004927a7b6abc}\index{qr\_screen.dart@{qr\_screen.dart}!\_colorMensaje@{\_colorMensaje}}
+\index{\_colorMensaje@{\_colorMensaje}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_colorMensaje}{\_colorMensaje}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a31ffc333e99b193e484004927a7b6abc} 
+Color \+\_\+color\+Mensaje}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ Colors.transparent}
+
+\end{DoxyCode}
+
+
+Color del contenedor del mensaje (verde/rojo/transparente). 
+
+\Hypertarget{qr__screen_8dart_aab16faed76eb823b668937c3ad65adda}\index{qr\_screen.dart@{qr\_screen.dart}!\_mensaje@{\_mensaje}}
+\index{\_mensaje@{\_mensaje}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_mensaje}{\_mensaje}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_aab16faed76eb823b668937c3ad65adda} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \+\_\+mensaje = "{}"{}}
+
+
+
+Mensaje temporal que se muestra en pantalla tras el escaneo. 
+
+\Hypertarget{qr__screen_8dart_a83fc74a011acee3b35ca9bf657ed916f}\index{qr\_screen.dart@{qr\_screen.dart}!\_procesando@{\_procesando}}
+\index{\_procesando@{\_procesando}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_procesando}{\_procesando}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a83fc74a011acee3b35ca9bf657ed916f} 
+bool \+\_\+procesando}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keyword}{false}}
+
+\end{DoxyCode}
+
+
+Indicador para evitar procesar múltiples códigos simultáneamente. 
+
+\Hypertarget{qr__screen_8dart_aa9004a56ece42f443b1c32d532aeb5a8}\index{qr\_screen.dart@{qr\_screen.dart}!controller@{controller}}
+\index{controller@{controller}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{controller}{controller}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_aa9004a56ece42f443b1c32d532aeb5a8} 
+class QRScanner\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} controller}
+
+
+
+Estado asociado a \mbox{[}QRScanner\+Screen\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Controla el {\ttfamily Mobile\+Scanner\+Controller}.
+\item Gestiona la lógica de procesamiento para evitar reentradas.
+\item Muestra mensajes temporales de resultado con color según el tipo. Controlador del paquete {\ttfamily mobile\+\_\+scanner} para manejar la cámara. 
+\end{DoxyItemize}\Hypertarget{qr__screen_8dart_aefa23d072ce41f0d847af3fedff30bf2}\index{qr\_screen.dart@{qr\_screen.dart}!mensaje@{mensaje}}
+\index{mensaje@{mensaje}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{mensaje}{mensaje}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_aefa23d072ce41f0d847af3fedff30bf2} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} mensaje}
+
+
+
+Mensaje descriptivo asociado al resultado. 
+
+\Hypertarget{qr__screen_8dart_a5d32390e71b43bb4bab5e18cdc43ebe8}\index{qr\_screen.dart@{qr\_screen.dart}!resultado@{resultado}}
+\index{resultado@{resultado}!qr\_screen.dart@{qr\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{resultado}{resultado}}
+{\footnotesize\ttfamily \label{qr__screen_8dart_a5d32390e71b43bb4bab5e18cdc43ebe8} 
+enum \mbox{\hyperlink{qr__screen_8dart_ae85732d4018b2f281ec1f0cf79067c18}{Resultado\+Scan}} resultado}
+
+
+
+Modelo de feedback configurable que encapsula el resultado del escaneo y un mensaje legible para mostrar al usuario. 
+
+Resultado del escaneo (ok, error, duplicado). 

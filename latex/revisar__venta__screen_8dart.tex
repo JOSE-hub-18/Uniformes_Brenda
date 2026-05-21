@@ -1,0 +1,92 @@
+\doxysection{Referencia del archivo lib/presentation/screens/revisar\+\_\+venta\+\_\+screen.dart}
+\hypertarget{revisar__venta__screen_8dart}{}\label{revisar__venta__screen_8dart}\index{lib/presentation/screens/revisar\_venta\_screen.dart@{lib/presentation/screens/revisar\_venta\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{revisar__venta__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{revisar__venta__screen_8dart_a82a66d720ab5734c124cd12be9a96cd8}{\+\_\+devolver\+Prenda}} (\{ required int id\+Detalle\+Venta, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, required int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, \}) async
+\begin{DoxyCompactList}\small\item\em Devuelve una prenda asociada a la venta. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{revisar__venta__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}{build}} (Build\+Context context,)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Revisar\+Venta\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{revisar__venta__screen_8dart_a8aa7ac019f8b2027ddcbcbc1071ffb20}{\+\_\+venta\+Repository}}
+\begin{DoxyCompactList}\small\item\em Estado asociado a \mbox{[}Revisar\+Venta\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{revisar__venta__screen_8dart_ad32d3c6064457ee3e3ab2616675418b9}{\+\_\+unidad\+Repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{revisar__venta__screen_8dart_a82a66d720ab5734c124cd12be9a96cd8}\index{revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}!\_devolverPrenda@{\_devolverPrenda}}
+\index{\_devolverPrenda@{\_devolverPrenda}!revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_devolverPrenda()}{\_devolverPrenda()}}
+{\footnotesize\ttfamily \label{revisar__venta__screen_8dart_a82a66d720ab5734c124cd12be9a96cd8} 
+Future$<$ void $>$ \+\_\+devolver\+Prenda (\begin{DoxyParamCaption}\item[{\{ required int id\+Detalle\+Venta, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, required int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Devuelve una prenda asociada a la venta. 
+
+Flujo\+:
+\begin{DoxyEnumerate}
+\item Reactiva la unidad en el repositorio de unidades.
+\item Elimina el detalle de venta correspondiente.
+\item Intenta reimprimir el QR; si falla, marca la unidad como pendiente de impresión.
+\item Recalcula si la venta quedó vacía y, en ese caso, elimina la venta completa.
+\item Recarga listados y notifica al usuario mediante Snack\+Bars. 
+\end{DoxyEnumerate}\Hypertarget{revisar__venta__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a}\index{revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}!build@{build}}
+\index{build@{build}!revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{revisar__venta__screen_8dart_a1ce6762f2911a5bbe0c7069fd8dcff2a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{revisar__venta__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{revisar__venta__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{revisar__venta__screen_8dart_ad32d3c6064457ee3e3ab2616675418b9}\index{revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}!\_unidadRepository@{\_unidadRepository}}
+\index{\_unidadRepository@{\_unidadRepository}!revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_unidadRepository}{\_unidadRepository}}
+{\footnotesize\ttfamily \label{revisar__venta__screen_8dart_ad32d3c6064457ee3e3ab2616675418b9} 
+final \+\_\+unidad\+Repository}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{class_unidad_repository}{UnidadRepository}}()}
+
+\end{DoxyCode}
+\Hypertarget{revisar__venta__screen_8dart_a8aa7ac019f8b2027ddcbcbc1071ffb20}\index{revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}!\_ventaRepository@{\_ventaRepository}}
+\index{\_ventaRepository@{\_ventaRepository}!revisar\_venta\_screen.dart@{revisar\_venta\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_ventaRepository}{\_ventaRepository}}
+{\footnotesize\ttfamily \label{revisar__venta__screen_8dart_a8aa7ac019f8b2027ddcbcbc1071ffb20} 
+class Revisar\+Venta\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+venta\+Repository}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{class_venta_repository}{VentaRepository}}()}
+
+\end{DoxyCode}
+
+
+Estado asociado a \mbox{[}Revisar\+Venta\+Screen\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Carga los detalles de la venta en {\ttfamily init\+State}.
+\item Proporciona la lógica para devolver prendas y actualizar vistas relacionadas. 
+\end{DoxyItemize}

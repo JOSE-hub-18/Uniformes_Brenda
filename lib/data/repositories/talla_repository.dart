@@ -5,7 +5,6 @@ import '../../models/models.dart';
 /// Repositorio encargado de gestionar las operaciones
 /// CRUD relacionadas con la entidad Talla.
 class TallaRepository {
-
   /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
@@ -49,14 +48,9 @@ class TallaRepository {
   Future<List<Talla>> obtenerTodas() async {
     final db = await _db;
 
-    final maps = await db.query(
-      'tallas',
-      orderBy: 'talla ASC',
-    );
+    final maps = await db.query('tallas', orderBy: 'talla ASC');
 
-    return maps
-        .map((m) => Talla.fromMap(m))
-        .toList();
+    return maps.map((m) => Talla.fromMap(m)).toList();
   }
 
   /// Actualiza la información de una talla existente.
@@ -78,10 +72,6 @@ class TallaRepository {
   Future<int> eliminar(int id) async {
     final db = await _db;
 
-    return await db.delete(
-      'tallas',
-      where: 'id_talla = ?',
-      whereArgs: [id],
-    );
+    return await db.delete('tallas', where: 'id_talla = ?', whereArgs: [id]);
   }
 }

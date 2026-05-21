@@ -1,0 +1,58 @@
+\doxysection{Referencia del archivo lib/presentation/screens/qr\+\_\+pendientes\+\_\+screen.dart}
+\hypertarget{qr__pendientes__screen_8dart}{}\label{qr__pendientes__screen_8dart}\index{lib/presentation/screens/qr\_pendientes\_screen.dart@{lib/presentation/screens/qr\_pendientes\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}}
+\begin{DoxyCompactList}\small\item\em Widget raíz de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{qr__pendientes__screen_8dart_a197d3037a17fb8fefa6d15a66eeb7356}{Qr\+Pendientes\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{qr__pendientes__screen_8dart_a3cb53b034811ed742557b80af398d948}{\+\_\+\+Qr\+Pendientes\+View}} ()
+\begin{DoxyCompactList}\small\item\em Vista interna que consume \mbox{[}Qr\+Pendientes\+Provider\mbox{]} y renderiza la UI. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{qr__pendientes__screen_8dart_a197d3037a17fb8fefa6d15a66eeb7356}{Qr\+Pendientes\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor por defecto. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{qr__pendientes__screen_8dart_ae66bcac2711b858a7cd0c3a5d6db422b}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye el árbol de widgets y envuelve la vista en un \mbox{[}Change\+Notifier\+Provider\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{qr__pendientes__screen_8dart_a3cb53b034811ed742557b80af398d948}\index{qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}!\_QrPendientesView@{\_QrPendientesView}}
+\index{\_QrPendientesView@{\_QrPendientesView}!qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_QrPendientesView()}{\_QrPendientesView()}}
+{\footnotesize\ttfamily \label{qr__pendientes__screen_8dart_a3cb53b034811ed742557b80af398d948} 
+class \mbox{\hyperlink{qr__pendientes__screen_8dart_a197d3037a17fb8fefa6d15a66eeb7356}{Qr\+Pendientes\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \+\_\+\+Qr\+Pendientes\+View (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Vista interna que consume \mbox{[}Qr\+Pendientes\+Provider\mbox{]} y renderiza la UI. 
+
+
+\begin{DoxyItemize}
+\item Muestra estados\+: cargando, vacío o lista de pendientes.
+\item Permite reimprimir QRs y actualizar el estado en el repositorio. 
+\end{DoxyItemize}\Hypertarget{qr__pendientes__screen_8dart_ae66bcac2711b858a7cd0c3a5d6db422b}\index{qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}!build@{build}}
+\index{build@{build}!qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{qr__pendientes__screen_8dart_ae66bcac2711b858a7cd0c3a5d6db422b} 
+override Widget \+\_\+\+Qr\+Pendientes\+View\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye el árbol de widgets y envuelve la vista en un \mbox{[}Change\+Notifier\+Provider\mbox{]}. 
+
+
+\begin{DoxyItemize}
+\item Se inyecta una instancia de \mbox{[}Qr\+Pendientes\+Provider\mbox{]} con su repositorio.
+\item Se llama a {\ttfamily cargar\+Pendientes()} inmediatamente para iniciar la carga de datos. 
+\end{DoxyItemize}\Hypertarget{qr__pendientes__screen_8dart_a197d3037a17fb8fefa6d15a66eeb7356}\index{qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}!QrPendientesScreen@{QrPendientesScreen}}
+\index{QrPendientesScreen@{QrPendientesScreen}!qr\_pendientes\_screen.dart@{qr\_pendientes\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{QrPendientesScreen()}{QrPendientesScreen()}}
+{\footnotesize\ttfamily \label{qr__pendientes__screen_8dart_a197d3037a17fb8fefa6d15a66eeb7356} 
+const \+\_\+\+Qr\+Pendientes\+View\+::\+Qr\+Pendientes\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor por defecto. 
+

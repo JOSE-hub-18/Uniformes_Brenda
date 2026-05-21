@@ -41,8 +41,7 @@ class InventarioProvider extends ChangeNotifier {
   List<Prenda> get prendas => _prendas;
   Escuela? get escuelaSeleccionada => _escuelaSeleccionada;
   int? get idPrendaSeleccionada => _idPrendaSeleccionada;
-  List<Map<String, dynamic>> get itemsInventario =>
-      _itemsInventario;
+  List<Map<String, dynamic>> get itemsInventario => _itemsInventario;
 
   /// Constructor que dispara la carga inicial de catálogos al instanciar el proveedor.
   InventarioProvider() {
@@ -57,11 +56,9 @@ class InventarioProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      _escuelas =
-          await _escuelaRepo.obtenerTodas();
+      _escuelas = await _escuelaRepo.obtenerTodas();
 
-      _prendas =
-          await _prendaRepo.obtenerTodas();
+      _prendas = await _prendaRepo.obtenerTodas();
 
       _escuelaSeleccionada = null;
     } catch (e) {
@@ -76,22 +73,17 @@ class InventarioProvider extends ChangeNotifier {
   /// Carga el inventario filtrado por la escuela indicada y,
   /// opcionalmente, por la prenda actualmente seleccionada.
   /// Actualiza [_escuelaSeleccionada] buscando la coincidencia en el catálogo local.
-  Future<void> cargarInventario(
-    int idEscuela,
-  ) async {
+  Future<void> cargarInventario(int idEscuela) async {
     _cargando = true;
 
     notifyListeners();
 
     try {
-      _escuelaSeleccionada =
-          _escuelas.firstWhere(
+      _escuelaSeleccionada = _escuelas.firstWhere(
         (e) => e.idEscuela == idEscuela,
       );
 
-      _itemsInventario =
-          await _inventarioRepo
-              .obtenerInventarioFiltrado(
+      _itemsInventario = await _inventarioRepo.obtenerInventarioFiltrado(
         idEscuela: idEscuela,
         idPrenda: _idPrendaSeleccionada,
       );
@@ -105,15 +97,11 @@ class InventarioProvider extends ChangeNotifier {
 
   /// Actualiza el filtro de prenda seleccionada y recarga el inventario
   /// si hay una escuela activa. Un valor null elimina el filtro por prenda.
-  Future<void> seleccionarPrenda(
-    int? idPrenda,
-  ) async {
+  Future<void> seleccionarPrenda(int? idPrenda) async {
     _idPrendaSeleccionada = idPrenda;
 
     if (_escuelaSeleccionada != null) {
-      await cargarInventario(
-        _escuelaSeleccionada!.idEscuela!,
-      );
+      await cargarInventario(_escuelaSeleccionada!.idEscuela!);
     }
   }
 
@@ -121,13 +109,10 @@ class InventarioProvider extends ChangeNotifier {
   /// si hay una escuela seleccionada, recarga también el inventario activo
   /// para reflejar cualquier cambio reciente en los datos.
   Future<void> recargarEscuelas() async {
-    _escuelas =
-        await _escuelaRepo.obtenerTodas();
+    _escuelas = await _escuelaRepo.obtenerTodas();
 
     if (_escuelaSeleccionada != null) {
-      await cargarInventario(
-        _escuelaSeleccionada!.idEscuela!,
-      );
+      await cargarInventario(_escuelaSeleccionada!.idEscuela!);
     }
 
     notifyListeners();

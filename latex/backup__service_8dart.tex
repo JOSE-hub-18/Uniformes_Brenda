@@ -1,0 +1,66 @@
+\doxysection{Referencia del archivo lib/business/services/backup\+\_\+service.dart}
+\hypertarget{backup__service_8dart}{}\label{backup__service_8dart}\index{lib/business/services/backup\_service.dart@{lib/business/services/backup\_service.dart}}
+{\ttfamily import dart;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_backup_info}{Backup\+Info}}
+\begin{DoxyCompactList}\small\item\em Modelo que representa la información de un archivo de backup generado. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_backup_service}{Backup\+Service}}
+\begin{DoxyCompactList}\small\item\em Servicio que gestiona las operaciones de backup de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}{Backup\+Result}} (\{ required \mbox{\hyperlink{backup__service_8dart_a9b35650ab09a51f4c279c6a4fe949a9a}{this.\+exitoso}}, required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}, \mbox{\hyperlink{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}{this.\+backup}}, \})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_backup_info}{Backup\+Info}} \mbox{\hyperlink{backup__service_8dart_a9b35650ab09a51f4c279c6a4fe949a9a}{exitoso}}
+\begin{DoxyCompactList}\small\item\em Modelo que representa el resultado de una operación de backup. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{mensaje}}
+\begin{DoxyCompactList}\small\item\em Mensaje descriptivo del resultado de la operación. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{class_backup_info}{Backup\+Info}} \mbox{\hyperlink{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}{backup}}
+\begin{DoxyCompactList}\small\item\em Información del backup generado. Null si la operación falló. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac}\index{backup\_service.dart@{backup\_service.dart}!BackupResult@{BackupResult}}
+\index{BackupResult@{BackupResult}!backup\_service.dart@{backup\_service.dart}}
+\doxysubsubsection{\texorpdfstring{BackupResult()}{BackupResult()}}
+{\footnotesize\ttfamily \label{backup__service_8dart_aa4cb574e7849f21069000bb8cfb75dac} 
+const Backup\+Result (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{backup__service_8dart_a9b35650ab09a51f4c279c6a4fe949a9a}{this.\+exitoso}}, required \mbox{\hyperlink{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}{this.\+mensaje}}, \mbox{\hyperlink{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}{this.\+backup}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{backup__service_8dart_a1e015a15d24251a39cd595efb7737753}\index{backup\_service.dart@{backup\_service.dart}!backup@{backup}}
+\index{backup@{backup}!backup\_service.dart@{backup\_service.dart}}
+\doxysubsubsection{\texorpdfstring{backup}{backup}}
+{\footnotesize\ttfamily \label{backup__service_8dart_a1e015a15d24251a39cd595efb7737753} 
+final \mbox{\hyperlink{class_backup_info}{Backup\+Info}} backup}
+
+
+
+Información del backup generado. Null si la operación falló. 
+
+\Hypertarget{backup__service_8dart_a9b35650ab09a51f4c279c6a4fe949a9a}\index{backup\_service.dart@{backup\_service.dart}!exitoso@{exitoso}}
+\index{exitoso@{exitoso}!backup\_service.dart@{backup\_service.dart}}
+\doxysubsubsection{\texorpdfstring{exitoso}{exitoso}}
+{\footnotesize\ttfamily \label{backup__service_8dart_a9b35650ab09a51f4c279c6a4fe949a9a} 
+class \mbox{\hyperlink{class_backup_info}{Backup\+Info}} exitoso}
+
+
+
+Modelo que representa el resultado de una operación de backup. 
+
+Indica si la operación fue exitosa, un mensaje descriptivo y, opcionalmente, la información del backup generado. Indica si la operación de backup se completó sin errores. \Hypertarget{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2}\index{backup\_service.dart@{backup\_service.dart}!mensaje@{mensaje}}
+\index{mensaje@{mensaje}!backup\_service.dart@{backup\_service.dart}}
+\doxysubsubsection{\texorpdfstring{mensaje}{mensaje}}
+{\footnotesize\ttfamily \label{backup__service_8dart_aefa23d072ce41f0d847af3fedff30bf2} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} mensaje}
+
+
+
+Mensaje descriptivo del resultado de la operación. 
+

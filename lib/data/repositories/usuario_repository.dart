@@ -8,7 +8,6 @@ import '../../models/models.dart';
 /// Incluye consultas de autenticación lógica,
 /// administración de estados y mantenimiento de registros.
 class UsuarioRepository {
-
   /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
@@ -73,14 +72,9 @@ class UsuarioRepository {
   Future<List<Usuario>> obtenerTodos() async {
     final db = await _db;
 
-    final maps = await db.query(
-      'usuarios',
-      orderBy: 'nombre ASC',
-    );
+    final maps = await db.query('usuarios', orderBy: 'nombre ASC');
 
-    return maps
-        .map((m) => Usuario.fromMap(m))
-        .toList();
+    return maps.map((m) => Usuario.fromMap(m)).toList();
   }
 
   /// Obtiene únicamente los usuarios activos.
@@ -97,9 +91,7 @@ class UsuarioRepository {
       orderBy: 'nombre ASC',
     );
 
-    return maps
-        .map((m) => Usuario.fromMap(m))
-        .toList();
+    return maps.map((m) => Usuario.fromMap(m)).toList();
   }
 
   /// Actualiza la información de un usuario existente.
@@ -136,10 +128,6 @@ class UsuarioRepository {
   Future<int> eliminar(int id) async {
     final db = await _db;
 
-    return await db.delete(
-      'usuarios',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    return await db.delete('usuarios', where: 'id = ?', whereArgs: [id]);
   }
 }

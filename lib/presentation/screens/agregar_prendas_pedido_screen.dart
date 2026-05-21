@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'bottom_nav_bar.dart';
 
+/// Pantalla para agregar prendas a un pedido existente.
+///
+/// Permite filtrar el inventario disponible por escuela y tipo de prenda,
+/// y agregar unidades al pedido activo.
+/// Nota: los datos de escuelas, prendas e inventario son estáticos en esta versión.
 class AgregarPrendasPedidoScreen extends StatefulWidget {
   const AgregarPrendasPedidoScreen({super.key});
 
@@ -8,18 +13,32 @@ class AgregarPrendasPedidoScreen extends StatefulWidget {
   State<AgregarPrendasPedidoScreen> createState() => _AgregarPrendasPedidoScreenState();
 }
 
+/// Estado interno de [AgregarPrendasPedidoScreen].
+///
+/// Gestiona los filtros de escuela y prenda, y la lista de inventario disponible.
 class _AgregarPrendasPedidoScreenState extends State<AgregarPrendasPedidoScreen> {
+  /// Escuela actualmente seleccionada en el filtro. Null si no hay selección.
   String? _escuelaSeleccionada;
+
+  /// Prenda actualmente seleccionada en el filtro. Null si no hay selección.
   String? _prendaSeleccionada;
 
+  /// Lista estática de escuelas disponibles para el filtro.
   final List<String> _escuelas = ['UACJ', 'ESC. PRIMARIA FLOR', 'CBTIS 114'];
+
+  /// Lista estática de tipos de prenda disponibles para el filtro.
   final List<String> _prendas = ['Playera', 'Falda', 'Pantalón'];
 
+  /// Lista estática de prendas disponibles en inventario con sus atributos.
   final List<Map<String, dynamic>> _prendasDisponibles = [
     {'titulo': 'ESC. PRIMARIA FLOR - Playera', 'talla': 'M', 'stock': 8, 'precio': 120.0},
     {'titulo': 'ESC. PRIMARIA FLOR - Falda', 'talla': 'M', 'stock': 3, 'precio': 180.0},
   ];
 
+  /// Construye un dropdown estilizado con sombra y bordes redondeados.
+  ///
+  /// Recibe el texto de [hint], el [value] seleccionado, la lista de [items]
+  /// y el callback [onChanged] a ejecutar al cambiar la selección.
   Widget _buildDropdown({required String hint, required String? value, required List<String> items, required void Function(String?) onChanged}) {
     return Container(
       decoration: BoxDecoration(
@@ -38,6 +57,10 @@ class _AgregarPrendasPedidoScreenState extends State<AgregarPrendasPedidoScreen>
     );
   }
 
+  /// Construye la interfaz de la pantalla.
+  ///
+  /// Compone los filtros de escuela y prenda, la lista de inventario disponible
+  /// y los botones de guardar y cancelar.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,15 +84,20 @@ class _AgregarPrendasPedidoScreenState extends State<AgregarPrendasPedidoScreen>
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
+
+            // Filtro de escuela.
             _buildDropdown(
               hint: 'Escuela', value: _escuelaSeleccionada, items: _escuelas, onChanged: (val) => setState(() => _escuelaSeleccionada = val),
             ),
             const SizedBox(height: 16),
+
+            // Filtro de tipo de prenda.
             _buildDropdown(
               hint: 'Prenda', value: _prendaSeleccionada, items: _prendas, onChanged: (val) => setState(() => _prendaSeleccionada = val),
             ),
             const SizedBox(height: 32),
 
+            // Lista de prendas disponibles en inventario con opción de agregar al pedido.
             ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -118,16 +146,16 @@ class _AgregarPrendasPedidoScreenState extends State<AgregarPrendasPedidoScreen>
             const SizedBox(height: 40),
 
             // BOTONES DE GUARDAR / CANCELAR
+            // Guarda las prendas añadidas y cierra la pantalla.
             SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
                 onPressed: () {
-                  // Lógica para guardar las prendas añadidas al pedido original
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4CAF50), // Verde
+                  backgroundColor: const Color(0xFF4CAF50),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                   elevation: 2,
                 ),
@@ -135,13 +163,15 @@ class _AgregarPrendasPedidoScreenState extends State<AgregarPrendasPedidoScreen>
               ),
             ),
             const SizedBox(height: 16),
+
+            // Descarta los cambios y cierra la pantalla sin guardar.
             SizedBox(
               width: double.infinity,
               height: 50,
               child: ElevatedButton(
-                onPressed: () => Navigator.pop(context), // Cierra la pantalla
+                onPressed: () => Navigator.pop(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFC62828), // Rojo
+                  backgroundColor: const Color(0xFFC62828),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
                   elevation: 2,
                 ),

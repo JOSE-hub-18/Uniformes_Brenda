@@ -10,10 +10,8 @@ import '../database/database_helper.dart';
 /// Centraliza operaciones agregadas relacionadas con ventas,
 /// ingresos, prendas y escuelas.
 class ReporteRepository {
-
   /// Obtiene una instancia activa de la base de datos.
-  Future<Database> get _db async =>
-      await DatabaseHelper.instance.database;
+  Future<Database> get _db async => await DatabaseHelper.instance.database;
 
   /// Obtiene el total monetario vendido filtrando
   /// por año, mes y escuela de forma opcional.
@@ -28,15 +26,12 @@ class ReporteRepository {
     int? month,
     int? idEscuela,
   }) async {
-
     final db = await _db;
 
     if (idEscuela != null) {
-
       // Construcción dinámica de filtros para consultas
       // relacionadas con una escuela específica.
-      String where =
-          "v.estado != 'cancelada' AND strftime('%Y', v.fecha) = ?";
+      String where = "v.estado != 'cancelada' AND strftime('%Y', v.fecha) = ?";
 
       final args = <dynamic>[year.toString()];
 
@@ -60,13 +55,10 @@ class ReporteRepository {
       ''', args);
 
       return (result.first['total'] as num?)?.toDouble() ?? 0;
-
     } else {
-
       // Construcción dinámica de filtros generales
       // sin segmentación por escuela.
-      String where =
-          "estado != 'cancelada' AND strftime('%Y', fecha) = ?";
+      String where = "estado != 'cancelada' AND strftime('%Y', fecha) = ?";
 
       final args = <dynamic>[year.toString()];
 
@@ -96,15 +88,12 @@ class ReporteRepository {
     int? month,
     int? idEscuela,
   }) async {
-
     final db = await _db;
 
     if (idEscuela != null) {
-
       // Construcción dinámica de filtros para consultas
       // relacionadas con una escuela específica.
-      String where =
-          "v.estado != 'cancelada' AND strftime('%Y', v.fecha) = ?";
+      String where = "v.estado != 'cancelada' AND strftime('%Y', v.fecha) = ?";
 
       final args = <dynamic>[year.toString()];
 
@@ -130,12 +119,9 @@ class ReporteRepository {
       ''', args);
 
       return (result.first['cantidad'] as int?) ?? 0;
-
     } else {
-
       // Construcción dinámica de filtros generales.
-      String where =
-          "estado != 'cancelada' AND strftime('%Y', fecha) = ?";
+      String where = "estado != 'cancelada' AND strftime('%Y', fecha) = ?";
 
       final args = <dynamic>[year.toString()];
 
@@ -169,13 +155,11 @@ class ReporteRepository {
     int? month,
     int? idEscuela,
   }) async {
-
     final db = await _db;
 
     // Filtro base para excluir ventas canceladas
     // y limitar por año.
-    String where =
-        "strftime('%Y', v.fecha) = ? AND v.estado != 'cancelada'";
+    String where = "strftime('%Y', v.fecha) = ? AND v.estado != 'cancelada'";
 
     final args = <dynamic>[year.toString()];
 
@@ -235,13 +219,11 @@ class ReporteRepository {
     required int year,
     int? month,
   }) async {
-
     final db = await _db;
 
     // Filtro base para excluir ventas canceladas
     // y limitar por año.
-    String where =
-        "strftime('%Y', v.fecha) = ? AND v.estado != 'cancelada'";
+    String where = "strftime('%Y', v.fecha) = ? AND v.estado != 'cancelada'";
 
     final args = <dynamic>[year.toString()];
 

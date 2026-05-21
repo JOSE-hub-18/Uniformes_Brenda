@@ -1,0 +1,175 @@
+\doxysection{Referencia de la clase Pedido\+Pendiente\+Use\+Case}
+\hypertarget{class_pedido_pendiente_use_case}{}\label{class_pedido_pendiente_use_case}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+
+
+Caso de uso que gestiona el ciclo de vida de los pedidos en estado pendiente.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}}(\{ required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) Future$<$ List$<$ Pedido $>$ $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a783ad2260af4ba58f4fc3f8391975739}{obtener\+Pedidos\+Pendientes}} () async
+\begin{DoxyCompactList}\small\item\em Retorna todos los pedidos cuyo estado sea \mbox{[}Estado\+Pedido.\+pendiente\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a1d77223c26b0dace059ec2da1cb25031}{obtener\+Detalles\+Con\+Info}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}},) async
+\begin{DoxyCompactList}\small\item\em Retorna los detalles del pedido enriquecidos con información de inventario, prenda, escuela y talla para su presentación en pantalla. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Detalle\+Pedido $>$ $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a0330aca053034643c80526f92ad5387e}{obtener\+Detalles}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Retorna los detalles del pedido como modelos \mbox{[}Detalle\+Pedido\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_ab0eae1a054e650f556b440e73cb74f2b}{registrar\+Unidad}} (\{ required int id\+Detalle\+Pedido, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, \}) async
+\begin{DoxyCompactList}\small\item\em Asocia una unidad física a un detalle de pedido específico. \end{DoxyCompactList}\item 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a4b80634206b02aefe0c5a50cb2d0202d}{registrar\+Qr\+Pedido}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, required int id\+Inventario\+Esperado, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, bool forzar\+Movimiento=false, \}) async
+\begin{DoxyCompactList}\small\item\em Registra una unidad física en un detalle de pedido mediante escaneo QR. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_ad5c42f91c6957d3291c3045cc0617af0}{desregistrar\+Unidad}} (int id\+Detalle\+Pedido) async
+\begin{DoxyCompactList}\small\item\em Elimina la asociación de una unidad física a un detalle de pedido, dejando el detalle sin unidad registrada. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a2a12cc7ff9eb7c647958e246c3121642}{pedido\+Completo}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Retorna true si todos los detalles del pedido tienen una unidad física registrada. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_ab3c37054ee7a9db734522d9dd009aa0b}{completar\+Pedido}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) async
+\begin{DoxyCompactList}\small\item\em Completa un pedido pendiente convirtiéndolo en venta. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_pedido_pendiente_use_case_a8a22638eec08e29405c17fb6f9414476}{eliminar\+Detalle\+Pedido}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}) async
+\begin{DoxyCompactList}\small\item\em Elimina un detalle del pedido y, si era el último detalle restante, elimina también el pedido completo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} \mbox{\hyperlink{class_pedido_pendiente_use_case_a9d62bbd08ea726c16b2ed6c21b3def89}{\+\_\+pedido\+Repository}}
+\item 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{class_pedido_pendiente_use_case_afebfe3562f75541eef2bd310de555a07}{\+\_\+unidad\+Repository}}
+\item 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} \mbox{\hyperlink{class_pedido_pendiente_use_case_ace8ded11488e5b6a17d7dfe77c753741}{\+\_\+venta\+Repository}}
+\item 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} \mbox{\hyperlink{class_pedido_pendiente_use_case_ae2ce6137bd98f6df8381add1960d3036}{\+\_\+qr\+Use\+Case}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que gestiona el ciclo de vida de los pedidos en estado pendiente. 
+
+Cubre la consulta, el registro de unidades físicas por QR, la validación de completitud y la conversión del pedido a venta al completarse. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_pedido_pendiente_use_case_ab3c37054ee7a9db734522d9dd009aa0b}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!completarPedido@{completarPedido}}
+\index{completarPedido@{completarPedido}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{completarPedido()}{completarPedido()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_ab3c37054ee7a9db734522d9dd009aa0b} 
+Future$<$ void $>$ Pedido\+Pendiente\+Use\+Case\+::completar\+Pedido (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Completa un pedido pendiente convirtiéndolo en venta. 
+
+Verifica que el pedido exista y que todos sus detalles tengan unidad registrada. Desactiva cada unidad entregada para retirarla del stock disponible. Si el pedido proviene de una orden con venta existente, agrega los detalles a esa venta. Si no tiene venta de origen, crea una nueva venta completada. Finalmente actualiza el estado del pedido a \mbox{[}Estado\+Pedido.\+completado\mbox{]}. Si el pedido no tiene una venta de origen, se genera una nueva venta completada con los detalles de las unidades entregadas.
+
+Si ya existe una venta de origen, los detalles se agregan a ella para mantener la trazabilidad de la orden completa.\Hypertarget{class_pedido_pendiente_use_case_ad5c42f91c6957d3291c3045cc0617af0}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!desregistrarUnidad@{desregistrarUnidad}}
+\index{desregistrarUnidad@{desregistrarUnidad}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{desregistrarUnidad()}{desregistrarUnidad()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_ad5c42f91c6957d3291c3045cc0617af0} 
+Future$<$ void $>$ Pedido\+Pendiente\+Use\+Case\+::desregistrar\+Unidad (\begin{DoxyParamCaption}\item[{int}]{id\+Detalle\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina la asociación de una unidad física a un detalle de pedido, dejando el detalle sin unidad registrada. 
+
+\Hypertarget{class_pedido_pendiente_use_case_a8a22638eec08e29405c17fb6f9414476}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!eliminarDetallePedido@{eliminarDetallePedido}}
+\index{eliminarDetallePedido@{eliminarDetallePedido}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{eliminarDetallePedido()}{eliminarDetallePedido()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a8a22638eec08e29405c17fb6f9414476} 
+Future$<$ bool $>$ Pedido\+Pendiente\+Use\+Case\+::eliminar\+Detalle\+Pedido (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un detalle del pedido y, si era el último detalle restante, elimina también el pedido completo. 
+
+Retorna true si el pedido fue eliminado por quedar sin detalles, false en caso contrario. Regla de negocio\+: un pedido sin detalles no tiene razón de existir y se elimina automáticamente.\Hypertarget{class_pedido_pendiente_use_case_a0330aca053034643c80526f92ad5387e}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!obtenerDetalles@{obtenerDetalles}}
+\index{obtenerDetalles@{obtenerDetalles}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerDetalles()}{obtenerDetalles()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a0330aca053034643c80526f92ad5387e} 
+Future$<$ List$<$ Detalle\+Pedido $>$ $>$ Pedido\+Pendiente\+Use\+Case\+::obtener\+Detalles (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna los detalles del pedido como modelos \mbox{[}Detalle\+Pedido\mbox{]}. 
+
+\Hypertarget{class_pedido_pendiente_use_case_a1d77223c26b0dace059ec2da1cb25031}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!obtenerDetallesConInfo@{obtenerDetallesConInfo}}
+\index{obtenerDetallesConInfo@{obtenerDetallesConInfo}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerDetallesConInfo()}{obtenerDetallesConInfo()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a1d77223c26b0dace059ec2da1cb25031} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Pedido\+Pendiente\+Use\+Case\+::obtener\+Detalles\+Con\+Info (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna los detalles del pedido enriquecidos con información de inventario, prenda, escuela y talla para su presentación en pantalla. 
+
+\Hypertarget{class_pedido_pendiente_use_case_a783ad2260af4ba58f4fc3f8391975739}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!obtenerPedidosPendientes@{obtenerPedidosPendientes}}
+\index{obtenerPedidosPendientes@{obtenerPedidosPendientes}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerPedidosPendientes()}{obtenerPedidosPendientes()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a783ad2260af4ba58f4fc3f8391975739} 
+\mbox{\hyperlink{class_pedido_pendiente_use_case}{Pedido\+Pendiente\+Use\+Case}}(\{ required \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} pedido\+Repository, required \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}, required \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} venta\+Repository, required \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} qr\+Use\+Case, \}) Future$<$ List$<$ Pedido $>$ $>$ Pedido\+Pendiente\+Use\+Case\+::obtener\+Pedidos\+Pendientes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todos los pedidos cuyo estado sea \mbox{[}Estado\+Pedido.\+pendiente\mbox{]}. 
+
+\Hypertarget{class_pedido_pendiente_use_case_a2a12cc7ff9eb7c647958e246c3121642}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!pedidoCompleto@{pedidoCompleto}}
+\index{pedidoCompleto@{pedidoCompleto}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{pedidoCompleto()}{pedidoCompleto()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a2a12cc7ff9eb7c647958e246c3121642} 
+Future$<$ bool $>$ Pedido\+Pendiente\+Use\+Case\+::pedido\+Completo (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna true si todos los detalles del pedido tienen una unidad física registrada. 
+
+\Hypertarget{class_pedido_pendiente_use_case_a4b80634206b02aefe0c5a50cb2d0202d}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!registrarQrPedido@{registrarQrPedido}}
+\index{registrarQrPedido@{registrarQrPedido}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{registrarQrPedido()}{registrarQrPedido()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a4b80634206b02aefe0c5a50cb2d0202d} 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ Pedido\+Pendiente\+Use\+Case\+::registrar\+Qr\+Pedido (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required int id\+Detalle\+Pedido, required int id\+Inventario\+Esperado, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, bool forzar\+Movimiento=false, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Registra una unidad física en un detalle de pedido mediante escaneo QR. 
+
+Valida que la unidad exista, esté activa y corresponda al inventario esperado. Si la unidad ya está asignada a otro detalle del mismo u otro pedido, retorna un mapa con los datos del conflicto para que la capa de presentación solicite confirmación al usuario antes de forzar el movimiento. Si \mbox{[}forzar\+Movimiento\mbox{]} es true, desregistra la asignación anterior y registra la unidad en el detalle indicado sin solicitar confirmación adicional. Retorna null si la operación se completó sin conflictos. Regla de negocio\+: la unidad escaneada debe pertenecer al mismo inventario que el detalle del pedido que se intenta registrar.
+
+Si la unidad ya está asignada al mismo detalle, no se realiza ninguna acción.
+
+Si la unidad está asignada a un detalle diferente y no se fuerza el movimiento, se retorna la información del conflicto para que el usuario decida.\Hypertarget{class_pedido_pendiente_use_case_ab0eae1a054e650f556b440e73cb74f2b}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!registrarUnidad@{registrarUnidad}}
+\index{registrarUnidad@{registrarUnidad}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{registrarUnidad()}{registrarUnidad()}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_ab0eae1a054e650f556b440e73cb74f2b} 
+Future$<$ void $>$ Pedido\+Pendiente\+Use\+Case\+::registrar\+Unidad (\begin{DoxyParamCaption}\item[{\{ required int id\+Detalle\+Pedido, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Asocia una unidad física a un detalle de pedido específico. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_pedido_pendiente_use_case_a9d62bbd08ea726c16b2ed6c21b3def89}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!\_pedidoRepository@{\_pedidoRepository}}
+\index{\_pedidoRepository@{\_pedidoRepository}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{\_pedidoRepository}{\_pedidoRepository}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_a9d62bbd08ea726c16b2ed6c21b3def89} 
+final \mbox{\hyperlink{class_pedido_repository}{Pedido\+Repository}} Pedido\+Pendiente\+Use\+Case\+::\+\_\+pedido\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pedido_pendiente_use_case_ae2ce6137bd98f6df8381add1960d3036}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!\_qrUseCase@{\_qrUseCase}}
+\index{\_qrUseCase@{\_qrUseCase}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{\_qrUseCase}{\_qrUseCase}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_ae2ce6137bd98f6df8381add1960d3036} 
+final \mbox{\hyperlink{class_qr_use_case}{Qr\+Use\+Case}} Pedido\+Pendiente\+Use\+Case\+::\+\_\+qr\+Use\+Case\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pedido_pendiente_use_case_afebfe3562f75541eef2bd310de555a07}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!\_unidadRepository@{\_unidadRepository}}
+\index{\_unidadRepository@{\_unidadRepository}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{\_unidadRepository}{\_unidadRepository}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_afebfe3562f75541eef2bd310de555a07} 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} Pedido\+Pendiente\+Use\+Case\+::\+\_\+unidad\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_pedido_pendiente_use_case_ace8ded11488e5b6a17d7dfe77c753741}\index{PedidoPendienteUseCase@{PedidoPendienteUseCase}!\_ventaRepository@{\_ventaRepository}}
+\index{\_ventaRepository@{\_ventaRepository}!PedidoPendienteUseCase@{PedidoPendienteUseCase}}
+\doxysubsubsection{\texorpdfstring{\_ventaRepository}{\_ventaRepository}}
+{\footnotesize\ttfamily \label{class_pedido_pendiente_use_case_ace8ded11488e5b6a17d7dfe77c753741} 
+final \mbox{\hyperlink{class_venta_repository}{Venta\+Repository}} Pedido\+Pendiente\+Use\+Case\+::\+\_\+venta\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{pedidos__pendientes__usecase_8dart}{pedidos\+\_\+pendientes\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

@@ -1,0 +1,179 @@
+\doxysection{Referencia de la clase Inventario\+Repository}
+\hypertarget{class_inventario_repository}{}\label{class_inventario_repository}\index{InventarioRepository@{InventarioRepository}}
+
+
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de inventario y sus consultas relacionadas con stock.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_inventario_repository_ad5e215b02a66f497082c695488d79d87}{insertar}} (Inventario \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}}) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta un nuevo registro de inventario. \end{DoxyCompactList}\item 
+Future$<$ Inventario?$>$ \mbox{\hyperlink{class_inventario_repository_a9aa75410bec479148afbce85dca38575}{obtener\+Por\+Id}} (int id) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna el registro de inventario con el identificador indicado. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Inventario $>$ $>$ \mbox{\hyperlink{class_inventario_repository_a636843224a33ad69fd2aa906546d3e98}{obtener\+Todos}} () \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna todos los registros de inventario sin filtro aplicado. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Inventario $>$ $>$ \mbox{\hyperlink{class_inventario_repository_ac171d6d5234405915cd09ba039cbf3f4}{obtener\+Por\+Escuela}} (int id\+Escuela) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna todos los registros de inventario asociados a una escuela específica. \end{DoxyCompactList}\item 
+Future$<$ Inventario?$>$ \mbox{\hyperlink{class_inventario_repository_affcf8009c2e821e84beb96229e7d2301}{obtener\+Por\+Combinacion}} (\{ required int id\+Escuela, required int id\+Prenda, required int id\+Talla, \}) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Busca un registro de inventario por la combinación exacta de escuela, prenda y talla. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_inventario_repository_a575a5dc5520844b7e46910067f56b8b1}{actualizar}} (Inventario \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}}) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Actualiza el registro de inventario identificado por su id. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_inventario_repository_ab492f151d0595a6ab614d4ff75aff37c}{eliminar}} (int id) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina el registro de inventario con el identificador indicado. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_inventario_repository_a63075964769ca693ce8dc24836a926e8}{contar\+Stock}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna el conteo de unidades activas asociadas a un registro de inventario. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_inventario_repository_ab7527a0e56987a1d6b52a102564e330c}{obtener\+Inventario\+Filtrado}} (\{ required int id\+Escuela, int? id\+Prenda, \}) \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna el inventario de una escuela enriquecido con nombre de prenda, talla, precio y stock actual. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_inventario_repository_a101740d83c93d818379f99f16874fdfc}{obtener\+Inventario\+Completo}} () \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna el inventario completo de todas las escuelas con nombre de escuela, prenda, talla, precio y stock actual calculado por subconsulta. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_inventario_repository_a40d2f60edd8ad50e37b2276e473ab86d}{obtener\+Stock\+Agotado}} () \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna los registros de inventario cuyo stock activo es igual a cero. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_inventario_repository_aec3499f65223dd0cd82bfb8e77893a06}{obtener\+Stock\+Critico}} () \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna los registros de inventario con stock activo entre 1 y 3 unidades (inclusive). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_inventario_repository_a79983769abfcf1f39aa291586247f028}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio que gestiona las operaciones de acceso a datos para la tabla de inventario y sus consultas relacionadas con stock. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_inventario_repository_a575a5dc5520844b7e46910067f56b8b1}\index{InventarioRepository@{InventarioRepository}!actualizar@{actualizar}}
+\index{actualizar@{actualizar}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{actualizar()}{actualizar()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a575a5dc5520844b7e46910067f56b8b1} 
+Future$<$ int $>$ Inventario\+Repository\+::actualizar (\begin{DoxyParamCaption}\item[{Inventario}]{inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el registro de inventario identificado por su id. 
+
+\Hypertarget{class_inventario_repository_a63075964769ca693ce8dc24836a926e8}\index{InventarioRepository@{InventarioRepository}!contarStock@{contarStock}}
+\index{contarStock@{contarStock}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{contarStock()}{contarStock()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a63075964769ca693ce8dc24836a926e8} 
+Future$<$ int $>$ Inventario\+Repository\+::contar\+Stock (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el conteo de unidades activas asociadas a un registro de inventario. 
+
+Utilizado para determinar el stock disponible en tiempo real. \Hypertarget{class_inventario_repository_ab492f151d0595a6ab614d4ff75aff37c}\index{InventarioRepository@{InventarioRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_ab492f151d0595a6ab614d4ff75aff37c} 
+Future$<$ int $>$ Inventario\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina el registro de inventario con el identificador indicado. 
+
+\Hypertarget{class_inventario_repository_ad5e215b02a66f497082c695488d79d87}\index{InventarioRepository@{InventarioRepository}!insertar@{insertar}}
+\index{insertar@{insertar}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{insertar()}{insertar()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_ad5e215b02a66f497082c695488d79d87} 
+Future$<$ int $>$ Inventario\+Repository\+::insertar (\begin{DoxyParamCaption}\item[{Inventario}]{inventario}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta un nuevo registro de inventario. 
+
+Si ya existe la misma combinación de escuela, prenda y talla, la operación se ignora sin lanzar error. \Hypertarget{class_inventario_repository_a101740d83c93d818379f99f16874fdfc}\index{InventarioRepository@{InventarioRepository}!obtenerInventarioCompleto@{obtenerInventarioCompleto}}
+\index{obtenerInventarioCompleto@{obtenerInventarioCompleto}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerInventarioCompleto()}{obtenerInventarioCompleto()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a101740d83c93d818379f99f16874fdfc} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Inventario\+Repository\+::obtener\+Inventario\+Completo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el inventario completo de todas las escuelas con nombre de escuela, prenda, talla, precio y stock actual calculado por subconsulta. 
+
+Ordenado por escuela, prenda y talla de forma ascendente. \Hypertarget{class_inventario_repository_ab7527a0e56987a1d6b52a102564e330c}\index{InventarioRepository@{InventarioRepository}!obtenerInventarioFiltrado@{obtenerInventarioFiltrado}}
+\index{obtenerInventarioFiltrado@{obtenerInventarioFiltrado}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerInventarioFiltrado()}{obtenerInventarioFiltrado()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_ab7527a0e56987a1d6b52a102564e330c} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Inventario\+Repository\+::obtener\+Inventario\+Filtrado (\begin{DoxyParamCaption}\item[{\{ required int id\+Escuela, int? id\+Prenda, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el inventario de una escuela enriquecido con nombre de prenda, talla, precio y stock actual. 
+
+Permite filtrar opcionalmente por prenda. Los resultados se ordenan por nombre de prenda y talla de forma ascendente. \Hypertarget{class_inventario_repository_affcf8009c2e821e84beb96229e7d2301}\index{InventarioRepository@{InventarioRepository}!obtenerPorCombinacion@{obtenerPorCombinacion}}
+\index{obtenerPorCombinacion@{obtenerPorCombinacion}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorCombinacion()}{obtenerPorCombinacion()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_affcf8009c2e821e84beb96229e7d2301} 
+Future$<$ Inventario?$>$ Inventario\+Repository\+::obtener\+Por\+Combinacion (\begin{DoxyParamCaption}\item[{\{ required int id\+Escuela, required int id\+Prenda, required int id\+Talla, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Busca un registro de inventario por la combinación exacta de escuela, prenda y talla. 
+
+Retorna null si no existe ningún registro con esa combinación. \Hypertarget{class_inventario_repository_ac171d6d5234405915cd09ba039cbf3f4}\index{InventarioRepository@{InventarioRepository}!obtenerPorEscuela@{obtenerPorEscuela}}
+\index{obtenerPorEscuela@{obtenerPorEscuela}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorEscuela()}{obtenerPorEscuela()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_ac171d6d5234405915cd09ba039cbf3f4} 
+Future$<$ List$<$ Inventario $>$ $>$ Inventario\+Repository\+::obtener\+Por\+Escuela (\begin{DoxyParamCaption}\item[{int}]{id\+Escuela}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todos los registros de inventario asociados a una escuela específica. 
+
+\Hypertarget{class_inventario_repository_a9aa75410bec479148afbce85dca38575}\index{InventarioRepository@{InventarioRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a9aa75410bec479148afbce85dca38575} 
+Future$<$ Inventario?$>$ Inventario\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el registro de inventario con el identificador indicado. 
+
+Retorna null si no existe. \Hypertarget{class_inventario_repository_a40d2f60edd8ad50e37b2276e473ab86d}\index{InventarioRepository@{InventarioRepository}!obtenerStockAgotado@{obtenerStockAgotado}}
+\index{obtenerStockAgotado@{obtenerStockAgotado}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerStockAgotado()}{obtenerStockAgotado()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a40d2f60edd8ad50e37b2276e473ab86d} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Inventario\+Repository\+::obtener\+Stock\+Agotado (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna los registros de inventario cuyo stock activo es igual a cero. 
+
+Utilizado por \mbox{[}Alertas\+Stock\+Use\+Case\mbox{]} para generar alertas de agotado. \Hypertarget{class_inventario_repository_aec3499f65223dd0cd82bfb8e77893a06}\index{InventarioRepository@{InventarioRepository}!obtenerStockCritico@{obtenerStockCritico}}
+\index{obtenerStockCritico@{obtenerStockCritico}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerStockCritico()}{obtenerStockCritico()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_aec3499f65223dd0cd82bfb8e77893a06} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Inventario\+Repository\+::obtener\+Stock\+Critico (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna los registros de inventario con stock activo entre 1 y 3 unidades (inclusive). 
+
+Utilizado por \mbox{[}Alertas\+Stock\+Use\+Case\mbox{]} para generar alertas de stock crítico. Los resultados se ordenan por stock ascendente para priorizar los más críticos. \Hypertarget{class_inventario_repository_a636843224a33ad69fd2aa906546d3e98}\index{InventarioRepository@{InventarioRepository}!obtenerTodos@{obtenerTodos}}
+\index{obtenerTodos@{obtenerTodos}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodos()}{obtenerTodos()}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a636843224a33ad69fd2aa906546d3e98} 
+Future$<$ List$<$ Inventario $>$ $>$ Inventario\+Repository\+::obtener\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna todos los registros de inventario sin filtro aplicado. 
+
+
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_inventario_repository_a79983769abfcf1f39aa291586247f028}\index{InventarioRepository@{InventarioRepository}!async@{async}}
+\index{async@{async}!InventarioRepository@{InventarioRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_inventario_repository_a79983769abfcf1f39aa291586247f028} 
+Future$<$Database$>$ get \+\_\+db Inventario\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{inventario__repository_8dart}{inventario\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

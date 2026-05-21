@@ -1,0 +1,45 @@
+\doxysection{Referencia de la clase Backup\+Repository}
+\hypertarget{class_backup_repository}{}\label{class_backup_repository}\index{BackupRepository@{BackupRepository}}
+
+
+Repositorio encargado de gestionar la creación física de archivos de backup de la base de datos SQLite en el almacenamiento local del dispositivo.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{class_backup_repository_a63c899dd6c36349259aaeaf4a382d922}{crear\+Backup}} () async
+\begin{DoxyCompactList}\small\item\em Genera una copia del archivo de base de datos activo en el directorio de backups. \end{DoxyCompactList}\item 
+Future$<$ Directory $>$ \mbox{\hyperlink{class_backup_repository_ac63d718eb35f5be43596e6dc821c4a1a}{\+\_\+obtener\+Directorio\+Backups}} () async
+\begin{DoxyCompactList}\small\item\em Retorna el directorio donde se almacenan los backups dentro del directorio de documentos de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar la creación física de archivos de backup de la base de datos SQLite en el almacenamiento local del dispositivo. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_backup_repository_ac63d718eb35f5be43596e6dc821c4a1a}\index{BackupRepository@{BackupRepository}!\_obtenerDirectorioBackups@{\_obtenerDirectorioBackups}}
+\index{\_obtenerDirectorioBackups@{\_obtenerDirectorioBackups}!BackupRepository@{BackupRepository}}
+\doxysubsubsection{\texorpdfstring{\_obtenerDirectorioBackups()}{\_obtenerDirectorioBackups()}}
+{\footnotesize\ttfamily \label{class_backup_repository_ac63d718eb35f5be43596e6dc821c4a1a} 
+Future$<$ Directory $>$ Backup\+Repository\+::\+\_\+obtener\+Directorio\+Backups (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Retorna el directorio donde se almacenan los backups dentro del directorio de documentos de la aplicación. 
+
+Si el directorio no existe, lo crea de forma recursiva. \Hypertarget{class_backup_repository_a63c899dd6c36349259aaeaf4a382d922}\index{BackupRepository@{BackupRepository}!crearBackup@{crearBackup}}
+\index{crearBackup@{crearBackup}!BackupRepository@{BackupRepository}}
+\doxysubsubsection{\texorpdfstring{crearBackup()}{crearBackup()}}
+{\footnotesize\ttfamily \label{class_backup_repository_a63c899dd6c36349259aaeaf4a382d922} 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ Backup\+Repository\+::crear\+Backup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Genera una copia del archivo de base de datos activo en el directorio de backups. 
+
+El nombre del archivo incluye la fecha y hora de creación con formato \textquotesingle{}backup\+\_\+uniformes\+\_\+\+YYYY\+\_\+\+MM\+\_\+\+DD\+\_\+\+HH\+\_\+mm.\+db\textquotesingle{} para facilitar su identificación. Retorna la ruta absoluta del archivo de backup generado. 
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{backup__repository_8dart}{backup\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

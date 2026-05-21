@@ -1,0 +1,130 @@
+\doxysection{Referencia del archivo lib/presentation/screens/nueva\+\_\+orden\+\_\+screen.dart}
+\hypertarget{nueva__orden__screen_8dart}{}\label{nueva__orden__screen_8dart}\index{lib/presentation/screens/nueva\_orden\_screen.dart@{lib/presentation/screens/nueva\_orden\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{nueva__orden__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+override void \mbox{\hyperlink{nueva__orden__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}{dispose}} ()
+\item 
+Widget \mbox{\hyperlink{nueva__orden__screen_8dart_a1eeae89fe302527d99ea6a65b6e3df44}{\+\_\+build\+Input\+Decoration}} (\{ required Widget child, \})
+\begin{DoxyCompactList}\small\item\em Contenedor estilizado que envuelve campos de entrada. \end{DoxyCompactList}\item 
+Widget \mbox{\hyperlink{nueva__orden__screen_8dart_ae94fb7869938b56fd219797297a99a1c}{\+\_\+build\+Dropdown}} (\{ required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? value, required List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required void Function(\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?) on\+Changed, \})
+\begin{DoxyCompactList}\small\item\em Dropdown reutilizable con estilo consistente. \end{DoxyCompactList}\item 
+Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ \mbox{\hyperlink{nueva__orden__screen_8dart_a39cfbca8b50ef5093c0e6dc2ee1fda66}{\+\_\+agrupar\+Item}} (\{ required \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} item, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}}, \})
+\begin{DoxyCompactList}\small\item\em Agrupa un {\ttfamily Item\+Orden} con otros del mismo inventario y tipo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Agregar\+Pedido\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{nueva__orden__screen_8dart_ac9a30c9770bba5844b8a8d382b58014c}{\+\_\+cliente\+Controller}}
+\begin{DoxyCompactList}\small\item\em Estado de la pantalla de agregar pedido. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{nueva__orden__screen_8dart_a2c4dd5d8d4f212c95e6416f2c50831ae}{\+\_\+escuela\+Seleccionada}}
+\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{nueva__orden__screen_8dart_ae64c8cb1efb153cc54328357f948c037}{\+\_\+prenda\+Seleccionada}}
+\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{nueva__orden__screen_8dart_a310d4fe54b409ec596a6d27992fc1924}{\+\_\+talla\+Seleccionada}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{nueva__orden__screen_8dart_a39cfbca8b50ef5093c0e6dc2ee1fda66}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_agruparItem@{\_agruparItem}}
+\index{\_agruparItem@{\_agruparItem}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_agruparItem()}{\_agruparItem()}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_a39cfbca8b50ef5093c0e6dc2ee1fda66} 
+Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ \+\_\+agrupar\+Item (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} item, required List$<$ \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Agrupa un {\ttfamily Item\+Orden} con otros del mismo inventario y tipo. 
+
+
+\begin{DoxyItemize}
+\item Busca los metadatos del inventario (escuela, prenda, talla).
+\item Calcula la cantidad de ítems iguales en la orden y el precio total. 
+\end{DoxyItemize}\Hypertarget{nueva__orden__screen_8dart_ae94fb7869938b56fd219797297a99a1c}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_buildDropdown@{\_buildDropdown}}
+\index{\_buildDropdown@{\_buildDropdown}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_buildDropdown()}{\_buildDropdown()}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_ae94fb7869938b56fd219797297a99a1c} 
+Widget \+\_\+build\+Dropdown (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? value, required List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required void Function(\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?) on\+Changed, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Dropdown reutilizable con estilo consistente. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily value}\+: valor seleccionado.
+\item {\ttfamily items}\+: lista de opciones.
+\item {\ttfamily on\+Changed}\+: callback al cambiar selección. 
+\end{DoxyItemize}\Hypertarget{nueva__orden__screen_8dart_a1eeae89fe302527d99ea6a65b6e3df44}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_buildInputDecoration@{\_buildInputDecoration}}
+\index{\_buildInputDecoration@{\_buildInputDecoration}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_buildInputDecoration()}{\_buildInputDecoration()}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_a1eeae89fe302527d99ea6a65b6e3df44} 
+Widget \+\_\+build\+Input\+Decoration (\begin{DoxyParamCaption}\item[{\{ required Widget child, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Contenedor estilizado que envuelve campos de entrada. 
+
+
+\begin{DoxyItemize}
+\item Aplica fondo blanco, radio de borde y sombra ligera. 
+\end{DoxyItemize}\Hypertarget{nueva__orden__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!dispose@{dispose}}
+\index{dispose@{dispose}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2} 
+override void dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{nueva__orden__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{nueva__orden__screen_8dart_ac9a30c9770bba5844b8a8d382b58014c}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_clienteController@{\_clienteController}}
+\index{\_clienteController@{\_clienteController}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_clienteController}{\_clienteController}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_ac9a30c9770bba5844b8a8d382b58014c} 
+class Agregar\+Pedido\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+cliente\+Controller}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ TextEditingController()}
+
+\end{DoxyCode}
+
+
+Estado de la pantalla de agregar pedido. 
+
+
+\begin{DoxyItemize}
+\item Mantiene controladores y selección local para filtros (escuela, prenda, talla).
+\item Inicializa la carga de inventario a través de {\ttfamily Nueva\+Orden\+Provider}. 
+\end{DoxyItemize}\Hypertarget{nueva__orden__screen_8dart_a2c4dd5d8d4f212c95e6416f2c50831ae}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_escuelaSeleccionada@{\_escuelaSeleccionada}}
+\index{\_escuelaSeleccionada@{\_escuelaSeleccionada}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_escuelaSeleccionada}{\_escuelaSeleccionada}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_a2c4dd5d8d4f212c95e6416f2c50831ae} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \+\_\+escuela\+Seleccionada}
+
+\Hypertarget{nueva__orden__screen_8dart_ae64c8cb1efb153cc54328357f948c037}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_prendaSeleccionada@{\_prendaSeleccionada}}
+\index{\_prendaSeleccionada@{\_prendaSeleccionada}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_prendaSeleccionada}{\_prendaSeleccionada}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_ae64c8cb1efb153cc54328357f948c037} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \+\_\+prenda\+Seleccionada}
+
+\Hypertarget{nueva__orden__screen_8dart_a310d4fe54b409ec596a6d27992fc1924}\index{nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}!\_tallaSeleccionada@{\_tallaSeleccionada}}
+\index{\_tallaSeleccionada@{\_tallaSeleccionada}!nueva\_orden\_screen.dart@{nueva\_orden\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_tallaSeleccionada}{\_tallaSeleccionada}}
+{\footnotesize\ttfamily \label{nueva__orden__screen_8dart_a310d4fe54b409ec596a6d27992fc1924} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \+\_\+talla\+Seleccionada}
+

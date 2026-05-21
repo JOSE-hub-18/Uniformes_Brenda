@@ -1,0 +1,106 @@
+\doxysection{Referencia de la clase Reporte\+Repository}
+\hypertarget{class_reporte_repository}{}\label{class_reporte_repository}\index{ReporteRepository@{ReporteRepository}}
+
+
+Repositorio encargado de generar consultas estadísticas y métricas utilizadas en reportes.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ double $>$ \mbox{\hyperlink{class_reporte_repository_ae23e0ee94737a5c0e43a19dc2baf028f}{obtener\+Total\+Vendido}} (\{ required int year, int? month, int? id\+Escuela, \}) \mbox{\hyperlink{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene el total monetario vendido filtrando por año, mes y escuela de forma opcional. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_reporte_repository_ac2ba49e60989902046cfaec0aed7da37}{obtener\+Cantidad\+Ventas}} (\{ required int year, int? month, int? id\+Escuela, \}) \mbox{\hyperlink{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad de ventas realizadas filtrando por año, mes y escuela opcionalmente. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_reporte_repository_ae11b477c7b60c2cddb187ccbfac5ab35}{obtener\+Prendas\+Mas\+Vendidas}} (\{ required int year, int? month, int? id\+Escuela, \}) \mbox{\hyperlink{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene las prendas con mayor volumen de ventas. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_reporte_repository_a0ec5beb47667bdf0f9afa4f3f7f8d5a2}{obtener\+Escuelas\+Mas\+Ventas}} (\{ required int year, int? month, \}) \mbox{\hyperlink{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene las escuelas con mayores ingresos generados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de generar consultas estadísticas y métricas utilizadas en reportes. 
+
+Centraliza operaciones agregadas relacionadas con ventas, ingresos, prendas y escuelas. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_reporte_repository_ac2ba49e60989902046cfaec0aed7da37}\index{ReporteRepository@{ReporteRepository}!obtenerCantidadVentas@{obtenerCantidadVentas}}
+\index{obtenerCantidadVentas@{obtenerCantidadVentas}!ReporteRepository@{ReporteRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerCantidadVentas()}{obtenerCantidadVentas()}}
+{\footnotesize\ttfamily \label{class_reporte_repository_ac2ba49e60989902046cfaec0aed7da37} 
+Future$<$ int $>$ Reporte\+Repository\+::obtener\+Cantidad\+Ventas (\begin{DoxyParamCaption}\item[{\{ required int year, int? month, int? id\+Escuela, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene la cantidad de ventas realizadas filtrando por año, mes y escuela opcionalmente. 
+
+Las ventas canceladas son excluidas del conteo. \Hypertarget{class_reporte_repository_a0ec5beb47667bdf0f9afa4f3f7f8d5a2}\index{ReporteRepository@{ReporteRepository}!obtenerEscuelasMasVentas@{obtenerEscuelasMasVentas}}
+\index{obtenerEscuelasMasVentas@{obtenerEscuelasMasVentas}!ReporteRepository@{ReporteRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerEscuelasMasVentas()}{obtenerEscuelasMasVentas()}}
+{\footnotesize\ttfamily \label{class_reporte_repository_a0ec5beb47667bdf0f9afa4f3f7f8d5a2} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Reporte\+Repository\+::obtener\+Escuelas\+Mas\+Ventas (\begin{DoxyParamCaption}\item[{\{ required int year, int? month, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene las escuelas con mayores ingresos generados. 
+
+La consulta retorna\+:
+\begin{DoxyItemize}
+\item identificador de escuela,
+\item nombre,
+\item cantidad de registros vendidos,
+\item total monetario generado.
+\end{DoxyItemize}
+
+El resultado se limita a las 10 escuelas con mayor ingreso acumulado. \Hypertarget{class_reporte_repository_ae11b477c7b60c2cddb187ccbfac5ab35}\index{ReporteRepository@{ReporteRepository}!obtenerPrendasMasVendidas@{obtenerPrendasMasVendidas}}
+\index{obtenerPrendasMasVendidas@{obtenerPrendasMasVendidas}!ReporteRepository@{ReporteRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPrendasMasVendidas()}{obtenerPrendasMasVendidas()}}
+{\footnotesize\ttfamily \label{class_reporte_repository_ae11b477c7b60c2cddb187ccbfac5ab35} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Reporte\+Repository\+::obtener\+Prendas\+Mas\+Vendidas (\begin{DoxyParamCaption}\item[{\{ required int year, int? month, int? id\+Escuela, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene las prendas con mayor volumen de ventas. 
+
+La consulta retorna\+:
+\begin{DoxyItemize}
+\item nombre de la prenda,
+\item cantidad de piezas vendidas,
+\item ingreso total generado.
+\end{DoxyItemize}
+
+El resultado se limita a las 10 prendas con mayor cantidad vendida. \Hypertarget{class_reporte_repository_ae23e0ee94737a5c0e43a19dc2baf028f}\index{ReporteRepository@{ReporteRepository}!obtenerTotalVendido@{obtenerTotalVendido}}
+\index{obtenerTotalVendido@{obtenerTotalVendido}!ReporteRepository@{ReporteRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTotalVendido()}{obtenerTotalVendido()}}
+{\footnotesize\ttfamily \label{class_reporte_repository_ae23e0ee94737a5c0e43a19dc2baf028f} 
+Future$<$ double $>$ Reporte\+Repository\+::obtener\+Total\+Vendido (\begin{DoxyParamCaption}\item[{\{ required int year, int? month, int? id\+Escuela, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene el total monetario vendido filtrando por año, mes y escuela de forma opcional. 
+
+Las ventas canceladas son excluidas del cálculo.
+
+Cuando se especifica una escuela, el cálculo se realiza utilizando joins sobre detalle\+\_\+venta, unidades e inventario para identificar únicamente productos asociados. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_reporte_repository_ad753a66e19714f12a0f6555050e07229}\index{ReporteRepository@{ReporteRepository}!async@{async}}
+\index{async@{async}!ReporteRepository@{ReporteRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_reporte_repository_ad753a66e19714f12a0f6555050e07229} 
+Future$<$Database$>$ get \+\_\+db Reporte\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{reporte__repository_8dart}{reporte\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

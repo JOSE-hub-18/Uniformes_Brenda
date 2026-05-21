@@ -1,0 +1,805 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Índice de clases}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Lista de clases}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Índice de archivos}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Lista de archivos}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Documentación de clases}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Referencia de la clase Alertas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Stock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Result}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Descripción detallada}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Documentación de constructores y destructores}{5}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}AlertasStockResult()}{5}{subsubsection.3.1.2.1}%
+\contentsline {subsection}{\numberline {3.1.3}Documentación de datos miembro}{6}{subsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.1}agotados}{6}{subsubsection.3.1.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.3.2}criticos\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{6}{subsubsection.3.1.3.2}%
+\contentsline {subsubsection}{\numberline {3.1.3.3}criticos\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{6}{subsubsection.3.1.3.3}%
+\contentsline {subsubsection}{\numberline {3.1.3.4}hayAlertas}{6}{subsubsection.3.1.3.4}%
+\contentsline {subsubsection}{\numberline {3.1.3.5}todas}{6}{subsubsection.3.1.3.5}%
+\contentsline {subsubsection}{\numberline {3.1.3.6}totalAgotados}{6}{subsubsection.3.1.3.6}%
+\contentsline {subsubsection}{\numberline {3.1.3.7}totalCriticos}{6}{subsubsection.3.1.3.7}%
+\contentsline {section}{\numberline {3.2}Referencia de la clase Backup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Info}{6}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Descripción detallada}{7}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Documentación de constructores y destructores}{7}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}BackupInfo()}{7}{subsubsection.3.2.2.1}%
+\contentsline {subsection}{\numberline {3.2.3}Documentación de datos miembro}{7}{subsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}fechaCreacion}{7}{subsubsection.3.2.3.1}%
+\contentsline {subsubsection}{\numberline {3.2.3.2}nombre}{7}{subsubsection.3.2.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.3.3}ruta}{8}{subsubsection.3.2.3.3}%
+\contentsline {subsubsection}{\numberline {3.2.3.4}tamanoBytes}{8}{subsubsection.3.2.3.4}%
+\contentsline {subsubsection}{\numberline {3.2.3.5}tamanoLegible}{8}{subsubsection.3.2.3.5}%
+\contentsline {section}{\numberline {3.3}Referencia de la clase Backup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{8}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Descripción detallada}{8}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Documentación de funciones miembro}{9}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}\_obtenerDirectorioBackups()}{9}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}crearBackup()}{9}{subsubsection.3.3.2.2}%
+\contentsline {section}{\numberline {3.4}Referencia de la clase Backup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service}{9}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Descripción detallada}{10}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Documentación de funciones miembro}{10}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}\_directorioBackups()}{10}{subsubsection.3.4.2.1}%
+\contentsline {subsubsection}{\numberline {3.4.2.2}\_limpiarBackupsAntiguos()}{10}{subsubsection.3.4.2.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.3}compartirBackup()}{10}{subsubsection.3.4.2.3}%
+\contentsline {subsubsection}{\numberline {3.4.2.4}crearBackup()}{10}{subsubsection.3.4.2.4}%
+\contentsline {subsubsection}{\numberline {3.4.2.5}crearYCompartirBackup()}{11}{subsubsection.3.4.2.5}%
+\contentsline {subsubsection}{\numberline {3.4.2.6}eliminarBackup()}{11}{subsubsection.3.4.2.6}%
+\contentsline {subsubsection}{\numberline {3.4.2.7}listarBackups()}{11}{subsubsection.3.4.2.7}%
+\contentsline {subsection}{\numberline {3.4.3}Documentación de datos miembro}{11}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}\_backupRepository}{11}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}\_maxBackups}{11}{subsubsection.3.4.3.2}%
+\contentsline {section}{\numberline {3.5}Referencia de la clase Change\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Notifier}{12}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Descripción detallada}{17}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Documentación de funciones miembro}{18}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}\_inicializarDatos()}{18}{subsubsection.3.5.2.1}%
+\contentsline {subsubsection}{\numberline {3.5.2.2}agregarEscuela()}{19}{subsubsection.3.5.2.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.3}agregarManual()}{19}{subsubsection.3.5.2.3}%
+\contentsline {subsubsection}{\numberline {3.5.2.4}agregarQr()}{19}{subsubsection.3.5.2.4}%
+\contentsline {subsubsection}{\numberline {3.5.2.5}agregarUnidades()}{19}{subsubsection.3.5.2.5}%
+\contentsline {subsubsection}{\numberline {3.5.2.6}cambiarEscuela()}{19}{subsubsection.3.5.2.6}%
+\contentsline {subsubsection}{\numberline {3.5.2.7}cambiarMonth()}{20}{subsubsection.3.5.2.7}%
+\contentsline {subsubsection}{\numberline {3.5.2.8}cambiarYear()}{20}{subsubsection.3.5.2.8}%
+\contentsline {subsubsection}{\numberline {3.5.2.9}cargarAlertas()}{20}{subsubsection.3.5.2.9}%
+\contentsline {subsubsection}{\numberline {3.5.2.10}cargarCatalogos()}{20}{subsubsection.3.5.2.10}%
+\contentsline {subsubsection}{\numberline {3.5.2.11}cargarDetalles()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{20}{subsubsection.3.5.2.11}%
+\contentsline {subsubsection}{\numberline {3.5.2.12}cargarDetalles()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{20}{subsubsection.3.5.2.12}%
+\contentsline {subsubsection}{\numberline {3.5.2.13}cargarInventario()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{21}{subsubsection.3.5.2.13}%
+\contentsline {subsubsection}{\numberline {3.5.2.14}cargarInventario()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{21}{subsubsection.3.5.2.14}%
+\contentsline {subsubsection}{\numberline {3.5.2.15}cargarPedidos()}{21}{subsubsection.3.5.2.15}%
+\contentsline {subsubsection}{\numberline {3.5.2.16}cargarPendientes()}{21}{subsubsection.3.5.2.16}%
+\contentsline {subsubsection}{\numberline {3.5.2.17}cargarReportes()}{21}{subsubsection.3.5.2.17}%
+\contentsline {subsubsection}{\numberline {3.5.2.18}cargarVentas()}{21}{subsubsection.3.5.2.18}%
+\contentsline {subsubsection}{\numberline {3.5.2.19}completarPedido()}{22}{subsubsection.3.5.2.19}%
+\contentsline {subsubsection}{\numberline {3.5.2.20}confirmar()}{22}{subsubsection.3.5.2.20}%
+\contentsline {subsubsection}{\numberline {3.5.2.21}desregistrarUnidad()}{22}{subsubsection.3.5.2.21}%
+\contentsline {subsubsection}{\numberline {3.5.2.22}eliminarDetallePedido()}{22}{subsubsection.3.5.2.22}%
+\contentsline {subsubsection}{\numberline {3.5.2.23}eliminarItem()}{22}{subsubsection.3.5.2.23}%
+\contentsline {subsubsection}{\numberline {3.5.2.24}eliminarUnidad()}{23}{subsubsection.3.5.2.24}%
+\contentsline {subsubsection}{\numberline {3.5.2.25}firstWhere()}{23}{subsubsection.3.5.2.25}%
+\contentsline {subsubsection}{\numberline {3.5.2.26}imprimirQrExistente()}{23}{subsubsection.3.5.2.26}%
+\contentsline {subsubsection}{\numberline {3.5.2.27}inicializar()}{23}{subsubsection.3.5.2.27}%
+\contentsline {subsubsection}{\numberline {3.5.2.28}InventarioProvider()}{23}{subsubsection.3.5.2.28}%
+\contentsline {subsubsection}{\numberline {3.5.2.29}limpiar()\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{23}{subsubsection.3.5.2.29}%
+\contentsline {subsubsection}{\numberline {3.5.2.30}limpiar()\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{24}{subsubsection.3.5.2.30}%
+\contentsline {subsubsection}{\numberline {3.5.2.31}limpiar()\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{24}{subsubsection.3.5.2.31}%
+\contentsline {subsubsection}{\numberline {3.5.2.32}limpiarError()}{24}{subsubsection.3.5.2.32}%
+\contentsline {subsubsection}{\numberline {3.5.2.33}limpiarMensaje()}{24}{subsubsection.3.5.2.33}%
+\contentsline {subsubsection}{\numberline {3.5.2.34}login()}{24}{subsubsection.3.5.2.34}%
+\contentsline {subsubsection}{\numberline {3.5.2.35}logout()}{24}{subsubsection.3.5.2.35}%
+\contentsline {subsubsection}{\numberline {3.5.2.36}navigateToInventory()}{25}{subsubsection.3.5.2.36}%
+\contentsline {subsubsection}{\numberline {3.5.2.37}navigateToNewOrder()}{25}{subsubsection.3.5.2.37}%
+\contentsline {subsubsection}{\numberline {3.5.2.38}navigateToOrders()}{25}{subsubsection.3.5.2.38}%
+\contentsline {subsubsection}{\numberline {3.5.2.39}pedidoCompleto()}{25}{subsubsection.3.5.2.39}%
+\contentsline {subsubsection}{\numberline {3.5.2.40}PrintProvider()}{25}{subsubsection.3.5.2.40}%
+\contentsline {subsubsection}{\numberline {3.5.2.41}procesarQr()}{25}{subsubsection.3.5.2.41}%
+\contentsline {subsubsection}{\numberline {3.5.2.42}QrProvider()}{26}{subsubsection.3.5.2.42}%
+\contentsline {subsubsection}{\numberline {3.5.2.43}recargarEscuelas()}{26}{subsubsection.3.5.2.43}%
+\contentsline {subsubsection}{\numberline {3.5.2.44}refrescar()}{26}{subsubsection.3.5.2.44}%
+\contentsline {subsubsection}{\numberline {3.5.2.45}refrescarAlertas()}{26}{subsubsection.3.5.2.45}%
+\contentsline {subsubsection}{\numberline {3.5.2.46}RegistrarInventarioProvider()}{26}{subsubsection.3.5.2.46}%
+\contentsline {subsubsection}{\numberline {3.5.2.47}registrarQrPedido()}{26}{subsubsection.3.5.2.47}%
+\contentsline {subsubsection}{\numberline {3.5.2.48}return()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{27}{subsubsection.3.5.2.48}%
+\contentsline {subsubsection}{\numberline {3.5.2.49}return()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{27}{subsubsection.3.5.2.49}%
+\contentsline {subsubsection}{\numberline {3.5.2.50}seleccionarPrenda()}{27}{subsubsection.3.5.2.50}%
+\contentsline {subsubsection}{\numberline {3.5.2.51}setUserName()}{27}{subsubsection.3.5.2.51}%
+\contentsline {subsubsection}{\numberline {3.5.2.52}solicitarPermisosBluetooth()}{27}{subsubsection.3.5.2.52}%
+\contentsline {subsection}{\numberline {3.5.3}Documentación de datos miembro}{27}{subsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.1}\_agotados}{27}{subsubsection.3.5.3.1}%
+\contentsline {subsubsection}{\numberline {3.5.3.2}\_cargando\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{27}{subsubsection.3.5.3.2}%
+\contentsline {subsubsection}{\numberline {3.5.3.3}\_cargando\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{28}{subsubsection.3.5.3.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.4}\_criticos\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{28}{subsubsection.3.5.3.4}%
+\contentsline {subsubsection}{\numberline {3.5.3.5}\_criticos\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{28}{subsubsection.3.5.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.3.6}\_detalles}{28}{subsubsection.3.5.3.6}%
+\contentsline {subsubsection}{\numberline {3.5.3.7}\_error}{28}{subsubsection.3.5.3.7}%
+\contentsline {subsubsection}{\numberline {3.5.3.8}\_escuelaRepo}{28}{subsubsection.3.5.3.8}%
+\contentsline {subsubsection}{\numberline {3.5.3.9}\_escuelaRepository}{28}{subsubsection.3.5.3.9}%
+\contentsline {subsubsection}{\numberline {3.5.3.10}\_escuelas}{29}{subsubsection.3.5.3.10}%
+\contentsline {subsubsection}{\numberline {3.5.3.11}\_escuelaSeleccionada}{29}{subsubsection.3.5.3.11}%
+\contentsline {subsubsection}{\numberline {3.5.3.12}\_idPrendaSeleccionada}{29}{subsubsection.3.5.3.12}%
+\contentsline {subsubsection}{\numberline {3.5.3.13}\_inventario}{29}{subsubsection.3.5.3.13}%
+\contentsline {subsubsection}{\numberline {3.5.3.14}\_inventarioRepo}{29}{subsubsection.3.5.3.14}%
+\contentsline {subsubsection}{\numberline {3.5.3.15}\_inventarioRepository}{29}{subsubsection.3.5.3.15}%
+\contentsline {subsubsection}{\numberline {3.5.3.16}\_items}{29}{subsubsection.3.5.3.16}%
+\contentsline {subsubsection}{\numberline {3.5.3.17}\_itemsInventario}{30}{subsubsection.3.5.3.17}%
+\contentsline {subsubsection}{\numberline {3.5.3.18}\_loginUseCase}{30}{subsubsection.3.5.3.18}%
+\contentsline {subsubsection}{\numberline {3.5.3.19}\_pedidos}{30}{subsubsection.3.5.3.19}%
+\contentsline {subsubsection}{\numberline {3.5.3.20}\_pendientes}{30}{subsubsection.3.5.3.20}%
+\contentsline {subsubsection}{\numberline {3.5.3.21}\_prendaRepo}{30}{subsubsection.3.5.3.21}%
+\contentsline {subsubsection}{\numberline {3.5.3.22}\_prendas}{30}{subsubsection.3.5.3.22}%
+\contentsline {subsubsection}{\numberline {3.5.3.23}\_procesando}{30}{subsubsection.3.5.3.23}%
+\contentsline {subsubsection}{\numberline {3.5.3.24}\_repository\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{31}{subsubsection.3.5.3.24}%
+\contentsline {subsubsection}{\numberline {3.5.3.25}\_repository\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{31}{subsubsection.3.5.3.25}%
+\contentsline {subsubsection}{\numberline {3.5.3.26}\_unidades}{31}{subsubsection.3.5.3.26}%
+\contentsline {subsubsection}{\numberline {3.5.3.27}\_useCase\hspace {0.1cm}{\footnotesize \ttfamily [1/4]}}{31}{subsubsection.3.5.3.27}%
+\contentsline {subsubsection}{\numberline {3.5.3.28}\_useCase\hspace {0.1cm}{\footnotesize \ttfamily [2/4]}}{31}{subsubsection.3.5.3.28}%
+\contentsline {subsubsection}{\numberline {3.5.3.29}\_useCase\hspace {0.1cm}{\footnotesize \ttfamily [3/4]}}{31}{subsubsection.3.5.3.29}%
+\contentsline {subsubsection}{\numberline {3.5.3.30}\_useCase\hspace {0.1cm}{\footnotesize \ttfamily [4/4]}}{31}{subsubsection.3.5.3.30}%
+\contentsline {subsubsection}{\numberline {3.5.3.31}\_userName}{32}{subsubsection.3.5.3.31}%
+\contentsline {subsubsection}{\numberline {3.5.3.32}\_usuarioActual}{32}{subsubsection.3.5.3.32}%
+\contentsline {subsubsection}{\numberline {3.5.3.33}\_usuarioRepo}{32}{subsubsection.3.5.3.33}%
+\contentsline {subsubsection}{\numberline {3.5.3.34}\_ventas}{32}{subsubsection.3.5.3.34}%
+\contentsline {subsubsection}{\numberline {3.5.3.35}agotados}{32}{subsubsection.3.5.3.35}%
+\contentsline {subsubsection}{\numberline {3.5.3.36}alertasProvider}{32}{subsubsection.3.5.3.36}%
+\contentsline {subsubsection}{\numberline {3.5.3.37}cantidadVentas}{33}{subsubsection.3.5.3.37}%
+\contentsline {subsubsection}{\numberline {3.5.3.38}cargando\hspace {0.1cm}{\footnotesize \ttfamily [1/3]}}{33}{subsubsection.3.5.3.38}%
+\contentsline {subsubsection}{\numberline {3.5.3.39}cargando\hspace {0.1cm}{\footnotesize \ttfamily [2/3]}}{33}{subsubsection.3.5.3.39}%
+\contentsline {subsubsection}{\numberline {3.5.3.40}cargando\hspace {0.1cm}{\footnotesize \ttfamily [3/3]}}{33}{subsubsection.3.5.3.40}%
+\contentsline {subsubsection}{\numberline {3.5.3.41}criticos}{33}{subsubsection.3.5.3.41}%
+\contentsline {subsubsection}{\numberline {3.5.3.42}detalles}{33}{subsubsection.3.5.3.42}%
+\contentsline {subsubsection}{\numberline {3.5.3.43}error\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{33}{subsubsection.3.5.3.43}%
+\contentsline {subsubsection}{\numberline {3.5.3.44}error\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{34}{subsubsection.3.5.3.44}%
+\contentsline {subsubsection}{\numberline {3.5.3.45}escuelaRepository}{34}{subsubsection.3.5.3.45}%
+\contentsline {subsubsection}{\numberline {3.5.3.46}escuelas\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{34}{subsubsection.3.5.3.46}%
+\contentsline {subsubsection}{\numberline {3.5.3.47}escuelas\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{34}{subsubsection.3.5.3.47}%
+\contentsline {subsubsection}{\numberline {3.5.3.48}escuelaSeleccionada}{34}{subsubsection.3.5.3.48}%
+\contentsline {subsubsection}{\numberline {3.5.3.49}escuelasMasVentas}{34}{subsubsection.3.5.3.49}%
+\contentsline {subsubsection}{\numberline {3.5.3.50}estaAutenticado}{34}{subsubsection.3.5.3.50}%
+\contentsline {subsubsection}{\numberline {3.5.3.51}hayAlertas}{35}{subsubsection.3.5.3.51}%
+\contentsline {subsubsection}{\numberline {3.5.3.52}idEscuelaSeleccionada}{35}{subsubsection.3.5.3.52}%
+\contentsline {subsubsection}{\numberline {3.5.3.53}idPrendaSeleccionada}{35}{subsubsection.3.5.3.53}%
+\contentsline {subsubsection}{\numberline {3.5.3.54}inventario}{35}{subsubsection.3.5.3.54}%
+\contentsline {subsubsection}{\numberline {3.5.3.55}items}{35}{subsubsection.3.5.3.55}%
+\contentsline {subsubsection}{\numberline {3.5.3.56}itemsInventario}{35}{subsubsection.3.5.3.56}%
+\contentsline {subsubsection}{\numberline {3.5.3.57}loading}{35}{subsubsection.3.5.3.57}%
+\contentsline {subsubsection}{\numberline {3.5.3.58}maxCantidadPrenda}{35}{subsubsection.3.5.3.58}%
+\contentsline {subsubsection}{\numberline {3.5.3.59}maxTotalEscuela}{36}{subsubsection.3.5.3.59}%
+\contentsline {subsubsection}{\numberline {3.5.3.60}mensaje}{36}{subsubsection.3.5.3.60}%
+\contentsline {subsubsection}{\numberline {3.5.3.61}meses\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{36}{subsubsection.3.5.3.61}%
+\contentsline {subsubsection}{\numberline {3.5.3.62}meses\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{36}{subsubsection.3.5.3.62}%
+\contentsline {subsubsection}{\numberline {3.5.3.63}month}{36}{subsubsection.3.5.3.63}%
+\contentsline {subsubsection}{\numberline {3.5.3.64}nombreEscuelaSeleccionada}{37}{subsubsection.3.5.3.64}%
+\contentsline {subsubsection}{\numberline {3.5.3.65}nombreMesSeleccionado}{37}{subsubsection.3.5.3.65}%
+\contentsline {subsubsection}{\numberline {3.5.3.66}pedidos}{37}{subsubsection.3.5.3.66}%
+\contentsline {subsubsection}{\numberline {3.5.3.67}pendientes}{37}{subsubsection.3.5.3.67}%
+\contentsline {subsubsection}{\numberline {3.5.3.68}prendaRepository}{37}{subsubsection.3.5.3.68}%
+\contentsline {subsubsection}{\numberline {3.5.3.69}prendas\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{37}{subsubsection.3.5.3.69}%
+\contentsline {subsubsection}{\numberline {3.5.3.70}prendas\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{37}{subsubsection.3.5.3.70}%
+\contentsline {subsubsection}{\numberline {3.5.3.71}prendasMasVendidas}{38}{subsubsection.3.5.3.71}%
+\contentsline {subsubsection}{\numberline {3.5.3.72}procesando}{38}{subsubsection.3.5.3.72}%
+\contentsline {subsubsection}{\numberline {3.5.3.73}tallaRepository}{38}{subsubsection.3.5.3.73}%
+\contentsline {subsubsection}{\numberline {3.5.3.74}tallas}{38}{subsubsection.3.5.3.74}%
+\contentsline {subsubsection}{\numberline {3.5.3.75}todas}{38}{subsubsection.3.5.3.75}%
+\contentsline {subsubsection}{\numberline {3.5.3.76}total}{38}{subsubsection.3.5.3.76}%
+\contentsline {subsubsection}{\numberline {3.5.3.77}totalAlertas}{38}{subsubsection.3.5.3.77}%
+\contentsline {subsubsection}{\numberline {3.5.3.78}totalPrendas}{39}{subsubsection.3.5.3.78}%
+\contentsline {subsubsection}{\numberline {3.5.3.79}totalVendido}{39}{subsubsection.3.5.3.79}%
+\contentsline {subsubsection}{\numberline {3.5.3.80}unidades}{39}{subsubsection.3.5.3.80}%
+\contentsline {subsubsection}{\numberline {3.5.3.81}useCase\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{39}{subsubsection.3.5.3.81}%
+\contentsline {subsubsection}{\numberline {3.5.3.82}useCase\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{39}{subsubsection.3.5.3.82}%
+\contentsline {subsubsection}{\numberline {3.5.3.83}userName}{39}{subsubsection.3.5.3.83}%
+\contentsline {subsubsection}{\numberline {3.5.3.84}usuarioActual}{39}{subsubsection.3.5.3.84}%
+\contentsline {subsubsection}{\numberline {3.5.3.85}ventas}{39}{subsubsection.3.5.3.85}%
+\contentsline {subsubsection}{\numberline {3.5.3.86}year}{40}{subsubsection.3.5.3.86}%
+\contentsline {section}{\numberline {3.6}Referencia de la clase Custom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Painter}{40}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Descripción detallada}{40}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Documentación de funciones miembro}{40}{subsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.1}paint()}{40}{subsubsection.3.6.2.1}%
+\contentsline {subsubsection}{\numberline {3.6.2.2}shouldRepaint()}{41}{subsubsection.3.6.2.2}%
+\contentsline {section}{\numberline {3.7}Referencia de la clase Database\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Helper}{41}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Descripción detallada}{41}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Documentación de funciones miembro}{42}{subsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.2.1}\_initDB()}{42}{subsubsection.3.7.2.1}%
+\contentsline {subsubsection}{\numberline {3.7.2.2}\_internal()}{42}{subsubsection.3.7.2.2}%
+\contentsline {subsubsection}{\numberline {3.7.2.3}\_onCreate()}{42}{subsubsection.3.7.2.3}%
+\contentsline {subsection}{\numberline {3.7.3}Documentación de datos miembro}{43}{subsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.3.1}\_database\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{43}{subsubsection.3.7.3.1}%
+\contentsline {subsubsection}{\numberline {3.7.3.2}\_database\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{43}{subsubsection.3.7.3.2}%
+\contentsline {subsubsection}{\numberline {3.7.3.3}async}{43}{subsubsection.3.7.3.3}%
+\contentsline {subsubsection}{\numberline {3.7.3.4}instance}{43}{subsubsection.3.7.3.4}%
+\contentsline {section}{\numberline {3.8}Referencia de la clase Escuela\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{43}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Descripción detallada}{44}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Documentación de funciones miembro}{44}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.1}actualizar()}{44}{subsubsection.3.8.2.1}%
+\contentsline {subsubsection}{\numberline {3.8.2.2}eliminar()}{44}{subsubsection.3.8.2.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.3}insertar()}{44}{subsubsection.3.8.2.3}%
+\contentsline {subsubsection}{\numberline {3.8.2.4}obtenerPorId()}{45}{subsubsection.3.8.2.4}%
+\contentsline {subsubsection}{\numberline {3.8.2.5}obtenerTodas()}{45}{subsubsection.3.8.2.5}%
+\contentsline {subsection}{\numberline {3.8.3}Documentación de datos miembro}{45}{subsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.3.1}async}{45}{subsubsection.3.8.3.1}%
+\contentsline {section}{\numberline {3.9}Referencia de la clase Inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{45}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Descripción detallada}{46}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Documentación de funciones miembro}{46}{subsection.3.9.2}%
+\contentsline {subsubsection}{\numberline {3.9.2.1}actualizar()}{46}{subsubsection.3.9.2.1}%
+\contentsline {subsubsection}{\numberline {3.9.2.2}contarStock()}{46}{subsubsection.3.9.2.2}%
+\contentsline {subsubsection}{\numberline {3.9.2.3}eliminar()}{46}{subsubsection.3.9.2.3}%
+\contentsline {subsubsection}{\numberline {3.9.2.4}insertar()}{47}{subsubsection.3.9.2.4}%
+\contentsline {subsubsection}{\numberline {3.9.2.5}obtenerInventarioCompleto()}{47}{subsubsection.3.9.2.5}%
+\contentsline {subsubsection}{\numberline {3.9.2.6}obtenerInventarioFiltrado()}{47}{subsubsection.3.9.2.6}%
+\contentsline {subsubsection}{\numberline {3.9.2.7}obtenerPorCombinacion()}{47}{subsubsection.3.9.2.7}%
+\contentsline {subsubsection}{\numberline {3.9.2.8}obtenerPorEscuela()}{47}{subsubsection.3.9.2.8}%
+\contentsline {subsubsection}{\numberline {3.9.2.9}obtenerPorId()}{48}{subsubsection.3.9.2.9}%
+\contentsline {subsubsection}{\numberline {3.9.2.10}obtenerStockAgotado()}{48}{subsubsection.3.9.2.10}%
+\contentsline {subsubsection}{\numberline {3.9.2.11}obtenerStockCritico()}{48}{subsubsection.3.9.2.11}%
+\contentsline {subsubsection}{\numberline {3.9.2.12}obtenerTodos()}{48}{subsubsection.3.9.2.12}%
+\contentsline {subsection}{\numberline {3.9.3}Documentación de datos miembro}{48}{subsection.3.9.3}%
+\contentsline {subsubsection}{\numberline {3.9.3.1}async}{48}{subsubsection.3.9.3.1}%
+\contentsline {section}{\numberline {3.10}Referencia de la clase Login\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{48}{section.3.10}%
+\contentsline {subsection}{\numberline {3.10.1}Descripción detallada}{49}{subsection.3.10.1}%
+\contentsline {subsection}{\numberline {3.10.2}Documentación de funciones miembro}{49}{subsection.3.10.2}%
+\contentsline {subsubsection}{\numberline {3.10.2.1}\_hashPassword()}{49}{subsubsection.3.10.2.1}%
+\contentsline {subsubsection}{\numberline {3.10.2.2}execute()}{49}{subsubsection.3.10.2.2}%
+\contentsline {section}{\numberline {3.11}Referencia de la clase Nueva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{49}{section.3.11}%
+\contentsline {subsection}{\numberline {3.11.1}Descripción detallada}{50}{subsection.3.11.1}%
+\contentsline {subsection}{\numberline {3.11.2}Documentación de funciones miembro}{50}{subsection.3.11.2}%
+\contentsline {subsubsection}{\numberline {3.11.2.1}\_calcularTotal()}{50}{subsubsection.3.11.2.1}%
+\contentsline {subsubsection}{\numberline {3.11.2.2}\_confirmarPedido()}{51}{subsubsection.3.11.2.2}%
+\contentsline {subsubsection}{\numberline {3.11.2.3}\_confirmarVenta()}{51}{subsubsection.3.11.2.3}%
+\contentsline {subsubsection}{\numberline {3.11.2.4}\_resolverUnidades()}{51}{subsubsection.3.11.2.4}%
+\contentsline {subsubsection}{\numberline {3.11.2.5}agregarManual()}{51}{subsubsection.3.11.2.5}%
+\contentsline {subsubsection}{\numberline {3.11.2.6}agregarPorQr()}{52}{subsubsection.3.11.2.6}%
+\contentsline {subsubsection}{\numberline {3.11.2.7}confirmarMixto()}{52}{subsubsection.3.11.2.7}%
+\contentsline {subsection}{\numberline {3.11.3}Documentación de datos miembro}{52}{subsection.3.11.3}%
+\contentsline {subsubsection}{\numberline {3.11.3.1}\_inventarioRepository}{52}{subsubsection.3.11.3.1}%
+\contentsline {subsubsection}{\numberline {3.11.3.2}\_ordenRepository}{52}{subsubsection.3.11.3.2}%
+\contentsline {subsubsection}{\numberline {3.11.3.3}\_pedidoRepository}{52}{subsubsection.3.11.3.3}%
+\contentsline {subsubsection}{\numberline {3.11.3.4}\_qrUseCase}{52}{subsubsection.3.11.3.4}%
+\contentsline {subsubsection}{\numberline {3.11.3.5}\_unidadRepository}{52}{subsubsection.3.11.3.5}%
+\contentsline {subsubsection}{\numberline {3.11.3.6}\_ventaRepository}{53}{subsubsection.3.11.3.6}%
+\contentsline {section}{\numberline {3.12}Referencia de la clase Orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{53}{section.3.12}%
+\contentsline {subsection}{\numberline {3.12.1}Descripción detallada}{53}{subsection.3.12.1}%
+\contentsline {subsection}{\numberline {3.12.2}Documentación de funciones miembro}{53}{subsection.3.12.2}%
+\contentsline {subsubsection}{\numberline {3.12.2.1}insertar()}{53}{subsubsection.3.12.2.1}%
+\contentsline {subsubsection}{\numberline {3.12.2.2}obtenerPorId()}{53}{subsubsection.3.12.2.2}%
+\contentsline {subsubsection}{\numberline {3.12.2.3}obtenerTodas()}{54}{subsubsection.3.12.2.3}%
+\contentsline {subsection}{\numberline {3.12.3}Documentación de datos miembro}{54}{subsection.3.12.3}%
+\contentsline {subsubsection}{\numberline {3.12.3.1}async}{54}{subsubsection.3.12.3.1}%
+\contentsline {section}{\numberline {3.13}Referencia de la clase Pedido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Pendiente\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{54}{section.3.13}%
+\contentsline {subsection}{\numberline {3.13.1}Descripción detallada}{55}{subsection.3.13.1}%
+\contentsline {subsection}{\numberline {3.13.2}Documentación de funciones miembro}{55}{subsection.3.13.2}%
+\contentsline {subsubsection}{\numberline {3.13.2.1}completarPedido()}{55}{subsubsection.3.13.2.1}%
+\contentsline {subsubsection}{\numberline {3.13.2.2}desregistrarUnidad()}{55}{subsubsection.3.13.2.2}%
+\contentsline {subsubsection}{\numberline {3.13.2.3}eliminarDetallePedido()}{55}{subsubsection.3.13.2.3}%
+\contentsline {subsubsection}{\numberline {3.13.2.4}obtenerDetalles()}{56}{subsubsection.3.13.2.4}%
+\contentsline {subsubsection}{\numberline {3.13.2.5}obtenerDetallesConInfo()}{56}{subsubsection.3.13.2.5}%
+\contentsline {subsubsection}{\numberline {3.13.2.6}obtenerPedidosPendientes()}{56}{subsubsection.3.13.2.6}%
+\contentsline {subsubsection}{\numberline {3.13.2.7}pedidoCompleto()}{56}{subsubsection.3.13.2.7}%
+\contentsline {subsubsection}{\numberline {3.13.2.8}registrarQrPedido()}{56}{subsubsection.3.13.2.8}%
+\contentsline {subsubsection}{\numberline {3.13.2.9}registrarUnidad()}{57}{subsubsection.3.13.2.9}%
+\contentsline {subsection}{\numberline {3.13.3}Documentación de datos miembro}{57}{subsection.3.13.3}%
+\contentsline {subsubsection}{\numberline {3.13.3.1}\_pedidoRepository}{57}{subsubsection.3.13.3.1}%
+\contentsline {subsubsection}{\numberline {3.13.3.2}\_qrUseCase}{57}{subsubsection.3.13.3.2}%
+\contentsline {subsubsection}{\numberline {3.13.3.3}\_unidadRepository}{57}{subsubsection.3.13.3.3}%
+\contentsline {subsubsection}{\numberline {3.13.3.4}\_ventaRepository}{57}{subsubsection.3.13.3.4}%
+\contentsline {section}{\numberline {3.14}Referencia de la clase Pedido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{57}{section.3.14}%
+\contentsline {subsection}{\numberline {3.14.1}Descripción detallada}{58}{subsection.3.14.1}%
+\contentsline {subsection}{\numberline {3.14.2}Documentación de funciones miembro}{58}{subsection.3.14.2}%
+\contentsline {subsubsection}{\numberline {3.14.2.1}actualizarEstado()}{58}{subsubsection.3.14.2.1}%
+\contentsline {subsubsection}{\numberline {3.14.2.2}contarDetalles()}{59}{subsubsection.3.14.2.2}%
+\contentsline {subsubsection}{\numberline {3.14.2.3}desregistrarUnidad()}{59}{subsubsection.3.14.2.3}%
+\contentsline {subsubsection}{\numberline {3.14.2.4}eliminar()}{59}{subsubsection.3.14.2.4}%
+\contentsline {subsubsection}{\numberline {3.14.2.5}eliminarDetallePedido()}{59}{subsubsection.3.14.2.5}%
+\contentsline {subsubsection}{\numberline {3.14.2.6}eliminarPedidoCompleto()}{59}{subsubsection.3.14.2.6}%
+\contentsline {subsubsection}{\numberline {3.14.2.7}insertarPedidoYDetalles()}{59}{subsubsection.3.14.2.7}%
+\contentsline {subsubsection}{\numberline {3.14.2.8}obtenerDetalles()}{60}{subsubsection.3.14.2.8}%
+\contentsline {subsubsection}{\numberline {3.14.2.9}obtenerDetallesConInfo()}{60}{subsubsection.3.14.2.9}%
+\contentsline {subsubsection}{\numberline {3.14.2.10}obtenerPorId()}{60}{subsubsection.3.14.2.10}%
+\contentsline {subsubsection}{\numberline {3.14.2.11}obtenerRegistroActivoPorUnidad()}{60}{subsubsection.3.14.2.11}%
+\contentsline {subsubsection}{\numberline {3.14.2.12}obtenerTodos()}{60}{subsubsection.3.14.2.12}%
+\contentsline {subsubsection}{\numberline {3.14.2.13}pedidoCompleto()}{60}{subsubsection.3.14.2.13}%
+\contentsline {subsubsection}{\numberline {3.14.2.14}registrarUnidad()}{61}{subsubsection.3.14.2.14}%
+\contentsline {subsection}{\numberline {3.14.3}Documentación de datos miembro}{61}{subsection.3.14.3}%
+\contentsline {subsubsection}{\numberline {3.14.3.1}async}{61}{subsubsection.3.14.3.1}%
+\contentsline {section}{\numberline {3.15}Referencia de la clase Prenda\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{61}{section.3.15}%
+\contentsline {subsection}{\numberline {3.15.1}Descripción detallada}{61}{subsection.3.15.1}%
+\contentsline {subsection}{\numberline {3.15.2}Documentación de funciones miembro}{62}{subsection.3.15.2}%
+\contentsline {subsubsection}{\numberline {3.15.2.1}actualizar()}{62}{subsubsection.3.15.2.1}%
+\contentsline {subsubsection}{\numberline {3.15.2.2}eliminar()}{62}{subsubsection.3.15.2.2}%
+\contentsline {subsubsection}{\numberline {3.15.2.3}insertar()}{62}{subsubsection.3.15.2.3}%
+\contentsline {subsubsection}{\numberline {3.15.2.4}obtenerPorId()}{62}{subsubsection.3.15.2.4}%
+\contentsline {subsubsection}{\numberline {3.15.2.5}obtenerTodas()}{62}{subsubsection.3.15.2.5}%
+\contentsline {subsection}{\numberline {3.15.3}Documentación de datos miembro}{63}{subsection.3.15.3}%
+\contentsline {subsubsection}{\numberline {3.15.3.1}async}{63}{subsubsection.3.15.3.1}%
+\contentsline {section}{\numberline {3.16}Referencia de la clase Print\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Service}{63}{section.3.16}%
+\contentsline {subsection}{\numberline {3.16.1}Descripción detallada}{63}{subsection.3.16.1}%
+\contentsline {subsection}{\numberline {3.16.2}Documentación de funciones miembro}{63}{subsection.3.16.2}%
+\contentsline {subsubsection}{\numberline {3.16.2.1}conectar()}{63}{subsubsection.3.16.2.1}%
+\contentsline {subsubsection}{\numberline {3.16.2.2}desconectar()}{63}{subsubsection.3.16.2.2}%
+\contentsline {subsubsection}{\numberline {3.16.2.3}imprimirQR()}{63}{subsubsection.3.16.2.3}%
+\contentsline {section}{\numberline {3.17}Referencia de la clase Print\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{64}{section.3.17}%
+\contentsline {subsection}{\numberline {3.17.1}Descripción detallada}{64}{subsection.3.17.1}%
+\contentsline {subsection}{\numberline {3.17.2}Documentación de constructores y destructores}{64}{subsection.3.17.2}%
+\contentsline {subsubsection}{\numberline {3.17.2.1}PrintUseCase()}{64}{subsubsection.3.17.2.1}%
+\contentsline {subsection}{\numberline {3.17.3}Documentación de funciones miembro}{64}{subsection.3.17.3}%
+\contentsline {subsubsection}{\numberline {3.17.3.1}ejecutar()}{64}{subsubsection.3.17.3.1}%
+\contentsline {subsubsection}{\numberline {3.17.3.2}imprimirQrExistente()}{65}{subsubsection.3.17.3.2}%
+\contentsline {subsection}{\numberline {3.17.4}Documentación de datos miembro}{65}{subsection.3.17.4}%
+\contentsline {subsubsection}{\numberline {3.17.4.1}printer}{65}{subsubsection.3.17.4.1}%
+\contentsline {subsubsection}{\numberline {3.17.4.2}repo}{65}{subsubsection.3.17.4.2}%
+\contentsline {section}{\numberline {3.18}Referencia de la clase Qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{65}{section.3.18}%
+\contentsline {subsection}{\numberline {3.18.1}Descripción detallada}{66}{subsection.3.18.1}%
+\contentsline {subsection}{\numberline {3.18.2}Documentación de constructores y destructores}{66}{subsection.3.18.2}%
+\contentsline {subsubsection}{\numberline {3.18.2.1}QrUseCase()}{66}{subsubsection.3.18.2.1}%
+\contentsline {subsection}{\numberline {3.18.3}Documentación de funciones miembro}{66}{subsection.3.18.3}%
+\contentsline {subsubsection}{\numberline {3.18.3.1}existeQr()}{66}{subsubsection.3.18.3.1}%
+\contentsline {subsubsection}{\numberline {3.18.3.2}obtenerUnidad()}{66}{subsubsection.3.18.3.2}%
+\contentsline {subsection}{\numberline {3.18.4}Documentación de datos miembro}{66}{subsection.3.18.4}%
+\contentsline {subsubsection}{\numberline {3.18.4.1}unidadRepository}{66}{subsubsection.3.18.4.1}%
+\contentsline {section}{\numberline {3.19}Referencia de la clase Registrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{67}{section.3.19}%
+\contentsline {subsection}{\numberline {3.19.1}Descripción detallada}{67}{subsection.3.19.1}%
+\contentsline {subsection}{\numberline {3.19.2}Documentación de funciones miembro}{67}{subsection.3.19.2}%
+\contentsline {subsubsection}{\numberline {3.19.2.1}ejecutar()}{67}{subsubsection.3.19.2.1}%
+\contentsline {subsection}{\numberline {3.19.3}Documentación de datos miembro}{68}{subsection.3.19.3}%
+\contentsline {subsubsection}{\numberline {3.19.3.1}\_escuelaRepository}{68}{subsubsection.3.19.3.1}%
+\contentsline {subsubsection}{\numberline {3.19.3.2}\_inventarioRepository}{68}{subsubsection.3.19.3.2}%
+\contentsline {subsubsection}{\numberline {3.19.3.3}\_prendaRepository}{68}{subsubsection.3.19.3.3}%
+\contentsline {subsubsection}{\numberline {3.19.3.4}\_tallaRepository}{68}{subsubsection.3.19.3.4}%
+\contentsline {section}{\numberline {3.20}Referencia de la clase Registro\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Talla\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Result}{68}{section.3.20}%
+\contentsline {subsection}{\numberline {3.20.1}Descripción detallada}{68}{subsection.3.20.1}%
+\contentsline {subsection}{\numberline {3.20.2}Documentación de constructores y destructores}{69}{subsection.3.20.2}%
+\contentsline {subsubsection}{\numberline {3.20.2.1}RegistroTallaResult()}{69}{subsubsection.3.20.2.1}%
+\contentsline {subsection}{\numberline {3.20.3}Documentación de datos miembro}{69}{subsection.3.20.3}%
+\contentsline {subsubsection}{\numberline {3.20.3.1}exitoso}{69}{subsubsection.3.20.3.1}%
+\contentsline {subsubsection}{\numberline {3.20.3.2}idTalla}{69}{subsubsection.3.20.3.2}%
+\contentsline {subsubsection}{\numberline {3.20.3.3}mensajeError}{69}{subsubsection.3.20.3.3}%
+\contentsline {subsubsection}{\numberline {3.20.3.4}nombreTalla}{69}{subsubsection.3.20.3.4}%
+\contentsline {section}{\numberline {3.21}Referencia de la clase Reporte\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{69}{section.3.21}%
+\contentsline {subsection}{\numberline {3.21.1}Descripción detallada}{70}{subsection.3.21.1}%
+\contentsline {subsection}{\numberline {3.21.2}Documentación de funciones miembro}{70}{subsection.3.21.2}%
+\contentsline {subsubsection}{\numberline {3.21.2.1}obtenerCantidadVentas()}{70}{subsubsection.3.21.2.1}%
+\contentsline {subsubsection}{\numberline {3.21.2.2}obtenerEscuelasMasVentas()}{70}{subsubsection.3.21.2.2}%
+\contentsline {subsubsection}{\numberline {3.21.2.3}obtenerPrendasMasVendidas()}{70}{subsubsection.3.21.2.3}%
+\contentsline {subsubsection}{\numberline {3.21.2.4}obtenerTotalVendido()}{71}{subsubsection.3.21.2.4}%
+\contentsline {subsection}{\numberline {3.21.3}Documentación de datos miembro}{71}{subsection.3.21.3}%
+\contentsline {subsubsection}{\numberline {3.21.3.1}async}{71}{subsubsection.3.21.3.1}%
+\contentsline {section}{\numberline {3.22}Referencia de la clase Stateful\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Widget}{71}{section.3.22}%
+\contentsline {subsection}{\numberline {3.22.1}Descripción detallada}{72}{subsection.3.22.1}%
+\contentsline {subsection}{\numberline {3.22.2}Documentación de funciones miembro}{73}{subsection.3.22.2}%
+\contentsline {subsubsection}{\numberline {3.22.2.1}AdministrarCantidadScreen()}{73}{subsubsection.3.22.2.1}%
+\contentsline {subsubsection}{\numberline {3.22.2.2}AdministrarPrendaScreen()}{74}{subsubsection.3.22.2.2}%
+\contentsline {subsubsection}{\numberline {3.22.2.3}AgregarPedidoScreen()}{74}{subsubsection.3.22.2.3}%
+\contentsline {subsubsection}{\numberline {3.22.2.4}AgregarPrendasPedidoScreen()}{74}{subsubsection.3.22.2.4}%
+\contentsline {subsubsection}{\numberline {3.22.2.5}createState()\hspace {0.1cm}{\footnotesize \ttfamily [1/12]}}{74}{subsubsection.3.22.2.5}%
+\contentsline {subsubsection}{\numberline {3.22.2.6}createState()\hspace {0.1cm}{\footnotesize \ttfamily [2/12]}}{74}{subsubsection.3.22.2.6}%
+\contentsline {subsubsection}{\numberline {3.22.2.7}createState()\hspace {0.1cm}{\footnotesize \ttfamily [3/12]}}{74}{subsubsection.3.22.2.7}%
+\contentsline {subsubsection}{\numberline {3.22.2.8}createState()\hspace {0.1cm}{\footnotesize \ttfamily [4/12]}}{74}{subsubsection.3.22.2.8}%
+\contentsline {subsubsection}{\numberline {3.22.2.9}createState()\hspace {0.1cm}{\footnotesize \ttfamily [5/12]}}{74}{subsubsection.3.22.2.9}%
+\contentsline {subsubsection}{\numberline {3.22.2.10}createState()\hspace {0.1cm}{\footnotesize \ttfamily [6/12]}}{74}{subsubsection.3.22.2.10}%
+\contentsline {subsubsection}{\numberline {3.22.2.11}createState()\hspace {0.1cm}{\footnotesize \ttfamily [7/12]}}{74}{subsubsection.3.22.2.11}%
+\contentsline {subsubsection}{\numberline {3.22.2.12}createState()\hspace {0.1cm}{\footnotesize \ttfamily [8/12]}}{75}{subsubsection.3.22.2.12}%
+\contentsline {subsubsection}{\numberline {3.22.2.13}createState()\hspace {0.1cm}{\footnotesize \ttfamily [9/12]}}{75}{subsubsection.3.22.2.13}%
+\contentsline {subsubsection}{\numberline {3.22.2.14}createState()\hspace {0.1cm}{\footnotesize \ttfamily [10/12]}}{75}{subsubsection.3.22.2.14}%
+\contentsline {subsubsection}{\numberline {3.22.2.15}createState()\hspace {0.1cm}{\footnotesize \ttfamily [11/12]}}{75}{subsubsection.3.22.2.15}%
+\contentsline {subsubsection}{\numberline {3.22.2.16}createState()\hspace {0.1cm}{\footnotesize \ttfamily [12/12]}}{75}{subsubsection.3.22.2.16}%
+\contentsline {subsubsection}{\numberline {3.22.2.17}ExitoScreen()}{75}{subsubsection.3.22.2.17}%
+\contentsline {subsubsection}{\numberline {3.22.2.18}Function()}{75}{subsubsection.3.22.2.18}%
+\contentsline {subsubsection}{\numberline {3.22.2.19}LoginScreen()}{75}{subsubsection.3.22.2.19}%
+\contentsline {subsubsection}{\numberline {3.22.2.20}PedidosPendientesScreen()}{75}{subsubsection.3.22.2.20}%
+\contentsline {subsubsection}{\numberline {3.22.2.21}QRScannerScreen()}{76}{subsubsection.3.22.2.21}%
+\contentsline {subsubsection}{\numberline {3.22.2.22}RegistrarPrendaScreen()}{76}{subsubsection.3.22.2.22}%
+\contentsline {subsubsection}{\numberline {3.22.2.23}RevisarPedidoScreen()}{76}{subsubsection.3.22.2.23}%
+\contentsline {subsubsection}{\numberline {3.22.2.24}RevisarVentaScreen()}{76}{subsubsection.3.22.2.24}%
+\contentsline {subsubsection}{\numberline {3.22.2.25}VentasScreen()}{76}{subsubsection.3.22.2.25}%
+\contentsline {subsection}{\numberline {3.22.3}Documentación de datos miembro}{76}{subsection.3.22.3}%
+\contentsline {subsubsection}{\numberline {3.22.3.1}cantidad}{76}{subsubsection.3.22.3.1}%
+\contentsline {subsubsection}{\numberline {3.22.3.2}idInventario}{76}{subsubsection.3.22.3.2}%
+\contentsline {subsubsection}{\numberline {3.22.3.3}idPedido}{77}{subsubsection.3.22.3.3}%
+\contentsline {subsubsection}{\numberline {3.22.3.4}idVenta}{77}{subsubsection.3.22.3.4}%
+\contentsline {subsubsection}{\numberline {3.22.3.5}mostrarMensaje}{77}{subsubsection.3.22.3.5}%
+\contentsline {subsubsection}{\numberline {3.22.3.6}nombreEscuela}{77}{subsubsection.3.22.3.6}%
+\contentsline {subsubsection}{\numberline {3.22.3.7}nombrePrenda}{77}{subsubsection.3.22.3.7}%
+\contentsline {subsubsection}{\numberline {3.22.3.8}registrarInventarioUseCase}{77}{subsubsection.3.22.3.8}%
+\contentsline {subsubsection}{\numberline {3.22.3.9}talla}{77}{subsubsection.3.22.3.9}%
+\contentsline {section}{\numberline {3.23}Referencia de la clase Stateless\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Widget}{78}{section.3.23}%
+\contentsline {subsection}{\numberline {3.23.1}Descripción detallada}{79}{subsection.3.23.1}%
+\contentsline {subsection}{\numberline {3.23.2}Documentación de funciones miembro}{80}{subsection.3.23.2}%
+\contentsline {subsubsection}{\numberline {3.23.2.1}\_Campo()}{80}{subsubsection.3.23.2.1}%
+\contentsline {subsubsection}{\numberline {3.23.2.2}\_FiltrosSection()}{80}{subsubsection.3.23.2.2}%
+\contentsline {subsubsection}{\numberline {3.23.2.3}\_HomeButton()}{81}{subsubsection.3.23.2.3}%
+\contentsline {subsubsection}{\numberline {3.23.2.4}\_RankingCard()}{81}{subsubsection.3.23.2.4}%
+\contentsline {subsubsection}{\numberline {3.23.2.5}\_StatCard()}{81}{subsubsection.3.23.2.5}%
+\contentsline {subsubsection}{\numberline {3.23.2.6}AlertasPopup()}{81}{subsubsection.3.23.2.6}%
+\contentsline {subsubsection}{\numberline {3.23.2.7}BottomNavBar()}{81}{subsubsection.3.23.2.7}%
+\contentsline {subsubsection}{\numberline {3.23.2.8}build()\hspace {0.1cm}{\footnotesize \ttfamily [1/12]}}{81}{subsubsection.3.23.2.8}%
+\contentsline {subsubsection}{\numberline {3.23.2.9}build()\hspace {0.1cm}{\footnotesize \ttfamily [2/12]}}{81}{subsubsection.3.23.2.9}%
+\contentsline {subsubsection}{\numberline {3.23.2.10}build()\hspace {0.1cm}{\footnotesize \ttfamily [3/12]}}{82}{subsubsection.3.23.2.10}%
+\contentsline {subsubsection}{\numberline {3.23.2.11}build()\hspace {0.1cm}{\footnotesize \ttfamily [4/12]}}{82}{subsubsection.3.23.2.11}%
+\contentsline {subsubsection}{\numberline {3.23.2.12}build()\hspace {0.1cm}{\footnotesize \ttfamily [5/12]}}{82}{subsubsection.3.23.2.12}%
+\contentsline {subsubsection}{\numberline {3.23.2.13}build()\hspace {0.1cm}{\footnotesize \ttfamily [6/12]}}{82}{subsubsection.3.23.2.13}%
+\contentsline {subsubsection}{\numberline {3.23.2.14}build()\hspace {0.1cm}{\footnotesize \ttfamily [7/12]}}{82}{subsubsection.3.23.2.14}%
+\contentsline {subsubsection}{\numberline {3.23.2.15}build()\hspace {0.1cm}{\footnotesize \ttfamily [8/12]}}{82}{subsubsection.3.23.2.15}%
+\contentsline {subsubsection}{\numberline {3.23.2.16}build()\hspace {0.1cm}{\footnotesize \ttfamily [9/12]}}{82}{subsubsection.3.23.2.16}%
+\contentsline {subsubsection}{\numberline {3.23.2.17}build()\hspace {0.1cm}{\footnotesize \ttfamily [10/12]}}{83}{subsubsection.3.23.2.17}%
+\contentsline {subsubsection}{\numberline {3.23.2.18}build()\hspace {0.1cm}{\footnotesize \ttfamily [11/12]}}{83}{subsubsection.3.23.2.18}%
+\contentsline {subsubsection}{\numberline {3.23.2.19}build()\hspace {0.1cm}{\footnotesize \ttfamily [12/12]}}{83}{subsubsection.3.23.2.19}%
+\contentsline {subsubsection}{\numberline {3.23.2.20}HomeScreen()}{83}{subsubsection.3.23.2.20}%
+\contentsline {subsubsection}{\numberline {3.23.2.21}InventarioScreen()}{83}{subsubsection.3.23.2.21}%
+\contentsline {subsubsection}{\numberline {3.23.2.22}MyApp()}{84}{subsubsection.3.23.2.22}%
+\contentsline {subsubsection}{\numberline {3.23.2.23}QrPendientesScreen()}{84}{subsubsection.3.23.2.23}%
+\contentsline {subsubsection}{\numberline {3.23.2.24}ReportesScreen()}{84}{subsubsection.3.23.2.24}%
+\contentsline {subsection}{\numberline {3.23.3}Documentación de datos miembro}{84}{subsection.3.23.3}%
+\contentsline {subsubsection}{\numberline {3.23.3.1}\_inputDecoration}{84}{subsubsection.3.23.3.1}%
+\contentsline {subsubsection}{\numberline {3.23.3.2}backgroundColor}{84}{subsubsection.3.23.3.2}%
+\contentsline {subsubsection}{\numberline {3.23.3.3}color}{84}{subsubsection.3.23.3.3}%
+\contentsline {subsubsection}{\numberline {3.23.3.4}controller}{85}{subsubsection.3.23.3.4}%
+\contentsline {subsubsection}{\numberline {3.23.3.5}esDinero}{85}{subsubsection.3.23.3.5}%
+\contentsline {subsubsection}{\numberline {3.23.3.6}esPassword}{85}{subsubsection.3.23.3.6}%
+\contentsline {subsubsection}{\numberline {3.23.3.7}hint}{85}{subsubsection.3.23.3.7}%
+\contentsline {subsubsection}{\numberline {3.23.3.8}icon}{85}{subsubsection.3.23.3.8}%
+\contentsline {subsubsection}{\numberline {3.23.3.9}iconColor}{85}{subsubsection.3.23.3.9}%
+\contentsline {subsubsection}{\numberline {3.23.3.10}icono}{85}{subsubsection.3.23.3.10}%
+\contentsline {subsubsection}{\numberline {3.23.3.11}items}{85}{subsubsection.3.23.3.11}%
+\contentsline {subsubsection}{\numberline {3.23.3.12}label}{85}{subsubsection.3.23.3.12}%
+\contentsline {subsubsection}{\numberline {3.23.3.13}onPressed}{86}{subsubsection.3.23.3.13}%
+\contentsline {subsubsection}{\numberline {3.23.3.14}onTogglePassword}{86}{subsubsection.3.23.3.14}%
+\contentsline {subsubsection}{\numberline {3.23.3.15}provider}{86}{subsubsection.3.23.3.15}%
+\contentsline {subsubsection}{\numberline {3.23.3.16}textColor}{86}{subsubsection.3.23.3.16}%
+\contentsline {subsubsection}{\numberline {3.23.3.17}valor}{86}{subsubsection.3.23.3.17}%
+\contentsline {subsubsection}{\numberline {3.23.3.18}verPassword}{86}{subsubsection.3.23.3.18}%
+\contentsline {section}{\numberline {3.24}Referencia de la clase Talla\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{86}{section.3.24}%
+\contentsline {subsection}{\numberline {3.24.1}Descripción detallada}{87}{subsection.3.24.1}%
+\contentsline {subsection}{\numberline {3.24.2}Documentación de funciones miembro}{87}{subsection.3.24.2}%
+\contentsline {subsubsection}{\numberline {3.24.2.1}actualizar()}{87}{subsubsection.3.24.2.1}%
+\contentsline {subsubsection}{\numberline {3.24.2.2}eliminar()}{87}{subsubsection.3.24.2.2}%
+\contentsline {subsubsection}{\numberline {3.24.2.3}insertar()}{87}{subsubsection.3.24.2.3}%
+\contentsline {subsubsection}{\numberline {3.24.2.4}obtenerPorId()}{88}{subsubsection.3.24.2.4}%
+\contentsline {subsubsection}{\numberline {3.24.2.5}obtenerTodas()}{88}{subsubsection.3.24.2.5}%
+\contentsline {subsection}{\numberline {3.24.3}Documentación de datos miembro}{88}{subsection.3.24.3}%
+\contentsline {subsubsection}{\numberline {3.24.3.1}async}{88}{subsubsection.3.24.3.1}%
+\contentsline {section}{\numberline {3.25}Referencia de la clase Unidad\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{88}{section.3.25}%
+\contentsline {subsection}{\numberline {3.25.1}Descripción detallada}{89}{subsection.3.25.1}%
+\contentsline {subsection}{\numberline {3.25.2}Documentación de funciones miembro}{89}{subsection.3.25.2}%
+\contentsline {subsubsection}{\numberline {3.25.2.1}desactivar()}{89}{subsubsection.3.25.2.1}%
+\contentsline {subsubsection}{\numberline {3.25.2.2}eliminar()}{89}{subsubsection.3.25.2.2}%
+\contentsline {subsubsection}{\numberline {3.25.2.3}insertarUnidades()}{89}{subsubsection.3.25.2.3}%
+\contentsline {subsubsection}{\numberline {3.25.2.4}marcarPendienteImpresion()}{89}{subsubsection.3.25.2.4}%
+\contentsline {subsubsection}{\numberline {3.25.2.5}obtenerPendientesImpresion()}{90}{subsubsection.3.25.2.5}%
+\contentsline {subsubsection}{\numberline {3.25.2.6}obtenerPorId()}{90}{subsubsection.3.25.2.6}%
+\contentsline {subsubsection}{\numberline {3.25.2.7}obtenerPorInventario()}{90}{subsubsection.3.25.2.7}%
+\contentsline {subsubsection}{\numberline {3.25.2.8}pertenece()}{90}{subsubsection.3.25.2.8}%
+\contentsline {subsubsection}{\numberline {3.25.2.9}quitarPendienteImpresion()}{90}{subsubsection.3.25.2.9}%
+\contentsline {subsubsection}{\numberline {3.25.2.10}reactivar()}{90}{subsubsection.3.25.2.10}%
+\contentsline {subsection}{\numberline {3.25.3}Documentación de datos miembro}{91}{subsection.3.25.3}%
+\contentsline {subsubsection}{\numberline {3.25.3.1}async}{91}{subsubsection.3.25.3.1}%
+\contentsline {section}{\numberline {3.26}Referencia de la clase Usuario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{91}{section.3.26}%
+\contentsline {subsection}{\numberline {3.26.1}Descripción detallada}{91}{subsection.3.26.1}%
+\contentsline {subsection}{\numberline {3.26.2}Documentación de funciones miembro}{92}{subsection.3.26.2}%
+\contentsline {subsubsection}{\numberline {3.26.2.1}actualizar()}{92}{subsubsection.3.26.2.1}%
+\contentsline {subsubsection}{\numberline {3.26.2.2}desactivar()}{92}{subsubsection.3.26.2.2}%
+\contentsline {subsubsection}{\numberline {3.26.2.3}eliminar()}{92}{subsubsection.3.26.2.3}%
+\contentsline {subsubsection}{\numberline {3.26.2.4}insertar()}{92}{subsubsection.3.26.2.4}%
+\contentsline {subsubsection}{\numberline {3.26.2.5}obtenerActivos()}{92}{subsubsection.3.26.2.5}%
+\contentsline {subsubsection}{\numberline {3.26.2.6}obtenerPorId()}{93}{subsubsection.3.26.2.6}%
+\contentsline {subsubsection}{\numberline {3.26.2.7}obtenerPorUsuario()}{93}{subsubsection.3.26.2.7}%
+\contentsline {subsubsection}{\numberline {3.26.2.8}obtenerTodos()}{93}{subsubsection.3.26.2.8}%
+\contentsline {subsection}{\numberline {3.26.3}Documentación de datos miembro}{93}{subsection.3.26.3}%
+\contentsline {subsubsection}{\numberline {3.26.3.1}async}{93}{subsubsection.3.26.3.1}%
+\contentsline {section}{\numberline {3.27}Referencia de la clase Validacion\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Inventario}{93}{section.3.27}%
+\contentsline {subsection}{\numberline {3.27.1}Descripción detallada}{94}{subsection.3.27.1}%
+\contentsline {subsection}{\numberline {3.27.2}Documentación de funciones miembro}{94}{subsection.3.27.2}%
+\contentsline {subsubsection}{\numberline {3.27.2.1}validarCamposObligatorios()}{94}{subsubsection.3.27.2.1}%
+\contentsline {subsubsection}{\numberline {3.27.2.2}validarCantidadUnidades()}{94}{subsubsection.3.27.2.2}%
+\contentsline {subsubsection}{\numberline {3.27.2.3}validarEliminacion()}{94}{subsubsection.3.27.2.3}%
+\contentsline {subsubsection}{\numberline {3.27.2.4}validarPrecio()}{95}{subsubsection.3.27.2.4}%
+\contentsline {section}{\numberline {3.28}Referencia de la clase Venta\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository}{95}{section.3.28}%
+\contentsline {subsection}{\numberline {3.28.1}Descripción detallada}{95}{subsection.3.28.1}%
+\contentsline {subsection}{\numberline {3.28.2}Documentación de funciones miembro}{96}{subsection.3.28.2}%
+\contentsline {subsubsection}{\numberline {3.28.2.1}actualizarEstadoCancelado()}{96}{subsubsection.3.28.2.1}%
+\contentsline {subsubsection}{\numberline {3.28.2.2}contarDetallesVenta()}{96}{subsubsection.3.28.2.2}%
+\contentsline {subsubsection}{\numberline {3.28.2.3}eliminar()}{96}{subsubsection.3.28.2.3}%
+\contentsline {subsubsection}{\numberline {3.28.2.4}eliminarDetalleVenta()}{96}{subsubsection.3.28.2.4}%
+\contentsline {subsubsection}{\numberline {3.28.2.5}insertarDetallesVenta()}{96}{subsubsection.3.28.2.5}%
+\contentsline {subsubsection}{\numberline {3.28.2.6}insertarVentaYDetalles()}{97}{subsubsection.3.28.2.6}%
+\contentsline {subsubsection}{\numberline {3.28.2.7}obtenerDetallesPorVenta()}{97}{subsubsection.3.28.2.7}%
+\contentsline {subsubsection}{\numberline {3.28.2.8}obtenerPorId()}{97}{subsubsection.3.28.2.8}%
+\contentsline {subsubsection}{\numberline {3.28.2.9}obtenerPorUsuario()}{97}{subsubsection.3.28.2.9}%
+\contentsline {subsubsection}{\numberline {3.28.2.10}obtenerTodas()}{97}{subsubsection.3.28.2.10}%
+\contentsline {subsection}{\numberline {3.28.3}Documentación de datos miembro}{98}{subsection.3.28.3}%
+\contentsline {subsubsection}{\numberline {3.28.3.1}async}{98}{subsubsection.3.28.3.1}%
+\contentsline {section}{\numberline {3.29}Referencia de la clase Ventas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Use\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Case}{98}{section.3.29}%
+\contentsline {subsection}{\numberline {3.29.1}Descripción detallada}{98}{subsection.3.29.1}%
+\contentsline {subsection}{\numberline {3.29.2}Documentación de funciones miembro}{98}{subsection.3.29.2}%
+\contentsline {subsubsection}{\numberline {3.29.2.1}obtenerDetallesVenta()}{98}{subsubsection.3.29.2.1}%
+\contentsline {subsubsection}{\numberline {3.29.2.2}obtenerVenta()}{99}{subsubsection.3.29.2.2}%
+\contentsline {subsubsection}{\numberline {3.29.2.3}obtenerVentas()}{99}{subsubsection.3.29.2.3}%
+\contentsline {subsection}{\numberline {3.29.3}Documentación de datos miembro}{99}{subsection.3.29.3}%
+\contentsline {subsubsection}{\numberline {3.29.3.1}\_ventaRepository}{99}{subsubsection.3.29.3.1}%
+\contentsline {chapter}{\numberline {4}Documentación de archivos}{101}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Referencia del archivo lib/business/providers/auth\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{101}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Referencia del archivo lib/business/providers/inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{101}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Referencia del archivo lib/business/services/backup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.dart}{101}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Documentación de funciones}{102}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1.1}BackupResult()}{102}{subsubsection.4.3.1.1}%
+\contentsline {subsection}{\numberline {4.3.2}Documentación de variables}{102}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}backup}{102}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}exitoso}{102}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}mensaje}{102}{subsubsection.4.3.2.3}%
+\contentsline {section}{\numberline {4.4}Referencia del archivo lib/business/services/print\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}service.dart}{102}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Documentación de funciones}{103}{subsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.1}\_conectar()}{103}{subsubsection.4.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.4.1.2}\_desconectar()}{104}{subsubsection.4.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.4.1.3}conectar()}{104}{subsubsection.4.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.4.1.4}desconectar()}{104}{subsubsection.4.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.4.1.5}imprimirQR()}{104}{subsubsection.4.4.1.5}%
+\contentsline {subsection}{\numberline {4.4.2}Documentación de variables}{104}{subsection.4.4.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.1}\_char}{104}{subsubsection.4.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.4.2.2}\_device}{104}{subsubsection.4.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.4.2.3}charUuid}{105}{subsubsection.4.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.4.2.4}printerMac}{105}{subsubsection.4.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.4.2.5}serviceUuid}{105}{subsubsection.4.4.2.5}%
+\contentsline {section}{\numberline {4.5}Referencia del archivo lib/business/usecases/alertas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}stock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{105}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Documentación de enumeraciones}{106}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}TipoAlerta}{106}{subsubsection.4.5.1.1}%
+\contentsline {subsection}{\numberline {4.5.2}Documentación de funciones}{106}{subsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.1}AlertaStock()}{106}{subsubsection.4.5.2.1}%
+\contentsline {subsubsection}{\numberline {4.5.2.2}obtenerAgotados()}{106}{subsubsection.4.5.2.2}%
+\contentsline {subsubsection}{\numberline {4.5.2.3}obtenerAlertas()}{107}{subsubsection.4.5.2.3}%
+\contentsline {subsubsection}{\numberline {4.5.2.4}obtenerCriticos()}{107}{subsubsection.4.5.2.4}%
+\contentsline {subsubsection}{\numberline {4.5.2.5}obtenerResumen()}{107}{subsubsection.4.5.2.5}%
+\contentsline {subsubsection}{\numberline {4.5.2.6}verificarItem()}{107}{subsubsection.4.5.2.6}%
+\contentsline {subsection}{\numberline {4.5.3}Documentación de variables}{107}{subsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.3.1}\_inventarioRepository}{107}{subsubsection.4.5.3.1}%
+\contentsline {subsubsection}{\numberline {4.5.3.2}escuela}{107}{subsubsection.4.5.3.2}%
+\contentsline {subsubsection}{\numberline {4.5.3.3}idInventario}{108}{subsubsection.4.5.3.3}%
+\contentsline {subsubsection}{\numberline {4.5.3.4}mensaje}{108}{subsubsection.4.5.3.4}%
+\contentsline {subsubsection}{\numberline {4.5.3.5}precio}{108}{subsubsection.4.5.3.5}%
+\contentsline {subsubsection}{\numberline {4.5.3.6}prenda}{108}{subsubsection.4.5.3.6}%
+\contentsline {subsubsection}{\numberline {4.5.3.7}stock}{108}{subsubsection.4.5.3.7}%
+\contentsline {subsubsection}{\numberline {4.5.3.8}talla}{108}{subsubsection.4.5.3.8}%
+\contentsline {subsubsection}{\numberline {4.5.3.9}tipo}{108}{subsubsection.4.5.3.9}%
+\contentsline {subsubsection}{\numberline {4.5.3.10}umbralCritico}{109}{subsubsection.4.5.3.10}%
+\contentsline {section}{\numberline {4.6}Referencia del archivo lib/business/usecases/login\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{109}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Referencia del archivo lib/business/usecases/nueva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{109}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Documentación de enumeraciones}{110}{subsection.4.7.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.1}TipoConfirmacion}{110}{subsubsection.4.7.1.1}%
+\contentsline {subsubsection}{\numberline {4.7.1.2}TipoItemOrden}{110}{subsubsection.4.7.1.2}%
+\contentsline {subsection}{\numberline {4.7.2}Documentación de funciones}{111}{subsection.4.7.2}%
+\contentsline {subsubsection}{\numberline {4.7.2.1}ItemOrden()}{111}{subsubsection.4.7.2.1}%
+\contentsline {subsubsection}{\numberline {4.7.2.2}NuevaOrdenResult()}{111}{subsubsection.4.7.2.2}%
+\contentsline {subsection}{\numberline {4.7.3}Documentación de variables}{111}{subsection.4.7.3}%
+\contentsline {subsubsection}{\numberline {4.7.3.1}idInventario}{111}{subsubsection.4.7.3.1}%
+\contentsline {subsubsection}{\numberline {4.7.3.2}idPedido}{111}{subsubsection.4.7.3.2}%
+\contentsline {subsubsection}{\numberline {4.7.3.3}idUnidad}{111}{subsubsection.4.7.3.3}%
+\contentsline {subsubsection}{\numberline {4.7.3.4}idVenta}{111}{subsubsection.4.7.3.4}%
+\contentsline {subsubsection}{\numberline {4.7.3.5}precioUnitario}{112}{subsubsection.4.7.3.5}%
+\contentsline {subsubsection}{\numberline {4.7.3.6}tieneUnidadResuelta}{112}{subsubsection.4.7.3.6}%
+\contentsline {subsubsection}{\numberline {4.7.3.7}tipo}{112}{subsubsection.4.7.3.7}%
+\contentsline {subsubsection}{\numberline {4.7.3.8}total}{112}{subsubsection.4.7.3.8}%
+\contentsline {subsubsection}{\numberline {4.7.3.9}totalPrendas}{112}{subsubsection.4.7.3.9}%
+\contentsline {section}{\numberline {4.8}Referencia del archivo lib/business/usecases/pedidos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pendientes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{112}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Referencia del archivo lib/business/usecases/print\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{113}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Referencia del archivo lib/business/usecases/qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{113}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Referencia del archivo lib/business/usecases/registrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{113}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Documentación de funciones}{114}{subsection.4.11.1}%
+\contentsline {subsubsection}{\numberline {4.11.1.1}RegistrarInventarioResult()}{114}{subsubsection.4.11.1.1}%
+\contentsline {subsection}{\numberline {4.11.2}Documentación de variables}{114}{subsection.4.11.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.1}algunoExitoso}{114}{subsubsection.4.11.2.1}%
+\contentsline {subsubsection}{\numberline {4.11.2.2}resultados}{114}{subsubsection.4.11.2.2}%
+\contentsline {subsubsection}{\numberline {4.11.2.3}todosExitosos}{114}{subsubsection.4.11.2.3}%
+\contentsline {subsubsection}{\numberline {4.11.2.4}totalExitosos}{114}{subsubsection.4.11.2.4}%
+\contentsline {subsubsection}{\numberline {4.11.2.5}totalFallidos}{115}{subsubsection.4.11.2.5}%
+\contentsline {section}{\numberline {4.12}Referencia del archivo lib/business/usecases/restar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}unidades\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{115}{section.4.12}%
+\contentsline {subsection}{\numberline {4.12.1}Documentación de enumeraciones}{115}{subsection.4.12.1}%
+\contentsline {subsubsection}{\numberline {4.12.1.1}ResultadoRestarUnidad}{115}{subsubsection.4.12.1.1}%
+\contentsline {subsection}{\numberline {4.12.2}Documentación de funciones}{116}{subsection.4.12.2}%
+\contentsline {subsubsection}{\numberline {4.12.2.1}ejecutar()}{116}{subsubsection.4.12.2.1}%
+\contentsline {subsubsection}{\numberline {4.12.2.2}RestarUnidadesUseCase()}{116}{subsubsection.4.12.2.2}%
+\contentsline {subsection}{\numberline {4.12.3}Documentación de variables}{116}{subsection.4.12.3}%
+\contentsline {subsubsection}{\numberline {4.12.3.1}unidadRepository}{116}{subsubsection.4.12.3.1}%
+\contentsline {section}{\numberline {4.13}Referencia del archivo lib/business/usecases/ventas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}usecase.dart}{116}{section.4.13}%
+\contentsline {section}{\numberline {4.14}Referencia del archivo lib/business/validators/validacion\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}inventario.dart}{116}{section.4.14}%
+\contentsline {section}{\numberline {4.15}Referencia del archivo lib/data/database/database\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}helper.dart}{117}{section.4.15}%
+\contentsline {section}{\numberline {4.16}Referencia del archivo lib/data/repositories/backup\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{117}{section.4.16}%
+\contentsline {section}{\numberline {4.17}Referencia del archivo lib/data/repositories/escuela\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{117}{section.4.17}%
+\contentsline {section}{\numberline {4.18}Referencia del archivo lib/data/repositories/inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{117}{section.4.18}%
+\contentsline {section}{\numberline {4.19}Referencia del archivo lib/data/repositories/orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{118}{section.4.19}%
+\contentsline {section}{\numberline {4.20}Referencia del archivo lib/data/repositories/pedido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{118}{section.4.20}%
+\contentsline {section}{\numberline {4.21}Referencia del archivo lib/data/repositories/prenda\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{118}{section.4.21}%
+\contentsline {section}{\numberline {4.22}Referencia del archivo lib/data/repositories/reporte\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{118}{section.4.22}%
+\contentsline {section}{\numberline {4.23}Referencia del archivo lib/data/repositories/talla\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{119}{section.4.23}%
+\contentsline {section}{\numberline {4.24}Referencia del archivo lib/data/repositories/unidad\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{119}{section.4.24}%
+\contentsline {section}{\numberline {4.25}Referencia del archivo lib/data/repositories/usuario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{119}{section.4.25}%
+\contentsline {section}{\numberline {4.26}Referencia del archivo lib/data/repositories/venta\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}repository.dart}{119}{section.4.26}%
+\contentsline {section}{\numberline {4.27}Referencia del archivo lib/main.dart}{120}{section.4.27}%
+\contentsline {subsection}{\numberline {4.27.1}Documentación de funciones}{120}{subsection.4.27.1}%
+\contentsline {subsubsection}{\numberline {4.27.1.1}main()}{120}{subsubsection.4.27.1.1}%
+\contentsline {section}{\numberline {4.28}Referencia del archivo lib/models/models.dart}{120}{section.4.28}%
+\contentsline {subsection}{\numberline {4.28.1}Documentación de enumeraciones}{121}{subsection.4.28.1}%
+\contentsline {subsubsection}{\numberline {4.28.1.1}RolUsuario}{121}{subsubsection.4.28.1.1}%
+\contentsline {subsection}{\numberline {4.28.2}Documentación de funciones}{121}{subsection.4.28.2}%
+\contentsline {subsubsection}{\numberline {4.28.2.1}toDb()}{121}{subsubsection.4.28.2.1}%
+\contentsline {subsection}{\numberline {4.28.3}Documentación de variables}{121}{subsection.4.28.3}%
+\contentsline {subsubsection}{\numberline {4.28.3.1}admin}{121}{subsubsection.4.28.3.1}%
+\contentsline {subsubsection}{\numberline {4.28.3.2}cancelada}{121}{subsubsection.4.28.3.2}%
+\contentsline {subsubsection}{\numberline {4.28.3.3}cancelado}{121}{subsubsection.4.28.3.3}%
+\contentsline {subsubsection}{\numberline {4.28.3.4}completada}{121}{subsubsection.4.28.3.4}%
+\contentsline {subsubsection}{\numberline {4.28.3.5}completado}{121}{subsubsection.4.28.3.5}%
+\contentsline {subsubsection}{\numberline {4.28.3.6}pendiente}{122}{subsubsection.4.28.3.6}%
+\contentsline {subsubsection}{\numberline {4.28.3.7}vendedor}{122}{subsubsection.4.28.3.7}%
+\contentsline {section}{\numberline {4.29}Referencia del archivo lib/presentation/providers/alertas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{122}{section.4.29}%
+\contentsline {section}{\numberline {4.30}Referencia del archivo lib/presentation/providers/home\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{122}{section.4.30}%
+\contentsline {section}{\numberline {4.31}Referencia del archivo lib/presentation/providers/nueva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{122}{section.4.31}%
+\contentsline {section}{\numberline {4.32}Referencia del archivo lib/presentation/providers/pedidos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pendientes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{123}{section.4.32}%
+\contentsline {section}{\numberline {4.33}Referencia del archivo lib/presentation/providers/print\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{123}{section.4.33}%
+\contentsline {section}{\numberline {4.34}Referencia del archivo lib/presentation/providers/qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pendientes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{123}{section.4.34}%
+\contentsline {section}{\numberline {4.35}Referencia del archivo lib/presentation/providers/qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{123}{section.4.35}%
+\contentsline {section}{\numberline {4.36}Referencia del archivo lib/presentation/providers/registrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{124}{section.4.36}%
+\contentsline {section}{\numberline {4.37}Referencia del archivo lib/presentation/providers/reportes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{124}{section.4.37}%
+\contentsline {section}{\numberline {4.38}Referencia del archivo lib/presentation/providers/ventas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}provider.dart}{124}{section.4.38}%
+\contentsline {section}{\numberline {4.39}Referencia del archivo lib/presentation/screens/administrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cantidad\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{124}{section.4.39}%
+\contentsline {subsection}{\numberline {4.39.1}Documentación de funciones}{125}{subsection.4.39.1}%
+\contentsline {subsubsection}{\numberline {4.39.1.1}\_confirmarAgregar()}{125}{subsubsection.4.39.1.1}%
+\contentsline {subsubsection}{\numberline {4.39.1.2}\_confirmarRestar()}{125}{subsubsection.4.39.1.2}%
+\contentsline {subsubsection}{\numberline {4.39.1.3}build()}{126}{subsubsection.4.39.1.3}%
+\contentsline {subsubsection}{\numberline {4.39.1.4}initState()}{126}{subsubsection.4.39.1.4}%
+\contentsline {subsection}{\numberline {4.39.2}Documentación de variables}{126}{subsection.4.39.2}%
+\contentsline {subsubsection}{\numberline {4.39.2.1}\_controller}{126}{subsubsection.4.39.2.1}%
+\contentsline {subsubsection}{\numberline {4.39.2.2}\_restarUseCase}{126}{subsubsection.4.39.2.2}%
+\contentsline {subsubsection}{\numberline {4.39.2.3}\_unidadRepo}{126}{subsubsection.4.39.2.3}%
+\contentsline {section}{\numberline {4.40}Referencia del archivo lib/presentation/screens/administrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}prenda\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{127}{section.4.40}%
+\contentsline {subsection}{\numberline {4.40.1}Documentación de funciones}{127}{subsection.4.40.1}%
+\contentsline {subsubsection}{\numberline {4.40.1.1}\_actualizarCantidadDesdeProvider()}{127}{subsubsection.4.40.1.1}%
+\contentsline {subsubsection}{\numberline {4.40.1.2}\_cargarDatos()}{128}{subsubsection.4.40.1.2}%
+\contentsline {subsubsection}{\numberline {4.40.1.3}\_dialogoEliminar()}{128}{subsubsection.4.40.1.3}%
+\contentsline {subsubsection}{\numberline {4.40.1.4}\_dialogoGuardar()}{128}{subsubsection.4.40.1.4}%
+\contentsline {subsubsection}{\numberline {4.40.1.5}\_eliminar()}{128}{subsubsection.4.40.1.5}%
+\contentsline {subsubsection}{\numberline {4.40.1.6}\_guardarCambios()}{128}{subsubsection.4.40.1.6}%
+\contentsline {subsubsection}{\numberline {4.40.1.7}build()}{128}{subsubsection.4.40.1.7}%
+\contentsline {subsubsection}{\numberline {4.40.1.8}initState()}{129}{subsubsection.4.40.1.8}%
+\contentsline {subsection}{\numberline {4.40.2}Documentación de variables}{129}{subsection.4.40.2}%
+\contentsline {subsubsection}{\numberline {4.40.2.1}\_inventarioRepo}{129}{subsubsection.4.40.2.1}%
+\contentsline {subsubsection}{\numberline {4.40.2.2}\_precioController}{129}{subsubsection.4.40.2.2}%
+\contentsline {subsubsection}{\numberline {4.40.2.3}cantidadActual}{129}{subsubsection.4.40.2.3}%
+\contentsline {subsubsection}{\numberline {4.40.2.4}cargando}{129}{subsubsection.4.40.2.4}%
+\contentsline {subsubsection}{\numberline {4.40.2.5}inventario}{129}{subsubsection.4.40.2.5}%
+\contentsline {section}{\numberline {4.41}Referencia del archivo lib/presentation/screens/agregar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}prendas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pedido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{130}{section.4.41}%
+\contentsline {subsection}{\numberline {4.41.1}Documentación de funciones}{130}{subsection.4.41.1}%
+\contentsline {subsubsection}{\numberline {4.41.1.1}\_buildDropdown()}{130}{subsubsection.4.41.1.1}%
+\contentsline {subsubsection}{\numberline {4.41.1.2}build()}{131}{subsubsection.4.41.1.2}%
+\contentsline {subsection}{\numberline {4.41.2}Documentación de variables}{131}{subsection.4.41.2}%
+\contentsline {subsubsection}{\numberline {4.41.2.1}\_escuelas}{131}{subsubsection.4.41.2.1}%
+\contentsline {subsubsection}{\numberline {4.41.2.2}\_escuelaSeleccionada}{131}{subsubsection.4.41.2.2}%
+\contentsline {subsubsection}{\numberline {4.41.2.3}\_prendas}{131}{subsubsection.4.41.2.3}%
+\contentsline {subsubsection}{\numberline {4.41.2.4}\_prendasDisponibles}{131}{subsubsection.4.41.2.4}%
+\contentsline {subsubsection}{\numberline {4.41.2.5}\_prendaSeleccionada}{131}{subsubsection.4.41.2.5}%
+\contentsline {section}{\numberline {4.42}Referencia del archivo lib/presentation/screens/bottom\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}nav\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}bar.dart}{132}{section.4.42}%
+\contentsline {section}{\numberline {4.43}Referencia del archivo lib/presentation/screens/exito\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{132}{section.4.43}%
+\contentsline {subsection}{\numberline {4.43.1}Documentación de funciones}{132}{subsection.4.43.1}%
+\contentsline {subsubsection}{\numberline {4.43.1.1}build()}{132}{subsubsection.4.43.1.1}%
+\contentsline {subsubsection}{\numberline {4.43.1.2}createState()}{132}{subsubsection.4.43.1.2}%
+\contentsline {subsubsection}{\numberline {4.43.1.3}ExitoScreen()}{133}{subsubsection.4.43.1.3}%
+\contentsline {subsubsection}{\numberline {4.43.1.4}initState()}{133}{subsubsection.4.43.1.4}%
+\contentsline {section}{\numberline {4.44}Referencia del archivo lib/presentation/screens/home\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{133}{section.4.44}%
+\contentsline {subsection}{\numberline {4.44.1}Documentación de funciones}{133}{subsection.4.44.1}%
+\contentsline {subsubsection}{\numberline {4.44.1.1}build()}{133}{subsubsection.4.44.1.1}%
+\contentsline {subsubsection}{\numberline {4.44.1.2}HomeScreen()}{134}{subsubsection.4.44.1.2}%
+\contentsline {subsubsection}{\numberline {4.44.1.3}HomeView()}{134}{subsubsection.4.44.1.3}%
+\contentsline {section}{\numberline {4.45}Referencia del archivo lib/presentation/screens/inventario\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{134}{section.4.45}%
+\contentsline {subsection}{\numberline {4.45.1}Documentación de funciones}{134}{subsection.4.45.1}%
+\contentsline {subsubsection}{\numberline {4.45.1.1}\_ListaInventario()}{134}{subsubsection.4.45.1.1}%
+\contentsline {subsubsection}{\numberline {4.45.1.2}build()}{135}{subsubsection.4.45.1.2}%
+\contentsline {subsection}{\numberline {4.45.2}Documentación de variables}{135}{subsection.4.45.2}%
+\contentsline {subsubsection}{\numberline {4.45.2.1}items}{135}{subsubsection.4.45.2.1}%
+\contentsline {subsubsection}{\numberline {4.45.2.2}String}{135}{subsubsection.4.45.2.2}%
+\contentsline {section}{\numberline {4.46}Referencia del archivo lib/presentation/screens/login\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{135}{section.4.46}%
+\contentsline {subsection}{\numberline {4.46.1}Documentación de funciones}{136}{subsection.4.46.1}%
+\contentsline {subsubsection}{\numberline {4.46.1.1}\_handleLogin()}{136}{subsubsection.4.46.1.1}%
+\contentsline {subsubsection}{\numberline {4.46.1.2}build()}{136}{subsubsection.4.46.1.2}%
+\contentsline {subsubsection}{\numberline {4.46.1.3}dispose()}{136}{subsubsection.4.46.1.3}%
+\contentsline {subsubsection}{\numberline {4.46.1.4}initState()}{136}{subsubsection.4.46.1.4}%
+\contentsline {subsection}{\numberline {4.46.2}Documentación de variables}{136}{subsection.4.46.2}%
+\contentsline {subsubsection}{\numberline {4.46.2.1}\_animController}{136}{subsubsection.4.46.2.1}%
+\contentsline {subsubsection}{\numberline {4.46.2.2}\_fadeAnim}{137}{subsubsection.4.46.2.2}%
+\contentsline {subsubsection}{\numberline {4.46.2.3}\_passwordController}{137}{subsubsection.4.46.2.3}%
+\contentsline {subsubsection}{\numberline {4.46.2.4}\_slideAnim}{137}{subsubsection.4.46.2.4}%
+\contentsline {subsubsection}{\numberline {4.46.2.5}\_usuarioController}{137}{subsubsection.4.46.2.5}%
+\contentsline {subsubsection}{\numberline {4.46.2.6}\_verPassword}{137}{subsubsection.4.46.2.6}%
+\contentsline {section}{\numberline {4.47}Referencia del archivo lib/presentation/screens/nueva\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}orden\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{137}{section.4.47}%
+\contentsline {subsection}{\numberline {4.47.1}Documentación de funciones}{138}{subsection.4.47.1}%
+\contentsline {subsubsection}{\numberline {4.47.1.1}\_agruparItem()}{138}{subsubsection.4.47.1.1}%
+\contentsline {subsubsection}{\numberline {4.47.1.2}\_buildDropdown()}{138}{subsubsection.4.47.1.2}%
+\contentsline {subsubsection}{\numberline {4.47.1.3}\_buildInputDecoration()}{139}{subsubsection.4.47.1.3}%
+\contentsline {subsubsection}{\numberline {4.47.1.4}dispose()}{139}{subsubsection.4.47.1.4}%
+\contentsline {subsubsection}{\numberline {4.47.1.5}initState()}{139}{subsubsection.4.47.1.5}%
+\contentsline {subsection}{\numberline {4.47.2}Documentación de variables}{139}{subsection.4.47.2}%
+\contentsline {subsubsection}{\numberline {4.47.2.1}\_clienteController}{139}{subsubsection.4.47.2.1}%
+\contentsline {subsubsection}{\numberline {4.47.2.2}\_escuelaSeleccionada}{139}{subsubsection.4.47.2.2}%
+\contentsline {subsubsection}{\numberline {4.47.2.3}\_prendaSeleccionada}{139}{subsubsection.4.47.2.3}%
+\contentsline {subsubsection}{\numberline {4.47.2.4}\_tallaSeleccionada}{139}{subsubsection.4.47.2.4}%
+\contentsline {section}{\numberline {4.48}Referencia del archivo lib/presentation/screens/pedidos\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pendientes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{140}{section.4.48}%
+\contentsline {subsection}{\numberline {4.48.1}Documentación de funciones}{140}{subsection.4.48.1}%
+\contentsline {subsubsection}{\numberline {4.48.1.1}\_buildPedidoCard()}{140}{subsubsection.4.48.1.1}%
+\contentsline {subsubsection}{\numberline {4.48.1.2}build()}{140}{subsubsection.4.48.1.2}%
+\contentsline {subsubsection}{\numberline {4.48.1.3}createState()}{140}{subsubsection.4.48.1.3}%
+\contentsline {subsubsection}{\numberline {4.48.1.4}initState()}{141}{subsubsection.4.48.1.4}%
+\contentsline {subsubsection}{\numberline {4.48.1.5}PedidosPendientesScreen()}{141}{subsubsection.4.48.1.5}%
+\contentsline {section}{\numberline {4.49}Referencia del archivo lib/presentation/screens/qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pendientes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{141}{section.4.49}%
+\contentsline {subsection}{\numberline {4.49.1}Documentación de funciones}{141}{subsection.4.49.1}%
+\contentsline {subsubsection}{\numberline {4.49.1.1}\_QrPendientesView()}{141}{subsubsection.4.49.1.1}%
+\contentsline {subsubsection}{\numberline {4.49.1.2}build()}{142}{subsubsection.4.49.1.2}%
+\contentsline {subsubsection}{\numberline {4.49.1.3}QrPendientesScreen()}{142}{subsubsection.4.49.1.3}%
+\contentsline {section}{\numberline {4.50}Referencia del archivo lib/presentation/screens/qr\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{142}{section.4.50}%
+\contentsline {subsection}{\numberline {4.50.1}Documentación de enumeraciones}{143}{subsection.4.50.1}%
+\contentsline {subsubsection}{\numberline {4.50.1.1}ResultadoScan}{143}{subsubsection.4.50.1.1}%
+\contentsline {subsection}{\numberline {4.50.2}Documentación de funciones}{143}{subsection.4.50.2}%
+\contentsline {subsubsection}{\numberline {4.50.2.1}\_handleScan()}{143}{subsubsection.4.50.2.1}%
+\contentsline {subsubsection}{\numberline {4.50.2.2}build()}{144}{subsubsection.4.50.2.2}%
+\contentsline {subsubsection}{\numberline {4.50.2.3}dispose()}{144}{subsubsection.4.50.2.3}%
+\contentsline {subsubsection}{\numberline {4.50.2.4}initState()}{144}{subsubsection.4.50.2.4}%
+\contentsline {subsubsection}{\numberline {4.50.2.5}ScanFeedback()}{144}{subsubsection.4.50.2.5}%
+\contentsline {subsection}{\numberline {4.50.3}Documentación de variables}{144}{subsection.4.50.3}%
+\contentsline {subsubsection}{\numberline {4.50.3.1}\_colorMensaje}{144}{subsubsection.4.50.3.1}%
+\contentsline {subsubsection}{\numberline {4.50.3.2}\_mensaje}{144}{subsubsection.4.50.3.2}%
+\contentsline {subsubsection}{\numberline {4.50.3.3}\_procesando}{144}{subsubsection.4.50.3.3}%
+\contentsline {subsubsection}{\numberline {4.50.3.4}controller}{145}{subsubsection.4.50.3.4}%
+\contentsline {subsubsection}{\numberline {4.50.3.5}mensaje}{145}{subsubsection.4.50.3.5}%
+\contentsline {subsubsection}{\numberline {4.50.3.6}resultado}{145}{subsubsection.4.50.3.6}%
+\contentsline {section}{\numberline {4.51}Referencia del archivo lib/presentation/screens/registrar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}prenda\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{145}{section.4.51}%
+\contentsline {subsection}{\numberline {4.51.1}Documentación de funciones}{146}{subsection.4.51.1}%
+\contentsline {subsubsection}{\numberline {4.51.1.1}\_guardarCambios()}{146}{subsubsection.4.51.1.1}%
+\contentsline {subsubsection}{\numberline {4.51.1.2}\_inputDecoration()}{146}{subsubsection.4.51.1.2}%
+\contentsline {subsubsection}{\numberline {4.51.1.3}\_mostrarDialogoEscuela()}{146}{subsubsection.4.51.1.3}%
+\contentsline {subsubsection}{\numberline {4.51.1.4}build()}{147}{subsubsection.4.51.1.4}%
+\contentsline {subsubsection}{\numberline {4.51.1.5}dispose()}{147}{subsubsection.4.51.1.5}%
+\contentsline {subsubsection}{\numberline {4.51.1.6}initState()}{147}{subsubsection.4.51.1.6}%
+\contentsline {subsection}{\numberline {4.51.2}Documentación de variables}{147}{subsection.4.51.2}%
+\contentsline {subsubsection}{\numberline {4.51.2.1}\_cargando}{147}{subsubsection.4.51.2.1}%
+\contentsline {subsubsection}{\numberline {4.51.2.2}\_formKey}{147}{subsubsection.4.51.2.2}%
+\contentsline {subsubsection}{\numberline {4.51.2.3}\_idEscuela}{147}{subsubsection.4.51.2.3}%
+\contentsline {subsubsection}{\numberline {4.51.2.4}\_idPrendaSeleccionado}{147}{subsubsection.4.51.2.4}%
+\contentsline {subsubsection}{\numberline {4.51.2.5}\_idTallaSeleccionada}{147}{subsubsection.4.51.2.5}%
+\contentsline {subsubsection}{\numberline {4.51.2.6}\_precioController}{148}{subsubsection.4.51.2.6}%
+\contentsline {section}{\numberline {4.52}Referencia del archivo lib/presentation/screens/reportes\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{148}{section.4.52}%
+\contentsline {subsection}{\numberline {4.52.1}Documentación de funciones}{148}{subsection.4.52.1}%
+\contentsline {subsubsection}{\numberline {4.52.1.1}\_EmptyState()}{148}{subsubsection.4.52.1.1}%
+\contentsline {subsubsection}{\numberline {4.52.1.2}\_RankingItem()}{149}{subsubsection.4.52.1.2}%
+\contentsline {subsubsection}{\numberline {4.52.1.3}\_ReportesView()}{149}{subsubsection.4.52.1.3}%
+\contentsline {subsubsection}{\numberline {4.52.1.4}\_SectionTitle()}{149}{subsubsection.4.52.1.4}%
+\contentsline {subsubsection}{\numberline {4.52.1.5}build()}{149}{subsubsection.4.52.1.5}%
+\contentsline {subsubsection}{\numberline {4.52.1.6}ReportesScreen()}{149}{subsubsection.4.52.1.6}%
+\contentsline {subsection}{\numberline {4.52.2}Documentación de variables}{149}{subsection.4.52.2}%
+\contentsline {subsubsection}{\numberline {4.52.2.1}mensaje}{149}{subsubsection.4.52.2.1}%
+\contentsline {subsubsection}{\numberline {4.52.2.2}monto}{149}{subsubsection.4.52.2.2}%
+\contentsline {subsubsection}{\numberline {4.52.2.3}nombre}{150}{subsubsection.4.52.2.3}%
+\contentsline {subsubsection}{\numberline {4.52.2.4}proporcion}{150}{subsubsection.4.52.2.4}%
+\contentsline {subsubsection}{\numberline {4.52.2.5}subtitulo}{150}{subsubsection.4.52.2.5}%
+\contentsline {subsubsection}{\numberline {4.52.2.6}titulo}{150}{subsubsection.4.52.2.6}%
+\contentsline {section}{\numberline {4.53}Referencia del archivo lib/presentation/screens/revisar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}pedido\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{150}{section.4.53}%
+\contentsline {subsection}{\numberline {4.53.1}Documentación de funciones}{151}{subsection.4.53.1}%
+\contentsline {subsubsection}{\numberline {4.53.1.1}build()}{151}{subsubsection.4.53.1.1}%
+\contentsline {subsubsection}{\numberline {4.53.1.2}createState()}{151}{subsubsection.4.53.1.2}%
+\contentsline {subsubsection}{\numberline {4.53.1.3}initState()}{151}{subsubsection.4.53.1.3}%
+\contentsline {subsubsection}{\numberline {4.53.1.4}RevisarPedidoScreen()}{151}{subsubsection.4.53.1.4}%
+\contentsline {subsection}{\numberline {4.53.2}Documentación de variables}{151}{subsection.4.53.2}%
+\contentsline {subsubsection}{\numberline {4.53.2.1}idPedido}{151}{subsubsection.4.53.2.1}%
+\contentsline {section}{\numberline {4.54}Referencia del archivo lib/presentation/screens/revisar\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}venta\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{151}{section.4.54}%
+\contentsline {subsection}{\numberline {4.54.1}Documentación de funciones}{152}{subsection.4.54.1}%
+\contentsline {subsubsection}{\numberline {4.54.1.1}\_devolverPrenda()}{152}{subsubsection.4.54.1.1}%
+\contentsline {subsubsection}{\numberline {4.54.1.2}build()}{152}{subsubsection.4.54.1.2}%
+\contentsline {subsubsection}{\numberline {4.54.1.3}initState()}{152}{subsubsection.4.54.1.3}%
+\contentsline {subsection}{\numberline {4.54.2}Documentación de variables}{153}{subsection.4.54.2}%
+\contentsline {subsubsection}{\numberline {4.54.2.1}\_unidadRepository}{153}{subsubsection.4.54.2.1}%
+\contentsline {subsubsection}{\numberline {4.54.2.2}\_ventaRepository}{153}{subsubsection.4.54.2.2}%
+\contentsline {section}{\numberline {4.55}Referencia del archivo lib/presentation/screens/ventas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}screen.dart}{153}{section.4.55}%
+\contentsline {subsection}{\numberline {4.55.1}Documentación de funciones}{154}{subsection.4.55.1}%
+\contentsline {subsubsection}{\numberline {4.55.1.1}\_nombreMes()}{154}{subsubsection.4.55.1.1}%
+\contentsline {subsubsection}{\numberline {4.55.1.2}build()}{154}{subsubsection.4.55.1.2}%
+\contentsline {subsubsection}{\numberline {4.55.1.3}initState()}{154}{subsubsection.4.55.1.3}%
+\contentsline {subsection}{\numberline {4.55.2}Documentación de variables}{154}{subsection.4.55.2}%
+\contentsline {subsubsection}{\numberline {4.55.2.1}\_anioSeleccionado}{154}{subsubsection.4.55.2.1}%
+\contentsline {subsubsection}{\numberline {4.55.2.2}\_mesSeleccionado}{154}{subsubsection.4.55.2.2}%
+\contentsline {section}{\numberline {4.56}Referencia del archivo lib/presentation/widgets/alertas\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}popup.dart}{154}{section.4.56}%
+\contentsline {subsection}{\numberline {4.56.1}Documentación de funciones}{155}{subsection.4.56.1}%
+\contentsline {subsubsection}{\numberline {4.56.1.1}\_ItemAlerta()}{155}{subsubsection.4.56.1.1}%
+\contentsline {subsubsection}{\numberline {4.56.1.2}build()}{155}{subsubsection.4.56.1.2}%
+\contentsline {subsection}{\numberline {4.56.2}Documentación de variables}{155}{subsection.4.56.2}%
+\contentsline {subsubsection}{\numberline {4.56.2.1}color}{155}{subsubsection.4.56.2.1}%
+\contentsline {subsubsection}{\numberline {4.56.2.2}stock}{155}{subsubsection.4.56.2.2}%
+\contentsline {subsubsection}{\numberline {4.56.2.3}subtitulo}{155}{subsubsection.4.56.2.3}%
+\contentsline {subsubsection}{\numberline {4.56.2.4}titulo}{155}{subsubsection.4.56.2.4}%

@@ -13,16 +13,12 @@ import 'qr_usecase.dart';
 /// Clasifica el origen de un item dentro de una orden.
 /// [venta] indica que el item tiene una unidad física escaneada o resuelta.
 /// [pedido] indica que el item es un encargo sin unidad física asignada aún.
-enum TipoItemOrden {
-  venta,
-  pedido,
-}
+enum TipoItemOrden { venta, pedido }
 
 /// Representa un item individual dentro de una orden en construcción.
 /// Puede tener una unidad física asignada ([idUnidad]) si proviene de un escaneo QR,
 /// o carecer de ella si fue agregado manualmente como pedido.
 class ItemOrden {
-
   /// Identificador del registro de inventario al que pertenece este item.
   final int idInventario;
 
@@ -43,20 +39,15 @@ class ItemOrden {
   });
 
   /// Retorna true si el item tiene una unidad física asignada.
-  bool get tieneUnidadResuelta =>
-      idUnidad != null;
+  bool get tieneUnidadResuelta => idUnidad != null;
 }
 
 /// Indica el tipo de transacción que resultó de la confirmación de la orden.
-enum TipoConfirmacion {
-  venta,
-  pedido,
-}
+enum TipoConfirmacion { venta, pedido }
 
 /// Resultado de la confirmación de una orden o sub-orden.
 /// Contiene los identificadores generados y el resumen de la transacción.
 class NuevaOrdenResult {
-
   /// Identificador de la venta generada. Null si la confirmación fue de pedido.
   final int? idVenta;
 
@@ -86,126 +77,77 @@ class NuevaOrdenResult {
 /// Coordina la validación, resolución de unidades, persistencia de ventas,
 /// pedidos y la orden raíz que los agrupa.
 class NuevaOrdenUseCase {
+  final InventarioRepository _inventarioRepository;
 
-  final InventarioRepository
-      _inventarioRepository;
+  final UnidadRepository _unidadRepository;
 
-  final UnidadRepository
-      _unidadRepository;
+  final VentaRepository _ventaRepository;
 
-  final VentaRepository
-      _ventaRepository;
+  final PedidoRepository _pedidoRepository;
 
-  final PedidoRepository
-      _pedidoRepository;
+  final OrdenRepository _ordenRepository;
 
-  final OrdenRepository
-      _ordenRepository;
-
-  final QrUseCase
-      _qrUseCase;
+  final QrUseCase _qrUseCase;
 
   NuevaOrdenUseCase({
-    required InventarioRepository
-        inventarioRepository,
+    required InventarioRepository inventarioRepository,
 
-    required UnidadRepository
-        unidadRepository,
+    required UnidadRepository unidadRepository,
 
-    required VentaRepository
-        ventaRepository,
+    required VentaRepository ventaRepository,
 
-    required PedidoRepository
-        pedidoRepository,
+    required PedidoRepository pedidoRepository,
 
-    required OrdenRepository
-        ordenRepository,
+    required OrdenRepository ordenRepository,
 
-    required QrUseCase
-        qrUseCase,
-  })  : _inventarioRepository =
-            inventarioRepository,
-        _unidadRepository =
-            unidadRepository,
-        _ventaRepository =
-            ventaRepository,
-        _pedidoRepository =
-            pedidoRepository,
-        _ordenRepository =
-            ordenRepository,
-        _qrUseCase =
-            qrUseCase;
+    required QrUseCase qrUseCase,
+  }) : _inventarioRepository = inventarioRepository,
+       _unidadRepository = unidadRepository,
+       _ventaRepository = ventaRepository,
+       _pedidoRepository = pedidoRepository,
+       _ordenRepository = ordenRepository,
+       _qrUseCase = qrUseCase;
 
   /// Agrega un item a la orden mediante escaneo de código QR.
   /// Valida que la unidad exista, esté activa y no haya sido agregada previamente.
   /// Retorna un [ItemOrden] de tipo [TipoItemOrden.venta] con la unidad física asignada.
   Future<ItemOrden> agregarPorQr({
     required String qr,
-    required List<ItemOrden>
-        itemsActuales,
+    required List<ItemOrden> itemsActuales,
   }) async {
-
-    final unidad =
-        await _qrUseCase
-            .obtenerUnidad(
-      qr.trim(),
-    );
+    final unidad = await _qrUseCase.obtenerUnidad(qr.trim());
 
     if (unidad == null) {
-
-      throw StateError(
-        'El QR escaneado no corresponde a ninguna unidad.',
-      );
+      throw StateError('El QR escaneado no corresponde a ninguna unidad.');
     }
 
     if (!unidad.activo) {
-
-      throw StateError(
-        'Esta unidad ya fue vendida o no está disponible.',
-      );
+      throw StateError('Esta unidad ya fue vendida o no está disponible.');
     }
 
     /// Regla de negocio: no se permite agregar la misma unidad física más de una vez en la orden.
-    final yaAgregado =
-        itemsActuales.any(
-      (i) =>
-          i.idUnidad ==
-          unidad.id,
-    );
+    final yaAgregado = itemsActuales.any((i) => i.idUnidad == unidad.id);
 
     if (yaAgregado) {
-
-      throw StateError(
-        'Esta unidad ya fue agregada a la orden.',
-      );
+      throw StateError('Esta unidad ya fue agregada a la orden.');
     }
 
-    final inventario =
-        await _inventarioRepository
-            .obtenerPorId(
+    final inventario = await _inventarioRepository.obtenerPorId(
       unidad.idInventario,
     );
 
     if (inventario == null) {
-
-      throw StateError(
-        'No se encontró el inventario de esta unidad.',
-      );
+      throw StateError('No se encontró el inventario de esta unidad.');
     }
 
     return ItemOrden(
+      idInventario: inventario.id!,
 
-      idInventario:
-          inventario.id!,
+      precioUnitario: inventario.precio,
 
-      precioUnitario:
-          inventario.precio,
+      idUnidad: unidad.id,
 
-      idUnidad:
-          unidad.id,
-
-      tipo:
-          TipoItemOrden.venta,
+      tipo: TipoItemOrden.venta,
     );
   }
 
@@ -214,33 +156,20 @@ class NuevaOrdenUseCase {
   /// Retorna un [ItemOrden] de tipo [TipoItemOrden.pedido] sin unidad asignada.
   Future<ItemOrden> agregarManual({
     required int idInventario,
-    required List<ItemOrden>
-        itemsActuales,
+    required List<ItemOrden> itemsActuales,
   }) async {
-
-    final inventario =
-        await _inventarioRepository
-            .obtenerPorId(
-      idInventario,
-    );
+    final inventario = await _inventarioRepository.obtenerPorId(idInventario);
 
     if (inventario == null) {
-
-      throw StateError(
-        'El inventario seleccionado no existe.',
-      );
+      throw StateError('El inventario seleccionado no existe.');
     }
 
     return ItemOrden(
+      idInventario: idInventario,
 
-      idInventario:
-          idInventario,
+      precioUnitario: inventario.precio,
 
-      precioUnitario:
-          inventario.precio,
-
-      tipo:
-          TipoItemOrden.pedido,
+      tipo: TipoItemOrden.pedido,
     );
   }
 
@@ -249,98 +178,57 @@ class NuevaOrdenUseCase {
   /// Si existen items de venta, se procesan primero y su identificador se vincula
   /// al pedido resultante para mantener la trazabilidad entre ambas transacciones.
   Future<void> confirmarMixto({
-    required List<ItemOrden>
-        items,
+    required List<ItemOrden> items,
 
     required int idUsuario,
 
-    required String?
-        nombreCliente,
+    required String? nombreCliente,
   }) async {
-
     if (items.isEmpty) {
-
-      throw StateError(
-        'La orden no tiene prendas agregadas.',
-      );
+      throw StateError('La orden no tiene prendas agregadas.');
     }
 
     final orden = Orden(
+      idUsuario: idUsuario,
 
-      idUsuario:
-          idUsuario,
+      nombreCliente: nombreCliente,
 
-      nombreCliente:
-          nombreCliente,
-
-      fecha:
-          DateTime.now(),
+      fecha: DateTime.now(),
     );
 
-    final idOrden =
-        await _ordenRepository
-            .insertar(
-      orden,
-    );
+    final idOrden = await _ordenRepository.insertar(orden);
 
-    final ventas = items
-        .where(
-          (i) =>
-              i.tipo ==
-              TipoItemOrden
-                  .venta,
-        )
-        .toList();
+    final ventas = items.where((i) => i.tipo == TipoItemOrden.venta).toList();
 
-    final pedidos = items
-        .where(
-          (i) =>
-              i.tipo ==
-              TipoItemOrden
-                  .pedido,
-        )
-        .toList();
+    final pedidos = items.where((i) => i.tipo == TipoItemOrden.pedido).toList();
 
     int? idVentaOrigen;
 
     if (ventas.isNotEmpty) {
-
-      final resultadoVenta =
-          await _confirmarVenta(
-
+      final resultadoVenta = await _confirmarVenta(
         items: ventas,
 
-        idUsuario:
-            idUsuario,
+        idUsuario: idUsuario,
 
-        nombreCliente:
-            nombreCliente,
+        nombreCliente: nombreCliente,
 
-        idOrdenOrigen:
-            idOrden,
+        idOrdenOrigen: idOrden,
       );
 
-      idVentaOrigen =
-          resultadoVenta.idVenta;
+      idVentaOrigen = resultadoVenta.idVenta;
     }
 
     if (pedidos.isNotEmpty) {
-
       await _confirmarPedido(
-
         items: pedidos,
 
-        idUsuario:
-            idUsuario,
+        idUsuario: idUsuario,
 
-        nombreCliente:
-            nombreCliente,
+        nombreCliente: nombreCliente,
 
-        idOrdenOrigen:
-            idOrden,
+        idOrdenOrigen: idOrden,
 
-        idVentaOrigen:
-            idVentaOrigen,
+        idVentaOrigen: idVentaOrigen,
       );
     }
   }
@@ -349,229 +237,144 @@ class NuevaOrdenUseCase {
   /// Resuelve las unidades físicas de los items que no las tengan asignadas,
   /// verifica que cada unidad siga disponible, persiste la venta con sus detalles
   /// y desactiva las unidades vendidas para retirarlas del stock disponible.
-  Future<NuevaOrdenResult>
-      _confirmarVenta({
-    required List<ItemOrden>
-        items,
+  Future<NuevaOrdenResult> _confirmarVenta({
+    required List<ItemOrden> items,
 
     required int idUsuario,
 
-    required String?
-        nombreCliente,
+    required String? nombreCliente,
 
-    required int
-        idOrdenOrigen,
+    required int idOrdenOrigen,
   }) async {
-
-    final itemsResueltos =
-        await _resolverUnidades(
-      items,
-    );
+    final itemsResueltos = await _resolverUnidades(items);
 
     /// Verificación de disponibilidad previa a la escritura:
     /// garantiza que ninguna unidad haya sido vendida entre el momento
     /// en que se agregó a la orden y la confirmación.
-    for (final item
-        in itemsResueltos) {
+    for (final item in itemsResueltos) {
+      final unidad = await _unidadRepository.obtenerPorId(item.idUnidad!);
 
-      final unidad =
-          await _unidadRepository
-              .obtenerPorId(
-        item.idUnidad!,
-      );
-
-      if (unidad == null ||
-          !unidad.activo) {
-
-        throw StateError(
-          'Una unidad ya no está disponible.',
-        );
+      if (unidad == null || !unidad.activo) {
+        throw StateError('Una unidad ya no está disponible.');
       }
     }
 
-    final total =
-        _calcularTotal(
-      itemsResueltos,
-    );
+    final total = _calcularTotal(itemsResueltos);
 
     final venta = Venta(
+      idUsuario: idUsuario,
 
-      idUsuario:
-          idUsuario,
+      idOrdenOrigen: idOrdenOrigen,
 
-      idOrdenOrigen:
-          idOrdenOrigen,
+      nombreCliente: nombreCliente,
 
-      nombreCliente:
-          nombreCliente,
+      fecha: DateTime.now(),
 
-      fecha:
-          DateTime.now(),
+      total: total,
 
-      total:
-          total,
-
-      estado:
-          EstadoVenta
-              .completada,
+      estado: EstadoVenta.completada,
     );
 
-    final detalles =
-        itemsResueltos
-            .map(
-              (item) =>
-                  DetalleVenta(
+    final detalles = itemsResueltos
+        .map(
+          (item) => DetalleVenta(
+            idVenta: 0,
 
-                idVenta: 0,
+            idUnidad: item.idUnidad!,
 
-                idUnidad:
-                    item.idUnidad!,
+            cantidad: 1,
 
-                cantidad: 1,
+            precioUnitario: item.precioUnitario,
+          ),
+        )
+        .toList();
 
-                precioUnitario:
-                    item
-                        .precioUnitario,
-              ),
-            )
-            .toList();
-
-    final idVenta =
-        await _ventaRepository
-            .insertarVentaYDetalles(
-
+    final idVenta = await _ventaRepository.insertarVentaYDetalles(
       venta: venta,
 
-      detalles:
-          detalles,
+      detalles: detalles,
     );
 
     /// Desactivación de unidades tras la persistencia exitosa de la venta.
     /// Una unidad desactivada no puede ser vendida ni asignada a nuevas órdenes.
-    for (final item
-        in itemsResueltos) {
-
-      await _unidadRepository
-          .desactivar(
-        item.idUnidad!,
-      );
+    for (final item in itemsResueltos) {
+      await _unidadRepository.desactivar(item.idUnidad!);
     }
 
     return NuevaOrdenResult(
+      idVenta: idVenta,
 
-      idVenta:
-          idVenta,
+      tipo: TipoConfirmacion.venta,
 
-      tipo:
-          TipoConfirmacion
-              .venta,
+      total: total,
 
-      total:
-          total,
-
-      totalPrendas:
-          itemsResueltos.length,
+      totalPrendas: itemsResueltos.length,
     );
   }
 
   /// Procesa los items de tipo pedido dentro de una orden.
   /// Crea el pedido en estado pendiente con sus detalles sin unidad física asignada.
   /// Puede vincularse a una venta previa de la misma orden mediante [idVentaOrigen].
-  Future<NuevaOrdenResult>
-      _confirmarPedido({
-
-    required List<ItemOrden>
-        items,
+  Future<NuevaOrdenResult> _confirmarPedido({
+    required List<ItemOrden> items,
 
     required int idUsuario,
 
-    required String?
-        nombreCliente,
+    required String? nombreCliente,
 
-    required int
-        idOrdenOrigen,
+    required int idOrdenOrigen,
 
-    required int?
-        idVentaOrigen,
+    required int? idVentaOrigen,
   }) async {
-
-    final total =
-        _calcularTotal(
-      items,
-    );
+    final total = _calcularTotal(items);
 
     final pedido = Pedido(
+      idUsuario: idUsuario,
 
-      idUsuario:
-          idUsuario,
+      idOrdenOrigen: idOrdenOrigen,
 
-      idOrdenOrigen:
-          idOrdenOrigen,
+      idVentaOrigen: idVentaOrigen,
 
-      idVentaOrigen:
-          idVentaOrigen,
+      nombreCliente: nombreCliente,
 
-      nombreCliente:
-          nombreCliente,
+      fecha: DateTime.now(),
 
-      fecha:
-          DateTime.now(),
+      total: total,
 
-      total:
-          total,
-
-      estado:
-          EstadoPedido
-              .pendiente,
+      estado: EstadoPedido.pendiente,
     );
 
     final detalles = items
         .map(
-          (item) =>
-              DetallePedido(
-
+          (item) => DetallePedido(
             idPedido: 0,
 
-            idInventario:
-                item.idInventario,
+            idInventario: item.idInventario,
 
             /// La unidad física se asigna posteriormente al registrar la entrega del pedido.
-            idUnidadRegistrada:
-                null,
+            idUnidadRegistrada: null,
 
-            registrado:
-                false,
+            registrado: false,
 
-            precioUnitario:
-                item.precioUnitario,
+            precioUnitario: item.precioUnitario,
           ),
         )
         .toList();
 
-    final idPedido =
-        await _pedidoRepository
-            .insertarPedidoYDetalles(
-
+    final idPedido = await _pedidoRepository.insertarPedidoYDetalles(
       pedido: pedido,
 
-      detalles:
-          detalles,
+      detalles: detalles,
     );
 
     return NuevaOrdenResult(
+      idPedido: idPedido,
 
-      idPedido:
-          idPedido,
+      tipo: TipoConfirmacion.pedido,
 
-      tipo:
-          TipoConfirmacion
-              .pedido,
+      total: total,
 
-      total:
-          total,
-
-      totalPrendas:
-          items.length,
+      totalPrendas: items.length,
     );
   }
 
@@ -579,79 +382,44 @@ class NuevaOrdenUseCase {
   /// Para items sin unidad resuelta, consulta las unidades activas del inventario
   /// y selecciona la primera que no haya sido asignada ya en esta misma operación.
   /// Lanza una excepción si no hay unidades disponibles para algún item.
-  Future<List<ItemOrden>>
-      _resolverUnidades(
-    List<ItemOrden> items,
-  ) async {
-
-    final List<ItemOrden>
-        resueltos = [];
+  Future<List<ItemOrden>> _resolverUnidades(List<ItemOrden> items) async {
+    final List<ItemOrden> resueltos = [];
 
     /// Conjunto de IDs de unidades ya asignadas, para evitar asignar la misma unidad
     /// a más de un item dentro del mismo proceso de resolución.
-    final Set<int>
-        unidadesUsadas = items
-            .where(
-              (i) =>
-                  i.tieneUnidadResuelta,
-            )
-            .map(
-              (i) =>
-                  i.idUnidad!,
-            )
-            .toSet();
+    final Set<int> unidadesUsadas = items
+        .where((i) => i.tieneUnidadResuelta)
+        .map((i) => i.idUnidad!)
+        .toSet();
 
-    for (final item
-        in items) {
-
-      if (item
-          .tieneUnidadResuelta) {
-
+    for (final item in items) {
+      if (item.tieneUnidadResuelta) {
         resueltos.add(item);
 
         continue;
       }
 
-      final unidadesDisponibles =
-          await _unidadRepository
-              .obtenerPorInventario(
+      final unidadesDisponibles = await _unidadRepository.obtenerPorInventario(
         item.idInventario,
       );
 
-      final unidad =
-          unidadesDisponibles
-              .firstWhere(
+      final unidad = unidadesDisponibles.firstWhere(
+        (u) => !unidadesUsadas.contains(u.id),
 
-        (u) =>
-            !unidadesUsadas
-                .contains(
-          u.id,
-        ),
-
-        orElse: () =>
-            throw StateError(
-          'No hay unidades disponibles.',
-        ),
+        orElse: () => throw StateError('No hay unidades disponibles.'),
       );
 
-      unidadesUsadas
-          .add(unidad.id!);
+      unidadesUsadas.add(unidad.id!);
 
       resueltos.add(
-
         ItemOrden(
+          idInventario: item.idInventario,
 
-          idInventario:
-              item.idInventario,
+          precioUnitario: item.precioUnitario,
 
-          precioUnitario:
-              item.precioUnitario,
+          idUnidad: unidad.id,
 
-          idUnidad:
-              unidad.id,
-
-          tipo:
-              item.tipo,
+          tipo: item.tipo,
         ),
       );
     }
@@ -660,17 +428,7 @@ class NuevaOrdenUseCase {
   }
 
   /// Calcula el total de la orden sumando el precio unitario de cada item.
-  double _calcularTotal(
-    List<ItemOrden> items,
-  ) {
-
-    return items.fold(
-
-      0,
-
-      (sum, i) =>
-          sum +
-          i.precioUnitario,
-    );
+  double _calcularTotal(List<ItemOrden> items) {
+    return items.fold(0, (sum, i) => sum + i.precioUnitario);
   }
 }

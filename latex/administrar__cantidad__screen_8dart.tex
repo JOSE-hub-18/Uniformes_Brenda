@@ -1,0 +1,116 @@
+\doxysection{Referencia del archivo lib/presentation/screens/administrar\+\_\+cantidad\+\_\+screen.dart}
+\hypertarget{administrar__cantidad__screen_8dart}{}\label{administrar__cantidad__screen_8dart}\index{lib/presentation/screens/administrar\_cantidad\_screen.dart@{lib/presentation/screens/administrar\_cantidad\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{administrar__cantidad__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+void \mbox{\hyperlink{administrar__cantidad__screen_8dart_a51cdf54f7acd8ba5b376d968c3e18856}{\+\_\+confirmar\+Agregar}} ()
+\begin{DoxyCompactList}\small\item\em Valida la cantidad ingresada y muestra un diálogo de confirmación antes de ejecutar la operación de agregar unidades. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{administrar__cantidad__screen_8dart_a5f70c45cd6cdf3d00e67a4a9294141d4}{\+\_\+confirmar\+Restar}} () async
+\begin{DoxyCompactList}\small\item\em Navega a \mbox{[}QRScanner\+Screen\mbox{]} y procesa el resultado del escaneo ejecutando \mbox{[}Restar\+Unidades\+Use\+Case\mbox{]}. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{administrar__cantidad__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}{build}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Construye la interfaz de la pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Administrar\+Cantidad\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{administrar__cantidad__screen_8dart_a5b3ffa89c2c7485532de2c1bef70fe1c}{\+\_\+controller}}
+\begin{DoxyCompactList}\small\item\em Estado interno de \mbox{[}Administrar\+Cantidad\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{administrar__cantidad__screen_8dart_a38979b192a312b75e60e2b5cd961ac97}{\+\_\+unidad\+Repo}} = \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Repositorio de acceso a datos de unidades. \end{DoxyCompactList}\item 
+late final \mbox{\hyperlink{restar__unidades__usecase_8dart_a29a954ded696ec5a00a9fec6e0e1b91d}{Restar\+Unidades\+Use\+Case}} \mbox{\hyperlink{administrar__cantidad__screen_8dart_a35fcb9e43bfbe91b0ed5c73d7328fe25}{\+\_\+restar\+Use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso encargado de ejecutar la lógica de negocio para restar unidades mediante validación de QR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{administrar__cantidad__screen_8dart_a51cdf54f7acd8ba5b376d968c3e18856}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!\_confirmarAgregar@{\_confirmarAgregar}}
+\index{\_confirmarAgregar@{\_confirmarAgregar}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_confirmarAgregar()}{\_confirmarAgregar()}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_a51cdf54f7acd8ba5b376d968c3e18856} 
+void \+\_\+confirmar\+Agregar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Valida la cantidad ingresada y muestra un diálogo de confirmación antes de ejecutar la operación de agregar unidades. 
+
+Regla de negocio\+: no se permite agregar si la cantidad es menor o igual a cero. Al confirmar, delega la operación a \mbox{[}Print\+Provider.\+agregar\+Unidades\mbox{]}, el cual gestiona la impresión de QRs para las nuevas unidades. \Hypertarget{administrar__cantidad__screen_8dart_a5f70c45cd6cdf3d00e67a4a9294141d4}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!\_confirmarRestar@{\_confirmarRestar}}
+\index{\_confirmarRestar@{\_confirmarRestar}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_confirmarRestar()}{\_confirmarRestar()}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_a5f70c45cd6cdf3d00e67a4a9294141d4} 
+Future$<$ void $>$ \+\_\+confirmar\+Restar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Navega a \mbox{[}QRScanner\+Screen\mbox{]} y procesa el resultado del escaneo ejecutando \mbox{[}Restar\+Unidades\+Use\+Case\mbox{]}. 
+
+Mapea cada valor de \mbox{[}Resultado\+Restar\+Unidad\mbox{]} a un \mbox{[}Scan\+Feedback\mbox{]} con el tipo de resultado y mensaje correspondiente.
+
+Reglas de negocio aplicadas\+:
+\begin{DoxyItemize}
+\item Una unidad ya desactivada no puede restarse de nuevo.
+\item Solo se pueden restar unidades que pertenezcan al inventario indicado.
+\item El QR debe tener un formato válido reconocido por el sistema. 
+\end{DoxyItemize}\Hypertarget{administrar__cantidad__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!build@{build}}
+\index{build@{build}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye la interfaz de la pantalla. 
+
+Construye la interfaz gráfica y los enlaces de navegación del menú.
+
+Compone\+: campo de entrada de cantidad, botones de sumar y restar, y área de mensaje reactivo al estado de \mbox{[}Print\+Provider\mbox{]}.
+
+
+\begin{DoxyItemize}
+\item Obtiene instancias de proveedores mediante {\ttfamily Provider.\+of} para acceder a la lógica de navegación y al estado de alertas.
+\item Define la estructura {\ttfamily Scaffold} con {\ttfamily App\+Bar}, {\ttfamily body} y {\ttfamily bottom\+Navigation\+Bar}. 
+\end{DoxyItemize}\Hypertarget{administrar__cantidad__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{administrar__cantidad__screen_8dart_a5b3ffa89c2c7485532de2c1bef70fe1c}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!\_controller@{\_controller}}
+\index{\_controller@{\_controller}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_controller}{\_controller}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_a5b3ffa89c2c7485532de2c1bef70fe1c} 
+class Administrar\+Cantidad\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+controller}
+
+
+
+Estado interno de \mbox{[}Administrar\+Cantidad\+Screen\mbox{]}. 
+
+Gestiona el ciclo de vida del controlador de texto, la instancia del caso de uso y la limpieza del estado del provider. Controlador vinculado al campo de entrada de cantidad. Se inicializa en "{}1"{} como valor mínimo operativo. \Hypertarget{administrar__cantidad__screen_8dart_a35fcb9e43bfbe91b0ed5c73d7328fe25}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!\_restarUseCase@{\_restarUseCase}}
+\index{\_restarUseCase@{\_restarUseCase}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_restarUseCase}{\_restarUseCase}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_a35fcb9e43bfbe91b0ed5c73d7328fe25} 
+late final \mbox{\hyperlink{restar__unidades__usecase_8dart_a29a954ded696ec5a00a9fec6e0e1b91d}{Restar\+Unidades\+Use\+Case}} \+\_\+restar\+Use\+Case}
+
+
+
+Caso de uso encargado de ejecutar la lógica de negocio para restar unidades mediante validación de QR. 
+
+\Hypertarget{administrar__cantidad__screen_8dart_a38979b192a312b75e60e2b5cd961ac97}\index{administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}!\_unidadRepo@{\_unidadRepo}}
+\index{\_unidadRepo@{\_unidadRepo}!administrar\_cantidad\_screen.dart@{administrar\_cantidad\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_unidadRepo}{\_unidadRepo}}
+{\footnotesize\ttfamily \label{administrar__cantidad__screen_8dart_a38979b192a312b75e60e2b5cd961ac97} 
+final \+\_\+unidad\+Repo = \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}}()}
+
+
+
+Repositorio de acceso a datos de unidades. 
+
+Se inyecta directamente en \mbox{[}\+\_\+restar\+Use\+Case\mbox{]}. 

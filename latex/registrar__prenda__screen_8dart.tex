@@ -1,0 +1,149 @@
+\doxysection{Referencia del archivo lib/presentation/screens/registrar\+\_\+prenda\+\_\+screen.dart}
+\hypertarget{registrar__prenda__screen_8dart}{}\label{registrar__prenda__screen_8dart}\index{lib/presentation/screens/registrar\_prenda\_screen.dart@{lib/presentation/screens/registrar\_prenda\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{registrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+override void \mbox{\hyperlink{registrar__prenda__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}{dispose}} ()
+\item 
+void \mbox{\hyperlink{registrar__prenda__screen_8dart_a69ce4b2a546c5daf2f09484a2cfcabe5}{\+\_\+guardar\+Cambios}} () async
+\begin{DoxyCompactList}\small\item\em Valida el formulario y ejecuta el caso de uso para registrar la prenda. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{registrar__prenda__screen_8dart_a950bcdbbb7a7f50b0923e7f0c32bd19d}{\+\_\+mostrar\+Dialogo\+Escuela}} () async
+\begin{DoxyCompactList}\small\item\em Muestra un diálogo para crear una nueva escuela. \end{DoxyCompactList}\item 
+Input\+Decoration \mbox{\hyperlink{registrar__prenda__screen_8dart_ae020f9b147bbe4393caf3746f522efef}{\+\_\+input\+Decoration}} ()
+\begin{DoxyCompactList}\small\item\em Estilo reutilizable para los campos de entrada del formulario. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{registrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}{build}} (Build\+Context context)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Registrar\+Prenda\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{registrar__prenda__screen_8dart_a26583b7d0593f202ddeb7140bc5a3b66}{\+\_\+form\+Key}} = Global\+Key$<$Form\+State$>$()
+\begin{DoxyCompactList}\small\item\em Estado de la pantalla de registro de prenda. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{registrar__prenda__screen_8dart_a07fd4ff175a506b7885e173addfb0b66}{\+\_\+precio\+Controller}} = Text\+Editing\+Controller()
+\item 
+int \mbox{\hyperlink{registrar__prenda__screen_8dart_a3b9ed85b71b581a52a8c7db344ab5c15}{\+\_\+id\+Prenda\+Seleccionado}}
+\item 
+int \mbox{\hyperlink{registrar__prenda__screen_8dart_a9569ab713d40cc9755e82a8a23f7e5a7}{\+\_\+id\+Talla\+Seleccionada}}
+\item 
+int \mbox{\hyperlink{registrar__prenda__screen_8dart_a01ef0364d5bc147e7a733137f433df80}{\+\_\+id\+Escuela}}
+\item 
+bool \mbox{\hyperlink{registrar__prenda__screen_8dart_a448fbfd01dd061adc19b1a8b13bd3d48}{\+\_\+cargando}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{registrar__prenda__screen_8dart_a69ce4b2a546c5daf2f09484a2cfcabe5}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_guardarCambios@{\_guardarCambios}}
+\index{\_guardarCambios@{\_guardarCambios}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_guardarCambios()}{\_guardarCambios()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a69ce4b2a546c5daf2f09484a2cfcabe5} 
+void \+\_\+guardar\+Cambios (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Valida el formulario y ejecuta el caso de uso para registrar la prenda. 
+
+Reglas de negocio y comportamiento\+:
+\begin{DoxyItemize}
+\item Valida que el formulario sea válido y que los dropdowns tengan selección.
+\item Muestra un Snack\+Bar si faltan campos obligatorios.
+\item Mientras se ejecuta el caso de uso, {\ttfamily \+\_\+cargando} es true para deshabilitar el botón.
+\item Al finalizar, muestra un Snack\+Bar con el resultado\+: éxito o errores detallados. 
+\end{DoxyItemize}\Hypertarget{registrar__prenda__screen_8dart_ae020f9b147bbe4393caf3746f522efef}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_inputDecoration@{\_inputDecoration}}
+\index{\_inputDecoration@{\_inputDecoration}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_inputDecoration()}{\_inputDecoration()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_ae020f9b147bbe4393caf3746f522efef} 
+Input\+Decoration \+\_\+input\+Decoration (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Estilo reutilizable para los campos de entrada del formulario. 
+
+
+\begin{DoxyItemize}
+\item Aplica fondo blanco, bordes y color de borde consistente con el diseño. 
+\end{DoxyItemize}\Hypertarget{registrar__prenda__screen_8dart_a950bcdbbb7a7f50b0923e7f0c32bd19d}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_mostrarDialogoEscuela@{\_mostrarDialogoEscuela}}
+\index{\_mostrarDialogoEscuela@{\_mostrarDialogoEscuela}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_mostrarDialogoEscuela()}{\_mostrarDialogoEscuela()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a950bcdbbb7a7f50b0923e7f0c32bd19d} 
+Future$<$ void $>$ \+\_\+mostrar\+Dialogo\+Escuela (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Muestra un diálogo para crear una nueva escuela. 
+
+
+\begin{DoxyItemize}
+\item Si el usuario ingresa un nombre válido, delega en el provider para crearla.
+\item Si la creación es exitosa, selecciona la escuela recién creada en el formulario. 
+\end{DoxyItemize}\Hypertarget{registrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!build@{build}}
+\index{build@{build}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+\Hypertarget{registrar__prenda__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!dispose@{dispose}}
+\index{dispose@{dispose}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{dispose()}{dispose()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_acc340fabce6d1fd6056b3c2e871d98d2} 
+override void dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{registrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{registrar__prenda__screen_8dart_a448fbfd01dd061adc19b1a8b13bd3d48}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_cargando@{\_cargando}}
+\index{\_cargando@{\_cargando}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_cargando}{\_cargando}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a448fbfd01dd061adc19b1a8b13bd3d48} 
+bool \+\_\+cargando = false}
+
+\Hypertarget{registrar__prenda__screen_8dart_a26583b7d0593f202ddeb7140bc5a3b66}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_formKey@{\_formKey}}
+\index{\_formKey@{\_formKey}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_formKey}{\_formKey}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a26583b7d0593f202ddeb7140bc5a3b66} 
+class Registrar\+Prenda\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+form\+Key = Global\+Key$<$Form\+State$>$()}
+
+
+
+Estado de la pantalla de registro de prenda. 
+
+
+\begin{DoxyItemize}
+\item Mantiene el estado del formulario, controladores y selecciones locales.
+\item Carga catálogos iniciales desde \mbox{[}Registrar\+Inventario\+Provider\mbox{]} en init\+State. 
+\end{DoxyItemize}\Hypertarget{registrar__prenda__screen_8dart_a01ef0364d5bc147e7a733137f433df80}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_idEscuela@{\_idEscuela}}
+\index{\_idEscuela@{\_idEscuela}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_idEscuela}{\_idEscuela}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a01ef0364d5bc147e7a733137f433df80} 
+int \+\_\+id\+Escuela}
+
+\Hypertarget{registrar__prenda__screen_8dart_a3b9ed85b71b581a52a8c7db344ab5c15}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_idPrendaSeleccionado@{\_idPrendaSeleccionado}}
+\index{\_idPrendaSeleccionado@{\_idPrendaSeleccionado}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_idPrendaSeleccionado}{\_idPrendaSeleccionado}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a3b9ed85b71b581a52a8c7db344ab5c15} 
+int \+\_\+id\+Prenda\+Seleccionado}
+
+\Hypertarget{registrar__prenda__screen_8dart_a9569ab713d40cc9755e82a8a23f7e5a7}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_idTallaSeleccionada@{\_idTallaSeleccionada}}
+\index{\_idTallaSeleccionada@{\_idTallaSeleccionada}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_idTallaSeleccionada}{\_idTallaSeleccionada}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a9569ab713d40cc9755e82a8a23f7e5a7} 
+int \+\_\+id\+Talla\+Seleccionada}
+
+\Hypertarget{registrar__prenda__screen_8dart_a07fd4ff175a506b7885e173addfb0b66}\index{registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}!\_precioController@{\_precioController}}
+\index{\_precioController@{\_precioController}!registrar\_prenda\_screen.dart@{registrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_precioController}{\_precioController}}
+{\footnotesize\ttfamily \label{registrar__prenda__screen_8dart_a07fd4ff175a506b7885e173addfb0b66} 
+final \+\_\+precio\+Controller = Text\+Editing\+Controller()}
+

@@ -5,7 +5,6 @@ import '../../models/models.dart';
 /// Repositorio encargado de gestionar las operaciones
 /// CRUD relacionadas con la entidad Prenda.
 class PrendaRepository {
-
   /// Obtiene una instancia activa de la base de datos.
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
@@ -47,14 +46,9 @@ class PrendaRepository {
   Future<List<Prenda>> obtenerTodas() async {
     final db = await _db;
 
-    final maps = await db.query(
-      'prendas',
-      orderBy: 'nombre ASC',
-    );
+    final maps = await db.query('prendas', orderBy: 'nombre ASC');
 
-    return maps
-        .map((m) => Prenda.fromMap(m))
-        .toList();
+    return maps.map((m) => Prenda.fromMap(m)).toList();
   }
 
   /// Actualiza la información de una prenda existente.
@@ -76,10 +70,6 @@ class PrendaRepository {
   Future<int> eliminar(int id) async {
     final db = await _db;
 
-    return await db.delete(
-      'prendas',
-      where: 'id_prenda = ?',
-      whereArgs: [id],
-    );
+    return await db.delete('prendas', where: 'id_prenda = ?', whereArgs: [id]);
   }
 }

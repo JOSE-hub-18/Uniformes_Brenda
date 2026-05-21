@@ -1,0 +1,198 @@
+\doxysection{Referencia del archivo lib/business/usecases/nueva\+\_\+orden\+\_\+usecase.dart}
+\hypertarget{nueva__orden__usecase_8dart}{}\label{nueva__orden__usecase_8dart}\index{lib/business/usecases/nueva\_orden\_usecase.dart@{lib/business/usecases/nueva\_orden\_usecase.dart}}
+{\ttfamily import data;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_nueva_orden_use_case}{Nueva\+Orden\+Use\+Case}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que gestiona la creación de órdenes mixtas, combinando items de venta directa (con unidad física) y pedidos (sin unidad asignada). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}{Tipo\+Item\+Orden}} \{ \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}{venta}}
+, \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}{pedido}}
+ \}
+\begin{DoxyCompactList}\small\item\em Clasifica el origen de un item dentro de una orden. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}} \{ \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}{venta}}
+, \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}{pedido}}
+ \}
+\begin{DoxyCompactList}\small\item\em Indica el tipo de transacción que resultó de la confirmación de la orden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}{Item\+Orden}} (\{ required \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{this.\+id\+Inventario}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_a5a9dfde6962d22d5618bc1de0b56b3c0}{this.\+precio\+Unitario}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{this.\+id\+Unidad}}, \})
+\item 
+const \mbox{\hyperlink{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}{Nueva\+Orden\+Result}} (\{ \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{this.\+id\+Venta}}, \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{this.\+id\+Pedido}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_ac6fd6f43a735960ff62d3f799c8acfd9}{this.\+total}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_a8229fdb400ee1c5530b2b07d5ca76f4c}{this.\+total\+Prendas}}, \})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}{Tipo\+Item\+Orden}} \mbox{\hyperlink{nueva__orden__usecase_8dart_a9fbd4ae362763cf9cb08aeb62fca0829}{id\+Inventario}}
+\begin{DoxyCompactList}\small\item\em Representa un item individual dentro de una orden en construcción. \end{DoxyCompactList}\item 
+final double \mbox{\hyperlink{nueva__orden__usecase_8dart_a5a9dfde6962d22d5618bc1de0b56b3c0}{precio\+Unitario}}
+\begin{DoxyCompactList}\small\item\em Precio unitario tomado del inventario al momento de agregar el item. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}
+\begin{DoxyCompactList}\small\item\em Identificador de la unidad física asignada. Null si es un pedido sin unidad resuelta. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}{Tipo\+Item\+Orden}} \mbox{\hyperlink{nueva__orden__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{tipo}}
+\begin{DoxyCompactList}\small\item\em Indica si el item se procesará como venta directa o como pedido. \end{DoxyCompactList}\item 
+bool get \mbox{\hyperlink{nueva__orden__usecase_8dart_af25da7320d4001759716a575adbe54bd}{tiene\+Unidad\+Resuelta}} =$>$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}} != null
+\begin{DoxyCompactList}\small\item\em Retorna true si el item tiene una unidad física asignada. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}} \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{id\+Venta}}
+\begin{DoxyCompactList}\small\item\em Resultado de la confirmación de una orden o sub-\/orden. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}
+\begin{DoxyCompactList}\small\item\em Identificador del pedido generado. Null si la confirmación fue de venta. \end{DoxyCompactList}\item 
+final double \mbox{\hyperlink{nueva__orden__usecase_8dart_ac6fd6f43a735960ff62d3f799c8acfd9}{total}}
+\begin{DoxyCompactList}\small\item\em Suma total de los precios unitarios de los items procesados. \end{DoxyCompactList}\item 
+final int \mbox{\hyperlink{nueva__orden__usecase_8dart_a8229fdb400ee1c5530b2b07d5ca76f4c}{total\+Prendas}}
+\begin{DoxyCompactList}\small\item\em Cantidad de prendas incluidas en la transacción. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!TipoConfirmacion@{TipoConfirmacion}}
+\index{TipoConfirmacion@{TipoConfirmacion}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{TipoConfirmacion}{TipoConfirmacion}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93} 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}}}
+
+
+
+Indica el tipo de transacción que resultó de la confirmación de la orden. 
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{venta@{venta}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!venta@{venta}}}\Hypertarget{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}\label{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93} 
+venta&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{pedido@{pedido}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!pedido@{pedido}}}\Hypertarget{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}\label{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93} 
+pedido&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!TipoItemOrden@{TipoItemOrden}}
+\index{TipoItemOrden@{TipoItemOrden}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{TipoItemOrden}{TipoItemOrden}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02} 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}{Tipo\+Item\+Orden}}}
+
+
+
+Clasifica el origen de un item dentro de una orden. 
+
+\mbox{[}venta\mbox{]} indica que el item tiene una unidad física escaneada o resuelta. \mbox{[}pedido\mbox{]} indica que el item es un encargo sin unidad física asignada aún. \begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{venta@{venta}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!venta@{venta}}}\Hypertarget{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a64853791d7f9770d1944bf13f1c75010}\label{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02} 
+venta&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{pedido@{pedido}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!pedido@{pedido}}}\Hypertarget{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}\label{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02} 
+pedido&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!ItemOrden@{ItemOrden}}
+\index{ItemOrden@{ItemOrden}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{ItemOrden()}{ItemOrden()}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_ac4c40d3931b6e84657d07512cab500a4} 
+const Item\+Orden (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{this.\+id\+Inventario}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_a5a9dfde6962d22d5618bc1de0b56b3c0}{this.\+precio\+Unitario}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{this.\+id\+Unidad}}, \}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!NuevaOrdenResult@{NuevaOrdenResult}}
+\index{NuevaOrdenResult@{NuevaOrdenResult}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{NuevaOrdenResult()}{NuevaOrdenResult()}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a83c92da21e4c8bcce0cbd7278d88db4a} 
+const Nueva\+Orden\+Result (\begin{DoxyParamCaption}\item[{\{ \mbox{\hyperlink{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}{this.\+id\+Venta}}, \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{this.\+id\+Pedido}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_ac6fd6f43a735960ff62d3f799c8acfd9}{this.\+total}}, required \mbox{\hyperlink{nueva__orden__usecase_8dart_a8229fdb400ee1c5530b2b07d5ca76f4c}{this.\+total\+Prendas}}, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{nueva__orden__usecase_8dart_a9fbd4ae362763cf9cb08aeb62fca0829}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!idInventario@{idInventario}}
+\index{idInventario@{idInventario}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{idInventario}{idInventario}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a9fbd4ae362763cf9cb08aeb62fca0829} 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_a14814e34ca7be0e0e85745258ee25d02}{Tipo\+Item\+Orden}} id\+Inventario}
+
+
+
+Representa un item individual dentro de una orden en construcción. 
+
+Puede tener una unidad física asignada (\mbox{[}id\+Unidad\mbox{]}) si proviene de un escaneo QR, o carecer de ella si fue agregado manualmente como pedido. Identificador del registro de inventario al que pertenece este item. \Hypertarget{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!idPedido@{idPedido}}
+\index{idPedido@{idPedido}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{idPedido}{idPedido}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78} 
+final int id\+Pedido}
+
+
+
+Identificador del pedido generado. Null si la confirmación fue de venta. 
+
+\Hypertarget{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!idUnidad@{idUnidad}}
+\index{idUnidad@{idUnidad}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{idUnidad}{idUnidad}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd} 
+final int id\+Unidad}
+
+
+
+Identificador de la unidad física asignada. Null si es un pedido sin unidad resuelta. 
+
+\Hypertarget{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!idVenta@{idVenta}}
+\index{idVenta@{idVenta}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{idVenta}{idVenta}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_ab487be16dff9f68badb0cf90e1c9e6ef} 
+enum \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}} id\+Venta}
+
+
+
+Resultado de la confirmación de una orden o sub-\/orden. 
+
+Contiene los identificadores generados y el resumen de la transacción. Identificador de la venta generada. Null si la confirmación fue de pedido. \Hypertarget{nueva__orden__usecase_8dart_a5a9dfde6962d22d5618bc1de0b56b3c0}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!precioUnitario@{precioUnitario}}
+\index{precioUnitario@{precioUnitario}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{precioUnitario}{precioUnitario}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a5a9dfde6962d22d5618bc1de0b56b3c0} 
+final double precio\+Unitario}
+
+
+
+Precio unitario tomado del inventario al momento de agregar el item. 
+
+\Hypertarget{nueva__orden__usecase_8dart_af25da7320d4001759716a575adbe54bd}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!tieneUnidadResuelta@{tieneUnidadResuelta}}
+\index{tieneUnidadResuelta@{tieneUnidadResuelta}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{tieneUnidadResuelta}{tieneUnidadResuelta}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_af25da7320d4001759716a575adbe54bd} 
+bool get tiene\+Unidad\+Resuelta =$>$ \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}} != null}
+
+
+
+Retorna true si el item tiene una unidad física asignada. 
+
+\Hypertarget{nueva__orden__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!tipo@{tipo}}
+\index{tipo@{tipo}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{tipo}{tipo}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71} 
+final \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}} tipo}
+
+
+
+Indica si el item se procesará como venta directa o como pedido. 
+
+Tipo de transacción que representa este resultado. \Hypertarget{nueva__orden__usecase_8dart_ac6fd6f43a735960ff62d3f799c8acfd9}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!total@{total}}
+\index{total@{total}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{total}{total}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_ac6fd6f43a735960ff62d3f799c8acfd9} 
+final double total}
+
+
+
+Suma total de los precios unitarios de los items procesados. 
+
+\Hypertarget{nueva__orden__usecase_8dart_a8229fdb400ee1c5530b2b07d5ca76f4c}\index{nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}!totalPrendas@{totalPrendas}}
+\index{totalPrendas@{totalPrendas}!nueva\_orden\_usecase.dart@{nueva\_orden\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{totalPrendas}{totalPrendas}}
+{\footnotesize\ttfamily \label{nueva__orden__usecase_8dart_a8229fdb400ee1c5530b2b07d5ca76f4c} 
+final int total\+Prendas}
+
+
+
+Cantidad de prendas incluidas en la transacción. 
+

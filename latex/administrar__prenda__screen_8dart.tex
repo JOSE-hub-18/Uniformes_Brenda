@@ -1,0 +1,179 @@
+\doxysection{Referencia del archivo lib/presentation/screens/administrar\+\_\+prenda\+\_\+screen.dart}
+\hypertarget{administrar__prenda__screen_8dart}{}\label{administrar__prenda__screen_8dart}\index{lib/presentation/screens/administrar\_prenda\_screen.dart@{lib/presentation/screens/administrar\_prenda\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{administrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}{init\+State}} ()
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{administrar__prenda__screen_8dart_adcfded27c545abcf0f4052f5fbc33d2f}{\+\_\+cargar\+Datos}} () async
+\begin{DoxyCompactList}\small\item\em Carga los datos del inventario desde el repositorio usando \mbox{[}id\+Inventario\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{administrar__prenda__screen_8dart_a4cdc16162580ca594d2a34dd386ec345}{\+\_\+actualizar\+Cantidad\+Desde\+Provider}} ()
+\begin{DoxyCompactList}\small\item\em Sincroniza \mbox{[}cantidad\+Actual\mbox{]} con el stock registrado en \mbox{[}Inventario\+Provider\mbox{]}. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{administrar__prenda__screen_8dart_a1c2f06d1d498e518a1bb098e60b62660}{\+\_\+guardar\+Cambios}} () async
+\begin{DoxyCompactList}\small\item\em Persiste el precio editado en la base de datos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{administrar__prenda__screen_8dart_a8265f61405ab958ae3ddefd407ecea8e}{\+\_\+eliminar}} () async
+\begin{DoxyCompactList}\small\item\em Elimina el registro de inventario identificado por \mbox{[}id\+Inventario\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{administrar__prenda__screen_8dart_a1ca0d2b208801a88e27b58a9c3a746b8}{\+\_\+dialogo\+Guardar}} ()
+\begin{DoxyCompactList}\small\item\em Muestra un diálogo de confirmación antes de ejecutar \mbox{[}\+\_\+guardar\+Cambios\mbox{]}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{administrar__prenda__screen_8dart_ab84abce10a6c6e4971b7d982c9837e2e}{\+\_\+dialogo\+Eliminar}} ()
+\begin{DoxyCompactList}\small\item\em Muestra un diálogo de confirmación antes de ejecutar \mbox{[}\+\_\+eliminar\mbox{]}. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{administrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}{build}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Construye la interfaz de la pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Administrar\+Prenda\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{administrar__prenda__screen_8dart_a4d5a1f300e0fb60a8ee82e7d88ad1e32}{\+\_\+inventario\+Repo}} = \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}}()
+\begin{DoxyCompactList}\small\item\em Estado interno de \mbox{[}Administrar\+Prenda\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+Inventario \mbox{\hyperlink{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}{inventario}}
+\begin{DoxyCompactList}\small\item\em Instancia del inventario cargado desde la base de datos. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{administrar__prenda__screen_8dart_a96da6bdd9a91ee05f23e9955c09ffedc}{cargando}} = true
+\begin{DoxyCompactList}\small\item\em Indica si los datos del inventario están siendo cargados. \end{DoxyCompactList}\item 
+late int \mbox{\hyperlink{administrar__prenda__screen_8dart_aa1b4bc9e8ce05c3e2f69a10796960dd5}{cantidad\+Actual}}
+\begin{DoxyCompactList}\small\item\em Cantidad actual de unidades, sincronizada con \mbox{[}Inventario\+Provider\mbox{]}. \end{DoxyCompactList}\item 
+final Text\+Editing\+Controller \mbox{\hyperlink{administrar__prenda__screen_8dart_ac57df3d48e4257ec4d6a1e79e1c58f2b}{\+\_\+precio\+Controller}}
+\begin{DoxyCompactList}\small\item\em Controlador del campo de texto para editar el precio del inventario. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{administrar__prenda__screen_8dart_a4cdc16162580ca594d2a34dd386ec345}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_actualizarCantidadDesdeProvider@{\_actualizarCantidadDesdeProvider}}
+\index{\_actualizarCantidadDesdeProvider@{\_actualizarCantidadDesdeProvider}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_actualizarCantidadDesdeProvider()}{\_actualizarCantidadDesdeProvider()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a4cdc16162580ca594d2a34dd386ec345} 
+void \+\_\+actualizar\+Cantidad\+Desde\+Provider (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sincroniza \mbox{[}cantidad\+Actual\mbox{]} con el stock registrado en \mbox{[}Inventario\+Provider\mbox{]}. 
+
+Busca el item correspondiente a \mbox{[}id\+Inventario\mbox{]} en la lista del provider y actualiza el estado local. Si el item no existe, no realiza cambios. \Hypertarget{administrar__prenda__screen_8dart_adcfded27c545abcf0f4052f5fbc33d2f}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_cargarDatos@{\_cargarDatos}}
+\index{\_cargarDatos@{\_cargarDatos}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_cargarDatos()}{\_cargarDatos()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_adcfded27c545abcf0f4052f5fbc33d2f} 
+Future$<$ void $>$ \+\_\+cargar\+Datos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Carga los datos del inventario desde el repositorio usando \mbox{[}id\+Inventario\mbox{]}. 
+
+Actualiza \mbox{[}\+\_\+precio\+Controller\mbox{]} con el precio actual y establece \mbox{[}cargando\mbox{]} en false al finalizar. \Hypertarget{administrar__prenda__screen_8dart_ab84abce10a6c6e4971b7d982c9837e2e}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_dialogoEliminar@{\_dialogoEliminar}}
+\index{\_dialogoEliminar@{\_dialogoEliminar}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_dialogoEliminar()}{\_dialogoEliminar()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_ab84abce10a6c6e4971b7d982c9837e2e} 
+void \+\_\+dialogo\+Eliminar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Muestra un diálogo de confirmación antes de ejecutar \mbox{[}\+\_\+eliminar\mbox{]}. 
+
+\Hypertarget{administrar__prenda__screen_8dart_a1ca0d2b208801a88e27b58a9c3a746b8}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_dialogoGuardar@{\_dialogoGuardar}}
+\index{\_dialogoGuardar@{\_dialogoGuardar}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_dialogoGuardar()}{\_dialogoGuardar()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a1ca0d2b208801a88e27b58a9c3a746b8} 
+void \+\_\+dialogo\+Guardar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Muestra un diálogo de confirmación antes de ejecutar \mbox{[}\+\_\+guardar\+Cambios\mbox{]}. 
+
+\Hypertarget{administrar__prenda__screen_8dart_a8265f61405ab958ae3ddefd407ecea8e}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_eliminar@{\_eliminar}}
+\index{\_eliminar@{\_eliminar}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_eliminar()}{\_eliminar()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a8265f61405ab958ae3ddefd407ecea8e} 
+Future$<$ void $>$ \+\_\+eliminar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Elimina el registro de inventario identificado por \mbox{[}id\+Inventario\mbox{]}. 
+
+Al completarse, cierra la pantalla devolviendo true al caller. \Hypertarget{administrar__prenda__screen_8dart_a1c2f06d1d498e518a1bb098e60b62660}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_guardarCambios@{\_guardarCambios}}
+\index{\_guardarCambios@{\_guardarCambios}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_guardarCambios()}{\_guardarCambios()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a1c2f06d1d498e518a1bb098e60b62660} 
+Future$<$ void $>$ \+\_\+guardar\+Cambios (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Persiste el precio editado en la base de datos. 
+
+Regla de negocio\+: el precio debe ser un valor numérico válido. Si \mbox{[}inventario\mbox{]} es null o el precio no es parseable, la operación se cancela. Al completarse, cierra la pantalla devolviendo true al caller. \Hypertarget{administrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!build@{build}}
+\index{build@{build}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye la interfaz de la pantalla. 
+
+Muestra un indicador de carga mientras \mbox{[}cargando\mbox{]} es true. Si \mbox{[}inventario\mbox{]} es null tras la carga, muestra un mensaje de error. En caso exitoso, renderiza los datos de la prenda, el campo de precio, el acceso a \mbox{[}Administrar\+Cantidad\+Screen\mbox{]}, y los botones de guardar y eliminar. \Hypertarget{administrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!initState@{initState}}
+\index{initState@{initState}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{initState()}{initState()}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_ab339d53d3945a16dfdd20004616a8ddc} 
+override void init\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{administrar__prenda__screen_8dart_a4d5a1f300e0fb60a8ee82e7d88ad1e32}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_inventarioRepo@{\_inventarioRepo}}
+\index{\_inventarioRepo@{\_inventarioRepo}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepo}{\_inventarioRepo}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a4d5a1f300e0fb60a8ee82e7d88ad1e32} 
+class Administrar\+Prenda\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+inventario\+Repo = \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}}()}
+
+
+
+Estado interno de \mbox{[}Administrar\+Prenda\+Screen\mbox{]}. 
+
+Gestiona la carga del inventario, la edición del precio, la actualización de cantidad y las operaciones de guardado y eliminación. Repositorio de acceso a datos del inventario. \Hypertarget{administrar__prenda__screen_8dart_ac57df3d48e4257ec4d6a1e79e1c58f2b}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!\_precioController@{\_precioController}}
+\index{\_precioController@{\_precioController}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_precioController}{\_precioController}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_ac57df3d48e4257ec4d6a1e79e1c58f2b} 
+final Text\+Editing\+Controller \+\_\+precio\+Controller}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ TextEditingController()}
+
+\end{DoxyCode}
+
+
+Controlador del campo de texto para editar el precio del inventario. 
+
+\Hypertarget{administrar__prenda__screen_8dart_aa1b4bc9e8ce05c3e2f69a10796960dd5}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!cantidadActual@{cantidadActual}}
+\index{cantidadActual@{cantidadActual}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{cantidadActual}{cantidadActual}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_aa1b4bc9e8ce05c3e2f69a10796960dd5} 
+late int cantidad\+Actual}
+
+
+
+Cantidad actual de unidades, sincronizada con \mbox{[}Inventario\+Provider\mbox{]}. 
+
+\Hypertarget{administrar__prenda__screen_8dart_a96da6bdd9a91ee05f23e9955c09ffedc}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!cargando@{cargando}}
+\index{cargando@{cargando}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{cargando}{cargando}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a96da6bdd9a91ee05f23e9955c09ffedc} 
+bool cargando = true}
+
+
+
+Indica si los datos del inventario están siendo cargados. 
+
+\Hypertarget{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699}\index{administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}!inventario@{inventario}}
+\index{inventario@{inventario}!administrar\_prenda\_screen.dart@{administrar\_prenda\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{inventario}{inventario}}
+{\footnotesize\ttfamily \label{administrar__prenda__screen_8dart_a899ba0e84118fed6c327570ac4e34699} 
+Inventario inventario}
+
+
+
+Instancia del inventario cargado desde la base de datos. 
+
+Es null mientras se encuentra en estado de carga. 

@@ -1,0 +1,70 @@
+\doxysection{Referencia de la clase Qr\+Use\+Case}
+\hypertarget{class_qr_use_case}{}\label{class_qr_use_case}\index{QrUseCase@{QrUseCase}}
+
+
+Caso de uso que gestiona la interpretación y validación de códigos QR para la identificación de unidades físicas de inventario.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_qr_use_case_ae491a6f11c341d4fe07944c137f4ffff}{Qr\+Use\+Case}} (this.\+unidad\+Repository)
+\item 
+Future$<$ Unidad?$>$ \mbox{\hyperlink{class_qr_use_case_a43bf7bfe899d475b72b360e89c83de1b}{obtener\+Unidad}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr) async
+\begin{DoxyCompactList}\small\item\em Extrae el identificador numérico del contenido del QR y retorna la unidad correspondiente si existe y está activa. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_qr_use_case_a9b4559c308e54f51c7811faf390dc03e}{existe\+Qr}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr) async
+\begin{DoxyCompactList}\small\item\em Verifica si el contenido del QR corresponde a una unidad registrada en el sistema, independientemente de si está activa o no. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} \mbox{\hyperlink{class_qr_use_case_a54f5d2301fe1dbf45fee4cef0b2c474b}{unidad\+Repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que gestiona la interpretación y validación de códigos QR para la identificación de unidades físicas de inventario. 
+
+\doxysubsection{Documentación de constructores y destructores}
+\Hypertarget{class_qr_use_case_ae491a6f11c341d4fe07944c137f4ffff}\index{QrUseCase@{QrUseCase}!QrUseCase@{QrUseCase}}
+\index{QrUseCase@{QrUseCase}!QrUseCase@{QrUseCase}}
+\doxysubsubsection{\texorpdfstring{QrUseCase()}{QrUseCase()}}
+{\footnotesize\ttfamily \label{class_qr_use_case_ae491a6f11c341d4fe07944c137f4ffff} 
+Qr\+Use\+Case\+::\+Qr\+Use\+Case (\begin{DoxyParamCaption}\item[{this.}]{unidad\+Repository}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_qr_use_case_a9b4559c308e54f51c7811faf390dc03e}\index{QrUseCase@{QrUseCase}!existeQr@{existeQr}}
+\index{existeQr@{existeQr}!QrUseCase@{QrUseCase}}
+\doxysubsubsection{\texorpdfstring{existeQr()}{existeQr()}}
+{\footnotesize\ttfamily \label{class_qr_use_case_a9b4559c308e54f51c7811faf390dc03e} 
+Future$<$ bool $>$ Qr\+Use\+Case\+::existe\+Qr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Verifica si el contenido del QR corresponde a una unidad registrada en el sistema, independientemente de si está activa o no. 
+
+Retorna false si el contenido no es un número entero válido. \Hypertarget{class_qr_use_case_a43bf7bfe899d475b72b360e89c83de1b}\index{QrUseCase@{QrUseCase}!obtenerUnidad@{obtenerUnidad}}
+\index{obtenerUnidad@{obtenerUnidad}!QrUseCase@{QrUseCase}}
+\doxysubsubsection{\texorpdfstring{obtenerUnidad()}{obtenerUnidad()}}
+{\footnotesize\ttfamily \label{class_qr_use_case_a43bf7bfe899d475b72b360e89c83de1b} 
+Future$<$ Unidad?$>$ Qr\+Use\+Case\+::obtener\+Unidad (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Extrae el identificador numérico del contenido del QR y retorna la unidad correspondiente si existe y está activa. 
+
+Utiliza una expresión regular para obtener la primera secuencia de dígitos del QR, lo que permite tolerar formatos con prefijos o sufijos de texto. Retorna null si el QR no contiene un número válido, si la unidad no existe o si está inactiva. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_qr_use_case_a54f5d2301fe1dbf45fee4cef0b2c474b}\index{QrUseCase@{QrUseCase}!unidadRepository@{unidadRepository}}
+\index{unidadRepository@{unidadRepository}!QrUseCase@{QrUseCase}}
+\doxysubsubsection{\texorpdfstring{unidadRepository}{unidadRepository}}
+{\footnotesize\ttfamily \label{class_qr_use_case_a54f5d2301fe1dbf45fee4cef0b2c474b} 
+final \mbox{\hyperlink{class_unidad_repository}{Unidad\+Repository}} Qr\+Use\+Case\+::unidad\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{qr__usecase_8dart}{qr\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

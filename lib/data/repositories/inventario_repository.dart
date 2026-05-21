@@ -1,3 +1,5 @@
+// lib/data/repositories/inventario_repository.dart
+
 import 'package:sqflite/sqflite.dart';
 import '../database/database_helper.dart';
 import '../../models/models.dart';
@@ -5,7 +7,6 @@ import '../../models/models.dart';
 /// Repositorio que gestiona las operaciones de acceso a datos
 /// para la tabla de inventario y sus consultas relacionadas con stock.
 class InventarioRepository {
-
   Future<Database> get _db async => await DatabaseHelper.instance.database;
 
   /// Inserta un nuevo registro de inventario.
@@ -97,11 +98,7 @@ class InventarioRepository {
   Future<int> eliminar(int id) async {
     final db = await _db;
 
-    return await db.delete(
-      'inventario',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    return await db.delete('inventario', where: 'id = ?', whereArgs: [id]);
   }
 
   /// Retorna el conteo de unidades activas asociadas a un registro de inventario.
@@ -134,9 +131,7 @@ class InventarioRepository {
         ? 'i.id_escuela = ? AND i.id_prenda = ?'
         : 'i.id_escuela = ?';
 
-    final args = idPrenda != null
-        ? [idEscuela, idPrenda]
-        : [idEscuela];
+    final args = idPrenda != null ? [idEscuela, idPrenda] : [idEscuela];
 
     return await db.rawQuery('''
       SELECT 
@@ -160,11 +155,10 @@ class InventarioRepository {
   /// Retorna el inventario completo de todas las escuelas con nombre de escuela,
   /// prenda, talla, precio y stock actual calculado por subconsulta.
   /// Ordenado por escuela, prenda y talla de forma ascendente.
-  Future<List<Map<String, dynamic>>>
-    obtenerInventarioCompleto() async {
-  final db = await _db;
+  Future<List<Map<String, dynamic>>> obtenerInventarioCompleto() async {
+    final db = await _db;
 
-  final resultado = await db.rawQuery('''
+    final resultado = await db.rawQuery('''
     SELECT 
       e.nombre AS escuela,
       p.nombre AS prenda,
@@ -198,18 +192,15 @@ class InventarioRepository {
       t.talla ASC
   ''');
 
-  return resultado;
-}
+    return resultado;
+  }
 
   /// Retorna los registros de inventario cuyo stock activo es igual a cero.
   /// Utilizado por [AlertasStockUseCase] para generar alertas de agotado.
-  Future<List<Map<String, dynamic>>>
-    obtenerStockAgotado()
-    async {
+  Future<List<Map<String, dynamic>>> obtenerStockAgotado() async {
+    final db = await _db;
 
-  final db = await _db;
-
-  return await db.rawQuery('''
+    return await db.rawQuery('''
 
     SELECT
 
@@ -256,18 +247,15 @@ class InventarioRepository {
       p.nombre,
       t.talla
   ''');
-}
+  }
 
   /// Retorna los registros de inventario con stock activo entre 1 y 3 unidades (inclusive).
   /// Utilizado por [AlertasStockUseCase] para generar alertas de stock crítico.
   /// Los resultados se ordenan por stock ascendente para priorizar los más críticos.
-  Future<List<Map<String, dynamic>>>
-    obtenerStockCritico()
-    async {
+  Future<List<Map<String, dynamic>>> obtenerStockCritico() async {
+    final db = await _db;
 
-  final db = await _db;
-
-  return await db.rawQuery('''
+    return await db.rawQuery('''
 
     SELECT
 
@@ -325,5 +313,5 @@ class InventarioRepository {
       p.nombre,
       t.talla
   ''');
-}
+  }
 }

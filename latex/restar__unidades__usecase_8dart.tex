@@ -1,0 +1,95 @@
+\doxysection{Referencia del archivo lib/business/usecases/restar\+\_\+unidades\+\_\+usecase.dart}
+\hypertarget{restar__unidades__usecase_8dart}{}\label{restar__unidades__usecase_8dart}\index{lib/business/usecases/restar\_unidades\_usecase.dart@{lib/business/usecases/restar\_unidades\_usecase.dart}}
+{\ttfamily import data;}\newline
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}} \{ \newline
+\mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fad8b76af209cd7ba83b4ebf33ba1637b2}{ok}}
+, \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3facd38fc19e6757f4b6a44d576f4f138a1}{qr\+Invalido}}
+, \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fae1536c781bf1e28d700e479dcbecf1f4}{no\+Existe}}
+, \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fa12b2a51fe65beda211ed6d4692c8103a}{no\+Pertenece}}
+, \newline
+\mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fa5999da8d556db0f9b052cd9b8a60521f}{ya\+Desactivada}}
+ \}
+\begin{DoxyCompactList}\small\item\em Define los posibles resultados de intentar desactivar una unidad mediante QR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{restar__unidades__usecase_8dart_a29a954ded696ec5a00a9fec6e0e1b91d}{Restar\+Unidades\+Use\+Case}} (\mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{this.\+unidad\+Repository}})
+\item 
+Future$<$ \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}} $>$ \mbox{\hyperlink{restar__unidades__usecase_8dart_ae69c12eeaa8ca1b047d5315e83226fcb}{ejecutar}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} qr, int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}) async
+\begin{DoxyCompactList}\small\item\em Ejecuta el proceso de desactivación de una unidad a partir de su código QR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}} \mbox{\hyperlink{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}{unidad\+Repository}}
+\begin{DoxyCompactList}\small\item\em Caso de uso que gestiona la baja de una unidad física de inventario mediante escaneo QR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!ResultadoRestarUnidad@{ResultadoRestarUnidad}}
+\index{ResultadoRestarUnidad@{ResultadoRestarUnidad}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{ResultadoRestarUnidad}{ResultadoRestarUnidad}}
+{\footnotesize\ttfamily \label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+enum \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}}}
+
+
+
+Define los posibles resultados de intentar desactivar una unidad mediante QR. 
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ok@{ok}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!ok@{ok}}}\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fad8b76af209cd7ba83b4ebf33ba1637b2}\label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+ok&La unidad fue desactivada correctamente. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{qrInvalido@{qrInvalido}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!qrInvalido@{qrInvalido}}}\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3facd38fc19e6757f4b6a44d576f4f138a1}\label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+qr\+Invalido&El contenido del QR no contiene un identificador numérico válido. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{noExiste@{noExiste}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!noExiste@{noExiste}}}\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fae1536c781bf1e28d700e479dcbecf1f4}\label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+no\+Existe&No existe ninguna unidad con el identificador extraído del QR. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{noPertenece@{noPertenece}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!noPertenece@{noPertenece}}}\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fa12b2a51fe65beda211ed6d4692c8103a}\label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+no\+Pertenece&La unidad existe pero no pertenece al inventario indicado. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{yaDesactivada@{yaDesactivada}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!yaDesactivada@{yaDesactivada}}}\Hypertarget{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3fa5999da8d556db0f9b052cd9b8a60521f}\label{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f} 
+ya\+Desactivada&La unidad ya estaba desactivada previamente. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{restar__unidades__usecase_8dart_ae69c12eeaa8ca1b047d5315e83226fcb}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!ejecutar@{ejecutar}}
+\index{ejecutar@{ejecutar}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{ejecutar()}{ejecutar()}}
+{\footnotesize\ttfamily \label{restar__unidades__usecase_8dart_ae69c12eeaa8ca1b047d5315e83226fcb} 
+Future$<$ \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}} $>$ ejecutar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{qr}{, }\item[{int}]{id\+Inventario}{}\end{DoxyParamCaption})}
+
+
+
+Ejecuta el proceso de desactivación de una unidad a partir de su código QR. 
+
+Extrae la primera secuencia numérica del QR para obtener el identificador. Valida que la unidad exista, esté activa y pertenezca al inventario recibido antes de proceder con la desactivación. Retorna un \mbox{[}Resultado\+Restar\+Unidad\mbox{]} que describe el resultado de la operación. Regla de negocio\+: una unidad ya desactivada no puede volver a restarse, ya que representa una prenda que fue vendida o dada de baja con anterioridad.\Hypertarget{restar__unidades__usecase_8dart_a29a954ded696ec5a00a9fec6e0e1b91d}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!RestarUnidadesUseCase@{RestarUnidadesUseCase}}
+\index{RestarUnidadesUseCase@{RestarUnidadesUseCase}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{RestarUnidadesUseCase()}{RestarUnidadesUseCase()}}
+{\footnotesize\ttfamily \label{restar__unidades__usecase_8dart_a29a954ded696ec5a00a9fec6e0e1b91d} 
+Restar\+Unidades\+Use\+Case (\begin{DoxyParamCaption}\item[{this.}]{unidad\+Repository}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be}\index{restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}!unidadRepository@{unidadRepository}}
+\index{unidadRepository@{unidadRepository}!restar\_unidades\_usecase.dart@{restar\_unidades\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{unidadRepository}{unidadRepository}}
+{\footnotesize\ttfamily \label{restar__unidades__usecase_8dart_af0e7ab2df122fd24402ce5f66c2cb6be} 
+enum \mbox{\hyperlink{restar__unidades__usecase_8dart_a5cd35a77a1e5224cd2bfc0fb8496df3f}{Resultado\+Restar\+Unidad}} unidad\+Repository}
+
+
+
+Caso de uso que gestiona la baja de una unidad física de inventario mediante escaneo QR. 
+
+Extrae el identificador del QR, valida la existencia y estado de la unidad, verifica su pertenencia al inventario indicado y la desactiva si todas las validaciones son satisfactorias. 

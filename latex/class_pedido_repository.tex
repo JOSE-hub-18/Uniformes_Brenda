@@ -1,0 +1,207 @@
+\doxysection{Referencia de la clase Pedido\+Repository}
+\hypertarget{class_pedido_repository}{}\label{class_pedido_repository}\index{PedidoRepository@{PedidoRepository}}
+
+
+Repositorio encargado de gestionar las operaciones relacionadas con pedidos y detalles de pedido en la base de datos.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_ac7dc359b1ff8deb4881b5b7547ef343f}{insertar\+Pedido\+YDetalles}} (\{ required Pedido \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}{pedido}}, required List$<$ Detalle\+Pedido $>$ detalles, \}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Inserta un pedido junto con todos sus detalles asociados dentro de una transacción atómica. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Pedido $>$ $>$ \mbox{\hyperlink{class_pedido_repository_aad21ccfbe0327fe8bd89a25bed67ccff}{obtener\+Todos}} () \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todos los pedidos registrados ordenados por fecha descendente. \end{DoxyCompactList}\item 
+Future$<$ Pedido?$>$ \mbox{\hyperlink{class_pedido_repository_a2e3b1d72016ccc8bac67e9eb98b7969f}{obtener\+Por\+Id}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene un pedido específico mediante su identificador. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Detalle\+Pedido $>$ $>$ \mbox{\hyperlink{class_pedido_repository_aed4b89f01c6a701eb66242e05ab5f988}{obtener\+Detalles}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene todos los detalles asociados a un pedido. \end{DoxyCompactList}\item 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ \mbox{\hyperlink{class_pedido_repository_a60a2ae7c1bda90e28a82d8aa33aa485d}{obtener\+Detalles\+Con\+Info}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}},) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene los detalles de un pedido junto con información descriptiva proveniente de tablas relacionadas. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_aeebb97dca6da7e9da2f9f13a2f4f2941}{actualizar\+Estado}} (\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required Estado\+Pedido estado, \}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Actualiza el estado actual de un pedido. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_adc16280ce033bec5c991300b653592fc}{registrar\+Unidad}} (\{ required int id\+Detalle\+Pedido, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, \}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Registra una unidad física dentro de un detalle de pedido. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_a09ca2ebb5a8a2e511fca8bc99b9798a8}{desregistrar\+Unidad}} (int id\+Detalle\+Pedido) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina el registro de una unidad asociada a un detalle de pedido. \end{DoxyCompactList}\item 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ \mbox{\hyperlink{class_pedido_repository_a62e892b242dd2943fcf42ecfc2c92016}{obtener\+Registro\+Activo\+Por\+Unidad}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}},) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene el registro activo asociado a una unidad específica. \end{DoxyCompactList}\item 
+Future$<$ bool $>$ \mbox{\hyperlink{class_pedido_repository_aac2ffa70999b02f11fa6aaaab0e4972d}{pedido\+Completo}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Verifica si todos los detalles de un pedido han sido registrados. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_a66c77dc0bf69523bdf796174ee19560c}{eliminar\+Detalle\+Pedido}} (int id\+Detalle\+Pedido) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina un detalle específico de pedido. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_ac72af7892df182b1eff617a6c860d7b1}{contar\+Detalles}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad total de detalles asociados a un pedido. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_pedido_repository_ab31be437c1bd3244d91fe0971f300a3c}{eliminar\+Pedido\+Completo}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina un pedido y todos sus detalles asociados dentro de una transacción. \end{DoxyCompactList}\item 
+Future$<$ int $>$ \mbox{\hyperlink{class_pedido_repository_ab45136f7d43231c1e5badb5df9a2f9ef}{eliminar}} (int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}) \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}}
+\begin{DoxyCompactList}\small\item\em Elimina un pedido mediante su identificador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get \+\_\+db \mbox{\hyperlink{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}{async}} =$>$ await Database\+Helper.\+instance.\+database
+\begin{DoxyCompactList}\small\item\em Obtiene una instancia activa de la base de datos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Repositorio encargado de gestionar las operaciones relacionadas con pedidos y detalles de pedido en la base de datos. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_pedido_repository_aeebb97dca6da7e9da2f9f13a2f4f2941}\index{PedidoRepository@{PedidoRepository}!actualizarEstado@{actualizarEstado}}
+\index{actualizarEstado@{actualizarEstado}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{actualizarEstado()}{actualizarEstado()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_aeebb97dca6da7e9da2f9f13a2f4f2941} 
+Future$<$ int $>$ Pedido\+Repository\+::actualizar\+Estado (\begin{DoxyParamCaption}\item[{\{ required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a568e436532e24bec3009f4d95a3e7d78}{id\+Pedido}}, required Estado\+Pedido estado, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Actualiza el estado actual de un pedido. 
+
+\Hypertarget{class_pedido_repository_ac72af7892df182b1eff617a6c860d7b1}\index{PedidoRepository@{PedidoRepository}!contarDetalles@{contarDetalles}}
+\index{contarDetalles@{contarDetalles}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{contarDetalles()}{contarDetalles()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_ac72af7892df182b1eff617a6c860d7b1} 
+Future$<$ int $>$ Pedido\+Repository\+::contar\+Detalles (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene la cantidad total de detalles asociados a un pedido. 
+
+\Hypertarget{class_pedido_repository_a09ca2ebb5a8a2e511fca8bc99b9798a8}\index{PedidoRepository@{PedidoRepository}!desregistrarUnidad@{desregistrarUnidad}}
+\index{desregistrarUnidad@{desregistrarUnidad}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{desregistrarUnidad()}{desregistrarUnidad()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a09ca2ebb5a8a2e511fca8bc99b9798a8} 
+Future$<$ int $>$ Pedido\+Repository\+::desregistrar\+Unidad (\begin{DoxyParamCaption}\item[{int}]{id\+Detalle\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina el registro de una unidad asociada a un detalle de pedido. 
+
+La operación restablece el estado de registro a pendiente. \Hypertarget{class_pedido_repository_ab45136f7d43231c1e5badb5df9a2f9ef}\index{PedidoRepository@{PedidoRepository}!eliminar@{eliminar}}
+\index{eliminar@{eliminar}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{eliminar()}{eliminar()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_ab45136f7d43231c1e5badb5df9a2f9ef} 
+Future$<$ int $>$ Pedido\+Repository\+::eliminar (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un pedido mediante su identificador. 
+
+\Hypertarget{class_pedido_repository_a66c77dc0bf69523bdf796174ee19560c}\index{PedidoRepository@{PedidoRepository}!eliminarDetallePedido@{eliminarDetallePedido}}
+\index{eliminarDetallePedido@{eliminarDetallePedido}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{eliminarDetallePedido()}{eliminarDetallePedido()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a66c77dc0bf69523bdf796174ee19560c} 
+Future$<$ int $>$ Pedido\+Repository\+::eliminar\+Detalle\+Pedido (\begin{DoxyParamCaption}\item[{int}]{id\+Detalle\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un detalle específico de pedido. 
+
+\Hypertarget{class_pedido_repository_ab31be437c1bd3244d91fe0971f300a3c}\index{PedidoRepository@{PedidoRepository}!eliminarPedidoCompleto@{eliminarPedidoCompleto}}
+\index{eliminarPedidoCompleto@{eliminarPedidoCompleto}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{eliminarPedidoCompleto()}{eliminarPedidoCompleto()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_ab31be437c1bd3244d91fe0971f300a3c} 
+Future$<$ void $>$ Pedido\+Repository\+::eliminar\+Pedido\+Completo (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Elimina un pedido y todos sus detalles asociados dentro de una transacción. 
+
+La eliminación respeta la integridad lógica entre tablas relacionadas. \Hypertarget{class_pedido_repository_ac7dc359b1ff8deb4881b5b7547ef343f}\index{PedidoRepository@{PedidoRepository}!insertarPedidoYDetalles@{insertarPedidoYDetalles}}
+\index{insertarPedidoYDetalles@{insertarPedidoYDetalles}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{insertarPedidoYDetalles()}{insertarPedidoYDetalles()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_ac7dc359b1ff8deb4881b5b7547ef343f} 
+Future$<$ int $>$ Pedido\+Repository\+::insertar\+Pedido\+YDetalles (\begin{DoxyParamCaption}\item[{\{ required Pedido \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93a0c36018197df50bedd39964b57cd2c20}{pedido}}, required List$<$ Detalle\+Pedido $>$ detalles, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Inserta un pedido junto con todos sus detalles asociados dentro de una transacción atómica. 
+
+La operación garantiza consistencia entre la tabla de pedidos y la tabla de detalle\+\_\+pedido. \Hypertarget{class_pedido_repository_aed4b89f01c6a701eb66242e05ab5f988}\index{PedidoRepository@{PedidoRepository}!obtenerDetalles@{obtenerDetalles}}
+\index{obtenerDetalles@{obtenerDetalles}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerDetalles()}{obtenerDetalles()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_aed4b89f01c6a701eb66242e05ab5f988} 
+Future$<$ List$<$ Detalle\+Pedido $>$ $>$ Pedido\+Repository\+::obtener\+Detalles (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todos los detalles asociados a un pedido. 
+
+\Hypertarget{class_pedido_repository_a60a2ae7c1bda90e28a82d8aa33aa485d}\index{PedidoRepository@{PedidoRepository}!obtenerDetallesConInfo@{obtenerDetallesConInfo}}
+\index{obtenerDetallesConInfo@{obtenerDetallesConInfo}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerDetallesConInfo()}{obtenerDetallesConInfo()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a60a2ae7c1bda90e28a82d8aa33aa485d} 
+Future$<$ List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ $>$ Pedido\+Repository\+::obtener\+Detalles\+Con\+Info (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene los detalles de un pedido junto con información descriptiva proveniente de tablas relacionadas. 
+
+La consulta integra información de escuela, prenda y talla asociadas al inventario. \Hypertarget{class_pedido_repository_a2e3b1d72016ccc8bac67e9eb98b7969f}\index{PedidoRepository@{PedidoRepository}!obtenerPorId@{obtenerPorId}}
+\index{obtenerPorId@{obtenerPorId}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerPorId()}{obtenerPorId()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a2e3b1d72016ccc8bac67e9eb98b7969f} 
+Future$<$ Pedido?$>$ Pedido\+Repository\+::obtener\+Por\+Id (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene un pedido específico mediante su identificador. 
+
+Retorna null si no existe un registro asociado. \Hypertarget{class_pedido_repository_a62e892b242dd2943fcf42ecfc2c92016}\index{PedidoRepository@{PedidoRepository}!obtenerRegistroActivoPorUnidad@{obtenerRegistroActivoPorUnidad}}
+\index{obtenerRegistroActivoPorUnidad@{obtenerRegistroActivoPorUnidad}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerRegistroActivoPorUnidad()}{obtenerRegistroActivoPorUnidad()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a62e892b242dd2943fcf42ecfc2c92016} 
+Future$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$?$>$ Pedido\+Repository\+::obtener\+Registro\+Activo\+Por\+Unidad (\begin{DoxyParamCaption}\item[{int}]{id\+Unidad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene el registro activo asociado a una unidad específica. 
+
+Se considera activo cuando el detalle se encuentra marcado como registrado. \Hypertarget{class_pedido_repository_aad21ccfbe0327fe8bd89a25bed67ccff}\index{PedidoRepository@{PedidoRepository}!obtenerTodos@{obtenerTodos}}
+\index{obtenerTodos@{obtenerTodos}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{obtenerTodos()}{obtenerTodos()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_aad21ccfbe0327fe8bd89a25bed67ccff} 
+Future$<$ List$<$ Pedido $>$ $>$ Pedido\+Repository\+::obtener\+Todos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene todos los pedidos registrados ordenados por fecha descendente. 
+
+\Hypertarget{class_pedido_repository_aac2ffa70999b02f11fa6aaaab0e4972d}\index{PedidoRepository@{PedidoRepository}!pedidoCompleto@{pedidoCompleto}}
+\index{pedidoCompleto@{pedidoCompleto}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{pedidoCompleto()}{pedidoCompleto()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_aac2ffa70999b02f11fa6aaaab0e4972d} 
+Future$<$ bool $>$ Pedido\+Repository\+::pedido\+Completo (\begin{DoxyParamCaption}\item[{int}]{id\+Pedido}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Verifica si todos los detalles de un pedido han sido registrados. 
+
+Un pedido se considera completo cuando no existen registros pendientes. \Hypertarget{class_pedido_repository_adc16280ce033bec5c991300b653592fc}\index{PedidoRepository@{PedidoRepository}!registrarUnidad@{registrarUnidad}}
+\index{registrarUnidad@{registrarUnidad}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{registrarUnidad()}{registrarUnidad()}}
+{\footnotesize\ttfamily \label{class_pedido_repository_adc16280ce033bec5c991300b653592fc} 
+Future$<$ int $>$ Pedido\+Repository\+::registrar\+Unidad (\begin{DoxyParamCaption}\item[{\{ required int id\+Detalle\+Pedido, required int \mbox{\hyperlink{nueva__orden__usecase_8dart_a02970868f5973f099b5437bb98a04bfd}{id\+Unidad}}, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Registra una unidad física dentro de un detalle de pedido. 
+
+La operación marca el detalle como registrado y asocia la unidad correspondiente. 
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466}\index{PedidoRepository@{PedidoRepository}!async@{async}}
+\index{async@{async}!PedidoRepository@{PedidoRepository}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_pedido_repository_a3c7d9393c263c76437a912afbe92c466} 
+Future$<$Database$>$ get \+\_\+db Pedido\+Repository\+::async =$>$ await Database\+Helper.\+instance.\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Obtiene una instancia activa de la base de datos. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/repositories/\mbox{\hyperlink{pedido__repository_8dart}{pedido\+\_\+repository.\+dart}}\end{DoxyCompactItemize}

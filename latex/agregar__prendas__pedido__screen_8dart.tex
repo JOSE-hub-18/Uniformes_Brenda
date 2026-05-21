@@ -1,0 +1,112 @@
+\doxysection{Referencia del archivo lib/presentation/screens/agregar\+\_\+prendas\+\_\+pedido\+\_\+screen.dart}
+\hypertarget{agregar__prendas__pedido__screen_8dart}{}\label{agregar__prendas__pedido__screen_8dart}\index{lib/presentation/screens/agregar\_prendas\_pedido\_screen.dart@{lib/presentation/screens/agregar\_prendas\_pedido\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}}
+\begin{DoxyCompactList}\small\item\em Pantalla para modificar la cantidad de unidades de un inventario específico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+Widget \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_a68a993dd0f15979ffe266a3befdca51a}{\+\_\+build\+Dropdown}} (\{required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} hint, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? value, required List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required void Function(\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?) on\+Changed\})
+\begin{DoxyCompactList}\small\item\em Construye un dropdown estilizado con sombra y bordes redondeados. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}{build}} (Build\+Context context)
+\begin{DoxyCompactList}\small\item\em Construye la interfaz de la pantalla. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+class Agregar\+Prendas\+Pedido\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_a6bdaa07e53eb9e0d2d5cd5c1845d6152}{\+\_\+escuela\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em Estado interno de \mbox{[}Agregar\+Prendas\+Pedido\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_ae64c8cb1efb153cc54328357f948c037}{\+\_\+prenda\+Seleccionada}}
+\begin{DoxyCompactList}\small\item\em Prenda actualmente seleccionada en el filtro. Null si no hay selección. \end{DoxyCompactList}\item 
+final List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_abf992621ce2b6c2f9388b8c8ba51a979}{\+\_\+escuelas}} = \mbox{[}\textquotesingle{}UACJ\textquotesingle{}, \textquotesingle{}ESC. PRIMARIA FLOR\textquotesingle{}, \textquotesingle{}CBTIS 114\textquotesingle{}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista estática de escuelas disponibles para el filtro. \end{DoxyCompactList}\item 
+final List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_abc9c7b4545786b968d0585a41f8f4c60}{\+\_\+prendas}} = \mbox{[}\textquotesingle{}Playera\textquotesingle{}, \textquotesingle{}Falda\textquotesingle{}, \textquotesingle{}Pantalón\textquotesingle{}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Lista estática de tipos de prenda disponibles para el filtro. \end{DoxyCompactList}\item 
+final List$<$ Map$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic $>$ $>$ \mbox{\hyperlink{agregar__prendas__pedido__screen_8dart_a26de1282b26b7cd19aa17fdfc8d44a49}{\+\_\+prendas\+Disponibles}}
+\begin{DoxyCompactList}\small\item\em Lista estática de prendas disponibles en inventario con sus atributos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{agregar__prendas__pedido__screen_8dart_a68a993dd0f15979ffe266a3befdca51a}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_buildDropdown@{\_buildDropdown}}
+\index{\_buildDropdown@{\_buildDropdown}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_buildDropdown()}{\_buildDropdown()}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_a68a993dd0f15979ffe266a3befdca51a} 
+Widget \+\_\+build\+Dropdown (\begin{DoxyParamCaption}\item[{\{required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} hint, required \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}? value, required List$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} $>$ \mbox{\hyperlink{inventario__screen_8dart_aab4dcdf144ad9373f99859918bc6b62c}{items}}, required void Function(\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?) on\+Changed\}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Construye un dropdown estilizado con sombra y bordes redondeados. 
+
+Recibe el texto de \mbox{[}hint\mbox{]}, el \mbox{[}value\mbox{]} seleccionado, la lista de \mbox{[}items\mbox{]} y el callback \mbox{[}on\+Changed\mbox{]} a ejecutar al cambiar la selección. \Hypertarget{agregar__prendas__pedido__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!build@{build}}
+\index{build@{build}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_ab022cbdb8080a3d9d6ccf33cead2b33a} 
+override Widget build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye la interfaz de la pantalla. 
+
+Compone los filtros de escuela y prenda, la lista de inventario disponible y los botones de guardar y cancelar. 
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{agregar__prendas__pedido__screen_8dart_abf992621ce2b6c2f9388b8c8ba51a979}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_escuelas@{\_escuelas}}
+\index{\_escuelas@{\_escuelas}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_escuelas}{\_escuelas}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_abf992621ce2b6c2f9388b8c8ba51a979} 
+final List$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}$>$ \+\_\+escuelas = \mbox{[}\textquotesingle{}UACJ\textquotesingle{}, \textquotesingle{}ESC. PRIMARIA FLOR\textquotesingle{}, \textquotesingle{}CBTIS 114\textquotesingle{}\mbox{]}}
+
+
+
+Lista estática de escuelas disponibles para el filtro. 
+
+\Hypertarget{agregar__prendas__pedido__screen_8dart_a6bdaa07e53eb9e0d2d5cd5c1845d6152}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_escuelaSeleccionada@{\_escuelaSeleccionada}}
+\index{\_escuelaSeleccionada@{\_escuelaSeleccionada}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_escuelaSeleccionada}{\_escuelaSeleccionada}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_a6bdaa07e53eb9e0d2d5cd5c1845d6152} 
+class Agregar\+Prendas\+Pedido\+Screen extends \mbox{\hyperlink{class_stateful_widget}{Stateful\+Widget}} \+\_\+escuela\+Seleccionada}
+
+
+
+Estado interno de \mbox{[}Agregar\+Prendas\+Pedido\+Screen\mbox{]}. 
+
+Gestiona los filtros de escuela y prenda, y la lista de inventario disponible. Escuela actualmente seleccionada en el filtro. Null si no hay selección. \Hypertarget{agregar__prendas__pedido__screen_8dart_abc9c7b4545786b968d0585a41f8f4c60}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_prendas@{\_prendas}}
+\index{\_prendas@{\_prendas}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_prendas}{\_prendas}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_abc9c7b4545786b968d0585a41f8f4c60} 
+final List$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}$>$ \+\_\+prendas = \mbox{[}\textquotesingle{}Playera\textquotesingle{}, \textquotesingle{}Falda\textquotesingle{}, \textquotesingle{}Pantalón\textquotesingle{}\mbox{]}}
+
+
+
+Lista estática de tipos de prenda disponibles para el filtro. 
+
+\Hypertarget{agregar__prendas__pedido__screen_8dart_a26de1282b26b7cd19aa17fdfc8d44a49}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_prendasDisponibles@{\_prendasDisponibles}}
+\index{\_prendasDisponibles@{\_prendasDisponibles}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_prendasDisponibles}{\_prendasDisponibles}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_a26de1282b26b7cd19aa17fdfc8d44a49} 
+final List$<$Map$<$\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}, dynamic$>$ $>$ \+\_\+prendas\+Disponibles}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ [}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{'titulo'}:\ \textcolor{stringliteral}{'ESC.\ PRIMARIA\ FLOR\ -\/\ Playera'},\ \textcolor{stringliteral}{'talla'}:\ \textcolor{charliteral}{'M'},\ \textcolor{stringliteral}{'stock'}:\ 8,\ \textcolor{stringliteral}{'precio'}:\ 120.0\},}
+\DoxyCodeLine{\ \ \ \ \{\textcolor{stringliteral}{'titulo'}:\ \textcolor{stringliteral}{'ESC.\ PRIMARIA\ FLOR\ -\/\ Falda'},\ \textcolor{stringliteral}{'talla'}:\ \textcolor{charliteral}{'M'},\ \textcolor{stringliteral}{'stock'}:\ 3,\ \textcolor{stringliteral}{'precio'}:\ 180.0\},}
+\DoxyCodeLine{\ \ ]}
+
+\end{DoxyCode}
+
+
+Lista estática de prendas disponibles en inventario con sus atributos. 
+
+\Hypertarget{agregar__prendas__pedido__screen_8dart_ae64c8cb1efb153cc54328357f948c037}\index{agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}!\_prendaSeleccionada@{\_prendaSeleccionada}}
+\index{\_prendaSeleccionada@{\_prendaSeleccionada}!agregar\_prendas\_pedido\_screen.dart@{agregar\_prendas\_pedido\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{\_prendaSeleccionada}{\_prendaSeleccionada}}
+{\footnotesize\ttfamily \label{agregar__prendas__pedido__screen_8dart_ae64c8cb1efb153cc54328357f948c037} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \+\_\+prenda\+Seleccionada}
+
+
+
+Prenda actualmente seleccionada en el filtro. Null si no hay selección. 
+

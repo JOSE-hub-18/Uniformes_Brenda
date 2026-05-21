@@ -1,0 +1,75 @@
+\doxysection{Referencia de la clase Registrar\+Inventario\+Use\+Case}
+\hypertarget{class_registrar_inventario_use_case}{}\label{class_registrar_inventario_use_case}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+
+
+Caso de uso que gestiona el registro de items de inventario para una combinación de prenda, escuela y una o más tallas.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}}(\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} prenda\+Repository, required \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} talla\+Repository, required \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} escuela\+Repository, \}) Future$<$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_a67df1508e28dbffc2ba302daaf60531b}{Registrar\+Inventario\+Result}} $>$ \mbox{\hyperlink{class_registrar_inventario_use_case_acd8b949cd13dd10880e2c0df0e42ae44}{ejecutar}} (\{ required int id\+Prenda, required double \mbox{\hyperlink{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}{precio}}, required List$<$ int $>$ ids\+Tallas, required int id\+Escuela, \}) async
+\begin{DoxyCompactList}\small\item\em Registra un item de inventario por cada talla seleccionada para la combinación de prenda y escuela indicadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} \mbox{\hyperlink{class_registrar_inventario_use_case_a469e0d4dbb9d2a2e496ee1d19c761b33}{\+\_\+inventario\+Repository}}
+\item 
+final \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} \mbox{\hyperlink{class_registrar_inventario_use_case_a8dbd866e09658dad647a59dca09bf131}{\+\_\+prenda\+Repository}}
+\item 
+final \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} \mbox{\hyperlink{class_registrar_inventario_use_case_a706beffc139e5846608ab729427f1ae4}{\+\_\+talla\+Repository}}
+\item 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} \mbox{\hyperlink{class_registrar_inventario_use_case_a59a4b63beed51c049de0422d36ffd8a0}{\+\_\+escuela\+Repository}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Caso de uso que gestiona el registro de items de inventario para una combinación de prenda, escuela y una o más tallas. 
+
+Valida la existencia de los catálogos involucrados y aplica la regla de unicidad por combinación antes de insertar cada registro. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_registrar_inventario_use_case_acd8b949cd13dd10880e2c0df0e42ae44}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}!ejecutar@{ejecutar}}
+\index{ejecutar@{ejecutar}!RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+\doxysubsubsection{\texorpdfstring{ejecutar()}{ejecutar()}}
+{\footnotesize\ttfamily \label{class_registrar_inventario_use_case_acd8b949cd13dd10880e2c0df0e42ae44} 
+\mbox{\hyperlink{class_registrar_inventario_use_case}{Registrar\+Inventario\+Use\+Case}}(\{ required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository, required \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} prenda\+Repository, required \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} talla\+Repository, required \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} escuela\+Repository, \}) Future$<$ \mbox{\hyperlink{registrar__inventario__usecase_8dart_a67df1508e28dbffc2ba302daaf60531b}{Registrar\+Inventario\+Result}} $>$ Registrar\+Inventario\+Use\+Case\+::ejecutar (\begin{DoxyParamCaption}\item[{\{ required int id\+Prenda, required double \mbox{\hyperlink{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}{precio}}, required List$<$ int $>$ ids\+Tallas, required int id\+Escuela, \}}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Registra un item de inventario por cada talla seleccionada para la combinación de prenda y escuela indicadas. 
+
+Valida que el precio sea mayor a cero, que se haya seleccionado al menos una talla, y que tanto la prenda como la escuela existan en el sistema. Por cada talla, verifica que no exista ya una combinación registrada antes de intentar la inserción. Los resultados individuales se acumulan y se retornan en un \mbox{[}Registrar\+Inventario\+Result\mbox{]} con el resumen de la operación. Carga previa de todas las tallas requeridas para evitar consultas repetidas al repositorio dentro del ciclo de registro.
+
+Regla de negocio\+: no se permite registrar más de un item de inventario para la misma combinación de escuela, prenda y talla.
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_registrar_inventario_use_case_a59a4b63beed51c049de0422d36ffd8a0}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}!\_escuelaRepository@{\_escuelaRepository}}
+\index{\_escuelaRepository@{\_escuelaRepository}!RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+\doxysubsubsection{\texorpdfstring{\_escuelaRepository}{\_escuelaRepository}}
+{\footnotesize\ttfamily \label{class_registrar_inventario_use_case_a59a4b63beed51c049de0422d36ffd8a0} 
+final \mbox{\hyperlink{class_escuela_repository}{Escuela\+Repository}} Registrar\+Inventario\+Use\+Case\+::\+\_\+escuela\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_registrar_inventario_use_case_a469e0d4dbb9d2a2e496ee1d19c761b33}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}!\_inventarioRepository@{\_inventarioRepository}}
+\index{\_inventarioRepository@{\_inventarioRepository}!RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepository}{\_inventarioRepository}}
+{\footnotesize\ttfamily \label{class_registrar_inventario_use_case_a469e0d4dbb9d2a2e496ee1d19c761b33} 
+final \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} Registrar\+Inventario\+Use\+Case\+::\+\_\+inventario\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_registrar_inventario_use_case_a8dbd866e09658dad647a59dca09bf131}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}!\_prendaRepository@{\_prendaRepository}}
+\index{\_prendaRepository@{\_prendaRepository}!RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+\doxysubsubsection{\texorpdfstring{\_prendaRepository}{\_prendaRepository}}
+{\footnotesize\ttfamily \label{class_registrar_inventario_use_case_a8dbd866e09658dad647a59dca09bf131} 
+final \mbox{\hyperlink{class_prenda_repository}{Prenda\+Repository}} Registrar\+Inventario\+Use\+Case\+::\+\_\+prenda\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_registrar_inventario_use_case_a706beffc139e5846608ab729427f1ae4}\index{RegistrarInventarioUseCase@{RegistrarInventarioUseCase}!\_tallaRepository@{\_tallaRepository}}
+\index{\_tallaRepository@{\_tallaRepository}!RegistrarInventarioUseCase@{RegistrarInventarioUseCase}}
+\doxysubsubsection{\texorpdfstring{\_tallaRepository}{\_tallaRepository}}
+{\footnotesize\ttfamily \label{class_registrar_inventario_use_case_a706beffc139e5846608ab729427f1ae4} 
+final \mbox{\hyperlink{class_talla_repository}{Talla\+Repository}} Registrar\+Inventario\+Use\+Case\+::\+\_\+talla\+Repository\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/business/usecases/\mbox{\hyperlink{registrar__inventario__usecase_8dart}{registrar\+\_\+inventario\+\_\+usecase.\+dart}}\end{DoxyCompactItemize}

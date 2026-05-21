@@ -1,0 +1,150 @@
+\doxysection{Referencia de la clase Database\+Helper}
+\hypertarget{class_database_helper}{}\label{class_database_helper}\index{DatabaseHelper@{DatabaseHelper}}
+
+
+Helper que gestiona el ciclo de vida de la base de datos SQLite local.  
+
+
+\doxysubsubsection*{Métodos privados}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_database_helper}{Database\+Helper}} \mbox{\hyperlink{class_database_helper_aca84e6e94cf4c48118a7e8974ea6fbf0}{\+\_\+internal}} ()
+\item 
+Future$<$ Database $>$ \mbox{\hyperlink{class_database_helper_ab2f56fa788ee87fe2415559f2a69f74e}{\+\_\+init\+DB}} () \mbox{\hyperlink{class_database_helper_a294a5f311c0ba494f95393ae91b1cb7f}{async}}
+\begin{DoxyCompactList}\small\item\em Obtiene la ruta del sistema de archivos y abre la base de datos. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{class_database_helper_ab9c1471492e65a81daac90fe1e9b2f1d}{\+\_\+on\+Create}} (Database db, int version,) \mbox{\hyperlink{class_database_helper_a294a5f311c0ba494f95393ae91b1cb7f}{async}}
+\begin{DoxyCompactList}\small\item\em Crea el esquema completo de la base de datos en la primera ejecución. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos privados}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ Database $>$ get database \mbox{\hyperlink{class_database_helper_a294a5f311c0ba494f95393ae91b1cb7f}{async}}
+\begin{DoxyCompactList}\small\item\em Retorna la instancia de la base de datos, inicializándola si aún no existe. \end{DoxyCompactList}\item 
+return \mbox{\hyperlink{class_database_helper_a9cf80f19b76496b2a831e3344868383b}{\+\_\+database}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos estáticos privados}
+\begin{DoxyCompactItemize}
+\item 
+static final \mbox{\hyperlink{class_database_helper}{Database\+Helper}} \mbox{\hyperlink{class_database_helper_a7077ab449c3e5b76533e12468940fb31}{instance}}
+\begin{DoxyCompactList}\small\item\em Instancia única del helper accesible globalmente. \end{DoxyCompactList}\item 
+static Database \mbox{\hyperlink{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d}{\+\_\+database}}
+\begin{DoxyCompactList}\small\item\em Referencia a la base de datos abierta. Null hasta la primera inicialización. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descripción detallada}
+Helper que gestiona el ciclo de vida de la base de datos SQLite local. 
+
+Implementa el patrón Singleton para garantizar una única instancia de la base de datos durante toda la ejecución de la aplicación. 
+
+\doxysubsection{Documentación de funciones miembro}
+\Hypertarget{class_database_helper_ab2f56fa788ee87fe2415559f2a69f74e}\index{DatabaseHelper@{DatabaseHelper}!\_initDB@{\_initDB}}
+\index{\_initDB@{\_initDB}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{\_initDB()}{\_initDB()}}
+{\footnotesize\ttfamily \label{class_database_helper_ab2f56fa788ee87fe2415559f2a69f74e} 
+Future$<$ Database $>$ Database\+Helper\+::\+\_\+init\+DB (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Obtiene la ruta del sistema de archivos y abre la base de datos. 
+
+Habilita las llaves foráneas mediante PRAGMA en la configuración inicial. El manejador de actualizaciones está definido pero vacío, pendiente de implementación para futuras migraciones de esquema. \Hypertarget{class_database_helper_aca84e6e94cf4c48118a7e8974ea6fbf0}\index{DatabaseHelper@{DatabaseHelper}!\_internal@{\_internal}}
+\index{\_internal@{\_internal}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{\_internal()}{\_internal()}}
+{\footnotesize\ttfamily \label{class_database_helper_aca84e6e94cf4c48118a7e8974ea6fbf0} 
+\mbox{\hyperlink{class_database_helper}{Database\+Helper}} Database\+Helper\+::\+\_\+internal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_database_helper_ab9c1471492e65a81daac90fe1e9b2f1d}\index{DatabaseHelper@{DatabaseHelper}!\_onCreate@{\_onCreate}}
+\index{\_onCreate@{\_onCreate}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{\_onCreate()}{\_onCreate()}}
+{\footnotesize\ttfamily \label{class_database_helper_ab9c1471492e65a81daac90fe1e9b2f1d} 
+Future$<$ void $>$ Database\+Helper\+::\+\_\+on\+Create (\begin{DoxyParamCaption}\item[{Database}]{db}{, }\item[{int}]{version}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Crea el esquema completo de la base de datos en la primera ejecución. 
+
+Define todas las tablas, restricciones de llaves foráneas y unicidad, e inserta los datos iniciales requeridos para el funcionamiento del sistema. Tabla de usuarios del sistema. El campo \mbox{[}usuario\mbox{]} es único y \mbox{[}password\+\_\+hash\mbox{]} almacena el hash SHA-\/256 con salt de la contraseña.
+
+Tabla de escuelas a las que se asocian los registros de inventario.
+
+Catálogo de tipos de prenda disponibles en el sistema.
+
+Catálogo de tallas disponibles. El campo \mbox{[}talla\mbox{]} es único para evitar duplicados en el catálogo.
+
+Tabla de inventario que representa cada combinación única de escuela, prenda y talla con su precio asignado. La restricción UNIQUE sobre (id\+\_\+escuela, id\+\_\+prenda, id\+\_\+talla) garantiza que no existan registros duplicados por combinación.
+
+Tabla de unidades físicas asociadas a un registro de inventario. Cada unidad representa una prenda física identificable por QR. \mbox{[}activo\mbox{]} indica si la unidad está disponible (1) o fue vendida/dada de baja (0). \mbox{[}pendiente\+\_\+impresion\mbox{]} indica si la etiqueta QR aún no ha sido impresa.
+
+Tabla de órdenes que agrupa ventas y pedidos generados en una misma transacción. Permite vincular una venta directa con su pedido asociado dentro de una orden mixta.
+
+Tabla de ventas completadas. Puede estar vinculada a una orden de origen cuando proviene de una transacción mixta con pedido. \mbox{[}estado\mbox{]} por defecto es \textquotesingle{}completada\textquotesingle{} al momento de la inserción.
+
+Tabla de detalle de venta. Cada registro representa una unidad física incluida en la venta con su precio al momento de la transacción.
+
+Tabla de pedidos pendientes de entrega. Puede vincularse a una venta de origen cuando se generó como parte de una orden mixta. \mbox{[}estado\mbox{]} refleja el ciclo de vida del pedido (pendiente/completado).
+
+Tabla de detalle de pedido. Cada registro representa una prenda encargada identificada por su inventario. \mbox{[}id\+\_\+unidad\+\_\+registrada\mbox{]} se asigna al momento de la entrega y \mbox{[}registrado\mbox{]} cambia a 1 cuando la unidad física es confirmada.
+
+Inserción del usuario administrador inicial del sistema. La contraseña se hashea con SHA-\/256 usando el mismo salt definido en \mbox{[}\doxylink{class_login_use_case}{Login\+Use\+Case}\mbox{]} para mantener consistencia.
+
+Catálogo inicial de prendas disponibles en el sistema. Estos valores son fijos y se insertan una única vez al crear la base de datos.
+
+Catálogo inicial de tallas disponibles en el sistema. Incluye tallas numéricas de niño y tallas estándar de adulto.
+
+\doxysubsection{Documentación de datos miembro}
+\Hypertarget{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d}\index{DatabaseHelper@{DatabaseHelper}!\_database@{\_database}}
+\index{\_database@{\_database}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{\_database}{\_database}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d} 
+Database Database\+Helper\+::\+\_\+database\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Referencia a la base de datos abierta. Null hasta la primera inicialización. 
+
+\Hypertarget{class_database_helper_a9cf80f19b76496b2a831e3344868383b}\index{DatabaseHelper@{DatabaseHelper}!\_database@{\_database}}
+\index{\_database@{\_database}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{\_database}{\_database}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_database_helper_a9cf80f19b76496b2a831e3344868383b} 
+return Database\+Helper\+::\+\_\+database\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_database_helper_a294a5f311c0ba494f95393ae91b1cb7f}\index{DatabaseHelper@{DatabaseHelper}!async@{async}}
+\index{async@{async}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{async}{async}}
+{\footnotesize\ttfamily \label{class_database_helper_a294a5f311c0ba494f95393ae91b1cb7f} 
+Future$<$Database$>$ get database Database\+Helper\+::async\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d}{\_database}}\ !=\ null)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d}{\_database}}!;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_database_helper_a7ee26b7e63294b3852cc1fe1d9feb80d}{\_database}}\ =\ await\ \mbox{\hyperlink{class_database_helper_ab2f56fa788ee87fe2415559f2a69f74e}{\_initDB}}()}
+
+\end{DoxyCode}
+
+
+Retorna la instancia de la base de datos, inicializándola si aún no existe. 
+
+\Hypertarget{class_database_helper_a7077ab449c3e5b76533e12468940fb31}\index{DatabaseHelper@{DatabaseHelper}!instance@{instance}}
+\index{instance@{instance}!DatabaseHelper@{DatabaseHelper}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \label{class_database_helper_a7077ab449c3e5b76533e12468940fb31} 
+final \mbox{\hyperlink{class_database_helper}{Database\+Helper}} Database\+Helper\+::instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{class_database_helper}{DatabaseHelper}}.\mbox{\hyperlink{class_database_helper_aca84e6e94cf4c48118a7e8974ea6fbf0}{\_internal}}()}
+
+\end{DoxyCode}
+
+
+Instancia única del helper accesible globalmente. 
+
+
+
+La documentación de esta clase está generada del siguiente archivo\+:\begin{DoxyCompactItemize}
+\item 
+lib/data/database/\mbox{\hyperlink{database__helper_8dart}{database\+\_\+helper.\+dart}}\end{DoxyCompactItemize}

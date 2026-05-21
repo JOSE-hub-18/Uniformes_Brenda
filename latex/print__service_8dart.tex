@@ -1,0 +1,139 @@
+\doxysection{Referencia del archivo lib/business/services/print\+\_\+service.dart}
+\hypertarget{print__service_8dart}{}\label{print__service_8dart}\index{lib/business/services/print\_service.dart@{lib/business/services/print\_service.dart}}
+{\ttfamily import dart;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_print_service}{Print\+Service}}
+\begin{DoxyCompactList}\small\item\em Contrato base para servicios de impresión. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+Future$<$ void $>$ \mbox{\hyperlink{print__service_8dart_af8b6ab75c402fb52d2bf1cd8c8d32734}{\+\_\+conectar}} () async
+\begin{DoxyCompactList}\small\item\em Establece la conexión BLE con la impresora. \end{DoxyCompactList}\item 
+Future$<$ void $>$ \mbox{\hyperlink{print__service_8dart_a8e299bbec28d572ec15c8bcd7488a241}{\+\_\+desconectar}} () async
+\begin{DoxyCompactList}\small\item\em Desconecta el dispositivo BLE actualmente conectado. \end{DoxyCompactList}\item 
+override Future$<$ void $>$ \mbox{\hyperlink{print__service_8dart_a9bd80ac2ae940ce7917c82ece7c2f104}{conectar}} () async
+\item 
+override Future$<$ void $>$ \mbox{\hyperlink{print__service_8dart_a35abee7e0c15826b2433e3a983813504}{desconectar}} () async
+\item 
+override Future$<$ void $>$ \mbox{\hyperlink{print__service_8dart_aa1d41d697868201587729124e08e0ec6}{imprimir\+QR}} (\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} id) async
+\begin{DoxyCompactList}\small\item\em Genera y envía un comando TSPL a la impresora para imprimir una etiqueta con código QR e identificador en texto. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+abstract class \mbox{\hyperlink{class_print_service}{Print\+Service}} \mbox{\hyperlink{print__service_8dart_abef48f0eaadf317284195bf68b9fc9be}{service\+Uuid}} = "{}49535343-\/fe7d-\/4ae5-\/8fa9-\/9fafd205e455"{}
+\begin{DoxyCompactList}\small\item\em Implementación de \mbox{[}\doxylink{class_print_service}{Print\+Service}\mbox{]} para impresoras térmicas que se comunican mediante Bluetooth Low Energy (BLE). \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{print__service_8dart_a5606684fdc1b78974f13a62109b48003}{char\+Uuid}} = "{}49535343-\/8841-\/43f4-\/a8d4-\/ecbe34729bb3"{}
+\begin{DoxyCompactList}\small\item\em UUID de la característica BLE utilizada para el envío de datos a la impresora. \end{DoxyCompactList}\item 
+static const \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{print__service_8dart_a6e36eda29a3bd1b2808fd292ab041f90}{printer\+Mac}} = "{}66\+:32\+:DA\+:6\+B\+:86\+:\+A7"{}
+\begin{DoxyCompactList}\small\item\em Dirección MAC de la impresora térmica objetivo. \end{DoxyCompactList}\item 
+Bluetooth\+Device \mbox{\hyperlink{print__service_8dart_a7df7192f551bda7d4dbdfabc76e95f04}{\+\_\+device}}
+\begin{DoxyCompactList}\small\item\em Referencia al dispositivo BLE conectado. Null si no hay conexión activa. \end{DoxyCompactList}\item 
+Bluetooth\+Characteristic \mbox{\hyperlink{print__service_8dart_ac532cac017943d3929b800cbf3aa8a17}{\+\_\+char}}
+\begin{DoxyCompactList}\small\item\em Característica BLE utilizada para escribir los datos de impresión. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{print__service_8dart_af8b6ab75c402fb52d2bf1cd8c8d32734}\index{print\_service.dart@{print\_service.dart}!\_conectar@{\_conectar}}
+\index{\_conectar@{\_conectar}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{\_conectar()}{\_conectar()}}
+{\footnotesize\ttfamily \label{print__service_8dart_af8b6ab75c402fb52d2bf1cd8c8d32734} 
+Future$<$ void $>$ \+\_\+conectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Establece la conexión BLE con la impresora. 
+
+Busca el dispositivo en la lista de dispositivos vinculados por su dirección MAC, se conecta a él y descubre los servicios y características disponibles. Lanza una excepción si la impresora no está vinculada o si no se encuentra el servicio o la característica requerida. Busca la impresora en los dispositivos vinculados comparando la dirección MAC de forma insensible a mayúsculas.
+
+Espera breve posterior a la conexión para permitir que el stack BLE estabilice el enlace antes de descubrir servicios.
+
+Itera sobre los servicios descubiertos buscando el UUID de servicio y dentro de él la característica de escritura requerida.\Hypertarget{print__service_8dart_a8e299bbec28d572ec15c8bcd7488a241}\index{print\_service.dart@{print\_service.dart}!\_desconectar@{\_desconectar}}
+\index{\_desconectar@{\_desconectar}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{\_desconectar()}{\_desconectar()}}
+{\footnotesize\ttfamily \label{print__service_8dart_a8e299bbec28d572ec15c8bcd7488a241} 
+Future$<$ void $>$ \+\_\+desconectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Desconecta el dispositivo BLE actualmente conectado. 
+
+\Hypertarget{print__service_8dart_a9bd80ac2ae940ce7917c82ece7c2f104}\index{print\_service.dart@{print\_service.dart}!conectar@{conectar}}
+\index{conectar@{conectar}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{conectar()}{conectar()}}
+{\footnotesize\ttfamily \label{print__service_8dart_a9bd80ac2ae940ce7917c82ece7c2f104} 
+override Future$<$ void $>$ conectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{print__service_8dart_a35abee7e0c15826b2433e3a983813504}\index{print\_service.dart@{print\_service.dart}!desconectar@{desconectar}}
+\index{desconectar@{desconectar}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{desconectar()}{desconectar()}}
+{\footnotesize\ttfamily \label{print__service_8dart_a35abee7e0c15826b2433e3a983813504} 
+override Future$<$ void $>$ desconectar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{print__service_8dart_aa1d41d697868201587729124e08e0ec6}\index{print\_service.dart@{print\_service.dart}!imprimirQR@{imprimirQR}}
+\index{imprimirQR@{imprimirQR}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{imprimirQR()}{imprimirQR()}}
+{\footnotesize\ttfamily \label{print__service_8dart_aa1d41d697868201587729124e08e0ec6} 
+override Future$<$ void $>$ imprimir\+QR (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Genera y envía un comando TSPL a la impresora para imprimir una etiqueta con código QR e identificador en texto. 
+
+El comando se fragmenta en paquetes de 20 bytes con un retardo de 80ms entre cada uno para respetar los límites de transferencia BLE. Lanza una excepción si no hay una conexión activa al momento de imprimir. Comando TSPL que define el tamaño de la etiqueta (40x30mm), el espaciado entre etiquetas, el código QR y el texto identificador.
+
+Envía los bytes del comando en fragmentos de 20 bytes usando escritura sin respuesta (write\+Without\+Response), con retardo entre fragmentos para evitar desbordamiento en el buffer BLE de la impresora.
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{print__service_8dart_ac532cac017943d3929b800cbf3aa8a17}\index{print\_service.dart@{print\_service.dart}!\_char@{\_char}}
+\index{\_char@{\_char}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{\_char}{\_char}}
+{\footnotesize\ttfamily \label{print__service_8dart_ac532cac017943d3929b800cbf3aa8a17} 
+Bluetooth\+Characteristic \+\_\+char}
+
+
+
+Característica BLE utilizada para escribir los datos de impresión. 
+
+Null si no se ha establecido la conexión o no se encontró la característica. \Hypertarget{print__service_8dart_a7df7192f551bda7d4dbdfabc76e95f04}\index{print\_service.dart@{print\_service.dart}!\_device@{\_device}}
+\index{\_device@{\_device}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{\_device}{\_device}}
+{\footnotesize\ttfamily \label{print__service_8dart_a7df7192f551bda7d4dbdfabc76e95f04} 
+Bluetooth\+Device \+\_\+device}
+
+
+
+Referencia al dispositivo BLE conectado. Null si no hay conexión activa. 
+
+\Hypertarget{print__service_8dart_a5606684fdc1b78974f13a62109b48003}\index{print\_service.dart@{print\_service.dart}!charUuid@{charUuid}}
+\index{charUuid@{charUuid}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{charUuid}{charUuid}}
+{\footnotesize\ttfamily \label{print__service_8dart_a5606684fdc1b78974f13a62109b48003} 
+const \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} char\+Uuid = "{}49535343-\/8841-\/43f4-\/a8d4-\/ecbe34729bb3"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+UUID de la característica BLE utilizada para el envío de datos a la impresora. 
+
+\Hypertarget{print__service_8dart_a6e36eda29a3bd1b2808fd292ab041f90}\index{print\_service.dart@{print\_service.dart}!printerMac@{printerMac}}
+\index{printerMac@{printerMac}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{printerMac}{printerMac}}
+{\footnotesize\ttfamily \label{print__service_8dart_a6e36eda29a3bd1b2808fd292ab041f90} 
+const \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} printer\+Mac = "{}66\+:32\+:DA\+:6\+B\+:86\+:\+A7"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Dirección MAC de la impresora térmica objetivo. 
+
+\Hypertarget{print__service_8dart_abef48f0eaadf317284195bf68b9fc9be}\index{print\_service.dart@{print\_service.dart}!serviceUuid@{serviceUuid}}
+\index{serviceUuid@{serviceUuid}!print\_service.dart@{print\_service.dart}}
+\doxysubsubsection{\texorpdfstring{serviceUuid}{serviceUuid}}
+{\footnotesize\ttfamily \label{print__service_8dart_abef48f0eaadf317284195bf68b9fc9be} 
+abstract class \mbox{\hyperlink{class_print_service}{Print\+Service}} service\+Uuid = "{}49535343-\/fe7d-\/4ae5-\/8fa9-\/9fafd205e455"{}}
+
+
+
+Implementación de \mbox{[}\doxylink{class_print_service}{Print\+Service}\mbox{]} para impresoras térmicas que se comunican mediante Bluetooth Low Energy (BLE). 
+
+Utiliza el protocolo TSPL para el envío de comandos de impresión. UUID del servicio BLE expuesto por la impresora. Obtenido mediante herramienta n\+RF Connect u similar. 

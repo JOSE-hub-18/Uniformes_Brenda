@@ -1,0 +1,236 @@
+\doxysection{Referencia del archivo lib/business/usecases/alertas\+\_\+stock\+\_\+usecase.dart}
+\hypertarget{alertas__stock__usecase_8dart}{}\label{alertas__stock__usecase_8dart}\index{lib/business/usecases/alertas\_stock\_usecase.dart@{lib/business/usecases/alertas\_stock\_usecase.dart}}
+{\ttfamily import data;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_alertas_stock_result}{Alertas\+Stock\+Result}}
+\begin{DoxyCompactList}\small\item\em Agrupa el resultado de la consulta de alertas de stock, separando los items agotados de los que están en nivel crítico. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumeraciones}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{Tipo\+Alerta}} \{ \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70a4ce99402671e5b47d2c80e1436cc3b02}{agotado}}
+, \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70aefffe166ad4b851474c2120934a7b9b6}{critico}}
+ \}
+\begin{DoxyCompactList}\small\item\em Define los niveles de severidad para las alertas de stock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} (\{ required \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{this.\+id\+Inventario}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}{this.\+escuela}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}{this.\+prenda}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a9ab41aa60dce28c382677f75f3653a16}{this.\+talla}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}{this.\+precio}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a49f32605607b022b04cbda3e3e569d33}{this.\+stock}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, \})
+\item 
+Alertas\+Stock\+Use\+Case(\{required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository\}) Future$<$ \mbox{\hyperlink{class_alertas_stock_result}{Alertas\+Stock\+Result}} $>$ \mbox{\hyperlink{alertas__stock__usecase_8dart_ab7803e830e1841b183c7a2de205229ff}{obtener\+Alertas}} () async
+\begin{DoxyCompactList}\small\item\em Retorna todas las alertas activas agrupadas en agotados y críticos. \end{DoxyCompactList}\item 
+Future$<$ List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ $>$ \mbox{\hyperlink{alertas__stock__usecase_8dart_af14a4a6486106cde62ffe3cc42601f15}{obtener\+Agotados}} () async
+\begin{DoxyCompactList}\small\item\em Retorna únicamente los items sin stock (0 unidades disponibles). \end{DoxyCompactList}\item 
+Future$<$ List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ $>$ \mbox{\hyperlink{alertas__stock__usecase_8dart_aba2883dcb20a30dff326a9c84d4d1e27}{obtener\+Criticos}} () async
+\begin{DoxyCompactList}\small\item\em Retorna únicamente los items con stock menor o igual a \mbox{[}umbral\+Critico\mbox{]} y mayor a 0. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}?$>$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a99d1fb874488255c98f281be466436f3}{verificar\+Item}} (int \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}) async
+\begin{DoxyCompactList}\small\item\em Verifica si un item específico del inventario tiene una alerta activa. \end{DoxyCompactList}\item 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?$>$ \mbox{\hyperlink{alertas__stock__usecase_8dart_aa066ae2ebdf0b23f200c619bee08a54f}{obtener\+Resumen}} () async
+\begin{DoxyCompactList}\small\item\em Genera un texto resumido con el conteo de alertas activas, apto para mostrar en badges o notificaciones. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{Tipo\+Alerta}} \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{id\+Inventario}}
+\begin{DoxyCompactList}\small\item\em Modelo que representa una alerta de stock para un item de inventario específico. \end{DoxyCompactList}\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}{escuela}}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}{prenda}}
+\item 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} \mbox{\hyperlink{alertas__stock__usecase_8dart_a9ab41aa60dce28c382677f75f3653a16}{talla}}
+\item 
+final double \mbox{\hyperlink{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}{precio}}
+\item 
+final int \mbox{\hyperlink{alertas__stock__usecase_8dart_a49f32605607b022b04cbda3e3e569d33}{stock}}
+\item 
+final \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{Tipo\+Alerta}} \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{tipo}}
+\begin{DoxyCompactList}\small\item\em Tipo de transacción que representa este resultado. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get \mbox{\hyperlink{alertas__stock__usecase_8dart_aae3b61d43858b4fa87f2d9e178a7fc5e}{mensaje}}
+\begin{DoxyCompactList}\small\item\em Mensaje descriptivo de la alerta. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_alertas_stock_result}{Alertas\+Stock\+Result}} \mbox{\hyperlink{alertas__stock__usecase_8dart_ac3b070aa1efaf68965a1d45cd4aaaee3}{\+\_\+inventario\+Repository}}
+\begin{DoxyCompactList}\small\item\em Caso de uso encargado de detectar y clasificar alertas de stock en el inventario. \end{DoxyCompactList}\item 
+static const int \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ba61602547f342d5a8d99e2b29d22e1}{umbral\+Critico}} = 3
+\begin{DoxyCompactList}\small\item\em Umbral de stock crítico (inclusive). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de enumeraciones}
+\Hypertarget{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!TipoAlerta@{TipoAlerta}}
+\index{TipoAlerta@{TipoAlerta}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{TipoAlerta}{TipoAlerta}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70} 
+enum \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{Tipo\+Alerta}}}
+
+
+
+Define los niveles de severidad para las alertas de stock. 
+
+\begin{DoxyEnumFields}[2]{Valores de enumeraciones}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{agotado@{agotado}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!agotado@{agotado}}}\Hypertarget{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70a4ce99402671e5b47d2c80e1436cc3b02}\label{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70} 
+agotado&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{critico@{critico}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!critico@{critico}}}\Hypertarget{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70aefffe166ad4b851474c2120934a7b9b6}\label{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70} 
+critico&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!AlertaStock@{AlertaStock}}
+\index{AlertaStock@{AlertaStock}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{AlertaStock()}{AlertaStock()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a} 
+const Alerta\+Stock (\begin{DoxyParamCaption}\item[{\{ required \mbox{\hyperlink{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}{this.\+id\+Inventario}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}{this.\+escuela}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}{this.\+prenda}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a9ab41aa60dce28c382677f75f3653a16}{this.\+talla}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}{this.\+precio}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_a49f32605607b022b04cbda3e3e569d33}{this.\+stock}}, required \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{this.\+tipo}}, \}}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{alertas__stock__usecase_8dart_af14a4a6486106cde62ffe3cc42601f15}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!obtenerAgotados@{obtenerAgotados}}
+\index{obtenerAgotados@{obtenerAgotados}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{obtenerAgotados()}{obtenerAgotados()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_af14a4a6486106cde62ffe3cc42601f15} 
+Future$<$ List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ $>$ obtener\+Agotados (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retorna únicamente los items sin stock (0 unidades disponibles). 
+
+\Hypertarget{alertas__stock__usecase_8dart_ab7803e830e1841b183c7a2de205229ff}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!obtenerAlertas@{obtenerAlertas}}
+\index{obtenerAlertas@{obtenerAlertas}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{obtenerAlertas()}{obtenerAlertas()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_ab7803e830e1841b183c7a2de205229ff} 
+Alertas\+Stock\+Use\+Case(\{required \mbox{\hyperlink{class_inventario_repository}{Inventario\+Repository}} inventario\+Repository\}) Future$<$ \mbox{\hyperlink{class_alertas_stock_result}{Alertas\+Stock\+Result}} $>$ obtener\+Alertas (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retorna todas las alertas activas agrupadas en agotados y críticos. 
+
+\Hypertarget{alertas__stock__usecase_8dart_aba2883dcb20a30dff326a9c84d4d1e27}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!obtenerCriticos@{obtenerCriticos}}
+\index{obtenerCriticos@{obtenerCriticos}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{obtenerCriticos()}{obtenerCriticos()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_aba2883dcb20a30dff326a9c84d4d1e27} 
+Future$<$ List$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}} $>$ $>$ obtener\+Criticos (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retorna únicamente los items con stock menor o igual a \mbox{[}umbral\+Critico\mbox{]} y mayor a 0. 
+
+\Hypertarget{alertas__stock__usecase_8dart_aa066ae2ebdf0b23f200c619bee08a54f}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!obtenerResumen@{obtenerResumen}}
+\index{obtenerResumen@{obtenerResumen}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{obtenerResumen()}{obtenerResumen()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_aa066ae2ebdf0b23f200c619bee08a54f} 
+Future$<$ \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}}?$>$ obtener\+Resumen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Genera un texto resumido con el conteo de alertas activas, apto para mostrar en badges o notificaciones. 
+
+Retorna null si no hay alertas activas. Ejemplo de salida\+: "{}2 agotados · 5 críticos"{}. Obtiene del repositorio los items con stock agotado y los mapea a instancias de \mbox{[}Alerta\+Stock\mbox{]} con tipo \mbox{[}Tipo\+Alerta.\+agotado\mbox{]}.
+
+Obtiene del repositorio los items con stock crítico y los mapea a instancias de \mbox{[}Alerta\+Stock\mbox{]} con tipo \mbox{[}Tipo\+Alerta.\+critico\mbox{]}.\Hypertarget{alertas__stock__usecase_8dart_a99d1fb874488255c98f281be466436f3}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!verificarItem@{verificarItem}}
+\index{verificarItem@{verificarItem}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{verificarItem()}{verificarItem()}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a99d1fb874488255c98f281be466436f3} 
+Future$<$ \mbox{\hyperlink{alertas__stock__usecase_8dart_a352f6a68aa7ed5365888422ea8d0653a}{Alerta\+Stock}}?$>$ verificar\+Item (\begin{DoxyParamCaption}\item[{int}]{id\+Inventario}{}\end{DoxyParamCaption})}
+
+
+
+Verifica si un item específico del inventario tiene una alerta activa. 
+
+Consulta el stock actual del item y lo compara contra las reglas de negocio\+: stock igual a 0 genera alerta de agotado, stock menor o igual a \mbox{[}umbral\+Critico\mbox{]} genera alerta crítica. Retorna null si el item no tiene alerta activa. 
+
+\doxysubsection{Documentación de variables}
+\Hypertarget{alertas__stock__usecase_8dart_ac3b070aa1efaf68965a1d45cd4aaaee3}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!\_inventarioRepository@{\_inventarioRepository}}
+\index{\_inventarioRepository@{\_inventarioRepository}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{\_inventarioRepository}{\_inventarioRepository}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_ac3b070aa1efaf68965a1d45cd4aaaee3} 
+class \mbox{\hyperlink{class_alertas_stock_result}{Alertas\+Stock\+Result}} \+\_\+inventario\+Repository}
+
+
+
+Caso de uso encargado de detectar y clasificar alertas de stock en el inventario. 
+
+Consulta el repositorio de inventario para identificar items agotados y críticos, y expone métodos para obtener el resultado completo, filtrado o resumido. \Hypertarget{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!escuela@{escuela}}
+\index{escuela@{escuela}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{escuela}{escuela}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a3ca13b4a4d29d3f7e106813e8045c721} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} escuela}
+
+\Hypertarget{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!idInventario@{idInventario}}
+\index{idInventario@{idInventario}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{idInventario}{idInventario}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a4cb5dfd4b759f4dc811414050537b32a} 
+enum \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{Tipo\+Alerta}} id\+Inventario}
+
+
+
+Modelo que representa una alerta de stock para un item de inventario específico. 
+
+Contiene la información del item afectado, su stock actual y el tipo de alerta generada. \Hypertarget{alertas__stock__usecase_8dart_aae3b61d43858b4fa87f2d9e178a7fc5e}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!mensaje@{mensaje}}
+\index{mensaje@{mensaje}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{mensaje}{mensaje}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_aae3b61d43858b4fa87f2d9e178a7fc5e} 
+\mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} get mensaje}
+
+{\bfseries Valor inicial\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{tipo}})\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{TipoAlerta}}.agotado:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'⛔\ Sin\ stock\ —\ \$escuela\ ·\ \$prenda\ ·\ Talla\ \$talla'};}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{TipoAlerta}}.critico:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{'⚠️\ Stock\ crítico\ (\$stock\ piezas)\ —\ \$escuela\ ·\ \$prenda\ ·\ Talla\ \$talla'};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ get\ prioridad\ =>\ \mbox{\hyperlink{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}{tipo}}\ ==\ \mbox{\hyperlink{alertas__stock__usecase_8dart_a60b6868cf8ccfcd196df975610e82d70}{TipoAlerta}}.agotado\ ?\ 0\ :\ 1}
+
+\end{DoxyCode}
+
+
+Mensaje descriptivo de la alerta. 
+
+\Hypertarget{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!precio@{precio}}
+\index{precio@{precio}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{precio}{precio}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a1c6b8c0fa6d41f7f8cf1d30fd7410b5e} 
+final double precio}
+
+\Hypertarget{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!prenda@{prenda}}
+\index{prenda@{prenda}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{prenda}{prenda}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a39651b64674b0240346da6e60dbaa095} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} prenda}
+
+\Hypertarget{alertas__stock__usecase_8dart_a49f32605607b022b04cbda3e3e569d33}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!stock@{stock}}
+\index{stock@{stock}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{stock}{stock}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a49f32605607b022b04cbda3e3e569d33} 
+final int stock}
+
+\Hypertarget{alertas__stock__usecase_8dart_a9ab41aa60dce28c382677f75f3653a16}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!talla@{talla}}
+\index{talla@{talla}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{talla}{talla}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a9ab41aa60dce28c382677f75f3653a16} 
+final \mbox{\hyperlink{inventario__screen_8dart_a546dceeeb42ab79b92e6bd16f299f169}{String}} talla}
+
+\Hypertarget{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!tipo@{tipo}}
+\index{tipo@{tipo}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{tipo}{tipo}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_afce995a416a870a55a4e89bd2d88cd71} 
+final \mbox{\hyperlink{nueva__orden__usecase_8dart_af437592e0f364a5340c522befe6d8d93}{Tipo\+Confirmacion}} tipo}
+
+
+
+Tipo de transacción que representa este resultado. 
+
+\Hypertarget{alertas__stock__usecase_8dart_a3ba61602547f342d5a8d99e2b29d22e1}\index{alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}!umbralCritico@{umbralCritico}}
+\index{umbralCritico@{umbralCritico}!alertas\_stock\_usecase.dart@{alertas\_stock\_usecase.dart}}
+\doxysubsubsection{\texorpdfstring{umbralCritico}{umbralCritico}}
+{\footnotesize\ttfamily \label{alertas__stock__usecase_8dart_a3ba61602547f342d5a8d99e2b29d22e1} 
+const int umbral\+Critico = 3\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Umbral de stock crítico (inclusive). 
+
+Items con stock igual o inferior a este valor y mayor a 0 se clasifican como críticos. 

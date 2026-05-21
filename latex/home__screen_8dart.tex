@@ -1,0 +1,59 @@
+\doxysection{Referencia del archivo lib/presentation/screens/home\+\_\+screen.dart}
+\hypertarget{home__screen_8dart}{}\label{home__screen_8dart}\index{lib/presentation/screens/home\_screen.dart@{lib/presentation/screens/home\_screen.dart}}
+{\ttfamily import package;}\newline
+\doxysubsubsection*{Clases}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}}
+\begin{DoxyCompactList}\small\item\em Widget raíz de la aplicación. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funciones}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{home__screen_8dart_a16bd033ced26a5b3fb228aea975f6738}{Home\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} \mbox{\hyperlink{home__screen_8dart_ac25916dbd06ca4e3a68c8eeb4b11027a}{Home\+View}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Vista interna que define la estructura visual de la pantalla principal. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{home__screen_8dart_a16bd033ced26a5b3fb228aea975f6738}{Home\+Screen}} (\{ super.\+key, \})
+\begin{DoxyCompactList}\small\item\em Constructor principal de la clase \mbox{[}Home\+Screen\mbox{]}. \end{DoxyCompactList}\item 
+override Widget \mbox{\hyperlink{home__screen_8dart_adb49fc7418c8ee3bb385b3176b8c5994}{build}} (Build\+Context context,)
+\begin{DoxyCompactList}\small\item\em Construye la jerarquía visual delegando la representación a \mbox{[}Home\+View\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentación de funciones}
+\Hypertarget{home__screen_8dart_adb49fc7418c8ee3bb385b3176b8c5994}\index{home\_screen.dart@{home\_screen.dart}!build@{build}}
+\index{build@{build}!home\_screen.dart@{home\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{home__screen_8dart_adb49fc7418c8ee3bb385b3176b8c5994} 
+override Widget Home\+View\+::build (\begin{DoxyParamCaption}\item[{Build\+Context}]{context}{}\end{DoxyParamCaption})}
+
+
+
+Construye la jerarquía visual delegando la representación a \mbox{[}Home\+View\mbox{]}. 
+
+Construye la interfaz gráfica y los enlaces de navegación del menú.
+
+Este widget actúa como contenedor simple que devuelve la vista real implementada en \mbox{[}Home\+View\mbox{]}. No mantiene estado propio.
+
+
+\begin{DoxyItemize}
+\item Obtiene instancias de proveedores mediante {\ttfamily Provider.\+of} para acceder a la lógica de navegación y al estado de alertas.
+\item Define la estructura {\ttfamily Scaffold} con {\ttfamily App\+Bar}, {\ttfamily body} y {\ttfamily bottom\+Navigation\+Bar}. 
+\end{DoxyItemize}\Hypertarget{home__screen_8dart_a16bd033ced26a5b3fb228aea975f6738}\index{home\_screen.dart@{home\_screen.dart}!HomeScreen@{HomeScreen}}
+\index{HomeScreen@{HomeScreen}!home\_screen.dart@{home\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{HomeScreen()}{HomeScreen()}}
+{\footnotesize\ttfamily \label{home__screen_8dart_a16bd033ced26a5b3fb228aea975f6738} 
+const Home\+View\+::\+Home\+Screen (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor principal de la clase \mbox{[}Home\+Screen\mbox{]}. 
+
+\Hypertarget{home__screen_8dart_ac25916dbd06ca4e3a68c8eeb4b11027a}\index{home\_screen.dart@{home\_screen.dart}!HomeView@{HomeView}}
+\index{HomeView@{HomeView}!home\_screen.dart@{home\_screen.dart}}
+\doxysubsubsection{\texorpdfstring{HomeView()}{HomeView()}}
+{\footnotesize\ttfamily \label{home__screen_8dart_ac25916dbd06ca4e3a68c8eeb4b11027a} 
+class \mbox{\hyperlink{home__screen_8dart_a16bd033ced26a5b3fb228aea975f6738}{Home\+Screen}} extends \mbox{\hyperlink{class_stateless_widget}{Stateless\+Widget}} Home\+View (\begin{DoxyParamCaption}\item[{\{ super.\+key, \}}]{}{}\end{DoxyParamCaption})}
+
+
+
+Vista interna que define la estructura visual de la pantalla principal. 
+
+Gestiona la disposición de los elementos del menú principal y establece la conexión con el manejador de estado \mbox{[}Home\+Provider\mbox{]} para delegar la lógica de navegación cuando corresponde. Constructor principal de la clase \mbox{[}Home\+View\mbox{]}. 
